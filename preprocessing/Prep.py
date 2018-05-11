@@ -2,29 +2,6 @@ import cv2
 import numpy as np
 import math
 from util import Util as u
-import copy
-
-
-def quickSort(arr, low, high):
-    if low < high:
-        pi = partition(arr, low, high)
-        quickSort(arr, low, pi - 1)
-        quickSort(arr, pi + 1, high)
-
-
-def partition(arr, low, high):
-    i = (low - 1)
-    pivot = (arr[high])[0]
-    for j in range(low, high,1):
-        if (arr[j])[0] <= pivot:
-            i = i + 1
-            temp = copy.deepcopy(arr[i])
-            arr[i] = copy.deepcopy(arr[j])
-            arr[j] = copy.deepcopy(temp)
-    temp2 = copy.deepcopy(arr[i+1])
-    arr[i+1] = copy.deepcopy(arr[high])
-    arr[high] = copy.deepcopy(temp2)
-    return (i+1)
 
 class Prep(object):
         __imcrop = np.zeros(1,np.uint8,'C')
@@ -82,6 +59,12 @@ class Prep(object):
                     aryoflst = self.ins(aryoflst,gray_img[x,y],index=aryoflst.size,isSearched=0)
             return (aryoflst)
 
+        def rmHoles(self,src_binimg):
+            ffill_img = src_binimg.copy()
+            mask = np.zeros((((ffill_img.shape)[0])+2, ((ffill_img.shape)[1])+2), np.uint8, 'C')
+            cv2.floodFill(ffill_img, mask, (0,0), 255);
+            final_img = src_binimg | cv2.bitwise_not(ffill_img)
+            return (final_img)
 
         def OtsuAutoThresh(self,src_invgrimg):
             print(src_invgrimg)
@@ -124,7 +107,7 @@ class Prep(object):
                   bcv = (wb * wf) * math.pow((mb - mf),2)
                   var_ary = np.append(var_ary,np.array([(wcv,bcv,thrslvl)],dtype=dt),0)
             print(var_ary)
-            quickSort(var_ary,0,var_ary.size - 1)
+            u.quickSort(var_ary,0,var_ary.size - 1)
             print(var_ary)
             return (var_ary,app_grlvls_wth_freq)
 
@@ -137,6 +120,7 @@ class Prep(object):
                      else:
                          self.__binimg[x,y] = np.uint8(255)
             print(self.__binimg)
+            self.__binimg = self.rmHoles(self.__binimg)
             return (arset[0],arset[1])
 
         def getActImg(self):
