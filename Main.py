@@ -41,8 +41,8 @@ def showSegmentedGrayImg():
 
 
 showColImg()
-showBinImg()
 showGrayImg()
 showInvertedGrayImg()
+showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()

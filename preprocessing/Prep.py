@@ -19,7 +19,7 @@ class Prep(object):
         for x in range(0, r, 1):
             for y in range(0, c, 1):
                     inv_img[x,y] = np.invert(inv_img[x,y])
-            return inv_img
+        return inv_img
 
     def getColorPlates(self, src_clrimg, plate):
             temp_img = src_clrimg.view()
@@ -72,7 +72,7 @@ class Prep(object):
         app_grlvls_wth_freq = self.getArrayOfGrayLevelsWithFreq(self.__invimgray)
         dt = np.dtype([('wcv', float), ('bcv', float), ('glvl', np.uint8)])
         var_ary = np.empty(0, dt, 'C')
-            print(app_grlvls_wth_freq)
+        print(app_grlvls_wth_freq)
         for x in range(0, app_grlvls_wth_freq.size, 1):
                   thrslvl = (app_grlvls_wth_freq[x])[0]
                   sumb = 0.0
@@ -90,8 +90,7 @@ class Prep(object):
                   wf = wf / float((math.pow(app_grlvls_wth_freq.size, 2)))
                   mf = mf / sumf
                   for h in range(x, app_grlvls_wth_freq.size, 1):
-                      varf2 = varf2 + float(
-                          (math.pow((((app_grlvls_wth_freq[h])[0]) - mf), 2)) * ((app_grlvls_wth_freq[h])[1]))
+                      varf2 = varf2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - mf), 2)) * ((app_grlvls_wth_freq[h])[1]))
                   varf2 = varf2/sumf
                   if (x == 0):
                       pass
@@ -108,9 +107,9 @@ class Prep(object):
                   wcv = (wb * varb2) + (wf * varf2)
                   bcv = (wb * wf) * math.pow((mb - mf), 2)
                   var_ary = np.append(var_ary, np.array([(wcv, bcv, thrslvl)], dtype=dt), 0)
-            print(var_ary)
+        print(var_ary)
         u.quickSort(var_ary, 0, var_ary.size - 1)
-            print(var_ary)
+        print(var_ary)
         ottlvl = (var_ary[0])[2]
         return ottlvl
 
@@ -120,8 +119,8 @@ class Prep(object):
             for y in range(0, ((self.__invimgray).shape)[1], 1):
                 if (self.__invimgray[x, y] < self.__ottlvl):
                     binimg[x, y] = np.uint8(0)
-                     else:
-                         binimg[x, y] = np.uint8(255)
+                else:
+                    binimg[x, y] = np.uint8(255)
         print(binimg)
         binimg = self.__rmHoles(binimg)
         return binimg
@@ -142,17 +141,17 @@ class Prep(object):
             i = i + 1
         return (seg_col, seg_gray)
 
-        def getActImg(self):
-            return self.__img
+    def getActImg(self):
+        return self.__img
 
-        def getGrayImg(self):
-            return self.__imgray
+    def getGrayImg(self):
+        return self.__imgray
 
-        def getInvrtGrayImg(self):
-            return self.__invimgray
+    def getInvrtGrayImg(self):
+        return self.__invimgray
 
-        def getBinaryImg(self):
-            return self.__binimg
+    def getBinaryImg(self):
+        return self.__binimg
 
     def getOtsuThresholdLevel(self):
         return self.__ottlvl
