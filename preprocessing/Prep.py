@@ -22,7 +22,7 @@ class Prep(object):
         return inv_img
 
     def getColorPlates(self, src_clrimg, plate):
-            temp_img = src_clrimg.view()
+            temp_img = src_clrimg.copy()
             for x in temp_img:
                 for y in x:
                     if plate == 'B':
@@ -38,23 +38,23 @@ class Prep(object):
 
     def __ins(self, arr, ins_val, index, isSearched):
             if (arr.size == 0):
-                arr = np.insert(arr, index, (ins_val, 1), 0)
+                arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
             else:
                 if (isSearched == 0):
                     fnd_idx = u.search(arr, ins_val, 0, arr.size)
                     if (fnd_idx >= 0):
-                        arr[fnd_idx] = (((arr[fnd_idx])[0]), ((arr[fnd_idx])[1] + 1))
+                        ((arr[fnd_idx])[1])[0] = ((arr[fnd_idx])[1])[0] + 1
                 if (ins_val > (arr[index - 1])[0]):
-                    arr = np.insert(arr, index, (ins_val, 1), 0)
+                    arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
                 elif (ins_val < (arr[index - 1])[0]):
                     if (index == 0):
-                        arr = np.insert(arr, index, (ins_val, 1), 0)
+                        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
                     else:
                         arr = self.__ins(arr, ins_val, index=index - 1, isSearched=1)
             return arr
 
     def getArrayOfGrayLevelsWithFreq(self, gray_img):
-            aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint8)]), 'C')
+            aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint8, (1,))]), 'C')
             for x in range(0, (gray_img.shape)[0], 1):
                 for y in range(0, (gray_img.shape)[1], 1):
                     aryoflst = self.__ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
@@ -68,11 +68,9 @@ class Prep(object):
             return final_img
 
     def __OtsuAutoThresh(self):
-        print(self.__invimgray)
         app_grlvls_wth_freq = self.getArrayOfGrayLevelsWithFreq(self.__invimgray)
         dt = np.dtype([('wcv', float), ('bcv', float), ('glvl', np.uint8)])
         var_ary = np.empty(0, dt, 'C')
-        print(app_grlvls_wth_freq)
         for x in range(0, app_grlvls_wth_freq.size, 1):
                   thrslvl = (app_grlvls_wth_freq[x])[0]
                   sumb = 0.0
@@ -107,9 +105,7 @@ class Prep(object):
                   wcv = (wb * varb2) + (wf * varf2)
                   bcv = (wb * wf) * math.pow((mb - mf), 2)
                   var_ary = np.append(var_ary, np.array([(wcv, bcv, thrslvl)], dtype=dt), 0)
-        print(var_ary)
         u.quickSort(var_ary, 0, var_ary.size - 1)
-        print(var_ary)
         ottlvl = (var_ary[0])[2]
         return ottlvl
 
@@ -121,7 +117,6 @@ class Prep(object):
                     binimg[x, y] = np.uint8(0)
                 else:
                     binimg[x, y] = np.uint8(255)
-        print(binimg)
         binimg = self.__rmHoles(binimg)
         return binimg
 
