@@ -1,14 +1,9 @@
 import cv2
-import numpy as np
 from preprocessing import Prep as p
 from featext import FeatExt as fe
 
 obj = p.Prep('melanoma.jpg')
-arr1 = obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg())
-arr2 = obj.getArrayOfGrayLevelsWithFreq(obj.getBinaryImg())
-arr3 = obj.getArrayOfGrayLevelsWithFreq(obj.getGrayImg())
-arr4 = obj.getArrayOfGrayLevelsWithFreq(obj.getInvrtGrayImg())
-feobj = fe.FeatExt(obj.getSegGrayImg(), arr1)
+feobj = fe.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -46,29 +41,23 @@ def showSegmentedGrayImg():
     cv2.waitKey(0)
 
 def showGLCM():
-    np.savetxt('glcm.txt', feobj.getGLCM(), '%u', encoding="UTF-8")
-    np.savetxt('glvl1.txt', arr1, '(%u, %u)', encoding="UTF-8")
-    np.savetxt('glvl2.txt', arr2, '(%u, %u)', encoding="UTF-8")
-    np.savetxt('glvl3.txt', arr3, '(%u, %u)', encoding="UTF-8")
-    np.savetxt('glvl4.txt', arr4, '(%u, %u)', encoding="UTF-8")
     print(feobj.getGLCM())
 
-def noofpixles(arr):
-    sum = np.uint32(0)
-    for x in arr:
-        sum = sum + np.uint32((x[1])[0])
-    return sum
+def showHaralickFeatures():
+    print("Energy of seg gray img %f \n" % feobj.getEnergy())
+    print("Entropy of seg gray img %f \n" % feobj.getEntropy())
+    print("Contrast of seg gray img %f \n" % feobj.getContrast())
+    print("Homogeneity of seg gray img %f \n" % feobj.getHomogeneity())
+    print("Directional-Moment of seg gray img %f \n" % feobj.getDm())
 
-showGLCM()
 showColImg()
 showGrayImg()
 showInvertedGrayImg()
 showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()
+showGLCM()
+showHaralickFeatures()
 
-print("No of pixels in seg gray img %u \n" % noofpixles(arr1))
-print("No of pixels in bin img %u \n" % noofpixles(arr2))
-print("No of pixels in gray img %u \n" % noofpixles(arr3))
-print("No of pixels in inv gray img %u \n" % noofpixles(arr4))
+
 

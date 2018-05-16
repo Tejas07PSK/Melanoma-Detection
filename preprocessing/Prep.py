@@ -146,24 +146,19 @@ class Prep(object):
         return self.__img
 
     def getGrayImg(self):
-        print ((self.__imgray).size)
         return self.__imgray
 
     def getInvrtGrayImg(self):
-        print ((self.__invimgray).size)
         return self.__invimgray
 
     def getBinaryImg(self):
-        print ((self.__binimg).size)
         return self.__binimg
 
     def getOtsuThresholdLevel(self):
         return self.__ottlvl
 
     def getSegColImg(self):
-        print ((self.__seg_col).size)
         return self.__seg_col
 
     def getSegGrayImg(self):
-        print ((self.__seg_gray).size)
         return self.__seg_gray
