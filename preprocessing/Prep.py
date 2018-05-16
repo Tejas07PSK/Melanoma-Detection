@@ -38,23 +38,29 @@ class Prep(object):
 
     def __ins(self, arr, ins_val, index, isSearched):
             if (arr.size == 0):
-                arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
+                arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
             else:
+                flag = 0
                 if (isSearched == 0):
                     fnd_idx = u.search(arr, ins_val, 0, arr.size)
                     if (fnd_idx >= 0):
-                        ((arr[fnd_idx])[1])[0] = ((arr[fnd_idx])[1])[0] + 1
-                if (ins_val > (arr[index - 1])[0]):
-                    arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
+                        flag = 1
+                        ((arr[fnd_idx])[1])[0] = np.uint32(((arr[fnd_idx])[1])[0]) + np.uint32(1)
+                if (flag == 1):
+                    pass
+                elif (ins_val > (arr[index - 1])[0]):
+                        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
                 elif (ins_val < (arr[index - 1])[0]):
-                    if (index == 0):
-                        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint8)), 0)
-                    else:
-                        arr = self.__ins(arr, ins_val, index=index - 1, isSearched=1)
+                        if (index == 0):
+                            arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
+                        else:
+                            arr = self.__ins(arr, ins_val, index=index - 1, isSearched=1)
+                else:
+                    ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
             return arr
 
     def getArrayOfGrayLevelsWithFreq(self, gray_img):
-            aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint8, (1,))]), 'C')
+            aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint32, (1,))]), 'C')
             for x in range(0, (gray_img.shape)[0], 1):
                 for y in range(0, (gray_img.shape)[1], 1):
                     aryoflst = self.__ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
@@ -140,19 +146,24 @@ class Prep(object):
         return self.__img
 
     def getGrayImg(self):
+        print ((self.__imgray).size)
         return self.__imgray
 
     def getInvrtGrayImg(self):
+        print ((self.__invimgray).size)
         return self.__invimgray
 
     def getBinaryImg(self):
+        print ((self.__binimg).size)
         return self.__binimg
 
     def getOtsuThresholdLevel(self):
         return self.__ottlvl
 
     def getSegColImg(self):
+        print ((self.__seg_col).size)
         return self.__seg_col
 
     def getSegGrayImg(self):
+        print ((self.__seg_gray).size)
         return self.__seg_gray
