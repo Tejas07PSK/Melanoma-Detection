@@ -7,10 +7,8 @@ class TamFeat(object):
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
-        pix = 0
         for x in range(0, (src_img.shape)[0], 1):
             for y in range(0, (src_img.shape)[1], 1):
-                pix = pix + 1
                 emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
