@@ -1,9 +1,9 @@
 import cv2
 from preprocessing import Prep as p
-from featext import FeatExt as fe
+from featext.texture import Haralick as har
 
 obj = p.Prep('melanoma.jpg')
-feobj = fe.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
+feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)

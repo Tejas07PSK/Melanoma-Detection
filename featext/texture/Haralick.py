@@ -161,3 +161,6 @@ class HarFeat(object):
 
     def getDentropy(self):
         return self.__dentropy
+    
+
+
