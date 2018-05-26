@@ -37,6 +37,7 @@ class TamFeat(object):
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
+        print(avg)
         return avg
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
