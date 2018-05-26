@@ -40,28 +40,28 @@ class TamFeat(object):
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
         if (xl < 0):
-            print("MK1")
+            #print("MK1")
             xl = 0
         if (xl > shape[0]):
-            print("MK2")
+            #print("MK2")
             xl = shape[0]
         if (xh < 0):
-            print("MK3")
+            #print("MK3")
             xh = 0
         if (xh > shape[0]):
-            print("MK4")
+            #print("MK4")
             xh = shape[0]
         if (yl < 0):
-            print("MK5")
+            #print("MK5")
             yl = 0
         if (yl > shape[1]):
-            print("MK6")
+            #print("MK6")
             yl = shape[1]
         if (yh < 0):
-            print("MK7")
+            #print("MK7")
             yh = 0
         if (yh > shape[1]):
-            print("MK8")
+            #print("MK8")
             yh = shape[1]
         return (xl, xh, yl, yh)
 
