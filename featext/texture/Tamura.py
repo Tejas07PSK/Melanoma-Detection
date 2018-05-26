@@ -28,7 +28,6 @@ class TamFeat(object):
         return (float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size)))
 
     def __nebAvg(self, x, y, k, src_img):
-        print ((x,y))
         avg = 0.0
         const = np.float_power(2, k-1)
         xh = int(np.round(x + const - 1))
@@ -40,13 +39,10 @@ class TamFeat(object):
         print((xl, xh, yl, yh))
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
-                avg = avg + src_img[r, c]
-            print (avg)
-        #/ float(np.float_power(2, 2*k)))
+                avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
         return avg
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
-        print (shape)
         if (xl < 0):
             #print("MK1")
             xl = 0
