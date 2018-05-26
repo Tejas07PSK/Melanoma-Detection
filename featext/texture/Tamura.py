@@ -7,7 +7,6 @@ class TamFeat(object):
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
-        emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
         pix = 0
         for x in range(0, (src_img.shape)[0], 1):
             for y in range(0, (src_img.shape)[1], 1):
