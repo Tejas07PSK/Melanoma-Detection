@@ -14,6 +14,7 @@ class TamFeat(object):
                 pix = pix + 1
                 count = 0
                 for k in range(1, 7, 1):
+                    print((x,y))
                     ((emax[count])[0], (emax[count])[1]) = (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1)
                     count = count + 1
                     ((emax[count])[0], (emax[count])[1]) = (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1)
@@ -27,20 +28,25 @@ class TamFeat(object):
         return (float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size)))
 
     def __nebAvg(self, x, y, k, src_img):
+        print ((x,y))
         avg = 0.0
         const = np.float_power(2, k-1)
         xh = int(np.round(x + const - 1))
         xl = int(np.round(x - const))
         yh = int(np.round(y + const - 1))
         yl = int(np.round(y - const))
+        print((xl, xh, yl, yh))
         (xl, xh, yl, yh) = self.__checkSigns(xl, xh, yl, yh, src_img.shape)
+        print((xl, xh, yl, yh))
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
+                print("IN")
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
         print(avg)
         return avg
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
+        print (shape)
         if (xl < 0):
             #print("MK1")
             xl = 0
