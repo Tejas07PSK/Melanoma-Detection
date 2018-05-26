@@ -12,11 +12,13 @@ class TamFeat(object):
         for x in range(0, (src_img.shape)[0], 1):
             for y in range(0, (src_img.shape)[1], 1):
                 pix = pix + 1
+                emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='quicksort', order='E')
                 print(emax.size)
+                print(emax)
                 sbest[x, y] = np.float_power(2, (emax[emax.size-1])[1])
                 print("Pix Count - %d \n" % pix)
                 print("Best pix size - %d \n" % sbest[x, y])
