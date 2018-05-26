@@ -1,10 +1,10 @@
 import cv2
 from preprocessing import Prep as p
-#from featext.texture import Haralick as har
+from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
-#feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
+feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
 feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
@@ -42,7 +42,7 @@ def showSegmentedGrayImg():
     cv2.imshow('segimggray', obj.getSegGrayImg())
     cv2.waitKey(0)
 
-"""def showGLCM():
+def showGLCM():
     print(feobj.getGLCM())
 
 def showHaralickFeatures():
@@ -62,7 +62,7 @@ def showHaralickFeatures():
     print("Moment4 of seg gray img %f \n" % feobj.getMoment4())
     print("Differential-ASM of seg gray img %f \n" % feobj.getDasm())
     print("Differential-Mean of seg gray img %f \n" % feobj.getDmean())
-    print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())"""
+    print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
 def showTamuraFeatures():
     print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
@@ -73,9 +73,9 @@ showInvertedGrayImg()
 showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()
-#showGLCM()
-#showHaralickFeatures()
-#showTamuraFeatures()
+showGLCM()
+showHaralickFeatures()
+showTamuraFeatures()
 
 
 
