@@ -15,7 +15,6 @@ class TamFeat(object):
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='quicksort', order='E')
                 sbest[x, y] = np.float_power(2, (emax[emax.size-1])[1])
-        print(sbest)
         return (float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size)))
 
     def __nebAvg(self, x, y, k, src_img):
