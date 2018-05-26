@@ -5,7 +5,7 @@ from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
 #feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
-#feobj2 = tam.TamFeat(obj.getSegGrayImg())
+feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)

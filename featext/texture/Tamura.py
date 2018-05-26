@@ -13,7 +13,6 @@ class TamFeat(object):
             for y in range(0, (src_img.shape)[1], 1):
                 pix = pix + 1
                 for k in range(1, 7, 1):
-                    print((x,y))
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='quicksort', order='E')
@@ -31,9 +30,7 @@ class TamFeat(object):
         xl = int(np.round(x - const))
         yh = int(np.round(y + const - 1))
         yl = int(np.round(y - const))
-        print((xl, xh, yl, yh))
         (xl, xh, yl, yh) = self.__checkSigns(xl, xh, yl, yh, src_img.shape)
-        print((xl, xh, yl, yh))
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
