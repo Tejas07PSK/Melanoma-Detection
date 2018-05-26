@@ -3,9 +3,9 @@ from preprocessing import Prep as p
 #from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
-obj = p.Prep('melanoma.jpg')
+obj = p.Prep('Melanoma.jpg')
 #feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
-feobj2 = tam.TamFeat(obj.getSegGrayImg())
+#feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -67,15 +67,15 @@ def showHaralickFeatures():
 def showTamuraFeatures():
     print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
 
-#showColImg()
-#showGrayImg()
-#showInvertedGrayImg()
-#showBinImg()
-#showSegmentedColorImg()
-#showSegmentedGrayImg()
+showColImg()
+showGrayImg()
+showInvertedGrayImg()
+showBinImg()
+showSegmentedColorImg()
+showSegmentedGrayImg()
 #showGLCM()
 #showHaralickFeatures()
-showTamuraFeatures()
+#showTamuraFeatures()
 
 
 

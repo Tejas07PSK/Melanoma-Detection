@@ -7,19 +7,16 @@ class TamFeat(object):
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
-        emax = np.zeros(12, np.dtype([('E', float, (1,)), ('K', int, (1,))]), 'C')
+        emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
         pix = 0
         for x in range(0, (src_img.shape)[0], 1):
             for y in range(0, (src_img.shape)[1], 1):
                 pix = pix + 1
-                count = 0
                 for k in range(1, 7, 1):
                     print((x,y))
-                    ((emax[count])[0], (emax[count])[1]) = (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1)
-                    count = count + 1
-                    ((emax[count])[0], (emax[count])[1]) = (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1)
-                    count = count + 1
-                emax.sort(axis=0, kind='mergesort', order='E')
+                    emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
+                    emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
+                emax.sort(axis=0, kind='quicksort', order='E')
                 print(emax)
                 sbest[x, y] = np.float_power(2, (emax[emax.size-1])[1])
                 print("Pix Count - %d \n" % pix)
