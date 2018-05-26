@@ -40,7 +40,7 @@ class TamFeat(object):
         print((xl, xh, yl, yh))
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
-                avg = avg + (float(src_img[r, c]) )
+                avg = avg + src_img[r, c]
             print (avg)
         #/ float(np.float_power(2, 2*k)))
         return avg
