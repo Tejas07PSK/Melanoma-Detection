@@ -45,7 +45,7 @@ def showSegmentedGrayImg():
     cv2.waitKey(0)
 
 def showGLCM():
-    print(np.sum(feobj.getGLCM()))
+    print(2*np.sum(feobj.getGLCM()))
     print(feobj.getGLCM())
 
 def showHaralickFeatures():
