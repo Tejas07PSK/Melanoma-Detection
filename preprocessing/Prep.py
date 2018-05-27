@@ -42,7 +42,7 @@ class Prep(object):
             else:
                 flag = 0
                 if (isSearched == 0):
-                    fnd_idx = u.search(arr, ins_val, 0, arr.size)
+                    fnd_idx = u.search(arr, ins_val, 0, arr.size-1)
                     if (fnd_idx >= 0):
                         flag = 1
                         ((arr[fnd_idx])[1])[0] = np.uint32(((arr[fnd_idx])[1])[0]) + np.uint32(1)

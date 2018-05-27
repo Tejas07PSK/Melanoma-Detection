@@ -5,6 +5,7 @@ from util import Util as u
 class HarFeat(object):
     def __init__(self, img, glvlwthfreq, offset=()):
         if (len(offset) == 0):
+            print("HELLO")
             self.__glcm = self.__generateGLCM(img, glvlwthfreq)
         else:
             self.__glcm = self.__generateGLCM(img, glvlwthfreq, offset)
@@ -17,9 +18,13 @@ class HarFeat(object):
                 if ((((i + offset[0]) < 0) | ((i + offset[0]) >= img.shape[0])) | (((j + offset[1]) < 0) | ((j + offset[1]) >= img.shape[1]))):
                     continue
                 else:
-                    first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size)
-                    second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size)
+                    print(img[i, j])
+                    print(img[(i + offset[0]),(j + offset[1])])
+                    first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size-1)
+                    second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size-1)
+                    print((first,second))
                     coocurmat[first, second] = np.uint32(coocurmat[first, second]) + np.uint32(1)
+                    print(coocurmat[first, second])
         return coocurmat
 
     def generateResizedGLCM(self, src_img, sd, offset=(0,1)):

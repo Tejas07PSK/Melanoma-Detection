@@ -6,7 +6,7 @@ def search(arr,ins_val,l,h):
     if (arr.size == 0):
         return fnd_idx
     else:
-        if (l >= h):
+        if (l > h):
             return fnd_idx
         else:
             mid = np.uint8((l+h)/2)
