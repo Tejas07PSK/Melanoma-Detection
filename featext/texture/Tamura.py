@@ -53,7 +53,6 @@ class TamFeat(object):
         return (xl, xh, yl, yh)
 
     def __generateContrastAndKurtosis(self, src_img):
-        print(src_img.size)
         glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(src_img)
         m = np.mean(src_img, axis=None, dtype=float)
         variance = self.__generateVariance(glvlwthfreq, m)
@@ -68,7 +67,6 @@ class TamFeat(object):
         gls = matlvls['glvl'].view(dtype=np.uint8)
         frq = matlvls['freq'].view(dtype=np.uint32)
         totpix = frq.sum(axis=None, dtype=float)
-        print(totpix)
         variance = 0.0
         for g in range(0, matlvls.size, 1):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
