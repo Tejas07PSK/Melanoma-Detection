@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
@@ -44,7 +43,6 @@ def showSegmentedGrayImg():
     cv2.waitKey(0)
 
 def showGLCM():
-    print(2*np.sum(feobj.getGLCM()))
     print(feobj.getGLCM())
 
 def showHaralickFeatures():
