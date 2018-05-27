@@ -17,8 +17,6 @@ class HarFeat(object):
                 if ((((i + offset[0]) < 0) | ((i + offset[0]) >= img.shape[0])) | (((j + offset[1]) < 0) | ((j + offset[1]) >= img.shape[1]))):
                     continue
                 else:
-                    print(img[i, j])
-                    print(img[(i + offset[0]),(j + offset[1])])
                     first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size-1)
                     second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size-1)
                     print((first,second))
