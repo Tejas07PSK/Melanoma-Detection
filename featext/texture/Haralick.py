@@ -56,7 +56,7 @@ class HarFeat(object):
         vx = 0.0
         vy = 0.0
         (energy, m2, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4) = self.__genHarFeatPt1(glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4)
-        (vx, vy, correlation, har_correlation) = self.__genHarFeatPt2(glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation)
+        (correlation, har_correlation) = self.__genHarFeatPt2(glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation)
         dasm = 0.0
         dmean = 0.0
         dentropy = 0.0
@@ -114,7 +114,8 @@ class HarFeat(object):
                     har_correlation = har_correlation + ((float((glvlwthfreq[i])[0]) * float((glvlwthfreq[j])[0]) * float(y)) - math.pow(((ux + uy) / 2), 2))
                 j = j + 1
             i = i + 1
-        return (math.sqrt(vx), math.sqrt(vy), (correlation / (vx * vy)), (har_correlation / math.pow(((vx + vy) / 2), 2)))
+        (vx, vy) = (math.sqrt(vx), math.sqrt(vy))
+        return ((correlation / (vx * vy)), (har_correlation / math.pow(((vx + vy) / 2), 2)))
 
     def getGLCM(self):
         return self.__glcm

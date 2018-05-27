@@ -5,7 +5,7 @@ from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
 feobj = har.HarFeat(obj.getSegGrayImg())
-feobj2 = tam.TamFeat(obj.getSegGrayImg())
+#feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -64,8 +64,8 @@ def showHaralickFeatures():
     print("Differential-Mean of seg gray img %f \n" % feobj.getDmean())
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
-def showTamuraFeatures():
-    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
+"""def showTamuraFeatures():
+    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())"""
 
 showColImg()
 showGrayImg()
@@ -75,7 +75,7 @@ showSegmentedColorImg()
 showSegmentedGrayImg()
 showGLCM()
 showHaralickFeatures()
-showTamuraFeatures()
+#showTamuraFeatures()
 
 
 
