@@ -73,7 +73,7 @@ showInvertedGrayImg()
 showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()
-showGLCM()
+#showGLCM()
 showHaralickFeatures()
 showTamuraFeatures()
 
