@@ -20,7 +20,6 @@ class HarFeat(object):
                     first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size-1)
                     second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size-1)
                     coocurmat[first, second] = np.uint32(coocurmat[first, second]) + np.uint32(1)
-                    print(coocurmat[first, second])
         return coocurmat
 
     def generateResizedGLCM(self, src_img, sd, offset=(0,1)):
