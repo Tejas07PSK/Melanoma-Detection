@@ -5,7 +5,7 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        self.__coarseness = self.__generateCoarseness(img)
+        #self.__coarseness = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
 
     def __generateCoarseness(self, src_img):
@@ -74,7 +74,11 @@ class TamFeat(object):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
-    def getCoarseness(self):
-        return self.__coarseness
+    """def getCoarseness(self):
+        return self.__coarseness"""
 
-    def get
+    def getContrast(self):
+        return self.__contrast
+
+    def getKurtosis(self):
+        return self.__kurtosis
