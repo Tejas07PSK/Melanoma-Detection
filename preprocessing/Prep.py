@@ -57,33 +57,26 @@ class Prep(object):
                   wf = 0.0
                   mf = 0.0
                   varf2 = 0.0
-                  for h in range(x, app_grlvls_wth_freq.size, 1):
-                      sumf = sumf + (app_grlvls_wth_freq[h])[1]
-                      wf = wf + (app_grlvls_wth_freq[h])[1]
-                      mf = mf + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
-                  wf = wf / float((math.pow(app_grlvls_wth_freq.size, 2)))
-                  mf = mf / sumf
-                  for h in range(x, app_grlvls_wth_freq.size, 1):
-                      varf2 = varf2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - mf), 2)) * ((app_grlvls_wth_freq[h])[1]))
-                  varf2 = varf2/sumf
-                  if (x == 0):
-                      pass
-                  else:
-                      for h in range(0, x, 1):
-                          sumb = sumb + (app_grlvls_wth_freq[h])[1]
-                          wb = wb + (app_grlvls_wth_freq[h])[1]
-                          mb = mb + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
-                      wb = wb / float((math.pow(app_grlvls_wth_freq.size, 2)))
-                      mb = mb / sumb
-                      for h in range(0, x, 1):
-                          varb2 = varb2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - mb), 2)) * ((app_grlvls_wth_freq[h])[1]))
-                      varb2 = varb2 / sumb
+                  (wf, mf, varf2) = self.__threshSubPt(x, app_grlvls_wth_freq.size, app_grlvls_wth_freq, sumf, wf, mf, varf2)
+                  (wb, mb, varb2) = self.__threshSubPt(0, x, app_grlvls_wth_freq, sumb, wb, mb, varb2)
                   wcv = (wb * varb2) + (wf * varf2)
                   bcv = (wb * wf) * math.pow((mb - mf), 2)
                   var_ary = np.append(var_ary, np.array([(wcv, bcv, thrslvl)], dtype=dt), 0)
         u.quickSort(var_ary, 0, var_ary.size - 1)
         ottlvl = (var_ary[0])[2]
         return ottlvl
+
+    def __threshSubPt(self, lower, upper, app_grlvls_wth_freq, sum, w, m, var2):
+        for h in range(lower, upper, 1):
+            sum = sum + (app_grlvls_wth_freq[h])[1]
+            w = w + (app_grlvls_wth_freq[h])[1]
+            m = m + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
+        w = w / float((math.pow(app_grlvls_wth_freq.size, 2)))
+        m = m / sum
+        for h in range(lower, upper, 1):
+            var2 = var2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - mb), 2)) * ((app_grlvls_wth_freq[h])[1]))
+        var2 = var2 / sum
+        return (w, m, var2)
 
     def __imBinarize(self):
         binimg = np.zeros((self.__invimgray).shape, np.uint8, 'C')
