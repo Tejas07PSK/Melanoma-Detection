@@ -4,8 +4,7 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
-glvl = obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg())
-feobj = har.HarFeat(obj.getSegGrayImg(), glvl)
+feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
 #feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
