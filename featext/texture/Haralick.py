@@ -3,7 +3,9 @@ import math
 from util import Util as u
 
 class HarFeat(object):
-    def __init__(self, img, glvlwthfreq, offset=()):
+
+    def __init__(self, img, offset=()):
+        glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(img)
         if (len(offset) == 0):
             self.__glcm = self.__generateGLCM(img, glvlwthfreq)
         else:

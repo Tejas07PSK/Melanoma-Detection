@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 
 class TamFeat(object):
+
     def __init__(self, img):
         self.__coarseness = self.__generateCoarseness(img)
 

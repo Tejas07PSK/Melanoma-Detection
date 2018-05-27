@@ -2,10 +2,9 @@ import cv2
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
-from util import Util as u
 
 obj = p.Prep('Melanoma.jpg')
-feobj = har.HarFeat(obj.getSegGrayImg(), u.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
+feobj = har.HarFeat(obj.getSegGrayImg())
 feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
