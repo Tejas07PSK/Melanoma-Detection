@@ -5,7 +5,6 @@ from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
 glvl = obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg())
-print(glvl)
 feobj = har.HarFeat(obj.getSegGrayImg(), glvl)
 #feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
