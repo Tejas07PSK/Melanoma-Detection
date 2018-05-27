@@ -55,42 +55,8 @@ class HarFeat(object):
         uy = 0.0
         vx = 0.0
         vy = 0.0
-        for x in glcm:
-            j=0
-            for y in x:
-                if (y == 0):
-                    pass
-                else:
-                    asm = asm + math.pow(float(y), 2)
-                    entropy = entropy + (float(y) * (- math.log(float(y))))
-                    contrast = contrast + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2) * float(y))
-                    idm_homogeneity = idm_homogeneity + ((1 / (1 + math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2))) * float(y))
-                    dm = dm + (math.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) * float(y))
-                    ux = ux + (float((glvlwthfreq[i])[0]) * float(y))
-                    uy = uy + (float((glvlwthfreq[j])[0]) * float(y))
-                    m1 = m1 + ((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) * float(y))
-                    m3 = m3 + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 3) * float(y))
-                    m4 = m4 + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 4) * float(y))
-                j = j + 1
-            i = i + 1
-        (energy, m2) = (math.sqrt(asm), contrast)
-        i = 0
-        for x in glcm:
-            j=0
-            for y in x:
-                if (y == 0):
-                    pass
-                else:
-                    vx = vx + (math.pow((float((glvlwthfreq[i])[0]) - ux), 2) * float(y))
-                    vy = vy + (math.pow((float((glvlwthfreq[j])[0]) - uy), 2) * float(y))
-                    correlation = correlation + ((float((glvlwthfreq[i])[0]) - ux) * (float((glvlwthfreq[j])[0]) - uy) * float(y))
-                    cluster_shade = cluster_shade + (math.pow(((float((glvlwthfreq[i])[0]) - ux) + (float((glvlwthfreq[j])[0]) - uy)), 3) * float(y))
-                    cluster_prominence = cluster_prominence + (math.pow(((float((glvlwthfreq[i])[0]) - ux) + (float((glvlwthfreq[j])[0]) - uy)), 4) * float(y))
-                    har_correlation = har_correlation + ((float((glvlwthfreq[i])[0]) * float((glvlwthfreq[j])[0]) * float(y)) - math.pow(((ux + uy) / 2), 2))
-                j = j + 1
-            i = i + 1
-        (vx, vy) = (math.sqrt(vx), math.sqrt(vy))
-        (correlation, har_correlation) = ((correlation / (vx * vy)), (har_correlation  / math.pow(((vx + vy) / 2), 2)))
+        (energy, m2, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4) = self.__genHarFeatPt1(glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4)
+        (vx, vy, correlation, har_correlation) = self.__genHarFeatPt2(glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation)
         dasm = 0.0
         dmean = 0.0
         dentropy = 0.0
@@ -109,6 +75,46 @@ class HarFeat(object):
             else:
                 dentropy = dentropy + (psum * (- math.log(psum)))
         return (asm, energy, entropy, contrast, idm_homogeneity, dm, correlation, har_correlation, cluster_shade, cluster_prominence, m1, m2, m3, m4, dasm, dmean, dentropy)
+
+    def __genHarFeatPt1(self, glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4):
+        i = 0
+        for x in glcm:
+            j=0
+            for y in x:
+                if (y == 0):
+                    pass
+                else:
+                    asm = asm + math.pow(float(y), 2)
+                    entropy = entropy + (float(y) * (- math.log(float(y))))
+                    contrast = contrast + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2) * float(y))
+                    idm_homogeneity = idm_homogeneity + ((1 / (1 + math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2))) * float(y))
+                    dm = dm + (math.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) * float(y))
+                    ux = ux + (float((glvlwthfreq[i])[0]) * float(y))
+                    uy = uy + (float((glvlwthfreq[j])[0]) * float(y))
+                    m1 = m1 + ((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) * float(y))
+                    m3 = m3 + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 3) * float(y))
+                    m4 = m4 + (math.pow((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 4) * float(y))
+                j = j + 1
+            i = i + 1
+        return (math.sqrt(asm), contrast, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4)
+
+    def __genHarFeatPt2(self, glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation):
+        i = 0
+        for x in glcm:
+            j = 0
+            for y in x:
+                if (y == 0):
+                    pass
+                else:
+                    vx = vx + (math.pow((float((glvlwthfreq[i])[0]) - ux), 2) * float(y))
+                    vy = vy + (math.pow((float((glvlwthfreq[j])[0]) - uy), 2) * float(y))
+                    correlation = correlation + ((float((glvlwthfreq[i])[0]) - ux) * (float((glvlwthfreq[j])[0]) - uy) * float(y))
+                    cluster_shade = cluster_shade + (math.pow(((float((glvlwthfreq[i])[0]) - ux) + (float((glvlwthfreq[j])[0]) - uy)), 3) * float(y))
+                    cluster_prominence = cluster_prominence + (math.pow(((float((glvlwthfreq[i])[0]) - ux) + (float((glvlwthfreq[j])[0]) - uy)), 4) * float(y))
+                    har_correlation = har_correlation + ((float((glvlwthfreq[i])[0]) * float((glvlwthfreq[j])[0]) * float(y)) - math.pow(((ux + uy) / 2), 2))
+                j = j + 1
+            i = i + 1
+        return (math.sqrt(vx), math.sqrt(vy), (correlation / (vx * vy)), (har_correlation / math.pow(((vx + vy) / 2), 2)))
 
     def getGLCM(self):
         return self.__glcm
