@@ -6,6 +6,7 @@ class TamFeat(object):
 
     def __init__(self, img):
         self.__coarseness = self.__generateCoarseness(img)
+        (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -52,20 +53,28 @@ class TamFeat(object):
         return (xl, xh, yl, yh)
 
     def __generateContrastAndKurtosis(self, src_img):
+        print(src_img.size)
         glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(src_img)
-        var = self.__generateVariance(glvlwthfreq, src_img.)
-        for tup in
+        m = np.mean(src_img, axis=None, dtype=float)
+        variance = self.__generateVariance(glvlwthfreq, m)
+        kurtosis = 0.0
+        for tup in glvlwthfreq:
+            kurtosis = kurtosis + (np.float_power((float(tup[0]) - m), 4) * (float(tup[1]) / float(src_img.size)))
+        kurtosis = kurtosis / np.float_power(variance, 2)
+        contrast = float(np.sqrt(variance)) / np.float_power(kurtosis, 0.25)
+        return (contrast, kurtosis)
 
     def __generateVariance(self, matlvls, m):
         gls = matlvls['glvl'].view(dtype=np.uint8)
         frq = matlvls['freq'].view(dtype=np.uint32)
         totpix = frq.sum(axis=None, dtype=float)
+        print(totpix)
         variance = 0.0
         for g in range(0, matlvls.size, 1):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
-
-
     def getCoarseness(self):
         return self.__coarseness
+
+    def get
