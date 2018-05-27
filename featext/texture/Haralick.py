@@ -5,7 +5,6 @@ from util import Util as u
 class HarFeat(object):
     def __init__(self, img, glvlwthfreq, offset=()):
         if (len(offset) == 0):
-            print("HELLO")
             self.__glcm = self.__generateGLCM(img, glvlwthfreq)
         else:
             self.__glcm = self.__generateGLCM(img, glvlwthfreq, offset)
