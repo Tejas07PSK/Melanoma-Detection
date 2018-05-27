@@ -36,40 +36,10 @@ class Prep(object):
                         y[1] = 0
             return temp_img
 
-    def __ins(self, arr, ins_val, index, isSearched):
-            if (arr.size == 0):
-                arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
-            else:
-                flag = 0
-                if (isSearched == 0):
-                    fnd_idx = u.search(arr, ins_val, 0, arr.size-1)
-                    if (fnd_idx >= 0):
-                        flag = 1
-                        ((arr[fnd_idx])[1])[0] = np.uint32(((arr[fnd_idx])[1])[0]) + np.uint32(1)
-                if (flag == 1):
-                    pass
-                elif (ins_val > (arr[index - 1])[0]):
-                        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
-                elif (ins_val < (arr[index - 1])[0]):
-                        if (index == 0):
-                            arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
-                        else:
-                            arr = self.__ins(arr, ins_val, index=index - 1, isSearched=1)
-                else:
-                    ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
-            return arr
-
-    def getArrayOfGrayLevelsWithFreq(self, gray_img):
-            aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint32, (1,))]), 'C')
-            for x in range(0, (gray_img.shape)[0], 1):
-                for y in range(0, (gray_img.shape)[1], 1):
-                    aryoflst = self.__ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
-            return aryoflst
-
     def __rmHoles(self, src_binimg):
             ffill_img = src_binimg.copy()
             mask = np.zeros((((ffill_img.shape)[0])+2, ((ffill_img.shape)[1])+2), np.uint8, 'C')
-            cv2.floodFill(ffill_img, mask, (0,0), 255);
+            cv2.floodFill(ffill_img, mask, (0,0), 255)
             final_img = src_binimg | cv2.bitwise_not(ffill_img)
             return final_img
 
@@ -142,7 +112,7 @@ class Prep(object):
             i = i + 1
         return (seg_col, seg_gray)
 
-    def rescale_grayImg(gimg, sd=()):
+    def rescale_grayImg(self, gimg, sd=()):
         if (len(sd) == 0):
             print("No scaling details provided hence gray-scale image will not be re-scaled!!")
             return gimg
