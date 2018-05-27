@@ -1,4 +1,5 @@
 import numpy as np
+from util import Util as u
 import cv2
 
 class TamFeat(object):
@@ -49,6 +50,17 @@ class TamFeat(object):
         if (yh > shape[1]):
             yh = shape[1]
         return (xl, xh, yl, yh)
+
+    def __generateContrastAndKurtosis(self, img):
+        
+
+    def __generateVariance(self, matrix, matlvls):
+        m = np.mean(matrix, axis=None, dtype=float)
+        variance = 0.0
+        for tup in matlvls:
+            sum = sum + (np.float_power((float(tup[0]) - m), 2) * (float((tup[1])[0]) / float(matrix.size)))
+        return variance
+
 
 
     def getCoarseness(self):
