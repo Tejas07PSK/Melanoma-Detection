@@ -1,11 +1,13 @@
 import cv2
+import numpy as np
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
+print(obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
 feobj = har.HarFeat(obj.getSegGrayImg(), obj.getArrayOfGrayLevelsWithFreq(obj.getSegGrayImg()))
-feobj2 = tam.TamFeat(obj.getSegGrayImg())
+#feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -43,6 +45,7 @@ def showSegmentedGrayImg():
     cv2.waitKey(0)
 
 def showGLCM():
+    print(np.sum(feobj.getGLCM()))
     print(feobj.getGLCM())
 
 def showHaralickFeatures():
@@ -64,8 +67,8 @@ def showHaralickFeatures():
     print("Differential-Mean of seg gray img %f \n" % feobj.getDmean())
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
-def showTamuraFeatures():
-    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
+"""def showTamuraFeatures():
+    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())"""
 
 showColImg()
 showGrayImg()
@@ -75,7 +78,7 @@ showSegmentedColorImg()
 showSegmentedGrayImg()
 showGLCM()
 showHaralickFeatures()
-showTamuraFeatures()
+#showTamuraFeatures()
 
 
 
