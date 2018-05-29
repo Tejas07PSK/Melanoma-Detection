@@ -38,6 +38,7 @@ class HarFeat(object):
         return coocurmat
 
     def __generateHaralickFeatures(self, glcm, glvlwthfreq):
+        sumofglcm = glcm.sum(axis=None, dtype=float)
         asm = 0.0
         correlation = 0.0
         har_correlation = 0.0
@@ -64,7 +65,7 @@ class HarFeat(object):
             for i in range(0,(glcm.shape)[0], 1):
                  for j in range(0, (glcm.shape)[1], 1):
                         if (math.fabs(i - j) == k):
-                            psum = psum + float(glcm[i,j])
+                            psum = psum + (float(glcm[i,j])/sumofglcm)
                         else:
                             continue
             (dasm, dmean) = ((dasm + math.pow(psum, 2)), (dmean + (k * psum)))
