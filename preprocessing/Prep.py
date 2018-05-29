@@ -71,14 +71,13 @@ class Prep(object):
 
     def __threshSubPt(self, lower, upper, app_grlvls_wth_freq, sum, w, m, var2):
         for h in range(lower, upper, 1):
-            sum = sum + (app_grlvls_wth_freq[h])[1]
             w = w + (app_grlvls_wth_freq[h])[1]
             m = m + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
-        w = w / float((math.pow(app_grlvls_wth_freq.size, 2)))
-        m = m / sum
+        m = m / w
         for h in range(lower, upper, 1):
             var2 = var2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - m), 2)) * ((app_grlvls_wth_freq[h])[1]))
-        var2 = var2 / sum
+        var2 = var2 / w
+        w = w / float((math.pow(app_grlvls_wth_freq.size, 2)))
         return (w, m, var2)
 
     def __imBinarize(self):
