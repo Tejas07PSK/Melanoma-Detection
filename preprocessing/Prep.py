@@ -49,19 +49,17 @@ class Prep(object):
         var_ary = np.empty(0, dt, 'C')
         for x in range(0, app_grlvls_wth_freq.size, 1):
                   thrslvl = (app_grlvls_wth_freq[x])[0]
-                  sumb = 0.0
                   wb = 0.0
                   mb = 0.0
                   varb2 = 0.0
-                  sumf = 0.0
                   wf = 0.0
                   mf = 0.0
                   varf2 = 0.0
-                  (wf, mf, varf2) = self.__threshSubPt(x, app_grlvls_wth_freq.size, app_grlvls_wth_freq, sumf, wf, mf, varf2)
+                  (wf, mf, varf2) = self.__threshSubPt(x, app_grlvls_wth_freq.size, app_grlvls_wth_freq, wf, mf, varf2)
                   if (x == 0):
                       pass
                   else:
-                      (wb, mb, varb2) = self.__threshSubPt(0, x, app_grlvls_wth_freq, sumb, wb, mb, varb2)
+                      (wb, mb, varb2) = self.__threshSubPt(0, x, app_grlvls_wth_freq, wb, mb, varb2)
                   wcv = (wb * varb2) + (wf * varf2)
                   bcv = (wb * wf) * math.pow((mb - mf), 2)
                   var_ary = np.append(var_ary, np.array([(wcv, bcv, thrslvl)], dtype=dt), 0)
@@ -69,7 +67,7 @@ class Prep(object):
         ottlvl = (var_ary[0])[2]
         return ottlvl
 
-    def __threshSubPt(self, lower, upper, app_grlvls_wth_freq, sum, w, m, var2):
+    def __threshSubPt(self, lower, upper, app_grlvls_wth_freq, w, m, var2):
         for h in range(lower, upper, 1):
             w = w + (app_grlvls_wth_freq[h])[1]
             m = m + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
