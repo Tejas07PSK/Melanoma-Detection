@@ -55,8 +55,8 @@ class HarFeat(object):
         uy = 0.0
         vx = 0.0
         vy = 0.0
-        (energy, m2, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4) = self.__genHarFeatPt1(glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4)
-        (cluster_shade, cluster_prominence, correlation, har_correlation) = self.__genHarFeatPt2(glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation)
+        (energy, m2, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4) = self.__genHarFeatPt1(glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4, sumofglcm)
+        (cluster_shade, cluster_prominence, correlation, har_correlation) = self.__genHarFeatPt2(glcm, glvlwthfreq, ux, uy, vx, vy, correlation, cluster_shade, cluster_prominence, har_correlation, sumofglcm)
         dasm = 0.0
         dmean = 0.0
         dentropy = 0.0
@@ -65,7 +65,7 @@ class HarFeat(object):
             for i in range(0,(glcm.shape)[0], 1):
                  for j in range(0, (glcm.shape)[1], 1):
                         if (math.fabs(i - j) == k):
-                            psum = psum + (float(glcm[i,j])/sumofglcm)
+                            psum = psum + (float(glcm[i,j]) / sumofglcm)
                         else:
                             continue
             (dasm, dmean) = ((dasm + math.pow(psum, 2)), (dmean + (k * psum)))
@@ -76,11 +76,12 @@ class HarFeat(object):
                 dentropy = dentropy + (psum * (- math.log(psum)))
         return (asm, energy, entropy, contrast, idm_homogeneity, dm, correlation, har_correlation, cluster_shade, cluster_prominence, m1, m2, m3, m4, dasm, dmean, dentropy)
 
-    def __genHarFeatPt1(self, glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4):
+    def __genHarFeatPt1(self, glcm, glvlwthfreq, asm, entropy, contrast, idm_homogeneity, dm, ux, uy, m1, m3, m4, sumofglcm):
         i = 0
         for x in glcm:
             j=0
-            for y in x:
+            for item in x:
+                y = float(item) / sumofglcm
                 if (y == 0):
                     pass
                 else:
