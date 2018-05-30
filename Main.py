@@ -42,6 +42,21 @@ def showSegmentedGrayImg():
     cv2.imshow('segimggray', obj.getSegGrayImg())
     cv2.waitKey(0)
 
+def showPrewittHorizontalImg():
+    cv2.namedWindow('PrewittX', cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittX', feobj2.getPrewittHorizontalEdgeImg())
+    cv2.waitKey(0)
+
+def showPrewittVerticalImg():
+    cv2.namedWindow('PrewittY', cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittY', feobj2.getPrewittVerticalEdgeImg())
+    cv2.waitKey(0)
+
+def showPrewittCOmbinedImg():
+    cv2.namedWindow('PrewittIMG', cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittIMG', feobj2.getCombinedPrewittImg())
+    cv2.waitKey(0)
+
 def showGLCM():
     print(feobj.getGLCM())
 
@@ -65,7 +80,7 @@ def showHaralickFeatures():
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
 def showTamuraFeatures():
-    #print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
+    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
     print("Tamura-Contrast of seg gray img %f \n" % feobj2.getContrast())
     print("Tamura-Kurtosis of seg gray img %f \n" % feobj2.getKurtosis())
 
@@ -76,6 +91,9 @@ showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()
 showGLCM()
+showPrewittHorizontalImg()
+showPrewittVerticalImg()
+showPrewittCOmbinedImg()
 showHaralickFeatures()
 showTamuraFeatures()
 
