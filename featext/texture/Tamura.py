@@ -84,3 +84,15 @@ class TamFeat(object):
 
     def getKurtosis(self):
         return self.__kurtosis
+
+    def getPrewittHorizontalEdgeImg(self):
+        return self.img_hor_x
+
+    def getPrewittVerticalEdgeImg(self):
+        return self.img_vert_y
+
+    def getCombinedPrewittImg(self):
+        return self.delg_img
+
+    def getPrewittDirFactOfImg(self):
+        return self.theta_img
