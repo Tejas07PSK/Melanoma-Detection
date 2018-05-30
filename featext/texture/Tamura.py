@@ -5,8 +5,16 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        self.__coarseness = self.__generateCoarseness(img)
+        #self.__coarseness = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
+        self.img_hor_x = cv2.filter2D(cv2.GaussianBlur(img, (3, 3), 0), -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int8))
+        self.img_vert_y = cv2.filter2D(cv2.GaussianBlur(img, (3, 3), 0), -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int8))
+        self.delg_img = np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5
+        self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
+        print(self.img_hor_x)
+        print(self.img_vert_y)
+        print(self.delg_img)
+        print(self.theta_img)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -72,8 +80,8 @@ class TamFeat(object):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
-    def getCoarseness(self):
-        return self.__coarseness
+    """def getCoarseness(self):
+        return self.__coarseness"""
 
     def getContrast(self):
         return self.__contrast
