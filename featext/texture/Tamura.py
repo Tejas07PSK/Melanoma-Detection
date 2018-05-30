@@ -15,6 +15,21 @@ class TamFeat(object):
         print(self.img_vert_y)
         print(self.delg_img)
         print(self.theta_img)
+        cv2.namedWindow('1', cv2.WINDOW_NORMAL)
+        cv2.imshow('1', self.img_hor_x)
+        cv2.waitKey(0)
+        cv2.namedWindow('2', cv2.WINDOW_NORMAL)
+        cv2.imshow('2', self.img_vert_y)
+        cv2.waitKey(0)
+        cv2.namedWindow('3', cv2.WINDOW_NORMAL)
+        cv2.imshow('3', (self.delg_img).astype(np.uint8))
+        cv2.waitKey(0)
+        cv2.namedWindow('4', cv2.WINDOW_NORMAL)
+        cv2.imshow('4', self.theta_img)
+        cv2.waitKey(0)
+
+
+
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
