@@ -22,21 +22,7 @@ class HarFeat(object):
                 else:
                     first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size-1)
                     second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size-1)
-                    print((first, second))
                     coocurmat[first, second] = np.uint32(coocurmat[first, second]) + np.uint32(1)
-        return coocurmat
-
-    def generateResizedGLCM(self, src_img, sd, offset=(0,1)):
-        coocurmat = np.zeros((sd[2], sd[2]), np.uint32, 'C')
-        for i in range(0, (src_img.shape)[0], 1):
-            for j in range(0, (src_img.shape)[1], 1):
-                if (src_img[i,j] >= sd[2]):
-                    continue
-                else:
-                    if ((((i + offset[0]) < 0) | ((i + offset[0]) >= src_img.shape[0])) | (((j + offset[1]) < 0) | ((j + offset[1]) >= src_img.shape[1]))):
-                        continue
-                    else:
-                        coocurmat[src_img[i,j], src_img[(i + offset[0]),(j + offset[1])]] = np.uint32(coocurmat[src_img[i,j], src_img[(i + offset[0]),(j + offset[1])]]) + np.uint32(1)
         return coocurmat
 
     def __generateHaralickFeatures(self, glcm, glvlwthfreq):
