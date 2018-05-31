@@ -74,6 +74,5 @@ def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
     for x in range(0, (gray_img.shape)[0], 1):
         for y in range(0, (gray_img.shape)[1], 1):
             aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
-            if (aryoflst.size == 266):
-                print(aryoflst)
+            print(aryoflst)
     return aryoflst
