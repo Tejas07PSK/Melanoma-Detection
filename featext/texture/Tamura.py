@@ -5,7 +5,7 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        #self.__coarseness = self.__generateCoarseness(img)
+        self.__coarseness = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
         self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
@@ -79,7 +79,8 @@ class TamFeat(object):
 
     def __generateDirectionality(self, delg_img, theta_img, d=4):
         dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
-        print(dirlevels)
+        for itm in dirlevels:
+            print(itm[0])
         ditfctcm = np.zeros((dirlevels.size, dirlevels.size), dtype=np.uint32, order='C')
         for i in range(0, (theta_img.shape)[0], 1):
             for j in range(0, (theta_img.shape)[1], 1):
@@ -104,8 +105,8 @@ class TamFeat(object):
         dir = dir / ditfctcm.sum(axis=None, dtype=float)
         return dir
 
-    """def getCoarseness(self):
-        return self.__coarseness"""
+    def getCoarseness(self):
+        return self.__coarseness
 
     def getContrast(self):
         return self.__contrast
