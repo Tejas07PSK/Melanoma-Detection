@@ -5,7 +5,7 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        self.__coarseness = self.__generateCoarseness(img)
+        #self.__coarseness = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
         self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
@@ -103,8 +103,8 @@ class TamFeat(object):
         dir = dir / ditfctcm.sum(axis=None, dtype=float)
         return dir
 
-    def getCoarseness(self):
-        return self.__coarseness
+    """def getCoarseness(self):
+        return self.__coarseness"""
 
     def getContrast(self):
         return self.__contrast

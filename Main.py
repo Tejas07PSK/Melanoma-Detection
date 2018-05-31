@@ -75,7 +75,7 @@ def showHaralickFeatures():
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
 def showTamuraFeatures():
-    print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
+    #print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
     print("Tamura-Contrast of seg gray img %f \n" % feobj2.getContrast())
     print("Tamura-Kurtosis of seg gray img %f \n" % feobj2.getKurtosis())
     print("Tamura-Directionality of seg gray img %f \n" % feobj2.getDirectionality())
