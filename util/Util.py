@@ -6,9 +6,8 @@ def search(arr,ins_val,l,h):
     if (arr.size == 0):
         pass
     else:
-        while (l < h):
-            print("in while (%d,%d) \n" % (l,h))
-            mid = np.uint8((l + h) / 2)
+        while (l <= h):
+            mid = np.uint8((l + (h - 1)) / 2)
             if (ins_val > (arr[mid])[0]):
                 l = mid + 1
                 continue
@@ -25,7 +24,6 @@ def quickSort(arr, low, high):
         pi = __partition(arr, low, high)
         quickSort(arr, low, pi - 1)
         quickSort(arr, pi + 1, high)
-
 
 def __partition(arr, low, high):
     i = (low - 1)
@@ -66,11 +64,35 @@ def __partition(arr, low, high):
             ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
     return arr"""
 
+def __ins(arr, ins_val, index):
+    if (arr.size == 0):
+        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
+        return arr
+    else:
+        fnd_idx = search(arr, ins_val, 0, arr.size-1)
+        if (fnd_idx >= 0):
+            ((arr[fnd_idx])[1])[0] = np.uint32(((arr[fnd_idx])[1])[0]) + np.uint32(1)
+            return arr
+        else:
+            while (index >= 0):
+                    if (ins_val > (arr[index - 1])[0]):
+                        arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
+                        return arr
+                    if (ins_val < (arr[index - 1])[0]):
+                        if (index == 0):
+                            arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
+                        index = index - 1
+                        continue
+                    else:
+                        ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
+                        return arr
+
+
 
 
 def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
     aryoflst = np.empty(0, np.dtype([('glvl', lvldtype), ('freq', np.uint32, (1,))]), 'C')
     for x in range(0, (gray_img.shape)[0], 1):
         for y in range(0, (gray_img.shape)[1], 1):
-            aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
+            aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size)
     return aryoflst
