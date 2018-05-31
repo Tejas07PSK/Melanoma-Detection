@@ -77,7 +77,7 @@ def __ins(arr, ins_val, index):
             while (index >= 0):
                     if (ins_val > (arr[index - 1])[0]):
                         arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
-                        return arr
+                        break
                     if (ins_val < (arr[index - 1])[0]):
                         if (index == 0):
                             arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
@@ -85,7 +85,8 @@ def __ins(arr, ins_val, index):
                         continue
                     else:
                         ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
-                        return arr
+                        break
+            return arr
 
 
 
