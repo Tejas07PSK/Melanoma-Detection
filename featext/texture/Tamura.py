@@ -69,23 +69,23 @@ class TamFeat(object):
         return (contrast, kurtosis)
 
     def __generateVariance(self, matlvls, m):
-        gls = matlvls['glvl'].view(dtype=np.uint8)
-        frq = matlvls['freq'].view(dtype=np.uint32)
+        gls = matlvls['glvl'].view(dtype=float)
+        frq = matlvls['freq'].view(dtype=float)
         totpix = frq.sum(axis=None, dtype=float)
         variance = 0.0
         for g in range(0, matlvls.size, 1):
-            variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
+            variance = variance + (np.float_power((gls[g] - m), 2) * (frq[g] / totpix))
         return variance
 
-    def __generateLineLikeness(self, delg_img, theta_img, d=4):
+    def __generateLineLikeness(self, delg_img, theta_img, d=4, t=12):
         dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
         ditfctcm = np.zeros((dirlevels.size, dirlevels.size), dtype=np.uint32, order='C')
         for i in range(0, (theta_img.shape)[0], 1):
             for j in range(0, (theta_img.shape)[1], 1):
-                if (np.fabs(delg_img[i, j]) > 12):
+                if (np.fabs(delg_img[i, j]) > t):
                     x = int(np.round(np.fabs(d * np.cos(theta_img[i, j]))))
                     y = int(np.round(np.fabs(d * np.sin(theta_img[i, j]))))
-                    if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1]) | (np.fabs(delg_img[x, y]) <= 12)):
+                    if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1]) | (np.fabs(delg_img[x, y]) <= t)):
                         continue
                     else:
                         if ((theta_img[x, y] > (theta_img[i, j] - 0.6)) & (theta_img[x, y] < (theta_img[i, j] + 0.6))):
@@ -102,6 +102,14 @@ class TamFeat(object):
                 dir = dir + float(ditfctcm[i, j]) * np.cos((((dirlevels[i])[0] - (dirlevels[j])[0]) * 2.0 * np.pi) / dirlevels.size)
         dir = dir / ditfctcm.sum(axis=None, dtype=float)
         return dir
+
+    def __generateDirectionality(self, delg_img, theta_img, t=12):
+        temp = np.zeros_like(theta_img)
+        for i in range(0, (delg_img.shape)[0], 1):
+            for j in range(0, (delg_img.shape)[1], 1):
+                if (delg_img[i, j] > t):
+                    temp[i, j] = theta_img[i, j]
+
 
     def getCoarseness(self):
         return self.__coarseness
