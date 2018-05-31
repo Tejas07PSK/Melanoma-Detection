@@ -50,7 +50,6 @@ def __ins(arr, ins_val, index):
             return arr
         else:
             while (index >= 0):
-                    print("all")
                     if (ins_val > (arr[index - 1])[0]):
                         arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
                         break
@@ -69,5 +68,4 @@ def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
     for x in range(0, (gray_img.shape)[0], 1):
         for y in range(0, (gray_img.shape)[1], 1):
             aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size)
-            print (aryoflst)
     return aryoflst
