@@ -8,7 +8,7 @@ def search(arr,ins_val,low,high):
     else:
         while (low <= high):
             print((low,high))
-            mid = np.uint8((low + (high - low)) / 2)
+            mid =low + ((high - low) / 2)
             print(mid)
             if (ins_val > (arr[mid])[0]):
                 print("a")
