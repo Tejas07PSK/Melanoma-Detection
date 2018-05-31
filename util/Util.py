@@ -2,6 +2,8 @@ import numpy as np
 import copy
 
 def search(arr,ins_val,l,h):
+    print(ins_val)
+    print ((l,h))
     fnd_idx = -1
     if (arr.size == 0):
         return fnd_idx
@@ -10,6 +12,8 @@ def search(arr,ins_val,l,h):
             return fnd_idx
         else:
             mid = np.uint8((l+h)/2)
+            print(mid)
+            print((arr[mid])[0])
             if (ins_val > (arr[mid])[0]):
                 fnd_idx = search(arr,ins_val,l=mid+1,h=h)
             elif (ins_val < (arr[mid])[0]):
@@ -18,6 +22,7 @@ def search(arr,ins_val,l,h):
                 fnd_idx = mid
             else:
                 pass
+    print(fnd_idx)
     return fnd_idx
 
 def quickSort(arr, low, high):
