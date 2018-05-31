@@ -21,6 +21,7 @@ class HarFeat(object):
                 else:
                     first = u.search(glvlwthfreq, img[i,j], 0, glvlwthfreq.size-1)
                     second = u.search(glvlwthfreq, img[(i + offset[0]),(j + offset[1])], 0, glvlwthfreq.size-1)
+                    print((first, second))
                     coocurmat[first, second] = np.uint32(coocurmat[first, second]) + np.uint32(1)
         return coocurmat
 
