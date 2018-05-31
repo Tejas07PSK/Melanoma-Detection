@@ -85,7 +85,7 @@ class TamFeat(object):
                 if (np.fabs(delg_img[i, j]) > 12):
                     x = int(np.round(np.fabs(d * np.cos(theta_img[i, j]))))
                     y = int(np.round(np.fabs(d * np.sin(theta_img[i, j]))))
-                    if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1])):
+                    if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1]) | (np.fabs(delg_img[x, y]) <= 12)):
                         continue
                     else:
                         if ((theta_img[x, y] > (theta_img[i, j] - 0.6)) & (theta_img[x, y] < (theta_img[i, j] + 0.6))):
