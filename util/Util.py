@@ -48,6 +48,7 @@ def __ins(arr, ins_val, index, isSearched):
         flag = 0
         if (isSearched == 0):
             fnd_idx = search(arr, ins_val, 0, arr.size-1)
+            print(ins_val)
             print (fnd_idx)
             if (fnd_idx >= 0):
                 flag = 1
