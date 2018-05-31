@@ -124,5 +124,5 @@ class TamFeat(object):
     def getPrewittDirFactOfImg(self):
         return self.theta_img
 
-    def getDirectionality(self):
-        return self.directionality
+    def getLineLikeness(self):
+        return self.linelikeness
