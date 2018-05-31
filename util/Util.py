@@ -41,7 +41,7 @@ def __partition(arr, low, high):
     arr[high] = copy.deepcopy(temp2)
     return (i+1)
 
-def __ins(arr, ins_val, index, isSearched):
+"""def __ins(arr, ins_val, index, isSearched):
     if (arr.size == 0):
         arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
     else:
@@ -64,7 +64,9 @@ def __ins(arr, ins_val, index, isSearched):
                 arr = __ins(arr, ins_val, index=index - 1, isSearched=1)
         else:
             ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
-    return arr
+    return arr"""
+
+
 
 def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
     aryoflst = np.empty(0, np.dtype([('glvl', lvldtype), ('freq', np.uint32, (1,))]), 'C')
