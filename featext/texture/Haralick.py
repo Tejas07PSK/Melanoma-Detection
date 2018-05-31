@@ -13,7 +13,6 @@ class HarFeat(object):
         (self.__asm, self.__energy, self.__entropy, self.__contrast, self.__idm_homogeneity, self.__dm, self.__correlation, self.__har_correlation, self.__cluster_shade, self.__cluster_prominence, self.__moment1, self.__moment2, self.__moment3, self.__moment4, self.__dasm, self.__dmean, self.__dentropy) = self.__generateHaralickFeatures(self.__glcm, glvlwthfreq)
 
     def __generateGLCM(self, img, glvlwthfreq, offset=(0,1)):
-        print(glvlwthfreq.size)
         coocurmat = np.zeros((glvlwthfreq.size, glvlwthfreq.size), np.uint32, 'C')
         for i in range(0, (img.shape)[0], 1):
             for j in range(0, (img.shape)[1], 1):

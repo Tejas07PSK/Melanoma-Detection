@@ -4,8 +4,8 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
-#feobj = har.HarFeat(obj.getSegGrayImg())
-#feobj2 = tam.TamFeat(obj.getSegGrayImg())
+feobj = har.HarFeat(obj.getSegGrayImg())
+feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
 def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -37,7 +37,7 @@ def showSegmentedGrayImg():
     cv2.imshow('segimggray', obj.getSegGrayImg())
     cv2.waitKey(0)
 
-"""def showPrewittHorizontalImg():
+def showPrewittHorizontalImg():
     cv2.namedWindow('PrewittX', cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittX', feobj2.getPrewittHorizontalEdgeImg())
     cv2.waitKey(0)
@@ -78,7 +78,7 @@ def showTamuraFeatures():
     #print("Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
     print("Tamura-Contrast of seg gray img %f \n" % feobj2.getContrast())
     print("Tamura-Kurtosis of seg gray img %f \n" % feobj2.getKurtosis())
-    print("Tamura-Directionality of seg gray img %f \n" % feobj2.getDirectionality())"""
+    print("Tamura-Directionality of seg gray img %f \n" % feobj2.getDirectionality())
 
 showColImg()
 showGrayImg()
@@ -86,12 +86,12 @@ showInvertedGrayImg()
 showBinImg()
 showSegmentedColorImg()
 showSegmentedGrayImg()
-"""showGLCM()
+showGLCM()
 showPrewittHorizontalImg()
 showPrewittVerticalImg()
 showPrewittCOmbinedImg()
 showHaralickFeatures()
-showTamuraFeatures()"""
+showTamuraFeatures()
 
 
 
