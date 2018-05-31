@@ -76,6 +76,9 @@ class TamFeat(object):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
+    def __generateDirectionality(self, delg_img, theta_img):
+
+
     def getCoarseness(self):
         return self.__coarseness
 

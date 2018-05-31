@@ -70,7 +70,7 @@ class Prep(object):
     def __threshSubPt(self, lower, upper, app_grlvls_wth_freq, w, m, var2):
         for h in range(lower, upper, 1):
             w = w + (app_grlvls_wth_freq[h])[1]
-            m = m + float(np.uint64((app_grlvls_wth_freq[h])[0]) * np.uint64((app_grlvls_wth_freq[h])[1]))
+            m = m + float(np.uint32((app_grlvls_wth_freq[h])[0]) * np.uint32((app_grlvls_wth_freq[h])[1]))
         m = m / w
         for h in range(lower, upper, 1):
             var2 = var2 + float((math.pow((((app_grlvls_wth_freq[h])[0]) - m), 2)) * ((app_grlvls_wth_freq[h])[1]))

@@ -64,8 +64,8 @@ def __ins(arr, ins_val, index, isSearched):
             ((arr[index - 1])[1])[0] = np.uint32(((arr[index - 1])[1])[0]) + np.uint32(1)
     return arr
 
-def getArrayOfGrayLevelsWithFreq(gray_img):
-    aryoflst = np.empty(0, np.dtype([('glvl', np.uint8), ('freq', np.uint32, (1,))]), 'C')
+def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
+    aryoflst = np.empty(0, np.dtype([('glvl', lvldtype), ('freq', np.uint32, (1,))]), 'C')
     for x in range(0, (gray_img.shape)[0], 1):
         for y in range(0, (gray_img.shape)[1], 1):
             aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
