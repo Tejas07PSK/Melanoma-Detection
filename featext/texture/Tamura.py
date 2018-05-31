@@ -11,7 +11,7 @@ class TamFeat(object):
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
         self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.int8)
         self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
-        self.directionality = self.__generateDirectionality(self.delg_img, self.theta_img)
+        self.directionality = self.__generateLineLikeness(self.delg_img, self.theta_img)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -77,7 +77,7 @@ class TamFeat(object):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
-    def __generateDirectionality(self, delg_img, theta_img, d=4):
+    def __generateLineLikeness(self, delg_img, theta_img, d=4):
         dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
         for itm in dirlevels:
             print(itm[0])
@@ -95,9 +95,9 @@ class TamFeat(object):
                             ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
                         else:
                             continue
-        return self.__directionalitySubPart(ditfctcm, dirlevels)
+        return self.__lineLikenessSubPart(ditfctcm, dirlevels)
 
-    def __directionalitySubPart(self, ditfctcm, dirlevels):
+    def __lineLikenessSubPart(self, ditfctcm, dirlevels):
         dir = 0.0
         for i in range(0, (ditfctcm.shape)[0], 1):
             for j in range(0, (ditfctcm.shape)[0], 1):
