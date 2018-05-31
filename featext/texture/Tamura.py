@@ -78,6 +78,7 @@ class TamFeat(object):
         return variance
 
     def __generateDirectionality(self, delg_img, theta_img, d=4):
+        print(theta_img)
         dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
         ditfctcm = np.zeros((dirlevels.size, dirlevels.size), dtype=np.uint32, order='C')
         for i in range(0, (theta_img.shape)[0], 1):
