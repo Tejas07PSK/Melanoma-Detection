@@ -6,14 +6,17 @@ def search(arr,ins_val,l,h):
     if (arr.size == 0):
         pass
     else:
-        while (l > h):
+        while (l <= h):
             mid = np.uint8((l + h) / 2)
             if (ins_val > (arr[mid])[0]):
                 l = mid + 1
+                continue
             if (ins_val < (arr[mid])[0]):
                 h = mid - 1
+                continue
             if (ins_val == (arr[mid])[0]):
                 fnd_idx = mid
+                break
     return fnd_idx
 
 def quickSort(arr, low, high):
