@@ -1,20 +1,25 @@
 import numpy as np
 import copy
 
-def search(arr,ins_val,l,h):
+def search(arr,ins_val,low,high):
     fnd_idx = -1
     if (arr.size == 0):
         pass
     else:
-        while (l <= h):
-            mid = np.uint8((l + (h - 1)) / 2)
+        while (low <= high):
+            print((low,high))
+            mid = np.uint8((low + (high - low)) / 2)
+            print(mid)
             if (ins_val > (arr[mid])[0]):
-                l = mid + 1
+                print("a")
+                low = mid + 1
                 continue
             if (ins_val < (arr[mid])[0]):
-                h = mid - 1
+                print("b")
+                high = mid - 1
                 continue
             if (ins_val == (arr[mid])[0]):
+                print("c")
                 fnd_idx = mid
                 break
     return fnd_idx
@@ -75,6 +80,7 @@ def __ins(arr, ins_val, index):
             return arr
         else:
             while (index >= 0):
+                    print("all")
                     if (ins_val > (arr[index - 1])[0]):
                         arr = np.insert(arr, index, (ins_val, np.array([ 1 ], np.uint32)), 0)
                         break
