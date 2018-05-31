@@ -99,7 +99,7 @@ class TamFeat(object):
         dir = 0.0
         for i in range(0, (ditfctcm.shape)[0], 1):
             for j in range(0, (ditfctcm.shape)[0], 1):
-                dir = dir + float(ditfctcm[i, j]) * np.cos((((dirlevels[i])[0] - (dirlevels[j])[0]) * 2.o * np.pi) / dirlevels.size)
+                dir = dir + float(ditfctcm[i, j]) * np.cos((((dirlevels[i])[0] - (dirlevels[j])[0]) * 2.0 * np.pi) / dirlevels.size)
         dir = dir / ditfctcm.sum(axis=None, dtype=float)
         return dir
 
