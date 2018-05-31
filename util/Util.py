@@ -2,27 +2,18 @@ import numpy as np
 import copy
 
 def search(arr,ins_val,l,h):
-    print(ins_val)
-    print ((l,h))
     fnd_idx = -1
     if (arr.size == 0):
-        return fnd_idx
+        pass
     else:
-        if (l > h):
-            return fnd_idx
-        else:
-            mid = np.uint8((l+h)/2)
-            print(mid)
-            print((arr[mid])[0])
+        while (l > h):
+            mid = np.uint8((l + h) / 2)
             if (ins_val > (arr[mid])[0]):
-                fnd_idx = search(arr,ins_val,l=mid+1,h=h)
-            elif (ins_val < (arr[mid])[0]):
-                fnd_idx = search(arr,ins_val,l,h=mid-1)
-            elif (ins_val == (arr[mid])[0]):
+                l = mid + 1
+            if (ins_val < (arr[mid])[0]):
+                h = mid - 1
+            if (ins_val == (arr[mid])[0]):
                 fnd_idx = mid
-            else:
-                pass
-    print(fnd_idx)
     return fnd_idx
 
 def quickSort(arr, low, high):
@@ -74,5 +65,5 @@ def getArrayOfGrayLevelsWithFreq(gray_img, lvldtype=np.uint8):
     for x in range(0, (gray_img.shape)[0], 1):
         for y in range(0, (gray_img.shape)[1], 1):
             aryoflst = __ins(aryoflst, gray_img[x, y], index=aryoflst.size, isSearched=0)
-            print(aryoflst)
+    print((aryoflst['freq'].view(dtype=np.uint32)).sum(axis=None, dtype=np.uint32))
     return aryoflst
