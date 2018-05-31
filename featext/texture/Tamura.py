@@ -109,6 +109,8 @@ class TamFeat(object):
             for j in range(0, (delg_img.shape)[1], 1):
                 if (delg_img[i, j] > t):
                     temp[i, j] = theta_img[i, j]
+        varDir = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(temp, lvldtype=float), np.mean(temp, axis=None, dtype=float))
+        return ((1 / np.sqrt(varDir)), varDir)
 
 
     def getCoarseness(self):
