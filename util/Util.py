@@ -6,10 +6,7 @@ def search(arr,ins_val,l,h):
     if (arr.size == 0):
         pass
     else:
-        c = 0
         while (l <= h):
-            c = c + 1
-            print(c)
             mid = np.uint8((l + (h - 1)) / 2)
             if (ins_val > (arr[mid])[0]):
                 l = mid + 1

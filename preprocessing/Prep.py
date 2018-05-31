@@ -44,6 +44,7 @@ class Prep(object):
             return final_img
 
     def __OtsuAutoThresh(self):
+        print(self.__invimgray)
         app_grlvls_wth_freq = u.getArrayOfGrayLevelsWithFreq(self.__invimgray)
         print(app_grlvls_wth_freq)
         print((app_grlvls_wth_freq['freq'].view(np.uint32)).sum(axis=None, dtype=np.uint32))
