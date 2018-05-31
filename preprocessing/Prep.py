@@ -105,27 +105,6 @@ class Prep(object):
             i = i + 1
         return (seg_col, seg_gray)
 
-    def rescale_grayImg(self, gimg, sd=()):
-        if (len(sd) == 0):
-            print("No scaling details provided hence gray-scale image will not be re-scaled!!")
-            return gimg
-        elif (((sd[1] - sd[0]) <= 0) | (sd[2] == 0) | ((sd[1] - sd[0]) < sd[2])):
-            print("Improper scaling details provided hence gray-scale image will not be re-scaled!!")
-            return gimg
-        else:
-            scaled_gmig = gimg.copy()
-            for x in scaled_gmig:
-                for i in range(0, x.size, 1):
-                    if (x[i] >= sd[1]):
-                        x[i] = np.uint8(sd[2])
-                    elif (x[i] < sd[0]):
-                        x[i] = np.uint8(1)
-                    elif (((x[i] - np.uint8(sd[0])) % (np.uint8(round((sd[1] - sd[0]) / sd[2])))) == 0):
-                        x[i] = (x[i] - np.uint8(sd[0])) / (np.uint8(round((sd[1] - sd[0]) / sd[2])))
-                    else:
-                        continue
-            return (scaled_gmig, sd)
-
     def getActImg(self):
         return self.__img
 

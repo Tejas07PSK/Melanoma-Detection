@@ -4,10 +4,10 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
 obj = p.Prep('Melanoma.jpg')
-feobj = har.HarFeat(obj.getSegGrayImg())
-feobj2 = tam.TamFeat(obj.getSegGrayImg())
+#feobj = har.HarFeat(obj.getSegGrayImg())
+#feobj2 = tam.TamFeat(obj.getSegGrayImg())
 
-def showColImg():
+"""def showColImg():
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
     cv2.imshow('imgcol', obj.getActImg())
     cv2.waitKey(0)
@@ -91,7 +91,7 @@ showPrewittHorizontalImg()
 showPrewittVerticalImg()
 showPrewittCOmbinedImg()
 showHaralickFeatures()
-showTamuraFeatures()
+showTamuraFeatures()"""
 
 
 

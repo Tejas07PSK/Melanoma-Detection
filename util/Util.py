@@ -6,7 +6,7 @@ def search(arr,ins_val,l,h):
     if (arr.size == 0):
         pass
     else:
-        while (l <= h):
+        while (l < h):
             print("in while (%d,%d) \n" % (l,h))
             mid = np.uint8((l + h) / 2)
             if (ins_val > (arr[mid])[0]):
@@ -47,7 +47,7 @@ def __ins(arr, ins_val, index, isSearched):
     else:
         flag = 0
         if (isSearched == 0):
-            fnd_idx = search(arr, ins_val, 0, arr.size-1)
+            fnd_idx = search(arr, ins_val, 0, arr.size)
             print(ins_val)
             print (fnd_idx)
             if (fnd_idx >= 0):
