@@ -9,7 +9,7 @@ class TamFeat(object):
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
         self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
-        self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.uint8)
+        self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.int8)
         self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
 
     def __generateCoarseness(self, src_img):
@@ -76,8 +76,31 @@ class TamFeat(object):
             variance = variance + (np.float_power((float(gls[g]) - m), 2) * (float(frq[g]) / totpix))
         return variance
 
-    def __generateDirectionality(self, delg_img, theta_img):
+    def __generateDirectionality(self, delg_img, theta_img, d=4):
+        dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
+        ditfctcm = np.zeros((dirlevels.size, dirlevels.size), dtype=np.uint32, order='C')
+        for i in range(0, (theta_img.shape)[0], 1):
+            for j in range(0, (theta_img.shape)[1], 1):
+                if (np.fabs(delg_img[i, j]) > 12):
+                    x = int(np.round(np.fabs(d * np.cos(theta_img[i, j]))))
+                    y = int(np.round(np.fabs(d * np.sin(theta_img[i, j]))))
+                    if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1])):
+                        continue
+                    else:
+                        if ((theta_img[x, y] > (theta_img[i, j] - 1)) & (theta_img[x, y] < (theta_img[i, j] + 1))):
+                            idx1, idx2 = u.search(dirlevels, theta_img[i, j], 0, dirlevels.size-1), u.search(dirlevels, theta_img[x, y], 0, dirlevels.size-1)
+                            ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
+                        else:
+                            continue
+        return self.__directionalitySubPart(ditfctcm, dirlevels)
 
+    def __directionalitySubPart(self, ditfctcm, dirlevels):
+        dir = 0.0
+        for i in range(0, (ditfctcm.shape)[0], 1):
+            for j in range(0, (ditfctcm.shape)[0], 1):
+                dir = dir + float(ditfctcm[i, j]) * np.cos((((dirlevels[i])[0] - (dirlevels[j])[0]) * 2.o * np.pi) / dirlevels.size)
+        dir = dir / ditfctcm.sum(axis=None, dtype=float)
+        return dir
 
     def getCoarseness(self):
         return self.__coarseness
@@ -95,7 +118,7 @@ class TamFeat(object):
         return self.img_vert_y
 
     def getCombinedPrewittImg(self):
-        return self.delg_img
+        return (self.delg_img).astype(np.uint8)
 
     def getPrewittDirFactOfImg(self):
         return self.theta_img
