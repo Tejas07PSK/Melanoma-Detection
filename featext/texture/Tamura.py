@@ -5,13 +5,14 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        self.__coarseness = self.__generateCoarseness(img)
+        (self.__coarseness, self.varCrs) = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
         self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
         self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.int8)
         self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
         self.linelikeness = self.__generateLineLikeness(self.delg_img, self.theta_img)
+        (self.directionality, self.varDir) = self.__generateDirectionality()
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -23,7 +24,8 @@ class TamFeat(object):
                     emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='mergesort', order='E')
                 sbest[x, y] = np.float_power(2, (emax[emax.size-1])[1])
-        return (float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size)))
+        varCrs = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(sbest, lvldtype=np.uint32), np.mean(sbest, axis=None, dtype=float))
+        return ((float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size))), varCrs)
 
     def __nebAvg(self, x, y, k, src_img):
         avg = 0.0
