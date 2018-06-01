@@ -7,13 +7,14 @@ class TamFeat(object):
     def __init__(self, img):
         (self.__coarseness, varCrs) = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis, varCon) = self.__generateContrastAndKurtosis(img)
-        self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
-        self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
-        self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.int8)
-        self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
-        (self.linelikeness, varLin) = self.__generateLineLikeness(self.delg_img, self.theta_img)
-        (self.directionality, varDir) = self.__generateDirectionality(self.delg_img, self.theta_img)
-        self.regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
+        self.__img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
+        self.__img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
+        self.__delg_img = np.round((np.add(self.__img_hor_x, self.__img_vert_y, dtype=float) * 0.5)).astype(np.int8)
+        self.__theta_img = np.tanh(np.divide((self.__img_vert_y).astype(float), (self.__img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.__img_vert_y).astype(float)), where=self.__img_hor_x != 0)) + (float(np.pi) / 2.0)
+        (self.__linelikeness, varLin) = self.__generateLineLikeness(self.__delg_img, self.__theta_img)
+        (self.__directionality, varDir) = self.__generateDirectionality(self.__delg_img, self.__theta_img)
+        self.__regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
+        self.__roughness = self.__generateRoughness(self.__coarseness, self.__contrast)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -119,7 +120,8 @@ class TamFeat(object):
     def __generateRegularity(self, sdCrs, sdDir, sdCon, sdLin, r=0.4):
         return  (1 - (r * (sdCrs + sdDir + sdCon + sdLin)))
 
-
+    def __generateRoughness(self, coarseness, contrast):
+        return (contrast + coarseness)
 
     def getCoarseness(self):
         return self.__coarseness
@@ -131,16 +133,25 @@ class TamFeat(object):
         return self.__kurtosis
 
     def getPrewittHorizontalEdgeImg(self):
-        return self.img_hor_x
+        return self.__img_hor_x
 
     def getPrewittVerticalEdgeImg(self):
-        return self.img_vert_y
+        return self.__img_vert_y
 
     def getCombinedPrewittImg(self):
-        return (self.delg_img).astype(np.uint8)
+        return (self.__delg_img).astype(np.uint8)
 
     def getPrewittDirFactOfImg(self):
-        return self.theta_img
+        return self.__theta_img
 
     def getLineLikeness(self):
-        return self.linelikeness
+        return self.__linelikeness
+
+    def getDirectionality(self):
+        return self.__directionality
+
+    def getRegularity(self):
+        return self.__regularity
+
+    def getRoughness(self):
+        return self.__roughness
