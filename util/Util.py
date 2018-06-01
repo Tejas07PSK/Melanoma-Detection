@@ -1,7 +1,7 @@
 import numpy as np
 import copy
 
-def search(arr,ins_val,low,high):
+def search(arr, ins_val, low, high):
     fnd_idx = -1
     if (arr.size == 0):
         pass
