@@ -95,7 +95,8 @@ class TamFeat(object):
                             ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
                         else:
                             continue
-        return self.__lineLikenessSubPart(ditfctcm, dirlevels)
+        varLin = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(ditfctcm, lvldtype=np.uint32), np.mean(ditfctcm, axis=None, dtype=float))
+        return (self.__lineLikenessSubPart(ditfctcm, dirlevels), varLin)
 
     def __lineLikenessSubPart(self, ditfctcm, dirlevels):
         dir = 0.0
