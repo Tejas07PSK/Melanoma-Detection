@@ -93,12 +93,13 @@ class TamFeat(object):
                         continue
                     else:
                         if (np.fabs(delg_img[x, y]) <= t):
-                            continue
+                             continue
                         elif ((theta_img[x, y] > (theta_img[i, j] - 0.6)) & (theta_img[x, y] < (theta_img[i, j] + 0.6))):
                              idx1, idx2 = u.search(dirlevels, theta_img[i, j], 0, dirlevels.size-1), u.search(dirlevels, theta_img[x, y], 0, dirlevels.size-1)
                              ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
                         else:
                             continue
+        print(ditfctcm)
         varLin = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(ditfctcm, lvldtype=np.uint32), np.mean(ditfctcm, axis=None, dtype=float))
         return (self.__lineLikenessSubPart(ditfctcm, dirlevels), varLin)
 
