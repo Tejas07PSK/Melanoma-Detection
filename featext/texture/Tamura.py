@@ -12,7 +12,7 @@ class TamFeat(object):
         self.__delg_img = np.round((np.add(self.__img_hor_x, self.__img_vert_y, dtype=float) * 0.5)).astype(np.int8)
         self.__theta_img = np.tanh(np.divide((self.__img_vert_y).astype(float), (self.__img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.__img_vert_y).astype(float)), where=self.__img_hor_x != 0)) + (float(np.pi) / 2.0)
         (self.__linelikeness, varLin) = self.__generateLineLikeness(self.__delg_img, self.__theta_img)
-        (self.__directionality, varDir) = self.__generateDirectionality(self.__theta_img)
+        (self.__directionality, varDir) = self.__generateDirectionality(self.__delg_img, self.__theta_img)
         self.__regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
         self.__roughness = self.__generateRoughness(self.__coarseness, self.__contrast)
 
@@ -81,17 +81,18 @@ class TamFeat(object):
             variance = variance + (np.float_power((gls[g] - m), 2) * (frq[g] / totpix))
         return variance
 
-    def __generateLineLikeness(self, theta_img, d=4):
+    def __generateLineLikeness(self, delg_img, theta_img, d=4, t=12):
         dirlevels = u.getArrayOfGrayLevelsWithFreq(theta_img, lvldtype=float)
         ditfctcm = np.zeros((dirlevels.size, dirlevels.size), dtype=np.uint32, order='C')
         for i in range(0, (theta_img.shape)[0], 1):
             for j in range(0, (theta_img.shape)[1], 1):
+                if (np.fabs(delg_img[i,j]) > t):
                     x = int(np.round(np.fabs(d * np.cos(theta_img[i, j]))))
                     y = int(np.round(np.fabs(d * np.sin(theta_img[i, j]))))
                     if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1])):
                         continue
                     else:
-                        if ((theta_img[x, y] > (theta_img[i, j] - 1)) & (theta_img[x, y] < (theta_img[i, j] + 1))):
+                        if ((theta_img[x, y] > (theta_img[i, j] - 1)) & (theta_img[x, y] < (theta_img[i, j] + 1)) & (np.fabs(delg_img[x, y]) > t)):
                              idx1, idx2 = u.search(dirlevels, theta_img[i, j], 0, dirlevels.size-1), u.search(dirlevels, theta_img[x, y], 0, dirlevels.size-1)
                              ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
                         else:
