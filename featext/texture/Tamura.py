@@ -92,7 +92,7 @@ class TamFeat(object):
                     if ((x < 0) | (x >= (theta_img.shape)[0]) | (y < 0) | (y >= (theta_img.shape)[1])):
                         continue
                     else:
-                        if ((theta_img[x, y] > (theta_img[i, j] - 1)) & (theta_img[x, y] < (theta_img[i, j] + 1)) & (np.fabs(delg_img[x, y]) > t)):
+                        if ((theta_img[x, y] > (theta_img[i, j] - 1)) & (theta_img[x, y] < (theta_img[i, j] + 1))):
                              idx1, idx2 = u.search(dirlevels, theta_img[i, j], 0, dirlevels.size-1), u.search(dirlevels, theta_img[x, y], 0, dirlevels.size-1)
                              ditfctcm[idx1, idx2] = ditfctcm[idx1, idx2] + 1
                         else:
