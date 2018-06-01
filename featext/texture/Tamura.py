@@ -5,14 +5,14 @@ import cv2
 class TamFeat(object):
 
     def __init__(self, img):
-        (self.__coarseness, self.varCrs) = self.__generateCoarseness(img)
-        (self.__contrast, self.__kurtosis) = self.__generateContrastAndKurtosis(img)
+        (self.__coarseness, varCrs) = self.__generateCoarseness(img)
+        (self.__contrast, self.__kurtosis, varCon) = self.__generateContrastAndKurtosis(img)
         self.img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
         self.delg_img = np.round((np.add(self.img_hor_x, self.img_vert_y, dtype=float) * 0.5)).astype(np.int8)
         self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
-        self.linelikeness = self.__generateLineLikeness(self.delg_img, self.theta_img)
-        (self.directionality, self.varDir) = self.__generateDirectionality()
+        (self.linelikeness, varLin) = self.__generateLineLikeness(self.delg_img, self.theta_img)
+        (self.directionality, varDir) = self.__generateDirectionality(self.delg_img, self.theta_img)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -68,7 +68,7 @@ class TamFeat(object):
             kurtosis = kurtosis + (np.float_power((float(tup[0]) - m), 4) * (float(tup[1]) / float(src_img.size)))
         kurtosis = kurtosis / np.float_power(variance, 2)
         contrast = float(np.sqrt(variance)) / np.float_power(kurtosis, 0.25)
-        return (contrast, kurtosis)
+        return (contrast, kurtosis, variance)
 
     def __generateVariance(self, matlvls, m):
         gls = matlvls['glvl'].view(dtype=float)
