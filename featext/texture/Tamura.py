@@ -13,6 +13,7 @@ class TamFeat(object):
         self.theta_img = np.tanh(np.divide((self.img_vert_y).astype(float), (self.img_hor_x).astype(float), dtype=float, out=np.zeros_like((self.img_vert_y).astype(float)), where=self.img_hor_x != 0)) + (float(np.pi) / 2.0)
         (self.linelikeness, varLin) = self.__generateLineLikeness(self.delg_img, self.theta_img)
         (self.directionality, varDir) = self.__generateDirectionality(self.delg_img, self.theta_img)
+        self.regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -114,6 +115,10 @@ class TamFeat(object):
                     temp[i, j] = theta_img[i, j]
         varDir = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(temp, lvldtype=float), np.mean(temp, axis=None, dtype=float))
         return ((1 / np.sqrt(varDir)), varDir)
+
+    def __generateRegularity(self, sdCrs, sdDir, sdCon, sdLin, r=0.4):
+        return  (1 - (r * (sdCrs + sdDir + sdCon + sdLin)))
+
 
 
     def getCoarseness(self):
