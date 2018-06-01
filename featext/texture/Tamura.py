@@ -73,8 +73,8 @@ class TamFeat(object):
         return (contrast, kurtosis, variance)
 
     def __generateVariance(self, matlvls, m):
-        gls = matlvls['glvl'].view(dtype=float)
-        frq = matlvls['freq'].view(dtype=float)
+        gls = np.ascontiguousarray(matlvls['glvl'], dtype=float)
+        frq = np.ascontiguousarray(matlvls['freq'], dtype=float)
         totpix = frq.sum(axis=None, dtype=float)
         variance = 0.0
         for g in range(0, matlvls.size, 1):
