@@ -3,8 +3,7 @@ import numpy as np
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
-
-cv2.findContours(image=, mode=)
+from featext.physical import Gabor as g
 
 def showColImg(obj):
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
@@ -129,5 +128,5 @@ def createDataSet():
     print( dset['featureset'])
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
-
-createDataSet()
+obj = p.Prep("Melanoma.jpg")
+obj2 = g.Gabor(obj.getSegGrayImg())
