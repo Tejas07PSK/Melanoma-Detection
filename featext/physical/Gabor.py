@@ -7,9 +7,9 @@ class Gabor:
             tmp = cv2.GaussianBlur(img, (5, 5), sigmaX=0, sigmaY=0)
             tup = cv2.findContours(tmp, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             cv2.namedWindow('gb', cv2.WINDOW_NORMAL)
-            cv2.imshow('gb', tmp)
+            cv2.imshow('gb', (tup[1]).astype(np.uint8))
             cv2.waitKey(0)
             print(tup[0])
             print(tup[1])
-            print(tup[3])
+            print(tup[2])
 
