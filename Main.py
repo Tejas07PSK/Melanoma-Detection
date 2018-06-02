@@ -4,6 +4,8 @@ from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 
+cv2.findContours(image=, mode=)
+
 def showColImg(obj):
     cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
     cv2.imshow('imgcol', obj.getActImg())
