@@ -10,8 +10,8 @@ class Gabor:
             cv2.imshow('gb', tmp)
             cv2.waitKey(0)
             print(tup[0])
-            print((tup[1])[0])
-            print((tup[1])[1])
-            print((tup[1])[2])
+            print(((tup[1])[0])[0])
+            print(((tup[1])[1])[0])
+            print(((tup[1])[2])[0])
             print(tup[2])
 
