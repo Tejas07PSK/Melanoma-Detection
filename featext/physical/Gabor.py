@@ -15,7 +15,7 @@ class Gabor:
             self.__selecCntImg = self.__getContourImg(imtype='color')
             (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype='color')
             (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype='color')
-            self.__asyidxofles = self.__generateAsymmetryIndex()
+            self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size)
             cv2.namedWindow('1', cv2.WINDOW_NORMAL)
             cv2.imshow('1', self.__gblurimg)
             cv2.waitKey(0)
