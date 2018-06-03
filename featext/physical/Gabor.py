@@ -11,7 +11,8 @@ class Gabor:
             self.__momLstForConts = self.__getMoments()
             self.__centroidLstForConts = self.__getCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
-            tmp = cv2.drawContours(tmp, tup[1], -1, (0, 255, 0), 3, cv2.LINE_AA)
+            self.__selecCntImg = self.__getContourImg()
+
 
         def __getMoments(self):
             moments = []
@@ -38,5 +39,21 @@ class Gabor:
             print(areas, peri)
             return (areas, peri)
 
-        def __
+        def __getContourImg(self, imtype='gray', cnt=0):
+            if (imtype == 'gray'):
+                return cv2.drawContours(self.__gblurimg, [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
+            else:
+                return cv2.drawContours(self.__gblurimg, [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
+
+        def __getBoundingRectRotated(self, imtype='gray', cnt=0):
+            rect = cv2.minAreaRect(self.__contours[cnt])
+            print(rect)
+            box = cv2.boxPoints(rect)
+            print(box)
+            box = np.int0(box)
+            print(box)
+            if (imtype == 'gray'):
+                return cv2.drawContours(self.__gblurimg, [box], 0, 255, 2, cv2.LINE_AA)
+            else:
+                return cv2.drawContours(self.__gblurimg, [box], 0, (0,255,0), 2, cv2.LINE_AA)
 
