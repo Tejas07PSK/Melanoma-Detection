@@ -13,6 +13,7 @@ class Gabor:
             (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
             self.__selecCntImg = self.__getContourImg()
             self.__imgcovrect = self.__getBoundingRectRotated()
+            self.__imgcovcirc = self.__getMinEncCirc()
 
 
         def __getMoments(self):
@@ -57,4 +58,13 @@ class Gabor:
                 return cv2.drawContours(self.__gblurimg, [box], 0, 255, 2, cv2.LINE_AA)
             else:
                 return cv2.drawContours(self.__gblurimg, [box], 0, (0,255,0), 2, cv2.LINE_AA)
+
+        def __getMinEncCirc(self, imtype='gray', cnt=0):
+            (x, y), radius = cv2.minEnclosingCircle(cnt)
+            center = (int(x), int(y))
+            radius = int(radius)
+            if (imtype == 'gray'):
+                return cv2.circle(self.__gblurimg, center, radius, 255, 2, cv2.LINE_AA)
+            else:
+                return cv2.circle(self.__gblurimg, center, radius, (0,255,0), 2, cv2.LINE_AA)
 
