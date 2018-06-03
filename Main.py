@@ -138,6 +138,7 @@ def createDataSet():
          obj = p.Prep('images/' + str(i) + '.jpg')
          feobj = har.HarFeat(obj.getSegGrayImg())
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
+         feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
          #showColImg(obj)
          #showGrayImg(obj)
          #showInvertedGrayImg(obj)
