@@ -38,4 +38,5 @@ class Gabor:
             print(areas, peri)
             return (areas, peri)
 
+        def __
 
