@@ -137,7 +137,7 @@ def showGaborPhysicalFeatures(feobj3):
 def createDataSet(restype, img_num):
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (29,)), ('result', str)]), order='C')
     for i in range(0, img_num, 1):
-         print("Iterating for image - %d \n", i)
+         print("Iterating for image - %d \n" % i)
          index = str(i)
          obj = p.Prep('images/' + restype + '/' + index + '.jpg')
          feobj = har.HarFeat(obj.getSegGrayImg())
