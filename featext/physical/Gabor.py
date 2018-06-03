@@ -13,8 +13,8 @@ class Gabor:
             self.__centroidLstForConts = self.__getCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
             self.__selecCntImg = self.__getContourImg(imtype='color')
-            self.__imgcovrect = self.__getBoundingRectRotated(imtype='color')
-            self.__imgcovcirc = self.__getMinEncCirc(imtype='color')
+            (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype='color')
+            (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype='color')
             cv2.namedWindow('1', cv2.WINDOW_NORMAL)
             cv2.imshow('1', self.__gblurimg)
             cv2.waitKey(0)
@@ -64,24 +64,32 @@ class Gabor:
 
         def __getBoundingRectRotated(self, imtype='gray', cnt=0):
             rect = cv2.minAreaRect(self.__contours[cnt])
-            print(rect)
-            box = cv2.boxPoints(rect)
-            print(box)
-            box = np.int0(box)
-            print(box)
+            mean_edge = ((rect[1])[0] + ((rect[1])[0])) / 2
             if (imtype == 'gray'):
-                return cv2.drawContours((self.__gblurimg).copy(), [box], 0, 255, 2, cv2.LINE_AA)
+                return (cv2.drawContours((self.__gblurimg).copy(), [np.int0(cv2.boxPoints(rect))], 0, 255, 2, cv2.LINE_AA), mean_edge)
             else:
-                tmp = cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR)
-                return cv2.drawContours(tmp, [box], 0, (0,255,0), 2, cv2.LINE_AA)
+                return (cv2.drawContours(cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR), [np.int0(cv2.boxPoints(rect))], 0, (0,255,0), 2, cv2.LINE_AA), mean_edge)
 
         def __getMinEncCirc(self, imtype='gray', cnt=0):
             (x, y), radius = cv2.minEnclosingCircle(self.__contours[cnt])
             center = (int(x), int(y))
             radius = int(radius)
             if (imtype == 'gray'):
-                return cv2.circle((self.__gblurimg).copy(), center, radius, 255, 2, cv2.LINE_AA)
+                return (cv2.circle((self.__gblurimg).copy(), center, radius, 255, 2, cv2.LINE_AA), radius)
             else:
-                tmp = cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR)
-                return cv2.circle((tmp, center, radius, (0,255,0), 2, cv2.LINE_AA))
+                return (cv2.circle(cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR), center, radius, (0,255,0), 2, cv2.LINE_AA), radius)
+
+        def __generateAsymmetryIndex(self, totar, idx=0):
+            return ((self.__arLstForConts[idx] / totar) * 100)
+
+        def __generateCompactIndex(self, idx=0):
+            return (np.power(self.__periLstForConts[0], 2) / (4 * np.pi * self.__arLstForConts[0]))
+
+        def __generateFractalDimension(self):
+            return (np.log(self.__minEdge) / np.log(1 / self.__minEdge))
+
+        def __calculateDiameter(self):
+            return ()
+
+
 
