@@ -14,6 +14,19 @@ class Gabor:
             self.__selecCntImg = self.__getContourImg()
             self.__imgcovrect = self.__getBoundingRectRotated()
             self.__imgcovcirc = self.__getMinEncCirc()
+            cv2.namedWindow('1', cv2.WINDOW_NORMAL)
+            cv2.imshow('imgcol', self.__gblurimg)
+            cv2.waitKey(0)
+            cv2.namedWindow('2', cv2.WINDOW_NORMAL)
+            cv2.imshow('imgcol', self.__selecCntImg)
+            cv2.waitKey(0)
+            cv2.namedWindow('3', cv2.WINDOW_NORMAL)
+            cv2.imshow('imgcol', self.__imgcovrect)
+            cv2.waitKey(0)
+            cv2.namedWindow('4', cv2.WINDOW_NORMAL)
+            cv2.imshow('imgcol', self.__imgcovcirc)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
 
         def __getMoments(self):
