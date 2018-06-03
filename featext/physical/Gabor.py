@@ -8,14 +8,34 @@ class Gabor:
             self.__gblurimg = tup[0]
             self.__contours = tup[1]
             self.__hierarchy = tup[2]
-            self.__momLstForConts = self.__getMoments(self.__contours)
+            self.__momLstForConts = self.__getMoments()
+            self.__centroidLstForConts = self.__getCentroidOfCnts()
+            (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
             tmp = cv2.drawContours(tmp, tup[1], -1, (0, 255, 0), 3, cv2.LINE_AA)
-            cv2.moments((tup[1])[0])
 
-        def __getMoments(self, contours):
+        def __getMoments(self):
             moments = []
-            for m in contours:
-                moments.append(cv2.moments(m))
+            for c in self.__contours:
+                moments.append(cv2.moments(c))
             print(moments)
             return moments
+
+        def __getCentroidOfCnts(self):
+            centroids = []
+            for mlc in self.__momLstForConts:
+                coorX = int(mlc['m10'] / mlc['m00'])
+                coorY = int(mlc['m01'] / mlc['m00'])
+                centroids.append((coorX, coorY))
+            print(centroids)
+            return centroids
+
+        def __getAreaNPeriOfCnts(self):
+            areas = []
+            peri = []
+            for c in self.__contours:
+                areas.append(cv2.contourArea(c))
+                peri.append(cv2.arcLength(c, True))
+            print(areas, peri)
+            return (areas, peri)
+
 
