@@ -129,4 +129,4 @@ def createDataSet():
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
 obj = p.Prep("Melanoma.jpg")
-obj2 = g.Gabor(obj.getSegColImg())
+obj2 = g.Gabor(obj.getSegGrayImg())
