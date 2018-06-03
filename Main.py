@@ -74,6 +74,7 @@ def showGLCM(feobj):
     print(feobj.getGLCM())
 
 def showHaralickFeatures(feobj):
+    print("->.->.->.->.->.->.->.->.->.HARALICK TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("Angular Second Moment-ASM of seg gray img %f \n" % feobj.getAngularSecondMomentASM())
     print("Energy of seg gray img %f \n" % feobj.getEnergy())
     print("Entropy of seg gray img %f \n" % feobj.getEntropy())
@@ -93,6 +94,7 @@ def showHaralickFeatures(feobj):
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
 def showTamuraFeatures(feobj2):
+    print("->.->.->.->.->.->.->.->.->.TAMURA TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("Tamura-Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
     print("Tamura-Contrast of seg gray img %f \n" % feobj2.getContrast())
     print("Tamura-Kurtosis of seg gray img %f \n" % feobj2.getKurtosis())
@@ -100,6 +102,29 @@ def showTamuraFeatures(feobj2):
     print("Tamura-Directionality of seg gray img %f \n" % feobj2.getDirectionality())
     print("Tamura-Regularity of seg gray img %f \n" % feobj2.getRegularity())
     print("Tamura-Roughness of seg gray img %f \n" % feobj2.getRoughness())
+
+def showGaborPhysicalFeatures(feobj3):
+    print("->.->.->.->.->.->.->.->.->.GABOR PHYSICAL FEATURES OF LESION.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
+    print("List of Contour-Points ::: \n")
+    print(feobj3.getListOfContourPoints())
+    print("Hierarchy of extracted contours ::: \n")
+    print(feobj3.getHierarchyOfContours())
+    print("List of moments for corresponding-contours ::: \n")
+    print(feobj3.getListOfMomentsForCorrespondingContours())
+    print("List of centroids for corresponding-contours ::: \n")
+    print(feobj3.getListOfCentroidsForCorrespondingContours())
+    print("List of areas for corresponding-contours ::: \n")
+    print(feobj3.getListOfAreasForCorrespondingContours())
+    print("List of perimeters for corresponding-contours ::: \n")
+    print(feobj3.getListOfPerimetersForCorrespondingContours())
+    print("Mean_Edge of covering rectangle for lesion img %f \n" % feobj3.getMeanEdgeOfCoveringRect())
+    print("Bounded_Circle radius %f \n" % feobj3.getBoundedCircRadius())
+    print("Asymmetry-Index of lesion %f \n" % feobj3.getAsymmetryIndex())
+    print("Compact-Index of lesion %f \n" % feobj3.getCompactIndex())
+    print("Fractal-Dimension of lesion %f \n" % feobj3.getFractalDimension())
+    print("Diameter of lesion %f \n" % feobj3.getDiameter())
+    print("Color-Variance of lesion %f \n" % feobj3.getColorVariance())
+
 
 def createDataSet():
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (24,)), ('result', str)]), order='C')
@@ -149,4 +174,6 @@ def createDataSet():
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
 obj = p.Prep("Melanoma.jpg")
-obj2 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
+feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
+
+showGaborPhysicalFeatures(feobj3)
