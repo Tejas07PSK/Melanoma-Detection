@@ -15,6 +15,7 @@ class Gabor:
             self.__selecCntImg = self.__getContourImg(imtype='color')
             (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype='color')
             (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype='color')
+            self.__asyidxofles = self.__generateAsymmetryIndex()
             cv2.namedWindow('1', cv2.WINDOW_NORMAL)
             cv2.imshow('1', self.__gblurimg)
             cv2.waitKey(0)
@@ -83,13 +84,13 @@ class Gabor:
             return ((self.__arLstForConts[idx] / totar) * 100)
 
         def __generateCompactIndex(self, idx=0):
-            return (np.power(self.__periLstForConts[0], 2) / (4 * np.pi * self.__arLstForConts[0]))
+            return (np.power(self.__periLstForConts[idx], 2) / (4 * np.pi * self.__arLstForConts[idx]))
 
         def __generateFractalDimension(self):
             return (np.log(self.__minEdge) / np.log(1 / self.__minEdge))
 
         def __calculateDiameter(self):
-            return ()
+            return (2 * self.__rad)
 
 
 
