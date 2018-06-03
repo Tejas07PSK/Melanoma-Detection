@@ -9,12 +9,12 @@ class Gabor:
             print(self.__gblurimg)
             self.__contours = tup[1]
             self.__hierarchy = tup[2]
-            self.__momLstForConts = self.__getMoments()
-            self.__centroidLstForConts = self.__getCentroidOfCnts()
-            (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
-            self.__selecCntImg = self.__getContourImg(imtype)
-            (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype)
-            (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype)
+            self.__momLstForConts = self.__generateMoments()
+            self.__centroidLstForConts = self.__generateCentroidOfCnts()
+            (self.__arLstForConts, self.__periLstForConts) = self.__generateAreaNPeriOfCnts()
+            self.__selecCntImg = self.__generateContourImg(imtype)
+            (self.__imgcovrect, self.__minEdge) = self.__generateBoundingRectRotated(imtype)
+            (self.__imgcovcirc, self.__rad) = self.__generateMinEncCirc(imtype)
             self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size)
             self.__cmptidx = self.__generateCompactIndex()
             self.__fracdimen = self.__generateFractalDimension()
@@ -34,14 +34,14 @@ class Gabor:
             cv2.waitKey(0)
             cv2.destroyAllWindows()
 
-        def __getMoments(self):
+        def __generateMoments(self):
             moments = []
             for c in self.__contours:
                 moments.append(cv2.moments(c))
             print(moments)
             return moments
 
-        def __getCentroidOfCnts(self):
+        def __generateCentroidOfCnts(self):
             centroids = []
             for mlc in self.__momLstForConts:
                 coorX = int(mlc['m10'] / mlc['m00'])
@@ -50,7 +50,7 @@ class Gabor:
             print(centroids)
             return centroids
 
-        def __getAreaNPeriOfCnts(self):
+        def __generateAreaNPeriOfCnts(self):
             areas = []
             peri = []
             for c in self.__contours:
@@ -59,14 +59,14 @@ class Gabor:
             print(areas, peri)
             return (areas, peri)
 
-        def __getContourImg(self, imtype='gray', cnt=0):
+        def __generateContourImg(self, imtype='gray', cnt=0):
             if (imtype == 'gray'):
                 return cv2.drawContours((self.__gblurimg).copy(), [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
             else:
                 tmp = cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR)
                 return cv2.drawContours(tmp, [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
 
-        def __getBoundingRectRotated(self, imtype='gray', cnt=0):
+        def __generateBoundingRectRotated(self, imtype='gray', cnt=0):
             rect = cv2.minAreaRect(self.__contours[cnt])
             mean_edge = ((rect[1])[0] + ((rect[1])[0])) / 2
             if (imtype == 'gray'):
@@ -74,7 +74,7 @@ class Gabor:
             else:
                 return (cv2.drawContours(cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR), [np.int0(cv2.boxPoints(rect))], 0, (0,255,0), 2, cv2.LINE_AA), mean_edge)
 
-        def __getMinEncCirc(self, imtype='gray', cnt=0):
+        def __generateMinEncCirc(self, imtype='gray', cnt=0):
             (x, y), radius = cv2.minEnclosingCircle(self.__contours[cnt])
             center = (int(x), int(y))
             radius = int(radius)
@@ -97,6 +97,12 @@ class Gabor:
 
         def __generateColorVariance(self, colimg):
             return (np.var(cv2.cvtColor(colimg, cv2.COLOR_BGR2HSV), axis=None, dtype=float))
+
+        def getGaussianBlurredImage(self):
+            return self.__gblurimg
+
+        def getListOfContourPoints(self):
+            return self.__contours
 
 
 
