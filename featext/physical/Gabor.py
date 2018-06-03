@@ -12,6 +12,7 @@ class Gabor:
             self.__centroidLstForConts = self.__getCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
             self.__selecCntImg = self.__getContourImg()
+            self.__imgcovrect = self.__getBoundingRectRotated()
 
 
         def __getMoments(self):
