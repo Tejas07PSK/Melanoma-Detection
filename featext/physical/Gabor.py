@@ -19,6 +19,7 @@ class Gabor:
             self.__cmptidx = self.__generateCompactIndex()
             self.__fracdimen = self.__generateFractalDimension()
             self.__diameter = self.__calculateDiameter()
+            self.__colorvar = self.__generateColorVariance(corr_colimg)
             cv2.namedWindow('1', cv2.WINDOW_NORMAL)
             cv2.imshow('1', self.__gblurimg)
             cv2.waitKey(0)
