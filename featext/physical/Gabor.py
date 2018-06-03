@@ -56,9 +56,9 @@ class Gabor:
 
         def __getContourImg(self, imtype='gray', cnt=0):
             if (imtype == 'gray'):
-                return cv2.drawContours(self.__gblurimg, [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.drawContours(self.__gblurimg, [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
 
         def __getBoundingRectRotated(self, imtype='gray', cnt=0):
             rect = cv2.minAreaRect(self.__contours[cnt])
@@ -68,16 +68,16 @@ class Gabor:
             box = np.int0(box)
             print(box)
             if (imtype == 'gray'):
-                return cv2.drawContours(self.__gblurimg, [box], 0, 255, 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [box], 0, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.drawContours(self.__gblurimg, [box], 0, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [box], 0, (0,255,0), 2, cv2.LINE_AA)
 
         def __getMinEncCirc(self, imtype='gray', cnt=0):
             (x, y), radius = cv2.minEnclosingCircle(self.__contours[cnt])
             center = (int(x), int(y))
             radius = int(radius)
             if (imtype == 'gray'):
-                return cv2.circle(self.__gblurimg, center, radius, 255, 2, cv2.LINE_AA)
+                return cv2.circle((self.__gblurimg).copy(np.uint8), center, radius, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.circle(self.__gblurimg, center, radius, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.circle((self.__gblurimg).copy(np.uint8), center, radius, (0,255,0), 2, cv2.LINE_AA)
 
