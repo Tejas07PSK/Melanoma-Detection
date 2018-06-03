@@ -5,69 +5,69 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 from featext.physical import Gabor as g
 
-def showColImg(obj):
-    cv2.namedWindow('imgcol', cv2.WINDOW_NORMAL)
-    cv2.imshow('imgcol', obj.getActImg())
+def showColImg(obj, index):
+    cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('imgcol' + index, obj.getActImg())
     cv2.waitKey(0)
 
-def showGrayImg(obj):
-    cv2.namedWindow('imggray', cv2.WINDOW_NORMAL)
-    cv2.imshow('imggray', obj.getGrayImg())
+def showGrayImg(obj, index):
+    cv2.namedWindow('imggray' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('imggray' + index, obj.getGrayImg())
     cv2.waitKey(0)
 
-def showInvertedGrayImg(obj):
-    cv2.namedWindow('imggrayinvrt', cv2.WINDOW_NORMAL)
-    cv2.imshow('imggrayinvrt', obj.getInvrtGrayImg())
+def showInvertedGrayImg(obj, index):
+    cv2.namedWindow('imggrayinvrt' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('imggrayinvrt' + index, obj.getInvrtGrayImg())
     cv2.waitKey(0)
 
-def showBinImg(obj):
-    cv2.namedWindow('imgbin', cv2.WINDOW_NORMAL)
-    cv2.imshow('imgbin', obj.getBinaryImg())
+def showBinImg(obj, index):
+    cv2.namedWindow('imgbin' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('imgbin' + index, obj.getBinaryImg())
     cv2.waitKey(0)
 
-def showSegmentedColorImg(obj):
-    cv2.namedWindow('segimgcol', cv2.WINDOW_NORMAL)
-    cv2.imshow('segimgcol', obj.getSegColImg())
+def showSegmentedColorImg(obj, index):
+    cv2.namedWindow('segimgcol' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('segimgcol' + index, obj.getSegColImg())
     cv2.waitKey(0)
 
-def showSegmentedGrayImg(obj):
-    cv2.namedWindow('segimggray', cv2.WINDOW_NORMAL)
-    cv2.imshow('segimggray', obj.getSegGrayImg())
+def showSegmentedGrayImg(obj, index):
+    cv2.namedWindow('segimggray' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('segimggray' + index, obj.getSegGrayImg())
     cv2.waitKey(0)
 
-def showPrewittHorizontalImg(feobj2):
-    cv2.namedWindow('PrewittX', cv2.WINDOW_NORMAL)
-    cv2.imshow('PrewittX', feobj2.getPrewittHorizontalEdgeImg())
+def showPrewittHorizontalImg(feobj2, index):
+    cv2.namedWindow('PrewittX' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittX' + index, feobj2.getPrewittHorizontalEdgeImg())
     cv2.waitKey(0)
 
-def showPrewittVerticalImg(feobj2):
-    cv2.namedWindow('PrewittY', cv2.WINDOW_NORMAL)
-    cv2.imshow('PrewittY', feobj2.getPrewittVerticalEdgeImg())
+def showPrewittVerticalImg(feobj2, index):
+    cv2.namedWindow('PrewittY' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittY' + index, feobj2.getPrewittVerticalEdgeImg())
     cv2.waitKey(0)
 
-def showPrewittCOmbinedImg(feobj2):
-    cv2.namedWindow('PrewittIMG', cv2.WINDOW_NORMAL)
-    cv2.imshow('PrewittIMG', feobj2.getCombinedPrewittImg())
+def showPrewittCOmbinedImg(feobj2, index):
+    cv2.namedWindow('PrewittIMG' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('PrewittIMG' + index, feobj2.getCombinedPrewittImg())
     cv2.waitKey(0)
 
-def showGaussBlurredSegImg(feobj3):
-    cv2.namedWindow('gblurimg', cv2.WINDOW_NORMAL)
-    cv2.imshow('gblurimg', feobj3.getGaussianBlurredImage())
+def showGaussBlurredSegImg(feobj3, index):
+    cv2.namedWindow('gblurimg' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('gblurimg' + index, feobj3.getGaussianBlurredImage())
     cv2.waitKey(0)
 
-def showSelectedContourImg(feobj3):
-    cv2.namedWindow('slccntimg', cv2.WINDOW_NORMAL)
-    cv2.imshow('slccntimg', feobj3.getSelectedContourImg())
+def showSelectedContourImg(feobj3, index):
+    cv2.namedWindow('slccntimg' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('slccntimg' + index, feobj3.getSelectedContourImg())
     cv2.waitKey(0)
 
-def showBoundingRectImg(feobj3):
-    cv2.namedWindow('bndrectimg', cv2.WINDOW_NORMAL)
-    cv2.imshow('bndrectimg', feobj3.getBoundingRectImg())
+def showBoundingRectImg(feobj3, index):
+    cv2.namedWindow('bndrectimg' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('bndrectimg' + index, feobj3.getBoundingRectImg())
     cv2.waitKey(0)
 
-def showBoundingCircImg(feobj3):
-    cv2.namedWindow('bndcircimg', cv2.WINDOW_NORMAL)
-    cv2.imshow('bndcircimg', feobj3.getBoundedCircImg())
+def showBoundingCircImg(feobj3, index):
+    cv2.namedWindow('bndcircimg' + index, cv2.WINDOW_NORMAL)
+    cv2.imshow('bndcircimg' + index, feobj3.getBoundedCircImg())
     cv2.waitKey(0)
 
 def showGLCM(feobj):
@@ -75,6 +75,8 @@ def showGLCM(feobj):
 
 def showHaralickFeatures(feobj):
     print("->.->.->.->.->.->.->.->.->.HARALICK TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
+    showGLCM(feobj)
+    print("\n")
     print("Angular Second Moment-ASM of seg gray img %f \n" % feobj.getAngularSecondMomentASM())
     print("Energy of seg gray img %f \n" % feobj.getEnergy())
     print("Entropy of seg gray img %f \n" % feobj.getEntropy())
@@ -132,27 +134,27 @@ def showGaborPhysicalFeatures(feobj3):
     print("Color-Variance of lesion %f \n" % feobj3.getColorVariance())
 
 
-def createDataSet():
+def createDataSet(restype, img_num):
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (24,)), ('result', str)]), order='C')
-    for i in range(0, 2, 1):
-         obj = p.Prep('images/' + str(i) + '.jpg')
+    for i in range(0, img_num, 1):
+         index = str(i)
+         obj = p.Prep('images/' + restype + '/' + index + '.jpg')
          feobj = har.HarFeat(obj.getSegGrayImg())
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
          feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
-         #showColImg(obj)
-         #showGrayImg(obj)
-         #showInvertedGrayImg(obj)
-         #showBinImg(obj)
-         #showSegmentedColorImg(obj)
-         #showSegmentedGrayImg(obj)
-         #showGLCM(feobj)
-         #showPrewittHorizontalImg(feobj2)
-         #showPrewittVerticalImg(feobj2)
-         #showPrewittCOmbinedImg(feobj2)
-         #showGaussBlurredSegImg(feobj3)
-         #showSelectedContourImg(feobj3)
-         #showBoundingRectImg(feobj3)
-         #showBoundingCircImg(feobj3)
+         showColImg(obj, index)
+         showGrayImg(obj, index)
+         showInvertedGrayImg(obj, index)
+         showBinImg(obj, index)
+         showSegmentedColorImg(obj, index)
+         showSegmentedGrayImg(obj, index)
+         showPrewittHorizontalImg(feobj2, index)
+         showPrewittVerticalImg(feobj2, index)
+         showPrewittCOmbinedImg(feobj2, index)
+         showGaussBlurredSegImg(feobj3, index)
+         showSelectedContourImg(feobj3, index)
+         showBoundingRectImg(feobj3, index)
+         showBoundingCircImg(feobj3, index)
          showHaralickFeatures(feobj)
          showTamuraFeatures(feobj2)
          showGaborPhysicalFeatures(feobj3)
@@ -186,16 +188,8 @@ def createDataSet():
          featarr = np.insert(featarr, featarr.size, feobj3.getFractalDimension(), 0)
          featarr = np.insert(featarr, featarr.size, feobj3.getDiameter(), 0)
          featarr = np.insert(featarr, featarr.size, feobj3.getColorVariance(), 0)
-         dset = np.insert(dset, dset.size, (featarr, 'malignant'), 0)
+         dset = np.insert(dset, dset.size, (featarr, restype), 0)
     print( dset['featureset'])
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
-obj = p.Prep("Melanoma.jpg")
-feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
-
-showGaborPhysicalFeatures(feobj3)
-showGaussBlurredSegImg(feobj3)
-showSelectedContourImg(feobj3)
-showBoundingRectImg(feobj3)
-showBoundingCircImg(feobj3)
-
+createDataSet('malignant', 2)
