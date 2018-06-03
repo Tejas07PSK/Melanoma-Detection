@@ -3,42 +3,27 @@ import cv2
 
 class Gabor:
 
-        def __init__(self, img, corr_colimg, imtype='color'):
+        def __init__(self, img, corr_colimg, imtype='color', cnt=0):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             self.__gblurimg = tup[0]
-            print(self.__gblurimg)
             self.__contours = tup[1]
             self.__hierarchy = tup[2]
             self.__momLstForConts = self.__generateMoments()
             self.__centroidLstForConts = self.__generateCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__generateAreaNPeriOfCnts()
-            self.__selecCntImg = self.__generateContourImg(imtype)
-            (self.__imgcovrect, self.__minEdge) = self.__generateBoundingRectRotated(imtype)
-            (self.__imgcovcirc, self.__rad) = self.__generateMinEncCirc(imtype)
-            self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size)
-            self.__cmptidx = self.__generateCompactIndex()
+            self.__selecCntImg = self.__generateContourImg(imtype, cnt)
+            (self.__imgcovrect, self.__meanEdge) = self.__generateBoundingRectRotated(imtype, cnt)
+            (self.__imgcovcirc, self.__rad) = self.__generateMinEncCirc(imtype, cnt)
+            self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size, cnt=cnt)
+            self.__cmptidx = self.__generateCompactIndex(cnt)
             self.__fracdimen = self.__generateFractalDimension()
             self.__diameter = self.__calculateDiameter()
             self.__colorvar = self.__generateColorVariance(corr_colimg)
-            cv2.namedWindow('1', cv2.WINDOW_NORMAL)
-            cv2.imshow('1', self.__gblurimg)
-            cv2.waitKey(0)
-            cv2.namedWindow('2', cv2.WINDOW_NORMAL)
-            cv2.imshow('2', self.__selecCntImg)
-            cv2.waitKey(0)
-            cv2.namedWindow('3', cv2.WINDOW_NORMAL)
-            cv2.imshow('3', self.__imgcovrect)
-            cv2.waitKey(0)
-            cv2.namedWindow('4', cv2.WINDOW_NORMAL)
-            cv2.imshow('4', self.__imgcovcirc)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
 
         def __generateMoments(self):
             moments = []
             for c in self.__contours:
                 moments.append(cv2.moments(c))
-            print(moments)
             return moments
 
         def __generateCentroidOfCnts(self):
@@ -47,7 +32,6 @@ class Gabor:
                 coorX = int(mlc['m10'] / mlc['m00'])
                 coorY = int(mlc['m01'] / mlc['m00'])
                 centroids.append((coorX, coorY))
-            print(centroids)
             return centroids
 
         def __generateAreaNPeriOfCnts(self):
@@ -56,7 +40,6 @@ class Gabor:
             for c in self.__contours:
                 areas.append(cv2.contourArea(c))
                 peri.append(cv2.arcLength(c, True))
-            print(areas, peri)
             return (areas, peri)
 
         def __generateContourImg(self, imtype='gray', cnt=0):
@@ -83,14 +66,14 @@ class Gabor:
             else:
                 return (cv2.circle(cv2.cvtColor(self.__gblurimg, cv2.COLOR_GRAY2BGR), center, radius, (0,255,0), 2, cv2.LINE_AA), radius)
 
-        def __generateAsymmetryIndex(self, totar, idx=0):
-            return ((self.__arLstForConts[idx] / totar) * 100)
+        def __generateAsymmetryIndex(self, totar, cnt=0):
+            return ((self.__arLstForConts[cnt] / totar) * 100)
 
-        def __generateCompactIndex(self, idx=0):
-            return (np.power(self.__periLstForConts[idx], 2) / (4 * np.pi * self.__arLstForConts[idx]))
+        def __generateCompactIndex(self, cnt=0):
+            return (np.power(self.__periLstForConts[cnt], 2) / (4 * np.pi * self.__arLstForConts[cnt]))
 
         def __generateFractalDimension(self):
-            return (np.log(self.__minEdge) / np.log(1 / self.__minEdge))
+            return (np.log(self.__meanEdge) / np.log(1 / self.__meanEdge))
 
         def __calculateDiameter(self):
             return (2 * self.__rad)
@@ -103,6 +86,51 @@ class Gabor:
 
         def getListOfContourPoints(self):
             return self.__contours
+
+        def getHierarchyOfContours(self):
+            return self.__hierarchy
+
+        def getListOfMomentsForCorrespondingContours(self):
+            return self.__momLstForConts
+
+        def getListOfCentroidsForCorrespondingContours(self):
+            return self.__centroidLstForConts
+
+        def getListOfAreasForCorrespondingContours(self):
+            return self.__arLstForConts
+
+        def getListOfPerimetersForCorrespondingContours(self):
+            return self.__periLstForConts
+
+        def getSelectedContourImg(self):
+            return self.__selecCntImg
+
+        def getBoundingRectImg(self):
+            return self.__imgcovrect
+
+        def getMeanEdgeOfCoveringRect(self):
+            return self.__meanEdge
+
+        def getBoundedCircImg(self):
+            return self.__imgcovcirc
+
+        def getBoundedCircRadius(self):
+            return self.__rad
+
+        def getAsymmetryIndex(self):
+            return self.__asyidxofles
+
+        def getCompactIndex(self):
+            return self.__cmptidx
+
+        def getFractalDimension(self):
+            return self.__fracdimen
+
+        def getDiameter(self):
+            return self.__diameter
+
+        def getColorVariance(self):
+            return self.__colorvar
 
 
 

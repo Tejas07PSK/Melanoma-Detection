@@ -50,6 +50,26 @@ def showPrewittCOmbinedImg(feobj2):
     cv2.imshow('PrewittIMG', feobj2.getCombinedPrewittImg())
     cv2.waitKey(0)
 
+def showGaussBlurredSegImg(feobj3):
+    cv2.namedWindow('gblurimg', cv2.WINDOW_NORMAL)
+    cv2.imshow('gblurimg', feobj3.getGaussianBlurredImage())
+    cv2.waitKey(0)
+
+def showSelectedContourImg(feobj3):
+    cv2.namedWindow('slccntimg', cv2.WINDOW_NORMAL)
+    cv2.imshow('slccntimg', feobj3.getSelectedContourImg())
+    cv2.waitKey(0)
+
+def showBoundingRectImg(feobj3):
+    cv2.namedWindow('bndrectimg', cv2.WINDOW_NORMAL)
+    cv2.imshow('bndrectimg', feobj3.getBoundingRectImg())
+    cv2.waitKey(0)
+
+def showBoundingCircImg(feobj3):
+    cv2.namedWindow('bndcircimg', cv2.WINDOW_NORMAL)
+    cv2.imshow('bndcircimg', feobj3.getBoundedCircImg())
+    cv2.waitKey(0)
+
 def showGLCM(feobj):
     print(feobj.getGLCM())
 
