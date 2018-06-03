@@ -3,7 +3,7 @@ import cv2
 
 class Gabor:
 
-        def __init__(self, img):
+        def __init__(self, img, corr_colimg):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             self.__gblurimg = tup[0]
             print(self.__gblurimg)
@@ -16,6 +16,9 @@ class Gabor:
             (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype='color')
             (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype='color')
             self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size)
+            self.__cmptidx = self.__generateCompactIndex()
+            self.__fracdimen = self.__generateFractalDimension()
+            self.__diameter = self.__calculateDiameter()
             cv2.namedWindow('1', cv2.WINDOW_NORMAL)
             cv2.imshow('1', self.__gblurimg)
             cv2.waitKey(0)
@@ -29,7 +32,6 @@ class Gabor:
             cv2.imshow('4', self.__imgcovcirc)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
-
 
         def __getMoments(self):
             moments = []
@@ -91,6 +93,10 @@ class Gabor:
 
         def __calculateDiameter(self):
             return (2 * self.__rad)
+
+        def __generateColorVariance(self, colimg):
+            return (np.var(cv2.cvtColor(colimg, cv2.COLOR_BGR2HSV), axis=None, dtype=float))
+
 
 
 
