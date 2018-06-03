@@ -3,7 +3,7 @@ import cv2
 
 class Gabor:
 
-        def __init__(self, img, corr_colimg):
+        def __init__(self, img, corr_colimg, imtype='color'):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             self.__gblurimg = tup[0]
             print(self.__gblurimg)
@@ -12,9 +12,9 @@ class Gabor:
             self.__momLstForConts = self.__getMoments()
             self.__centroidLstForConts = self.__getCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__getAreaNPeriOfCnts()
-            self.__selecCntImg = self.__getContourImg(imtype='color')
-            (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype='color')
-            (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype='color')
+            self.__selecCntImg = self.__getContourImg(imtype)
+            (self.__imgcovrect, self.__minEdge) = self.__getBoundingRectRotated(imtype)
+            (self.__imgcovcirc, self.__rad) = self.__getMinEncCirc(imtype)
             self.__asyidxofles = self.__generateAsymmetryIndex(totar=img.size)
             self.__cmptidx = self.__generateCompactIndex()
             self.__fracdimen = self.__generateFractalDimension()
