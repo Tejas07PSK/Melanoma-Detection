@@ -6,6 +6,7 @@ class Gabor:
         def __init__(self, img):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             self.__gblurimg = tup[0]
+            print(self.__gblurimg)
             self.__contours = tup[1]
             self.__hierarchy = tup[2]
             self.__momLstForConts = self.__getMoments()
@@ -56,9 +57,9 @@ class Gabor:
 
         def __getContourImg(self, imtype='gray', cnt=0):
             if (imtype == 'gray'):
-                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(), [self.__contours[cnt]], 0, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(), [self.__contours[cnt]], 0, (0,255,0), 2, cv2.LINE_AA)
 
         def __getBoundingRectRotated(self, imtype='gray', cnt=0):
             rect = cv2.minAreaRect(self.__contours[cnt])
@@ -68,16 +69,16 @@ class Gabor:
             box = np.int0(box)
             print(box)
             if (imtype == 'gray'):
-                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [box], 0, 255, 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(), [box], 0, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.drawContours((self.__gblurimg).copy(np.uint8), [box], 0, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.drawContours((self.__gblurimg).copy(), [box], 0, (0,255,0), 2, cv2.LINE_AA)
 
         def __getMinEncCirc(self, imtype='gray', cnt=0):
             (x, y), radius = cv2.minEnclosingCircle(self.__contours[cnt])
             center = (int(x), int(y))
             radius = int(radius)
             if (imtype == 'gray'):
-                return cv2.circle((self.__gblurimg).copy(np.uint8), center, radius, 255, 2, cv2.LINE_AA)
+                return cv2.circle((self.__gblurimg).copy(), center, radius, 255, 2, cv2.LINE_AA)
             else:
-                return cv2.circle((self.__gblurimg).copy(np.uint8), center, radius, (0,255,0), 2, cv2.LINE_AA)
+                return cv2.circle((self.__gblurimg).copy(), center, radius, (0,255,0), 2, cv2.LINE_AA)
 
