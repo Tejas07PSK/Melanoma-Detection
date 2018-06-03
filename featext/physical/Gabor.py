@@ -73,7 +73,7 @@ class Gabor:
                 return cv2.drawContours(self.__gblurimg, [box], 0, (0,255,0), 2, cv2.LINE_AA)
 
         def __getMinEncCirc(self, imtype='gray', cnt=0):
-            (x, y), radius = cv2.minEnclosingCircle(cnt)
+            (x, y), radius = cv2.minEnclosingCircle(self.__contours[cnt])
             center = (int(x), int(y))
             radius = int(radius)
             if (imtype == 'gray'):
