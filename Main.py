@@ -183,3 +183,8 @@ obj = p.Prep("Melanoma.jpg")
 feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
 
 showGaborPhysicalFeatures(feobj3)
+showGaussBlurredSegImg(feobj3)
+showSelectedContourImg(feobj3)
+showBoundingRectImg(feobj3)
+showBoundingCircImg(feobj3)
+
