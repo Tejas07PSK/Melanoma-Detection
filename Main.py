@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import pathlib
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
@@ -135,7 +136,10 @@ def showGaborPhysicalFeatures(feobj3):
 
 
 def createDataSet(restype, img_num):
-    dset = np.empty(0, dtype=np.dtype([('featureset', float, (29,)), ('result', object)]), order='C')
+    if (((pathlib.Path('dataset.npy')).exists() == True) & ((pathlib.Path('dataset.npy')).is_file() == True)):
+        dset = np.load('dataset.npy')
+    else:
+        dset = np.empty(0, dtype=np.dtype([('featureset', float, (29,)), ('result', object)]), order='C')
     for i in range(0, img_num, 1):
          print("Iterating for image - %d \n" % i)
          index = str(i)
