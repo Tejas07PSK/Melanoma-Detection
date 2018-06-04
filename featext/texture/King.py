@@ -77,7 +77,7 @@ class KingFeat(object):
         sum = 0.0
         for i in range(0, glvlwthfreq.size, 1):
             for j in range(0, glvlwthfreq.size, 1):
-                sum = sum + ((np.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) / (np.power(float(totpix), 2) * (((float((glvlwthfreq[i])[1])) / float(totpix)) - ((float((glvlwthfreq[j])[1])) / float(totpix))))) * ((((float((glvlwthfreq[i])[1])) / float(totpix)) * self.__ngtdm[i]) + (((float((glvlwthfreq[j])[1])) / float(totpix)) * self.__ngtdm[j])))
+                sum = sum + ((np.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) / (np.power(float(totpix), 2) * (((float((glvlwthfreq[i])[1])) / float(totpix)) + ((float((glvlwthfreq[j])[1])) / float(totpix))))) * ((((float((glvlwthfreq[i])[1])) / float(totpix)) * self.__ngtdm[i]) + (((float((glvlwthfreq[j])[1])) / float(totpix)) * self.__ngtdm[j])))
         return sum
 
     def __generateStrength(self, glvlwthfreq, totpix, e):
