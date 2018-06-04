@@ -81,3 +81,10 @@ class HarFeat(object):
                 sum = sum + ((np.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) / (totpix * (((float((glvlwthfreq[i])[1])) / float(totpix)) - ((float((glvlwthfreq[j])[1])) / float(totpix))))) * ((((float((glvlwthfreq[i])[1])) / float(totpix)) * self.__ngtdm[i]) + (((float((glvlwthfreq[j])[1])) / float(totpix)) * self.__ngtdm[j])))
         return sum
 
+    def __generateStrength(self, glvlwthfreq, totpix, e=0.3):
+        sum = 0.0
+        for i in range(0, glvlwthfreq.size, 1):
+            for j in range(0, glvlwthfreq.size, 1):
+                sum = sum + ((((float((glvlwthfreq[i])[1])) / float(totpix)) + ((float((glvlwthfreq[j])[1])) / float(totpix))) * np.power((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2))
+        sum = sum / (e + (self.__ngtdm).sum(axis=None, dtype=float))
+        return sum
