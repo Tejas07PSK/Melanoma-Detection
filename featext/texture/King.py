@@ -88,3 +88,21 @@ class HarFeat(object):
                 sum = sum + ((((float((glvlwthfreq[i])[1])) / float(totpix)) + ((float((glvlwthfreq[j])[1])) / float(totpix))) * np.power((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2))
         sum = sum / (e + (self.__ngtdm).sum(axis=None, dtype=float))
         return sum
+
+    def getNGTDM(self):
+        return self.__ngtdm
+    
+    def getKingsCoarseness(self):
+        return self.__coarseness
+
+    def getKingsContrast(self):
+        return self.__contrast
+
+    def getKingsBusyness(self):
+        return self.__busyness
+
+    def getKingsComplexity(self):
+        return self.__complexity
+
+    def getKingsStrength(self):
+        return self.__strength
