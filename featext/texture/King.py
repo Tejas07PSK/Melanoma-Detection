@@ -68,8 +68,6 @@ class KingFeat(object):
         for i in range(0, glvlwthfreq.size, 1):
             for j in range(0, glvlwthfreq.size, 1):
                     sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
-        print(sum)
-        print(factor)
         sum = factor / sum
         return sum
 

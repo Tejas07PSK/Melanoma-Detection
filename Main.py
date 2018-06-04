@@ -151,7 +151,7 @@ def createDataSet(restype, img_num):
     if (((pathlib.Path('dataset.npy')).exists() == True) & ((pathlib.Path('dataset.npy')).is_file() == True)):
         dset = np.load('dataset.npy')
     else:
-        dset = np.empty(0, dtype=np.dtype([('featureset', float, (29,)), ('result', object)]), order='C')
+        dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
     for i in range(0, img_num, 1):
          print("Iterating for image - %d \n" % i)
          index = str(i)
@@ -159,6 +159,7 @@ def createDataSet(restype, img_num):
          feobj = har.HarFeat(obj.getSegGrayImg())
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
          feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
+         feobj4 = k.KingFeat(obj.getSegGrayImg())
          showColImg(obj, index)
          showGrayImg(obj, index)
          showInvertedGrayImg(obj, index)
@@ -174,6 +175,7 @@ def createDataSet(restype, img_num):
          showBoundingCircImg(feobj3, index)
          showHaralickFeatures(feobj)
          showTamuraFeatures(feobj2)
+         showKingsFeatures(feobj4)
          showGaborPhysicalFeatures(feobj3)
          featarr = np.empty(0, dtype=float, order='C')
          featarr = np.insert(featarr, featarr.size, feobj.getAngularSecondMomentASM(), 0)
@@ -211,8 +213,4 @@ def createDataSet(restype, img_num):
     print(dset['result'])
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
-#createDataSet("malignant", 2)
-obj = p.Prep("Melanoma.jpg")
-feobj4 = k.KingFeat(obj.getSegGrayImg())
-showKingsFeatures(feobj4)
 cv2.destroyAllWindows()
