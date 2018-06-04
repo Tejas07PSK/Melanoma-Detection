@@ -20,7 +20,7 @@ class KingFeat(object):
                     continue
                 else:
                     index = u.search(glvlwthfreq, img[i, j], 0, glvlwthfreq.size - 1)
-                    ngtdm[index] = ngtdm[index] + (img[i, j] - (self.__calculateSubSum(img, i, j, d) / (np.power(((2 * d) - 1), 2) - 1)))
+                    ngtdm[index] = ngtdm[index] + np.fabs(img[i, j] - (self.__calculateSubSum(img, i, j, d) / (np.power(((2 * d) + 1), 2) - 1)))
         return ngtdm
 
     def __calculateSubSum(self, img, i, j, d):
