@@ -40,3 +40,9 @@ class HarFeat(object):
         if (y > shape[1]):
             y = shape[1]
         return (x, y)
+
+    def __generateKingCoarseness(self, glvlwthfreq, totpix):
+        sum = 0.0
+        for i in range(0, glvlwthfreq.size, 1):
+            sum = sum + ((float((glvlwthfreq[i])[1]) / float(totpix)) * self.__ngtdm[i])
+        return (1 / sum)
