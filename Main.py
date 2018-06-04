@@ -213,5 +213,6 @@ def createDataSet(restype, img_num):
 
 #createDataSet("malignant", 2)
 obj = p.Prep("Melanoma.jpg")
-feobj4 = k.K
+feobj4 = k.KingFeat(obj.getSegGrayImg())
+showKingsFeatures(feobj4)
 cv2.destroyAllWindows()
