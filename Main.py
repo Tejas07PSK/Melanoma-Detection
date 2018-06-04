@@ -200,5 +200,4 @@ def createDataSet(restype, img_num):
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
 createDataSet("malignant", 2)
-#cv2.waitKey(0)
 cv2.destroyAllWindows()
