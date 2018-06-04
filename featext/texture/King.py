@@ -9,6 +9,7 @@ class HarFeat(object):
         (self.__coarseness, factor) = self.__generateKingsCoarseness(glvlwthfreq, img.size)
         self.__contrast = self.__generateKingsContrast(glvlwthfreq, img.size)
         self.__busyness = self.__generateBusyness(glvlwthfreq, img.size, factor)
+        self.__complexity = self.__generateComplexity(glvlwthfreq, img.size)
 
 
     def __generateNGTDM(self, img, glvlwthfreq, d):
@@ -66,7 +67,17 @@ class HarFeat(object):
         sum = 0.0
         for i in range(0, glvlwthfreq.size, 1):
             for j in range(0, glvlwthfreq.size, 1):
-                sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
+                if ((glvlwthfreq[i])[0] == (glvlwthfreq[j])[0]):
+                    continue
+                else:
+                    sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
         sum = factor / sum
+        return sum
+
+    def __generateComplexity(self, glvlwthfreq, totpix):
+        sum = 0.0
+        for i in range(0, glvlwthfreq.size, 1):
+            for j in range(0, glvlwthfreq.size, 1):
+                sum = sum + ((np.fabs(float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])) / (totpix * (((float((glvlwthfreq[i])[1])) / float(totpix)) - ((float((glvlwthfreq[j])[1])) / float(totpix))))) * ((((float((glvlwthfreq[i])[1])) / float(totpix)) * self.__ngtdm[i]) + (((float((glvlwthfreq[j])[1])) / float(totpix)) * self.__ngtdm[j])))
         return sum
 
