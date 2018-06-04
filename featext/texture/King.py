@@ -73,7 +73,7 @@ class KingFeat(object):
                     sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
         print(sum)
         print(factor)
-        sum = factor / sum
+        sum = sum / factor
         return sum
 
     def __generateComplexity(self, glvlwthfreq, totpix):
