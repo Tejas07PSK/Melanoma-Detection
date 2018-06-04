@@ -6,6 +6,10 @@ class HarFeat(object):
     def __init__(self, img, d=2):
         glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(img)
         self.__ngtdm = self.__generateNGTDM(img, glvlwthfreq, d)
+        (self.__coarseness, factor) = self.__generateKingsCoarseness(glvlwthfreq, img.size)
+        self.__contrast = self.__generateKingsContrast(glvlwthfreq, img.size)
+        self.__busyness = self.__generateBusyness(glvlwthfreq, img.size, factor)
+
 
     def __generateNGTDM(self, img, glvlwthfreq, d):
         ngtdm = np.zeros(glvlwthfreq.shape, float, 'C')
@@ -41,8 +45,25 @@ class HarFeat(object):
             y = shape[1]
         return (x, y)
 
-    def __generateKingCoarseness(self, glvlwthfreq, totpix):
+    def __generateKingsCoarseness(self, glvlwthfreq, totpix):
         sum = 0.0
         for i in range(0, glvlwthfreq.size, 1):
             sum = sum + ((float((glvlwthfreq[i])[1]) / float(totpix)) * self.__ngtdm[i])
-        return (1 / sum)
+        return ((1 / sum), sum)
+
+    def __generateKingsContrast(self, glvlwthfreq, totpix):
+        sum = 0.0
+        for i in range(0, glvlwthfreq.size, 1):
+            for j in range(0, glvlwthfreq.size, 1):
+              sum = sum + (((float((glvlwthfreq[i])[1])) / float(totpix)) * ((float((glvlwthfreq[j])[1])) / float(totpix)) * np.power((float((glvlwthfreq[i])[0]) - float((glvlwthfreq[j])[0])), 2))
+        sum = sum * (1.0 / float(glvlwthfreq.size * (glvlwthfreq.size - 1))) * ((1.0 / float(totpix)) * (self.__ngtdm).sum(axis=None, dtype=float))
+        return sum
+
+    def __generateBusyness(self, glvlwthfreq, totpix, factor):
+        sum = 0.0
+        for i in range(0, glvlwthfreq.size, 1):
+            for j in range(0, glvlwthfreq.size, 1):
+                sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
+        sum = factor / sum
+        return sum
+
