@@ -3,13 +3,14 @@ from util import Util as u
 
 class HarFeat(object):
 
-    def __init__(self, img, d=2):
+    def __init__(self, img, d=2, e=0.3):
         glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(img)
         self.__ngtdm = self.__generateNGTDM(img, glvlwthfreq, d)
-        (self.__coarseness, factor) = self.__generateKingsCoarseness(glvlwthfreq, img.size)
+        (self.__coarseness, factor) = self.__generateKingsCoarseness(glvlwthfreq, img.size, e)
         self.__contrast = self.__generateKingsContrast(glvlwthfreq, img.size)
         self.__busyness = self.__generateBusyness(glvlwthfreq, img.size, factor)
         self.__complexity = self.__generateComplexity(glvlwthfreq, img.size)
+        self.__strength = self.__generateStrength(glvlwthfreq, img.size, e)
 
 
     def __generateNGTDM(self, img, glvlwthfreq, d):
