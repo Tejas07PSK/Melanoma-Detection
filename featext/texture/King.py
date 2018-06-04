@@ -1,7 +1,7 @@
 import numpy as np
 from util import Util as u
 
-class HarFeat(object):
+class KingFeat(object):
 
     def __init__(self, img, d=2, e=0.3):
         glvlwthfreq = u.getArrayOfGrayLevelsWithFreq(img)

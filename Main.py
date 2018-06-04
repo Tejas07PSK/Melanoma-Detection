@@ -4,6 +4,7 @@ import pathlib
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
+from featext.texture import King as k
 from featext.physical import Gabor as g
 
 def showColImg(obj, index):
@@ -210,5 +211,7 @@ def createDataSet(restype, img_num):
     print(dset['result'])
     np.save('dataset', dset, allow_pickle=True, fix_imports=True)
 
-createDataSet("malignant", 2)
+#createDataSet("malignant", 2)
+obj = p.Prep("Melanoma.jpg")
+feobj4 = k.K
 cv2.destroyAllWindows()
