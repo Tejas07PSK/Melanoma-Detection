@@ -67,9 +67,9 @@ class KingFeat(object):
         sum = 0.0
         for i in range(0, glvlwthfreq.size, 1):
             for j in range(0, glvlwthfreq.size, 1):
-                if ((glvlwthfreq[i])[0] == (glvlwthfreq[j])[0]):
-                    continue
-                else:
+                #if ((glvlwthfreq[i])[0] == (glvlwthfreq[j])[0]):
+                    #continue
+                #else:
                     sum = sum + ((float((glvlwthfreq[i])[0]) * ((float((glvlwthfreq[i])[1])) / float(totpix))) - (float((glvlwthfreq[j])[0]) * ((float((glvlwthfreq[j])[1])) / float(totpix))))
         print(sum)
         print(factor)
