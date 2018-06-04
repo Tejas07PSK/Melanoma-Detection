@@ -106,6 +106,17 @@ def showTamuraFeatures(feobj2):
     print("Tamura-Regularity of seg gray img %f \n" % feobj2.getRegularity())
     print("Tamura-Roughness of seg gray img %f \n" % feobj2.getRoughness())
 
+def showKingsFeatures(feobj4):
+    print("->.->.->.->.->.->.->.->.->.KING'S TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
+    print("\n")
+    print(feobj4.getNGTDM())
+    print("\n")
+    print("King's-Coarseness of seg gray img %f \n" % feobj4.getKingsCoarseness())
+    print("King's-Contrast of seg gray img %f \n" % feobj4.getKingsContrast())
+    print("King's-Busyness of seg gray img %f \n" % feobj4.getKingsBusyness())
+    print("King's-Complexity of seg gray img %f \n" % feobj4.getKingsComplexity())
+    print("King's-Strength of seg gray img %f \n" % feobj4.getKingsStrength())
+
 def showGaborPhysicalFeatures(feobj3):
     print("->.->.->.->.->.->.->.->.->.GABOR PHYSICAL FEATURES OF LESION.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("List of Contour-Points ::: \n")
