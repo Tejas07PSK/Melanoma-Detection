@@ -12,7 +12,6 @@ class HarFeat(object):
         self.__complexity = self.__generateComplexity(glvlwthfreq, img.size)
         self.__strength = self.__generateStrength(glvlwthfreq, img.size, e)
 
-
     def __generateNGTDM(self, img, glvlwthfreq, d):
         ngtdm = np.zeros(glvlwthfreq.shape, float, 'C')
         for i in range(0, (img.shape)[0], 1):
