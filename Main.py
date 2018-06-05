@@ -161,8 +161,8 @@ def showGaborPhysicalFeatures(feobj3):
 
 
 def createDataSet(restype, img_num):
-    if (((pathlib.Path('dataset.npy')).exists() == True) & ((pathlib.Path('dataset.npy')).is_file() == True)):
-        dset = np.load('dataset.npy')
+    if (((pathlib.Path('dataset.npz')).exists() == True) & ((pathlib.Path('dataset.npz')).is_file() == True)):
+        dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
     else:
         dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
         featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
@@ -227,9 +227,10 @@ def createDataSet(restype, img_num):
          featarr = np.insert(featarr, featarr.size, feobj4.getKingsComplexity(), 0)
          featarr = np.insert(featarr, featarr.size, feobj4.getKingsStrength(), 0)
          dset = np.insert(dset, dset.size, (featarr, restype), 0)
+    print(featnames)
     print(dset)
     print(dset['featureset'])
     print(dset['result'])
-    np.save('dataset', dset, allow_pickle=True, fix_imports=True)
+    np.savez('dataset', dset=dset, featnames=featnames)
 
 createDataSet("malignant", 2)
