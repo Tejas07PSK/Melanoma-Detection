@@ -161,6 +161,7 @@ def showGaborPhysicalFeatures(feobj3):
 
 
 def createDataSet(restype, img_num):
+    print("------------------+++++++++++++============FOR %s SET==============++++++++++++++---------------------- \n" % restype.upper())
     if (((pathlib.Path('dataset.npz')).exists() == True) & ((pathlib.Path('dataset.npz')).is_file() == True)):
         dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
     else:
