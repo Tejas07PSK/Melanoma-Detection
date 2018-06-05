@@ -6,8 +6,10 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
+from sklearn.externals import joblib
+from sklearn.svm import SVC
 
-imgcount = 0
+"""imgcount = 0
 
 def showColImg(obj, index):
     cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
@@ -238,9 +240,9 @@ def createDataSet(restype, img_num):
     print(dset['featureset'])
     print(dset['result'])
     print("\n")
-    np.savez('dataset', dset=dset, featnames=featnames)
+    np.savez('dataset', dset=dset, featnames=featnames)"""
 
-createDataSet("malignant", 8)
+"""createDataSet("malignant", 8)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 createDataSet("benign", 8)
@@ -249,4 +251,8 @@ cv2.destroyAllWindows()
 createDataSet("negative", 8)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-print(imgcount)
+print(imgcount)"""
+
+dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+clf2 = joblib.load('Mel_SVM.pkl')
+print(clf2.predict([list((dset['featureset'])[2])]))
