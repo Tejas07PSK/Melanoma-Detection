@@ -12,80 +12,80 @@ imgcount = 0
 def showColImg(obj, index):
     cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imgcol' + index, obj.getActImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showGrayImg(obj, index):
     cv2.namedWindow('imggray' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imggray' + index, obj.getGrayImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showInvertedGrayImg(obj, index):
     cv2.namedWindow('imggrayinvrt' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imggrayinvrt' + index, obj.getInvrtGrayImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showBinImg(obj, index):
     cv2.namedWindow('imgbin' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imgbin' + index, obj.getBinaryImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showSegmentedColorImg(obj, index):
     cv2.namedWindow('segimgcol' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('segimgcol' + index, obj.getSegColImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showSegmentedGrayImg(obj, index):
     cv2.namedWindow('segimggray' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('segimggray' + index, obj.getSegGrayImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showPrewittHorizontalImg(feobj2, index):
     cv2.namedWindow('PrewittX' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittX' + index, feobj2.getPrewittHorizontalEdgeImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showPrewittVerticalImg(feobj2, index):
     cv2.namedWindow('PrewittY' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittY' + index, feobj2.getPrewittVerticalEdgeImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showPrewittCOmbinedImg(feobj2, index):
     cv2.namedWindow('PrewittIMG' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittIMG' + index, feobj2.getCombinedPrewittImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showGaussBlurredSegImg(feobj3, index):
     cv2.namedWindow('gblurimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('gblurimg' + index, feobj3.getGaussianBlurredImage())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showSelectedContourImg(feobj3, index):
     cv2.namedWindow('slccntimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('slccntimg' + index, feobj3.getSelectedContourImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showBoundingRectImg(feobj3, index):
     cv2.namedWindow('bndrectimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('bndrectimg' + index, feobj3.getBoundingRectImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showBoundingCircImg(feobj3, index):
     cv2.namedWindow('bndcircimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('bndcircimg' + index, feobj3.getBoundedCircImg())
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 def showGLCM(feobj):
     print(feobj.getGLCM())
@@ -238,6 +238,12 @@ def createDataSet(restype, img_num):
     np.savez('dataset', dset=dset, featnames=featnames)
 
 createDataSet("malignant", 8)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 createDataSet("benign", 8)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 createDataSet("negative", 8)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 print(imgcount)
