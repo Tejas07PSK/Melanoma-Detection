@@ -38,11 +38,11 @@ class KingFeat(object):
     def __checkLimits(self, x, y, shape):
         if (x < 0):
             x = 0
-        if (x > shape[0]):
+        if (x >= shape[0]):
             x = shape[0] - 1
         if (y < 0):
             y = 0
-        if (y > shape[1]):
+        if (y >= shape[1]):
             y = shape[1] - 1
         return (x, y)
 

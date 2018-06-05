@@ -3,11 +3,12 @@ import cv2
 
 class Gabor:
 
-        def __init__(self, img, corr_colimg, imtype='color', cnt=0):
+        def __init__(self, img, corr_colimg, imtype='color'):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             self.__gblurimg = tup[0]
             self.__contours = tup[1]
             self.__hierarchy = tup[2]
+            cnt = self.__selectMostAptContourIndex()
             self.__momLstForConts = self.__generateMoments()
             self.__centroidLstForConts = self.__generateCentroidOfCnts()
             (self.__arLstForConts, self.__periLstForConts) = self.__generateAreaNPeriOfCnts()
@@ -19,6 +20,10 @@ class Gabor:
             self.__fracdimen = self.__generateFractalDimension()
             self.__diameter = self.__calculateDiameter()
             self.__colorvar = self.__generateColorVariance(corr_colimg)
+
+        def __selectMostAptContourIndex(self):
+            tmplst = [ len(c) for c in self.__contours ]
+            return tmplst.index(max(tmplst))
 
         def __generateMoments(self):
             moments = []
