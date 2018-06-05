@@ -7,6 +7,8 @@ from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
 
+imgcount = 0
+
 def showColImg(obj, index):
     cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imgcol' + index, obj.getActImg())
@@ -168,26 +170,26 @@ def createDataSet(restype, img_num):
         dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
         featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
     for i in range(0, img_num, 1):
+         global imgcount
          print("Iterating for image - %d \n" % i)
-         index = str(i)
-         obj = p.Prep('images/' + restype + '/' + index + '.jpg')
+         obj = p.Prep('images/' + restype + '/' + str(i) + '.jpg')
          feobj = har.HarFeat(obj.getSegGrayImg())
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
          feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
          feobj4 = k.KingFeat(obj.getSegGrayImg())
-         showColImg(obj, index)
-         showGrayImg(obj, index)
-         showInvertedGrayImg(obj, index)
-         showBinImg(obj, index)
-         showSegmentedColorImg(obj, index)
-         showSegmentedGrayImg(obj, index)
-         showPrewittHorizontalImg(feobj2, index)
-         showPrewittVerticalImg(feobj2, index)
-         showPrewittCOmbinedImg(feobj2, index)
-         showGaussBlurredSegImg(feobj3, index)
-         showSelectedContourImg(feobj3, index)
-         showBoundingRectImg(feobj3, index)
-         showBoundingCircImg(feobj3, index)
+         showColImg(obj, imgcount)
+         showGrayImg(obj, imgcount)
+         showInvertedGrayImg(obj, imgcount)
+         showBinImg(obj, imgcount)
+         showSegmentedColorImg(obj, imgcount)
+         showSegmentedGrayImg(obj, imgcount)
+         showPrewittHorizontalImg(feobj2, imgcount)
+         showPrewittVerticalImg(feobj2, imgcount)
+         showPrewittCOmbinedImg(feobj2, imgcount)
+         showGaussBlurredSegImg(feobj3, imgcount)
+         showSelectedContourImg(feobj3, imgcount)
+         showBoundingRectImg(feobj3, imgcount)
+         showBoundingCircImg(feobj3, imgcount)
          showHaralickFeatures(feobj)
          showTamuraFeatures(feobj2)
          showKingsFeatures(feobj4)
@@ -228,10 +230,14 @@ def createDataSet(restype, img_num):
          featarr = np.insert(featarr, featarr.size, feobj4.getKingsComplexity(), 0)
          featarr = np.insert(featarr, featarr.size, feobj4.getKingsStrength(), 0)
          dset = np.insert(dset, dset.size, (featarr, restype), 0)
+         imgcount = imgcount + 1
     print(featnames)
     print(dset)
     print(dset['featureset'])
     print(dset['result'])
     np.savez('dataset', dset=dset, featnames=featnames)
 
-createDataSet("malignant", 1)
+createDataSet("malignant", 8)
+createDataSet("benign", 8)
+createDataSet("negative", 8)
+print(imgcount)
