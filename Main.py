@@ -237,6 +237,7 @@ def createDataSet(restype, img_num):
     print(dset)
     print(dset['featureset'])
     print(dset['result'])
+    print("\n")
     np.savez('dataset', dset=dset, featnames=featnames)
 
 createDataSet("malignant", 8)
