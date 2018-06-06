@@ -249,14 +249,10 @@ def __createAndTrainMlModels():
     CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
-
-
 """createDataSet("malignant", 8)
 createDataSet("benign", 8)
 createDataSet("negative", 8)
 print(imgcount)"""
-
-clf2 = joblib.load('Mel_DTC.pkl')
 
 def getTestImages():
     clasfobj = CLF.Classifiers(path='mlmodels/')
