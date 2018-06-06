@@ -6,6 +6,7 @@ from sklearn.svm import LinearSVC
 from sklearn.neural_network import MLPClassifier as MLPC
 from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.ensemble import RandomForestClassifier as RFC
+from sklearn.metrics import accuracy_score
 
 class Classifiers(object):
 
@@ -39,9 +40,22 @@ class Classifiers(object):
         joblib.dump(self.__rfc_clf, 'Mel_RFC.pkl')
 
     def predicto(self, extfeatarr, supresults):
-        {
-            'SVM' : { 'Prediction Results' : (self.__svm_clf).predict(list(extfeatarr)), 'Accuracy'}
-        }
+        svm_res = (self.__svm_clf).predict(list(extfeatarr))
+        nusvm_res = (self.__nusvm_clf).predict(list(extfeatarr))
+        linsvm_res = (self.__linsvm_clf).predict(list(extfeatarr))
+        mlpc_res = (self.__mlpc_clf).predict(list(extfeatarr))
+        dtc_res = (self.__dtc_clf).predict(list(extfeatarr))
+        rfc_res = (self.__rfc_clf).predict(list(extfeatarr))
+        dct = {
+                    'SVM' : { 'Prediction Results' : svm_res, 'Accuracy' : accuracy_score(list(supresults), svm_res)},
+                    'NuSVM': {'Prediction Results': nusvm_res, 'Accuracy': accuracy_score(list(supresults), nusvm_res)},
+                    'LinSVM': {'Prediction Results': linsvm_res, 'Accuracy': accuracy_score(list(supresults), linsvm_res)},
+                    'MLPC': {'Prediction Results': mlpc_res, 'Accuracy': accuracy_score(list(supresults), mlpc_res)},
+                    'DTC': {'Prediction Results': dtc_res, 'Accuracy': accuracy_score(list(supresults), dtc_res)},
+                    'RFC': {'Prediction Results': rfc_res, 'Accuracy': accuracy_score(list(supresults), rfc_res)}
+              }
+        print(dct)
+        return dct
 
 
 dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
