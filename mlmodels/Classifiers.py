@@ -45,13 +45,11 @@ class Classifiers(object):
         mlpc_res = (self.__mlpc_clf).predict(list(extfeatarr))
         dtc_res = (self.__dtc_clf).predict(list(extfeatarr))
         rfc_res = (self.__rfc_clf).predict(list(extfeatarr))
-        dct = {
+        return ({
                     'SVM' : { 'Prediction Results' : svm_res, 'Accuracy' : accuracy_score(list(supresults), svm_res)},
                     'NuSVM': {'Prediction Results': nusvm_res, 'Accuracy': accuracy_score(list(supresults), nusvm_res)},
                     'LinSVM': {'Prediction Results': linsvm_res, 'Accuracy': accuracy_score(list(supresults), linsvm_res)},
                     'MLPC': {'Prediction Results': mlpc_res, 'Accuracy': accuracy_score(list(supresults), mlpc_res)},
                     'DTC': {'Prediction Results': dtc_res, 'Accuracy': accuracy_score(list(supresults), dtc_res)},
                     'RFC': {'Prediction Results': rfc_res, 'Accuracy': accuracy_score(list(supresults), rfc_res)}
-              }
-        print(dct)
-        return dct
+                })

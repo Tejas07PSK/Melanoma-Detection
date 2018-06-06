@@ -242,22 +242,24 @@ def createDataSet(restype, img_num):
     print(dset['result'])
     print("\n")
     np.savez('dataset', dset=dset, featnames=featnames)
+    __createAndTrainMlModels()
 
 def __createAndTrainMlModels():
     dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
     CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
-__createAndTrainMlModels()
+
 
 """createDataSet("malignant", 8)
 createDataSet("benign", 8)
 createDataSet("negative", 8)
 print(imgcount)"""
 
-"""clf2 = joblib.load('Mel_DTC.pkl')
+clf2 = joblib.load('Mel_DTC.pkl')
 
 def getTestImages():
+    clasfobj = CLF.Classifiers(path='mlmodels/')
     count = 0
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
     featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
@@ -337,8 +339,7 @@ def getTestImages():
     if (str(input('Do you want to save this testcase for later predictions?? \n')) == 'Y'):
         np.savez('testcase', dset=dset, featnames=featnames)
     print("Now predicting results : \n")
-    global clf2
-    pred_res = clf2.predict(list(dset['featureset']))
+    pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
     print(pred_res)
     print(accuracy_score(list(dset['result']), pred_res))
 
@@ -355,4 +356,4 @@ def predictFromSavedTestCase():
     print(pred_res)
     print(accuracy_score(list(dset['result']), pred_res))
 
-getTestImages()"""
+getTestImages()
