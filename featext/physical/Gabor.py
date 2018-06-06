@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-class Gabor:
+class Gabor(object):
 
         def __init__(self, img, corr_colimg, imtype='color'):
             tup = cv2.findContours(cv2.GaussianBlur(img, (3, 3), sigmaX=0, sigmaY=0), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)

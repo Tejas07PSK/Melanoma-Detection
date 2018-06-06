@@ -4,6 +4,8 @@ from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier as MLP
 from sklearn.tree import DecisionTreeClassifier as DTC
 
+class Classifiers:
+
 dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
 print(list(dset['featureset']))
 print(list(dset['result']))
