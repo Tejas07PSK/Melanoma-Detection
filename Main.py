@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import pathlib
+import os
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
@@ -271,6 +272,7 @@ def getTestImages():
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
     featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
     while(True):
+        os.makedirs('results/testset/' + str(count))
         print("\t _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ \t \n")
         print("Iterating for image - %d \n" % count)
         print("\t _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ \t \n")
@@ -364,11 +366,13 @@ def predictFromSavedTestCase():
     print("\n \n")
 
 def __printPredResWithProperFormatting(predres):
-    print("Prediction Results SVM - " + str((predres['SVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['SVM'])['Accuracy']) + "\n")
-    print("Prediction Results NuSVM - " + str((predres['NuSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['NuSVM'])['Accuracy']) + "\n")
-    print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy']) + "\n")
-    print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy']) + "\n")
-    print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy']) + "\n")
-    print("Prediction Results SVM - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy']) + "\n")
+    print("Prediction Results SVM - " + str((predres['SVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results NuSVM - " + str((predres['NuSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['NuSVM'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results SVM - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
 
 getTestImages()
+
+
