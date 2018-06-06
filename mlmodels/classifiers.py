@@ -38,6 +38,9 @@ class Classifiers(object):
         joblib.dump(self.__dtc_clf, 'Mel_DTC.pkl')
         joblib.dump(self.__rfc_clf, 'Mel_RFC.pkl')
 
+    def predicto(self, extfeatarr):
+        ('SVM', (self.__svm_clf).predict(list(extfeatarr))), ('NuSVM', (self.__nusvm_clf).predict(list(extfeatarr))), ('LinSVM', (self.__linsvm_clf).predict(list(extfeatarr))), ('MLPC', (self.__mlpc_clf).predict(list(extfeatarr))), ('DTC', (self.__svm_clf).predict(list(extfeatarr)))
+
 
 dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
 print(list(dset['featureset']))
