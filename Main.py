@@ -245,7 +245,7 @@ def createDataSet(restype, img_num):
 
 def __createAndTrainMlModels():
     dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
-    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train')
+    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
 __createAndTrainMlModels()
