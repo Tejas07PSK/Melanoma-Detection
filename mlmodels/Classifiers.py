@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.externals import joblib
 from sklearn.svm import SVC
 from sklearn.svm import NuSVC
@@ -10,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 class Classifiers(object):
 
-    def __init__(self, featureset, target, usage='predict'):
+    def __init__(self, featureset=None, target=None, usage='predict'):
         if (usage == 'train'):
             self.__svm_clf = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf', max_iter=-1, probability=False, random_state=None, shrinking=True, tol=0.001, verbose=False)
             self.__nusvm_clf = NuSVC(cache_size=200, class_weight=None, coef0=0.0, decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf', max_iter=-1, nu=0.5, probability=False, random_state=None, shrinking=True, tol=0.001, verbose=False)
@@ -18,7 +17,7 @@ class Classifiers(object):
             self.__mlpc_clf = MLPC(activation='relu', alpha=1e-05, batch_size='auto', beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08, hidden_layer_sizes=(100, 34), learning_rate='constant', learning_rate_init=0.001, max_iter=200, momentum=0.9, nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True, solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False, warm_start=False)
             self.__dtc_clf = DTC(class_weight=None, criterion='gini', max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=False, random_state=None, splitter='best')
             self.__rfc_clf = RFC(bootstrap=True, class_weight=None, criterion='gini', max_depth=100, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1, oob_score=False, random_state=None, verbose=0, warm_start=False)
-            (self.__svm_clf, self.__nusvm_clf, self.__linsvm_clf, self.__mlpc_clf, self.__dtc_clf, self.__rfc_clf) = self.__trainAll(X=featureset, Y=target)
+            (self.__svm_clf, self.__nusvm_clf, self.__linsvm_clf, self.__mlpc_clf, self.__dtc_clf, self.__rfc_clf) = self.__trainAll(X=list(featureset), Y=list(target))
             self.__saveModelsToFile()
         else:
             self.__svm_clf = joblib.load('Mel_SVM.pkl')

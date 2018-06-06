@@ -7,8 +7,8 @@ from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
 from sklearn.externals import joblib
-from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
+from mlmodels import Classifiers as CLF
 
 imgcount = 0
 
@@ -242,6 +242,12 @@ def createDataSet(restype, img_num):
     print(dset['result'])
     print("\n")
     np.savez('dataset', dset=dset, featnames=featnames)
+
+def __createAndTrainMlModels():
+    dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], str='train')
+    print("Training successfully completed!!! \n")
+
 
 """createDataSet("malignant", 8)
 createDataSet("benign", 8)
