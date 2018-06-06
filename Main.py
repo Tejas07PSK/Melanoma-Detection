@@ -336,9 +336,8 @@ def getTestImages():
         np.savez('testcase', dset=dset, featnames=featnames)
     print("Now predicting results : \n \n")
     pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
-    print(pred_res)
+    __printPredResWithProperFormatting(pred_res)
     print('\n \n')
-
 
 def predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
@@ -350,7 +349,15 @@ def predictFromSavedTestCase():
     print("\n")
     print("Now predicting results : \n \n")
     pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
-    print(pred_res)
+    __printPredResWithProperFormatting(pred_res)
     print("\n \n")
+
+def __printPredResWithProperFormatting(predres):
+    print("Prediction Results SVM - " + str((predres['SVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['SVM'])['Accuracy']) + "\n")
+    print("Prediction Results NuSVM - " + str((predres['NuSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['NuSVM'])['Accuracy']) + "\n")
+    print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy']) + "\n")
+    print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy']) + "\n")
+    print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy']) + "\n")
+    print("Prediction Results SVM - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy']) + "\n")
 
 getTestImages()
