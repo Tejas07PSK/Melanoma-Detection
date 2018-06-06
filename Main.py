@@ -338,22 +338,23 @@ def getTestImages():
     print("\n")
     if (str(input('Do you want to save this testcase for later predictions?? \n')) == 'Y'):
         np.savez('testcase', dset=dset, featnames=featnames)
-    print("Now predicting results : \n")
+    print("Now predicting results : \n \n")
     pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
     print(pred_res)
-    print(accuracy_score(list(dset['result']), pred_res))
+    print('\n \n')
+
 
 def predictFromSavedTestCase():
+    clasfobj = CLF.Classifiers(path='mlmodels/')
     dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('dataset.npz'))['featnames']
     print(featnames)
     print(dset)
     print(dset['featureset'])
     print(dset['result'])
     print("\n")
-    print("Now predicting results : \n")
-    global clf2
-    pred_res = clf2.predict(list(dset['featureset']))
+    print("Now predicting results : \n \n")
+    pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
     print(pred_res)
-    print(accuracy_score(list(dset['result']), pred_res))
+    print("\n \n")
 
 getTestImages()
