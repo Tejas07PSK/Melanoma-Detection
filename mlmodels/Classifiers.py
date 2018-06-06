@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 class Classifiers(object):
 
-    def __init__(self, featureset=None, target=None, mode='predict'):
+    def __init__(self, featureset=None, target=None, mode='predict', path=''):
         if (mode == 'train'):
             self.__svm_clf = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf', max_iter=-1, probability=False, random_state=None, shrinking=True, tol=0.001, verbose=False)
             self.__nusvm_clf = NuSVC(cache_size=200, class_weight=None, coef0=0.0, decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf', max_iter=-1, nu=0.5, probability=False, random_state=None, shrinking=True, tol=0.001, verbose=False)
@@ -18,25 +18,25 @@ class Classifiers(object):
             self.__dtc_clf = DTC(class_weight=None, criterion='gini', max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, presort=False, random_state=None, splitter='best')
             self.__rfc_clf = RFC(bootstrap=True, class_weight=None, criterion='gini', max_depth=100, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1, oob_score=False, random_state=None, verbose=0, warm_start=False)
             (self.__svm_clf, self.__nusvm_clf, self.__linsvm_clf, self.__mlpc_clf, self.__dtc_clf, self.__rfc_clf) = self.__trainAll(X=list(featureset), Y=list(target))
-            self.__saveModelsToFile()
+            self.__saveModelsToFile(path)
         else:
-            self.__svm_clf = joblib.load('Mel_SVM.pkl')
-            self.__nusvm_clf = joblib.load('Mel_NuSVM.pkl')
-            self.__linsvm_clf = joblib.load('Mel_LinSVM.pkl')
-            self.__mlpc_clf = joblib.load('Mel_MLPC.pkl')
-            self.__dtc_clf = joblib.load('Mel_DTC.pkl')
-            self.__rfc_clf = joblib.load('Mel_RFC.pkl')
+            self.__svm_clf = joblib.load(path + 'Mel_SVM.pkl')
+            self.__nusvm_clf = joblib.load(path + 'Mel_NuSVM.pkl')
+            self.__linsvm_clf = joblib.load(path + 'Mel_LinSVM.pkl')
+            self.__mlpc_clf = joblib.load(path + 'Mel_MLPC.pkl')
+            self.__dtc_clf = joblib.load(path + 'Mel_DTC.pkl')
+            self.__rfc_clf = joblib.load(path + 'Mel_RFC.pkl')
 
     def __trainAll(self, X, Y):
         return ((self.__svm_clf).fit(X, Y), (self.__nusvm_clf).fit(X, Y), (self.__linsvm_clf).fit(X, Y), (self.__mlpc_clf).fit(X, Y), (self.__dtc_clf).fit(X, Y), (self.__rfc_clf).fit(X, Y))
 
-    def __saveModelsToFile(self):
-        joblib.dump(self.__svm_clf, 'Mel_SVM.pkl')
-        joblib.dump(self.__nusvm_clf, 'Mel_NuSVM.pkl')
-        joblib.dump(self.__linsvm_clf, 'Mel_LinSVM.pkl')
-        joblib.dump(self.__mlpc_clf, 'Mel_MLPC.pkl')
-        joblib.dump(self.__dtc_clf, 'Mel_DTC.pkl')
-        joblib.dump(self.__rfc_clf, 'Mel_RFC.pkl')
+    def __saveModelsToFile(self, path):
+        joblib.dump(self.__svm_clf, (path + 'Mel_SVM.pkl'))
+        joblib.dump(self.__nusvm_clf, (path + 'Mel_NuSVM.pkl'))
+        joblib.dump(self.__linsvm_clf, (path + 'Mel_LinSVM.pkl'))
+        joblib.dump(self.__mlpc_clf, (path + 'Mel_MLPC.pkl'))
+        joblib.dump(self.__dtc_clf, (path + 'Mel_DTC.pkl'))
+        joblib.dump(self.__rfc_clf, (path + 'Mel_RFC.pkl'))
 
     def predicto(self, extfeatarr, supresults):
         svm_res = (self.__svm_clf).predict(list(extfeatarr))
