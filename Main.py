@@ -245,16 +245,17 @@ def createDataSet(restype, img_num):
 
 def __createAndTrainMlModels():
     dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
-    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], str='train')
+    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train')
     print("Training successfully completed!!! \n")
 
+__createAndTrainMlModels()
 
 """createDataSet("malignant", 8)
 createDataSet("benign", 8)
 createDataSet("negative", 8)
 print(imgcount)"""
 
-clf2 = joblib.load('Mel_DTC.pkl')
+"""clf2 = joblib.load('Mel_DTC.pkl')
 
 def getTestImages():
     count = 0
@@ -354,4 +355,4 @@ def predictFromSavedTestCase():
     print(pred_res)
     print(accuracy_score(list(dset['result']), pred_res))
 
-getTestImages()
+getTestImages()"""
