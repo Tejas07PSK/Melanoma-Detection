@@ -8,6 +8,7 @@ from featext.texture import King as k
 from featext.physical import Gabor as g
 from sklearn.externals import joblib
 from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
 
 imgcount = 0
 
@@ -330,4 +331,21 @@ def getTestImages():
         np.savez('testcase', dset=dset, featnames=featnames)
     print("Now predicting results : \n")
     global clf2
-    print(clf2.predict(list(dset['featureset'])))
+    pred_res = clf2.predict(list(dset['featureset']))
+    print(pred_res)
+    print(accuracy_score(list(dset['result']), pred_res))
+
+def predictFromSavedTestCase():
+    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+    print(featnames)
+    print(dset)
+    print(dset['featureset'])
+    print(dset['result'])
+    print("\n")
+    print("Now predicting results : \n")
+    global clf2
+    pred_res = clf2.predict(list(dset['featureset']))
+    print(pred_res)
+    print(accuracy_score(list(dset['result']), pred_res))
+
+getTestImages()
