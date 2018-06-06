@@ -248,7 +248,7 @@ createDataSet("benign", 8)
 createDataSet("negative", 8)
 print(imgcount)"""
 
-clf2 = joblib.load('Mel_SVM.pkl')
+clf2 = joblib.load('Mel_DTC.pkl')
 
 def getTestImages():
     count = 0
