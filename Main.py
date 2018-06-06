@@ -6,89 +6,100 @@ from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
-from sklearn.externals import joblib
-from sklearn.metrics import accuracy_score
 from mlmodels import Classifiers as CLF
 
 imgcount = 0
 
-def showColImg(obj, index):
+def showColImg(obj, index, loc):
     cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imgcol' + index, obj.getActImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc+'imgcol'+index+'.jpg'), obj.getActImg())
 
-def showGrayImg(obj, index):
+def showGrayImg(obj, index, loc):
     cv2.namedWindow('imggray' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imggray' + index, obj.getGrayImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'imggray' + index + '.jpg'), obj.getGrayImg())
 
-def showInvertedGrayImg(obj, index):
+def showInvertedGrayImg(obj, index, loc):
     cv2.namedWindow('imggrayinvrt' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imggrayinvrt' + index, obj.getInvrtGrayImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'imggrayinvrt' + index + '.jpg'), obj.getInvrtGrayImg())
 
-def showBinImg(obj, index):
+def showBinImg(obj, index, loc):
     cv2.namedWindow('imgbin' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('imgbin' + index, obj.getBinaryImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'imgbin' + index + '.jpg'), obj.getBinaryImg())
 
-def showSegmentedColorImg(obj, index):
+def showSegmentedColorImg(obj, index, loc):
     cv2.namedWindow('segimgcol' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('segimgcol' + index, obj.getSegColImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'segimgcol' + index + '.jpg'), obj.getSegColImg())
 
-def showSegmentedGrayImg(obj, index):
+def showSegmentedGrayImg(obj, index, loc):
     cv2.namedWindow('segimggray' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('segimggray' + index, obj.getSegGrayImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'segimggray' + index + '.jpg'), obj.getSegGrayImg())
 
-def showPrewittHorizontalImg(feobj2, index):
+def showPrewittHorizontalImg(feobj2, index, loc):
     cv2.namedWindow('PrewittX' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittX' + index, feobj2.getPrewittHorizontalEdgeImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'PrewittX' + index + '.jpg'), feobj2.getPrewittHorizontalEdgeImg())
 
-def showPrewittVerticalImg(feobj2, index):
+def showPrewittVerticalImg(feobj2, index, loc):
     cv2.namedWindow('PrewittY' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittY' + index, feobj2.getPrewittVerticalEdgeImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'PrewittY' + index + '.jpg'), feobj2.getPrewittVerticalEdgeImg())
 
-def showPrewittCOmbinedImg(feobj2, index):
+def showPrewittCOmbinedImg(feobj2, index, loc):
     cv2.namedWindow('PrewittIMG' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('PrewittIMG' + index, feobj2.getCombinedPrewittImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'PrewittIMG' + index + '.jpg'), feobj2.getCombinedPrewittImg())
 
-def showGaussBlurredSegImg(feobj3, index):
+def showGaussBlurredSegImg(feobj3, index, loc):
     cv2.namedWindow('gblurimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('gblurimg' + index, feobj3.getGaussianBlurredImage())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'gblurimg' + index + '.jpg'), feobj3.getGaussianBlurredImage())
 
-def showSelectedContourImg(feobj3, index):
+def showSelectedContourImg(feobj3, index, loc):
     cv2.namedWindow('slccntimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('slccntimg' + index, feobj3.getSelectedContourImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'slccntimg' + index + '.jpg'), feobj3.getSelectedContourImg())
 
-def showBoundingRectImg(feobj3, index):
+def showBoundingRectImg(feobj3, index, loc):
     cv2.namedWindow('bndrectimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('bndrectimg' + index, feobj3.getBoundingRectImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'bndrectimg' + index + '.jpg'), feobj3.getBoundingRectImg())
 
-def showBoundingCircImg(feobj3, index):
+def showBoundingCircImg(feobj3, index, loc):
     cv2.namedWindow('bndcircimg' + index, cv2.WINDOW_NORMAL)
     cv2.imshow('bndcircimg' + index, feobj3.getBoundedCircImg())
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    cv2.imwrite((loc + 'bndcircimg' + index + '.jpg'), feobj3.getBoundedCircImg())
 
 def showGLCM(feobj):
     print(feobj.getGLCM())
@@ -182,19 +193,19 @@ def createDataSet(restype, img_num):
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
          feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
          feobj4 = k.KingFeat(obj.getSegGrayImg())
-         showColImg(obj, str(imgcount))
-         showGrayImg(obj, str(imgcount))
-         showInvertedGrayImg(obj, str(imgcount))
-         showBinImg(obj, str(imgcount))
-         showSegmentedColorImg(obj, str(imgcount))
-         showSegmentedGrayImg(obj, str(imgcount))
-         showPrewittHorizontalImg(feobj2, str(imgcount))
-         showPrewittVerticalImg(feobj2, str(imgcount))
-         showPrewittCOmbinedImg(feobj2, str(imgcount))
-         showGaussBlurredSegImg(feobj3, str(imgcount))
-         showSelectedContourImg(feobj3, str(imgcount))
-         showBoundingRectImg(feobj3, str(imgcount))
-         showBoundingCircImg(feobj3, str(imgcount))
+         showColImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showInvertedGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showBinImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showSegmentedColorImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showSegmentedGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showPrewittHorizontalImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showPrewittVerticalImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showPrewittCOmbinedImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showGaussBlurredSegImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showSelectedContourImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showBoundingRectImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showBoundingCircImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showHaralickFeatures(feobj)
          showTamuraFeatures(feobj2)
          showKingsFeatures(feobj4)
