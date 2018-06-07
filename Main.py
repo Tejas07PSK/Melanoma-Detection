@@ -185,6 +185,7 @@ def createDataSet(restype, img_num):
         dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
         featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
     for i in range(0, img_num, 1):
+         os.makedirs('results/dataset/' + restype + '/' + str(i))
          global imgcount
          print("\t _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ \t \n")
          print("Iterating for image - %d \n" % i)
@@ -371,7 +372,7 @@ def __printPredResWithProperFormatting(predres):
     print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
     print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
     print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results SVM - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
+    print("Prediction Results RFC - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
 
 getTestImages()
 
