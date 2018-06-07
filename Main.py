@@ -255,7 +255,6 @@ def createDataSet(restype, img_num):
     print(dset['result'])
     print("\n")
     np.savez('dataset', dset=dset, featnames=featnames)
-    __createAndTrainMlModels()
 
 def __createAndTrainMlModels():
     dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
@@ -265,6 +264,7 @@ def __createAndTrainMlModels():
 createDataSet("malignant", 10)
 createDataSet("benign", 10)
 createDataSet("negative", 10)
+__createAndTrainMlModels()
 print(imgcount)
 
 def getTestImages():
