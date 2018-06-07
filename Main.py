@@ -261,11 +261,11 @@ def __createAndTrainMlModels():
     CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
-createDataSet("malignant", 10)
+"""createDataSet("malignant", 10)
 createDataSet("benign", 10)
 createDataSet("negative", 10)
 __createAndTrainMlModels()
-print(imgcount)
+print(imgcount)"""
 
 def getTestImages():
     clasfobj = CLF.Classifiers(path='mlmodels/')
