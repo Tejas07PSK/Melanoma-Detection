@@ -366,13 +366,19 @@ def predictFromSavedTestCase():
     __printPredResWithProperFormatting(pred_res)
     print("\n \n")
 
-def __printPredResWithProperFormatting(predres):
-    print("Prediction Results SVM - " + str((predres['SVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results NuSVM - " + str((predres['NuSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['NuSVM'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
-    print("Prediction Results RFC - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
+def __printPredResWithProperFormatting(predres, type='RFC'):
+    if (type == 'SVM'):
+        print("Prediction Results SVM - " + str((predres['SVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
+    elif (type == 'NuSVM'):
+        print("Prediction Results NuSVM - " + str((predres['NuSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['NuSVM'])['Accuracy'] * 100) + "\n")
+    elif (type == 'LinSVM'):
+        print("Prediction Results LinSVM - " + str((predres['LinSVM'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
+    elif (type == 'MLPC'):
+        print("Prediction Results MLPC - " + str((predres['MLPC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
+    elif (type == 'DTC'):
+        print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
+    else:
+        print("Prediction Results RFC - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
 
 #getTestImages()
 predictFromSavedTestCase()
