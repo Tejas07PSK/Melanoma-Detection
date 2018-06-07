@@ -374,6 +374,7 @@ def __printPredResWithProperFormatting(predres):
     print("Prediction Results DTC - " + str((predres['DTC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
     print("Prediction Results RFC - " + str((predres['RFC'])['Prediction Results']) + "and Accuracy Prediction - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
 
-getTestImages()
+#getTestImages()
+predictFromSavedTestCase()
 
 
