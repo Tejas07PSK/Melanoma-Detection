@@ -399,7 +399,35 @@ def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
     print("\t This is a nascent approch towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY and SciKit in Python Programming Language. \n")
     print("\t This project utilizes some of the core concepts of \'DIGITAL IMAGE PROCESSING\' & \'MACHINE LEARNING\'. \n")
+    print("\t This program can either categorize the cancerous-lesion as Malignant, Benign or Negative. \n")
     print("\t 1.Create training-dataset from the images of known ->MELANOMA<- types!! \n")
     print("\t 2.Train classifiers and regressors on created training-dataset!! \n")
     print("\t 3.Create testing-dataset from supervised images in temp folder!! \n")
+    print("\t 4.Predict results from \'testcase.npz\'!! \n")
+    print("\t Enter \'e\' to exit!! \n")
+    while (True):
+       c = str(input("Enter your choice - \n"))
+       if (c == '1'):
+           print("If you see a results folder in the root directory of the project, delete the \'dataset\' folder in it. \n")
+           print("Now, before you proceed, just make sure that you have your corresponding images in the images folder under the malignanat, benign or negative directories. \n")
+           print("If you haven't already made the directories, please make them and place the corrseponding images. \n")
+           print("The image filenames names must be numeric starting from 0 in sequence under each category folder. \n")
+           print("Eg. - 0.jpg, 1.jpg, 2.jpg, ..... etc \n")
+           print("You must provide images under each category!!! \n")
+           input("Just press any key when your are ready : \n")
+           createDataSet("malignant", int(input("Enter the number of images you placed under the \'images/malignant\' directory - \n")))
+           createDataSet("benign", int(input("Enter the number of images you placed under the \'images/benign\' directory - \n")))
+           createDataSet("negative", int(input("Enter the number of images you placed under the \'images/negative\' directory - \n")))
+           print("Training-dataset successfully generated!! \n")
+           print("This dataset consists of the features-array of the corresponding images and their classified types. \n")
+           print("All results are stored in the file \'dataset.npz\' \n")
+           print("Total training-image count : %d \n" % imgcount)
+       elif (c == '2'):
+           print("Now we'll train our various classifiers and regressors on the training data stored in the \'dataset.npz\' numpy file. \n")
+           print("All machine-learning models will be saved in individual .pkl files under the \'mlmodels\' python-package. \n")
+           __createAndTrainMlModels()
+           print("Training is now complete!! \n")
+
+
+
 
