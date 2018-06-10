@@ -261,12 +261,6 @@ def __createAndTrainMlModels():
     CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
-"""createDataSet("malignant", 10)
-createDataSet("benign", 10)
-createDataSet("negative", 10)
-__createAndTrainMlModels()
-print(imgcount)"""
-
 def getTestImages():
     count = 0
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
@@ -357,8 +351,7 @@ def predictFromSavedTestCase():
     print("\n")
     print("Now predicting results : \n \n")
     pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
-    __printPredResWithProperFormatting(pred_res)
-    print("\n \n")
+    return pred_res
 
 def __printPredResWithProperFormatting(predres, type='RFC'):
     if (type == 'SVM'):
@@ -385,9 +378,6 @@ def __printPredResWithProperFormatting(predres, type='RFC'):
         print("Prediction Results RFC - " + str((predres['RFC'])['Prediction Results']) + "and Prediction Accuracy - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
     else:
         print("Prediction Results RFR - " + str((predres['RFR'])['Prediction Results']) + "and Prediction Accuracy - " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
-
-#getTestImages()
-predictFromSavedTestCase()
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
@@ -430,6 +420,21 @@ def main_menu():
            print("Testing-dataset successfully generated!! \n")
            print("This dataset consists of the features-array of the test images and their supervised-classified types. \n")
            print("All results are stored in the file \'testset.npz\' \n")
+       elif (c == '4'):
+           print("This will predict results from \'testcase.npz\' and also calculate the prediction accuracy of the individual models. \n")
+           pred_res = predictFromSavedTestCase()
+           while (True):
+              type = str(input('Select Classifier/Regressor acronym : \n'))
+              if (pred_res.has_key(type)):
+                    __printPredResWithProperFormatting(pred_res)
+              else:
+                  break
+           print("\n \n")
+       else:
+           print("Thanks For Using This Program!!!")
+           print("Now Exiting.")
+           break
+
 
 
 
