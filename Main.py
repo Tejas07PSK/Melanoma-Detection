@@ -268,7 +268,6 @@ __createAndTrainMlModels()
 print(imgcount)"""
 
 def getTestImages():
-    clasfobj = CLF.Classifiers(path='mlmodels/')
     count = 0
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
     featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
@@ -346,12 +345,7 @@ def getTestImages():
     print(dset['featureset'])
     print(dset['result'])
     print("\n")
-    if (str(input('Do you want to save this testcase for later predictions?? \n')) == 'Y'):
-        np.savez('testcase', dset=dset, featnames=featnames)
-    print("Now predicting results : \n \n")
-    pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
-    __printPredResWithProperFormatting(pred_res)
-    print('\n \n')
+    np.savez('testcase', dset=dset, featnames=featnames)
 
 def predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
