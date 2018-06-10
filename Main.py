@@ -356,7 +356,7 @@ def __convertTargetTypeToStr(arr):
     cvt_arr = np.empty((arr.size,), object, 'C')
     for i in range(0, arr.size, 1):
         if (arr[i] == 1):
-            cvt_arr[i] = 'malignanat'
+            cvt_arr[i] = 'malignant'
         elif (arr[i] == -1):
             cvt_arr[i] = 'negative'
         else:
