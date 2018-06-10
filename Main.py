@@ -429,22 +429,13 @@ def main_menu():
            print("Training is now complete!! \n")
        elif (c == '3'):
            print("If you see a results folder in the root directory of the project, delete the \'testset\' folder in it. \n")
-           print("Now, before you proceed, just make sure that you have your corresponding images\n")
-           print("If you haven't already made the directories, please make them and place the corrseponding images. \n")
-           print("The image filenames names must be numeric starting from 0 in sequence under each category folder. \n")
-           print("Eg. - 0.jpg, 1.jpg, 2.jpg, ..... etc \n")
-           print("You must provide images under each category!!! \n")
+           print("Now, before you proceed, just make sure that you have your test-images in the \'temp\' folder. \n")
+           print("If you haven't already made the directories, please make them and place the test-images. \n")
            input("Just press any key when your are ready : \n")
-           createDataSet("malignant", int(
-               input("Enter the number of images you placed under the \'images/malignant\' directory - \n")))
-           createDataSet("benign",
-                         int(input("Enter the number of images you placed under the \'images/benign\' directory - \n")))
-           createDataSet("negative", int(
-               input("Enter the number of images you placed under the \'images/negative\' directory - \n")))
-           print("Training-dataset successfully generated!! \n")
-           print(
-               "This dataset consists of the features-array of the corresponding images and their classified types. \n")
-           print("All results are stored in the file \'dataset.npz\' \n")
+           getTestImages()
+           print("Testing-dataset successfully generated!! \n")
+           print("This dataset consists of the features-array of the test images and their supervised-classified types. \n")
+           print("All results are stored in the file \'testset.npz\' \n")
 
 
 
