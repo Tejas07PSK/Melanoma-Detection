@@ -436,8 +436,8 @@ def main_menu():
            pred_res = predictFromSavedTestCase()
            while (True):
               type = str(input('Select Classifier/Regressor acronym : \n'))
-              if (pred_res.has_key(type)):
-                    __printPredResWithProperFormatting(pred_res)
+              if (type in pred_res):
+                    __printPredResWithProperFormatting(pred_res, type)
               else:
                   break
            print("\n \n")
