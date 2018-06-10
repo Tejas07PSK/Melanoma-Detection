@@ -8,7 +8,7 @@ from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
 from mlmodels import Classifiers as CLF
-from mlmodels import RmFrstDecisionPlot as RFDP
+#from mlmodels import RmFrstDecisionPlot as RFDP
 
 imgcount = 0
 
@@ -435,7 +435,7 @@ def main_menu():
            print("Now Exiting.")
            break
 
-
+main_menu()
 
 
 
