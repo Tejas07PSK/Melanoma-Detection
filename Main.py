@@ -177,7 +177,6 @@ def showGaborPhysicalFeatures(feobj3):
     print("Diameter of lesion %f \n" % feobj3.getDiameter())
     print("Color-Variance of lesion %f \n" % feobj3.getColorVariance())
 
-
 def createDataSet(restype, img_num):
     print("------------------+++++++++++++============FOR %s SET==============++++++++++++++---------------------- \n" % restype.upper())
     if (((pathlib.Path('dataset.npz')).exists() == True) & ((pathlib.Path('dataset.npz')).is_file() == True)):
