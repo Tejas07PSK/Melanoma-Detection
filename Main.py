@@ -384,4 +384,3 @@ def __printPredResWithProperFormatting(predres, type='RFC'):
 #getTestImages()
 predictFromSavedTestCase()
 
-
