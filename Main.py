@@ -258,7 +258,7 @@ def createDataSet(restype, img_num):
 
 def __createAndTrainMlModels():
     dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
-    CLF.Classifiers(featureset=dset['featureset'], target=dset['result'], mode='train', path='mlmodels/')
+    CLF.Classifiers(featureset=dset['featureset'], target=__convertTargetType(dset['result']), mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
 def getTestImages():
@@ -340,6 +340,17 @@ def getTestImages():
     print(dset['result'])
     print("\n")
     np.savez('testcase', dset=dset, featnames=featnames)
+
+def __convertTargetType(arr):
+    cvt_arr = np.zeros((arr.size,), int, 'C')
+    for i in range(0, arr.size, 1):
+        if (arr[i] == 'malignant'):
+            cvt_arr[i] = 1
+        elif (arr[i] == 'negative'):
+            cvt_arr[i] = -1
+        else:
+            continue
+    return cvt_arr
 
 def predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
