@@ -395,3 +395,11 @@ def __printPredResWithProperFormatting(predres, type='RFC'):
 #getTestImages()
 predictFromSavedTestCase()
 
+def main_menu():
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
+    print("\t This is a nascent approch towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY and SciKit in Python Programming Language. \n")
+    print("\t This project utilizes some of the core concepts of \'DIGITAL IMAGE PROCESSING\' & \'MACHINE LEARNING\'. \n")
+    print("\t 1.Create training-dataset from the images of known ->MELANOMA<- types!! \n")
+    print("\t 2.Train classifiers and regressors on created training-dataset!! \n")
+    print("\t 3.Create testing-dataset from supervised images in temp folder!! \n")
+
