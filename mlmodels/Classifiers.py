@@ -9,6 +9,7 @@ from sklearn.tree import DecisionTreeRegressor as DTR
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.ensemble import RandomForestRegressor as RFR
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import explained_variance_score
 
 class Classifiers(object):
 
@@ -74,15 +75,15 @@ class Classifiers(object):
         rfr_res = (self.__rfr).predict(list(extfeatarr))
         return ({
                     'SVM' : { 'Prediction Results' : svm_res, 'Accuracy' : accuracy_score(list(supresults), svm_res)},
-                    'SVR': {'Prediction Results': svr_res, 'Accuracy': accuracy_score(list(supresults), svr_res)},
+                    'SVR': {'Prediction Results': svr_res, 'Accuracy': explained_variance_score(list(supresults), svr_res)},
                     'NuSVM': {'Prediction Results': nusvm_res, 'Accuracy': accuracy_score(list(supresults), nusvm_res)},
-                    'NuSVR': {'Prediction Results': nusvr_res, 'Accuracy': accuracy_score(list(supresults), nusvr_res)},
+                    'NuSVR': {'Prediction Results': nusvr_res, 'Accuracy': explained_variance_score(list(supresults), nusvr_res)},
                     'LinSVM': {'Prediction Results': linsvm_res, 'Accuracy': accuracy_score(list(supresults), linsvm_res)},
-                    'LinSVR': {'Prediction Results': linsvr_res, 'Accuracy': accuracy_score(list(supresults), linsvr_res)},
+                    'LinSVR': {'Prediction Results': linsvr_res, 'Accuracy': explained_variance_score(list(supresults), linsvr_res)},
                     'MLPC': {'Prediction Results': mlpc_res, 'Accuracy': accuracy_score(list(supresults), mlpc_res)},
-                    'MLPR': {'Prediction Results': mlpr_res, 'Accuracy': accuracy_score(list(supresults), mlpr_res)},
+                    'MLPR': {'Prediction Results': mlpr_res, 'Accuracy': explained_variance_score(list(supresults), mlpr_res)},
                     'DTC': {'Prediction Results': dtc_res, 'Accuracy': accuracy_score(list(supresults), dtc_res)},
-                    'DTR': {'Prediction Results': dtr_res, 'Accuracy': accuracy_score(list(supresults), dtr_res)},
+                    'DTR': {'Prediction Results': dtr_res, 'Accuracy': explained_variance_score(list(supresults), dtr_res)},
                     'RFC': {'Prediction Results': rfc_res, 'Accuracy': accuracy_score(list(supresults), rfc_res)},
-                    'RFR': {'Prediction Results': rfr_res, 'Accuracy': accuracy_score(list(supresults), rfr_res)}
+                    'RFR': {'Prediction Results': rfr_res, 'Accuracy': explained_variance_score(list(supresults), rfr_res)}
                 })
