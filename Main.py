@@ -361,7 +361,7 @@ def predictFromSavedTestCase():
     print(dset['result'])
     print("\n")
     print("Now predicting results : \n \n")
-    pred_res = clasfobj.predicto(dset['featureset'], dset['result'])
+    pred_res = clasfobj.predicto(dset['featureset'], __convertTargetType(dset['result']))
     return pred_res
 
 def __printPredResWithProperFormatting(predres, type='RFC'):
