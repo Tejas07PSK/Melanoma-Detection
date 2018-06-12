@@ -420,6 +420,7 @@ def main_menu():
     print("\t 2.Train classifiers and regressors on created training-dataset!! \n")
     print("\t 3.Create testing-dataset from supervised images in temp folder!! \n")
     print("\t 4.Predict results from \'testcase.npz\'!! \n")
+    print("\t 5.Print feature-descriptors of images strored in numpy files, training or testcase!! \n")
     print("\t Enter \'e\' to exit!! \n")
     while (True):
        c = str(input("Enter your choice - \n"))
