@@ -365,7 +365,7 @@ def __convertTargetTypeToStr(arr):
 
 def predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
-    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('testcase.npz'))['featnames']
     print(featnames)
     print(dset)
     print(dset['featureset'])
@@ -400,6 +400,9 @@ def __printPredResWithProperFormatting(predres, type='RFC'):
         print("Prediction Results RFC - \t " + str(__convertTargetTypeToStr((predres['RFC'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
     else:
         print("Prediction Results RFR - \t " + str(__convertTargetTypeToStr((predres['RFR'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
+
+def __printfeatsfromfile(file='testcase.npz'):
+    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('dataset.npz'))['featnames']
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
