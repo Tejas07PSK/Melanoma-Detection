@@ -408,7 +408,7 @@ def __printfeatsfromfile(fl='testcase.npz'):
         print("Printing features for stored image - %d \n" % i)
         for j in range(0, ((dset['featureset']).shape)[1], 1):
             print(" %s \t -:- \t %f \n" % (str(featnames[j]), (dset['featureset'])[i,j]))
-        print("Image is of type %s \n" % str((dset['result'])[i]))
+        print("Image is of type --- %s \n" % (str((dset['result'])[i])).upper())
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
 def main_menu():
