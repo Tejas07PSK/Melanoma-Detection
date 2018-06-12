@@ -468,7 +468,7 @@ def main_menu():
            print("This option prints the features of the images stored in the testcase.npz file, by default. \n")
            print("You can also print the values stored in the dataset.npz file, just pass this file-name as an argument in the function below. \n")
            print("Before you print the feature-contents, make sure that you have previously generated the dataset.npz and testcase.npz files. \n")
-           __printfeatsfromfile()
+           __printfeatsfromfile(str(input('Enter the filename : \n')))
            print("PRINTING COMPLETE!!! \n")
        else:
            print("Thanks For Using This Program!!!")
