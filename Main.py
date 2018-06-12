@@ -401,8 +401,15 @@ def __printPredResWithProperFormatting(predres, type='RFC'):
     else:
         print("Prediction Results RFR - \t " + str(__convertTargetTypeToStr((predres['RFR'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
 
-def __printfeatsfromfile(file='testcase.npz'):
-    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+def __printfeatsfromfile(fl='testcase.npz'):
+    dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
+    for i in range(0, ((dset['featureset']).shape)[0], 1):
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
+        print("Printing features for stored image - %d \n", i)
+        for j in range(0, ((dset['featureset']).shape)[1], 1):
+            print(" %s -:- %f \n" % (str(featnames[j]), (dset['featureset'])[i,j]))
+        print("Image is of type %s \n" % str((dset['result'])[i]))
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
