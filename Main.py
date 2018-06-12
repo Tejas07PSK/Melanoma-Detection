@@ -405,9 +405,9 @@ def __printfeatsfromfile(fl='testcase.npz'):
     dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
     for i in range(0, ((dset['featureset']).shape)[0], 1):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
-        print("Printing features for stored image - %d \n", i)
+        print("Printing features for stored image - %d \n" % i)
         for j in range(0, ((dset['featureset']).shape)[1], 1):
-            print(" %s -:- %f \n" % (str(featnames[j]), (dset['featureset'])[i,j]))
+            print(" %s \t -:- \t %f \n" % (str(featnames[j]), (dset['featureset'])[i,j]))
         print("Image is of type %s \n" % str((dset['result'])[i]))
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
