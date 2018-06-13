@@ -13,4 +13,17 @@ from sklearn.ensemble import RandomForestClassifier as RFC
 (__no_of_clas, __clas_types, __col_map, __plt_interval, __plt_interval_pp, __rnd_seed) = (3, ('benign', 'malignant', 'negative'), plt.cm.RdYlGn, 0.05, 0.5, 13)
 cloned_classifiers = [clone(joblib.load('mlmodels/Mel_SVM.pkl')), clone(joblib.load('mlmodels/Mel_NuSVM.pkl')), clone(joblib.load('mlmodels/Mel_LinSVM.pkl')), clone(joblib.load('mlmodels/Mel_MLPC.pkl')), clone(joblib.load('mlmodels/Mel_DTC.pkl')), clone(joblib.load('mlmodels/Mel_RFC.pkl'))]
 
-def plotForAll(X, Y):
+def plotForAll(X, Y, ftup):
+    for idx_pair in ftup:
+        for mdl in cloned_classifiers:
+            x = X[:, idx_pair]
+            index = np.arange(X.shape[0])
+            np.random.seed(__rnd_seed)
+            np.random.shuffle(index)
+            x = x[index]
+            y = Y[index]
+            x = (x - x.mean(axis=0)) / x.std(axis=0)
+            clf = clone(mdl)
+            clf = mdl.fit(X, y)
+
+            scores = clf.score(X, y)
