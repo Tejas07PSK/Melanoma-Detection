@@ -359,8 +359,10 @@ def __convertTargetTypeToStr(arr):
             cvt_arr[i] = 'malignant'
         elif (arr[i] == -1):
             cvt_arr[i] = 'negative'
-        else:
+        elif (arr[i] == 0):
             cvt_arr[i] = 'benign'
+        else:
+            continue
     return cvt_arr
 
 def predictFromSavedTestCase():

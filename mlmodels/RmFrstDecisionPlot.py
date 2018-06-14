@@ -23,7 +23,5 @@ def plotForAll(X, Y, ftup):
             x = x[index]
             y = Y[index]
             x = (x - x.mean(axis=0)) / x.std(axis=0)
-            clf = clone(mdl)
-            clf = mdl.fit(X, y)
-
-            scores = clf.score(X, y)
+            clf = mdl.fit(x, y)
+            scr = clf.score(X, y)
