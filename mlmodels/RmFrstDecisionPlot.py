@@ -17,6 +17,7 @@ cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels
 def plotForAll(X, Y, ftup, feats):
     titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
     index = np.arange(0, X.shape[0], 1)
+    plot_index = 1
     for idx_pair, feat in zip(ftup, feats):
             x = X[:, idx_pair]
             np.random.seed(__rnd_seed)
@@ -24,12 +25,12 @@ def plotForAll(X, Y, ftup, feats):
             x = x[index]
             y = Y[index]
             x = (x - x.mean(axis=0)) / x.std(axis=0)
-            fig, sub_cor = plt.subplots(len(ftup), len(cloned_classifiers))
-            sub_cor = (sub_cor).reshape((len(ftup), len(cloned_classifiers)), order='C')
+            #fig, sub_cor = plt.subplots(len(ftup), len(cloned_classifiers))
+            #sub_cor = (sub_cor).reshape((len(ftup), len(cloned_classifiers)), order='C')
             plt.subplots_adjust(wspace=2.4, hspace=2.4)
             print(x)
-            for i in range(0, (sub_cor.shape)[0], 1):
-                for mdl, title, j in zip(cloned_classifiers, titles, range(0, (sub_cor.shape)[1], 1)):
+            for mdl, title in zip(cloned_classifiers, titles):
+                    obj = plt.subplot(len(ftup), len(cloned_classifiers), plot_index)
                     clf = (clone(mdl)).fit(x, y)
                     scr = clf.score(x, y)
                     print(scr)
@@ -39,23 +40,24 @@ def plotForAll(X, Y, ftup, feats):
                     if isinstance(clf, RandomForestClassifier):
                         alpha_blend = 1.0 / len(clf.estimators_)
                         for tree in clf.estimators_:
-                            (sub_cor[i, j]).contourf(xx, yy, (tree.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), alpha=alpha_blend, cmap=__col_map)
+                            (obj).contourf(xx, yy, (tree.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), alpha=alpha_blend, cmap=__col_map)
                     else:
-                        (sub_cor[i, j]).contourf(xx, yy, (clf.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
+                        (obj).contourf(xx, yy, (clf.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
                     xx_coarser, yy_coarser = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 50.0)), np.arange(y_min, y_max, ((y_max - y_min) / 50.0)))
-                    (sub_cor[i, j]).scatter(xx_coarser, yy_coarser, s=15, c=clf.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
-                    (sub_cor[i, j]).scatter(x[:, 0], x[:, 1], c=y, cmap=__col_map, edgecolor='k', s=20)
+                    (obj).scatter(xx_coarser, yy_coarser, s=15, c=clf.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
+                    (obj).scatter(x[:, 0], x[:, 1], c=y, marker='p', cmap=__col_map, edgecolor='k', s=20)
                     print((xx.min(), xx.max()))
                     print((yy.min(), yy.max()))
                     print(xx.max() - xx.min())
                     print(yy.max() - yy.min())
-                    (sub_cor[i, j]).set_xlim(xx.min(), xx.max())
-                    (sub_cor[i, j]).set_ylim(yy.min(), yy.max())
-                    (sub_cor[i, j]).set_xlabel(feat[0])
-                    (sub_cor[i, j]).set_ylabel(feat[1])
-                    (sub_cor[i, j]).set_xticks(())
-                    (sub_cor[i, j]).set_yticks(())
-                    (sub_cor[i, j]).set_title(title)
+                    (obj).set_xlim(xx.min(), xx.max())
+                    (obj).set_ylim(yy.min(), yy.max())
+                    (obj).set_xlabel(feat[0])
+                    (obj).set_ylabel(feat[1])
+                    (obj).set_xticks(())
+                    (obj).set_yticks(())
+                    if (plot_index <= len(cloned_classifiers)):
+                        (obj).set_title(title)
+                    plot_index += 1
     plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
-    plt.axis("tight")
     plt.show()
