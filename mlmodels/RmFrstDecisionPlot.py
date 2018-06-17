@@ -50,7 +50,7 @@ def plotForAll(X, Y, ftup, feats):
                     print(xx.max() - xx.min())
                     print(yy.max() - yy.min())
                     (sub_cor[i, j]).set_xlim(xx.min(), xx.max())
-                    (sub_cor[i, j]).set_ylim(yy.min(), yy.max())
+                    (sub_cor[i, j]).set_ylim(xx.min(), xx.max())
                     (sub_cor[i, j]).set_xlabel(feat[0])
                     (sub_cor[i, j]).set_ylabel(feat[1])
                     (sub_cor[i, j]).set_xticks(())
