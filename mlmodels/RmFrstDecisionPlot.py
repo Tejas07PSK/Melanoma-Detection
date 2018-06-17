@@ -27,6 +27,7 @@ def plotForAll(X, Y, ftup, feats):
             fig, sub_cor = plt.subplots(len(ftup), len(cloned_classifiers))
             sub_cor = (sub_cor).reshape((len(ftup), len(cloned_classifiers)), order='C')
             plt.subplots_adjust(wspace=0.4, hspace=0.4)
+            print(x)
             for i in range(0, (sub_cor.shape)[0], 1):
                 for mdl, title, j in zip(cloned_classifiers, titles, range(0, (sub_cor.shape)[1], 1)):
                     clf = (clone(mdl)).fit(x, y)
@@ -34,7 +35,10 @@ def plotForAll(X, Y, ftup, feats):
                     print(scr)
                     x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
                     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 100.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
+                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 17.0)), np.arange(y_min, y_max, ((y_max - y_min) / 17.0)))
+                    print(xx)
+                    print(" -------------------------------------------")
+                    print(yy)
                     if isinstance(mdl, RandomForestClassifier):
                         alpha_blend = 1.0 / len(mdl.estimators_)
                         for tree in mdl.estimators_:
