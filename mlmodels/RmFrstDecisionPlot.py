@@ -36,17 +36,14 @@ def plotForAll(X, Y, ftup, feats):
                     x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
                     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
                     xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 100.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
-                    print(xx.shape)
-                    print(" -------------------------------------------")
-                    print((np.c_[xx.ravel(), yy.ravel()]).shape)
-                    if isinstance(mdl, RandomForestClassifier):
-                        alpha_blend = 1.0 / len(mdl.estimators_)
-                        for tree in mdl.estimators_:
+                    if isinstance(clf, RandomForestClassifier):
+                        alpha_blend = 1.0 / len(clf.estimators_)
+                        for tree in clf.estimators_:
                             (sub_cor[i, j]).contourf(xx, yy, (tree.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), alpha=alpha_blend, cmap=__col_map)
                     else:
-                        (sub_cor[i, j]).contourf(xx, yy, (mdl.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
+                        (sub_cor[i, j]).contourf(xx, yy, (clf.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
                     xx_coarser, yy_coarser = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 50.0)), np.arange(y_min, y_max, ((y_max - y_min) / 50.0)))
-                    (sub_cor[i, j]).scatter(xx_coarser, yy_coarser, s=15, c=mdl.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
+                    (sub_cor[i, j]).scatter(xx_coarser, yy_coarser, s=15, c=clf.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
                     (sub_cor[i, j]).scatter(x[:, 0], x[:, 1], c=y, cmap=__col_map, edgecolor='k', s=20)
                     (sub_cor[i, j]).set_xlim(xx.min(), xx.max())
                     (sub_cor[i, j]).set_ylim(yy.min(), yy.max())
