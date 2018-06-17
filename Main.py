@@ -489,7 +489,7 @@ def main_menu():
                    continue
                else:
                    break
-           RFDP.plotForAll(dset['featureset'], dset['result'], flist, fnlist)
+           RFDP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        else:
            print("Thanks For Using This Program!!!")
