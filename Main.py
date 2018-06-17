@@ -474,7 +474,7 @@ def main_menu():
        elif (c == '6'):
            print("\t Before you proceed, make sure that you have previously generated the \'dataset.npz\' and is existing in the root directory of the project!!! \n")
            dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
-           print("Given below are the set of features, along with their corresponding indexes. \n")
+           print("\t Given below are the set of features, along with their corresponding indexes. \n")
            for count in range(0, featnames.size, 1):
                print(str(count)+". "+str(featnames[count])+" \n")
            print("You have to select a combination of any two features!! \n")
