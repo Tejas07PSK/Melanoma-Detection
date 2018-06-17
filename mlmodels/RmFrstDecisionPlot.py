@@ -35,10 +35,10 @@ def plotForAll(X, Y, ftup, feats):
                     print(scr)
                     x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
                     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 17.0)), np.arange(y_min, y_max, ((y_max - y_min) / 17.0)))
-                    print(xx.ravel())
+                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 100.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
+                    print(xx.shape)
                     print(" -------------------------------------------")
-                    print(yy.ravel())
+                    print((np.c_[xx.ravel(), yy.ravel()]).shape)
                     if isinstance(mdl, RandomForestClassifier):
                         alpha_blend = 1.0 / len(mdl.estimators_)
                         for tree in mdl.estimators_:
