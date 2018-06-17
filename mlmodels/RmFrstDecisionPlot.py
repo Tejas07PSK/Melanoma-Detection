@@ -12,10 +12,10 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.ensemble import RandomForestClassifier as RFC
 
 (__no_of_clas, __clas_types, __col_map, __plt_interval, __plt_interval_pp, __rnd_seed) = (3, ('benign', 'malignant', 'negative'), plt.cm.RdYlGn, 0.05, 0.5, 13)
-cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
+cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl')]#, joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
 
 def plotForAll(X, Y, ftup, feats):
-    titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
+    titles = ('SVM', 'NuSVM')#, 'LinSVM', 'MLPC', 'DTC', 'RFC')
     index = np.arange(0, X.shape[0], 1)
     for idx_pair, feat in zip(ftup, feats):
             x = X[:, idx_pair]
