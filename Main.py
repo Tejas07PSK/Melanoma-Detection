@@ -8,7 +8,7 @@ from featext.texture import Tamura as tam
 from featext.texture import King as k
 from featext.physical import Gabor as g
 from mlmodels import Classifiers as CLF
-from mlmodels import RmFrstDecisionPlot as RFDP
+from mlmodels import DecisionSurfacePlotter as DSP
 
 imgcount = 0
 
@@ -489,7 +489,7 @@ def main_menu():
                    continue
                else:
                    break
-           RFDP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
+           DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        else:
            print("Thanks For Using This Program!!!")
