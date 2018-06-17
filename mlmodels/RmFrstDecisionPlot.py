@@ -17,7 +17,7 @@ cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels
 def plotForAll(X, Y, ftup, feats):
     titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
     index = np.arange(0, X.shape[0], 1)
-    for idx_pair in ftup:
+    for idx_pair, feat in zip(ftup, feats):
             x = X[:, idx_pair]
             np.random.seed(__rnd_seed)
             np.random.shuffle(index)
@@ -45,8 +45,8 @@ def plotForAll(X, Y, ftup, feats):
                     ((cor_tup[1])[i, j]).scatter(x[:, 0], x[:, 1], c=y, cmap=__col_map, edgecolor='k', s=20)
                     ((cor_tup[1])[i, j]).set_xlim(xx.min(), xx.max())
                     ((cor_tup[1])[i, j]).set_ylim(yy.min(), yy.max())
-                    ((cor_tup[1])[i, j]).set_xlabel(feats[0])
-                    ((cor_tup[1])[i, j]).set_ylabel(feats[1])
+                    ((cor_tup[1])[i, j]).set_xlabel(feat[0])
+                    ((cor_tup[1])[i, j]).set_ylabel(feat[1])
                     ((cor_tup[1])[i, j]).set_xticks(())
                     ((cor_tup[1])[i, j]).set_yticks(())
                     ((cor_tup[1])[i, j]).set_title(title)
