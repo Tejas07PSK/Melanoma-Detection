@@ -24,7 +24,7 @@ def plotForAll(X, Y, ftup, feats):
             x = x[index]
             y = Y[index]
             x = (x - x.mean(axis=0)) / x.std(axis=0)
-            cor_tup = plt.subplots(ftup.size, len(cloned_classifiers))
+            cor_tup = plt.subplots(len(ftup), len(cloned_classifiers))
             plt.subplots_adjust(wspace=0.4, hspace=0.4)
             for i in range(0, ((cor_tup[1]).shape)[0], 1):
                 for mdl, title, j in zip(cloned_classifiers, titles, range(0, ((cor_tup[1]).shape)[1], 1)):
