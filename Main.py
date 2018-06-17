@@ -421,6 +421,7 @@ def main_menu():
     print("\t 3.Create testing-dataset from supervised images in temp folder!! \n")
     print("\t 4.Predict results from \'testcase.npz\'!! \n")
     print("\t 5.Print feature-descriptors of images strored in numpy files, training or testcase!! \n")
+    print("\t 6.Plot Classifier graphs!! \n")
     print("\t Enter \'e\' to exit!! \n")
     while (True):
        c = str(input("Enter your choice - \n"))
@@ -470,6 +471,24 @@ def main_menu():
            print("Before you print the feature-contents, make sure that you have previously generated the dataset.npz and testcase.npz files. \n")
            __printfeatsfromfile(str(input('Enter the filename : \n')))
            print("PRINTING COMPLETE!!! \n")
+       elif (c == '6'):
+           print("\t Before you proceed, make sure that you have previously generated the \'dataset.npz\' and is existing in the root directory of the project!!! \n")
+           dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+           print("Given below are the set of features, along with their corresponding indexes. \n")
+           for count in range(0, featnames.size, 1):
+               print(str(count)+". "+str(featnames[count])+" \n")
+           print("You have to select a combination of any two features!! \n")
+           print("You can also enter multiple combinations, in such case they will be appended to a list!! \n")
+           flist = []
+           fnlist = []
+           while(True):
+               feat_corrs = [int(input('Enter index of first feature ... \n')), int(input('Enter index of second feature ... \n'))]
+               flist.append(feat_corrs)
+               fnlist.append([featnames[feat_corrs[0]], featnames[feat_corrs[1]]])
+               if (str(input('Do you want to add more feature combinations?? - (y/n) \n')) == 'y'):
+                   continue
+               else:
+                   break
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
