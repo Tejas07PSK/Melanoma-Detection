@@ -26,7 +26,7 @@ def plotForAll(X, Y, ftup, feats):
             x = (x - x.mean(axis=0)) / x.std(axis=0)
             fig, sub_cor = plt.subplots(len(ftup), len(cloned_classifiers))
             sub_cor = (sub_cor).reshape((len(ftup), len(cloned_classifiers)), order='C')
-            plt.subplots_adjust(wspace=0.4, hspace=0.4)
+            #plt.subplots_adjust(wspace=0.4, hspace=0.4)
             print(x)
             for i in range(0, (sub_cor.shape)[0], 1):
                 for mdl, title, j in zip(cloned_classifiers, titles, range(0, (sub_cor.shape)[1], 1)):
@@ -35,14 +35,14 @@ def plotForAll(X, Y, ftup, feats):
                     print(scr)
                     x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
                     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 100.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
+                    xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 50.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
                     if isinstance(clf, RandomForestClassifier):
                         alpha_blend = 1.0 / len(clf.estimators_)
                         for tree in clf.estimators_:
                             (sub_cor[i, j]).contourf(xx, yy, (tree.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), alpha=alpha_blend, cmap=__col_map)
                     else:
                         (sub_cor[i, j]).contourf(xx, yy, (clf.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
-                    xx_coarser, yy_coarser = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 50.0)), np.arange(y_min, y_max, ((y_max - y_min) / 50.0)))
+                    xx_coarser, yy_coarser = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 20.0)), np.arange(y_min, y_max, ((y_max - y_min) / 20.0)))
                     (sub_cor[i, j]).scatter(xx_coarser, yy_coarser, s=15, c=clf.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
                     (sub_cor[i, j]).scatter(x[:, 0], x[:, 1], c=y, cmap=__col_map, edgecolor='k', s=20)
                     (sub_cor[i, j]).set_xlim(xx.min(), xx.max())
@@ -53,4 +53,5 @@ def plotForAll(X, Y, ftup, feats):
                     (sub_cor[i, j]).set_yticks(())
                     (sub_cor[i, j]).set_title(title)
     plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
+    plt.axis("tight")
     plt.show()
