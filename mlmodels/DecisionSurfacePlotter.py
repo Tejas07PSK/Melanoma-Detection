@@ -57,4 +57,5 @@ def plotForAll(X, Y, ftup, feats):
                         if (plot_index <= len(classifiers)):
                             (obj).set_title(title)
                         plot_index += 1
+                print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: \n \n")
     plt.show()
