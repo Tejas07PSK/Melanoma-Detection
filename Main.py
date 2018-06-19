@@ -379,29 +379,29 @@ def predictFromSavedTestCase():
 
 def __printPredResWithProperFormatting(predres, type='RFC'):
     if (type == 'SVM'):
-        print("Prediction Results SVM - \t " + str(__convertTargetTypeToStr((predres['SVM'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
+        print(" FOR SVM - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['SVM'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['SVM'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
     elif (type == 'SVR'):
-        print("Prediction Results SVR - \t " + str((predres['SVR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['SVR'])['Accuracy'] * 100) + "\n")
+        print(" FOR SVR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['SVR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['SVR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['SVR'])['Accuracy'] * 100) + "\n")
     elif (type == 'NuSVM'):
-        print("Prediction Results NuSVM - \t " + str(__convertTargetTypeToStr((predres['NuSVM'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['NuSVM'])['Accuracy'] * 100) + "\n")
+        print(" FOR NuSVM - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['NuSVM'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['NuSVM'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['NuSVM'])['Accuracy'] * 100) + "\n")
     elif (type == 'NuSVR'):
-        print("Prediction Results NuSVR - \t " + str((predres['NuSVR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['NuSVR'])['Accuracy'] * 100) + "\n")
+        print(" FOR NuSVR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['NuSVR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['NuSVR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['NuSVR'])['Accuracy'] * 100) + "\n")
     elif (type == 'LinSVM'):
-        print("Prediction Results LinSVM - \t " + str(__convertTargetTypeToStr((predres['LinSVM'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
+        print(" FOR LinSVM - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['LinSVM'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['LinSVM'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['LinSVM'])['Accuracy'] * 100) + "\n")
     elif (type == 'LinSVR'):
-        print("Prediction Results LinSVR - \t " + str((predres['LinSVR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['LinSVR'])['Accuracy'] * 100) + "\n")
+        print(" FOR LinSVR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['LinSVR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['LinSVR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['LinSVR'])['Accuracy'] * 100) + "\n")
     elif (type == 'MLPC'):
-        print("Prediction Results MLPC - \t " + str(__convertTargetTypeToStr((predres['MLPC'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
+        print(" FOR MLPC - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['MLPC'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['MLPC'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['MLPC'])['Accuracy'] * 100) + "\n")
     elif (type == 'MLPR'):
-        print("Prediction Results MLPR - \t " + str((predres['MLPR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['MLPR'])['Accuracy'] * 100) + "\n")
+        print(" FOR MLPR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['MLPR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['MLPR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['MLPR'])['Accuracy'] * 100) + "\n")
     elif (type == 'DTC'):
-        print("Prediction Results DTC - \t " + str(__convertTargetTypeToStr((predres['DTC'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
+        print(" FOR DTC - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['DTC'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['DTC'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['DTC'])['Accuracy'] * 100) + "\n")
     elif (type == 'DTR'):
-        print("Prediction Results DTR - \t " + str((predres['DTR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['DTR'])['Accuracy'] * 100) + "\n")
+        print(" FOR DTR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['DTR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['DTR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['DTR'])['Accuracy'] * 100) + "\n")
     elif (type == 'RFC'):
-        print("Prediction Results RFC - \t " + str(__convertTargetTypeToStr((predres['RFC'])['Prediction Results'])) + " \t and Prediction Accuracy - " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
+        print(" FOR RFC - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['RFC'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['RFC'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['RFC'])['Accuracy'] * 100) + "\n")
     else:
-        print("Prediction Results RFR - \t " + str((predres['RFR'])['Prediction Results']) + " \t and Prediction Accuracy - " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
+        print(" FOR RFR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['RFR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['RFR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
 
 def __printfeatsfromfile(fl='testcase.npz'):
     dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
