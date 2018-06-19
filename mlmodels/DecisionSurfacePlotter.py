@@ -31,12 +31,11 @@ def plotForAll(X, Y, ftup, feats):
                 y = Y[index]
                 x = (x - x.mean(axis=0)) / x.std(axis=0)
                 plt.subplots_adjust(wspace=1.0, hspace=1.0)
-                print(x)
                 for mdl, title in zip(classifiers, titles):
                         obj = plt.subplot(len(ftup), len(classifiers), plot_index)
                         clf = (clone(mdl)).fit(x, y)
                         scr = clf.score(x, y)
-                        print("Feasibility Score For " + title + " Model - " + str(scr))
+                        print("Feasibility Score For " + title + " Model - " + str(scr * 100))
                         x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
                         y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
                         xx, yy = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 100.0)), np.arange(y_min, y_max, ((y_max - y_min) / 100.0)))
