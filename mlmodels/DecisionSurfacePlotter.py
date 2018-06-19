@@ -13,12 +13,14 @@ from sklearn.ensemble import RandomForestClassifier as RFC
 
 (__no_of_clas, __clas_types, __col_map, __rnd_seed) = (3, ('benign', 'malignant', 'negative'), plt.cm.RdYlGn, 13)
 classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
-
+regressors = [joblib.load('mlmodels/Mel_SVR.pkl'), joblib.load('mlmodels/Mel_NuSVR.pkl'), joblib.load('mlmodels/Mel_LinSVR.pkl'), joblib.load('melmodels/Mel_MLPR.pkl'), joblib.load('mlmodels/Mel_DTR.pkl'), joblib.load('mlmodels/Mel_RFR.pkl')]
 
 def plotForAll(X, Y, ftup, feats):
-    titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
-    plt.figure('Classifier', edgecolor='b')
-    plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
+    for nplot in range(0, 2, 1):
+        if (nplot == 0):
+            titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
+            plt.figure('Classifier', edgecolor='b')
+            plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
     index = np.arange(0, X.shape[0], 1)
     plot_index = 1
     for idx_pair, feat in zip(ftup, feats):
