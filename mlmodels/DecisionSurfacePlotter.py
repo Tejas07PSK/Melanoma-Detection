@@ -16,7 +16,7 @@ cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels
 
 def plotForAll(X, Y, ftup, feats):
     titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
-    plt.figure('Classifier', edgecolor='r')
+    plt.figure('Classifier', edgecolor='b')
     plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
     index = np.arange(0, X.shape[0], 1)
     plot_index = 1
