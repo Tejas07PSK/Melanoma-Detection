@@ -12,7 +12,8 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.ensemble import RandomForestClassifier as RFC
 
 (__no_of_clas, __clas_types, __col_map, __rnd_seed) = (3, ('benign', 'malignant', 'negative'), plt.cm.RdYlGn, 13)
-cloned_classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
+classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
+
 
 def plotForAll(X, Y, ftup, feats):
     titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
@@ -29,8 +30,8 @@ def plotForAll(X, Y, ftup, feats):
             x = (x - x.mean(axis=0)) / x.std(axis=0)
             plt.subplots_adjust(wspace=1.0, hspace=1.0)
             print(x)
-            for mdl, title in zip(cloned_classifiers, titles):
-                    obj = plt.subplot(len(ftup), len(cloned_classifiers), plot_index)
+            for mdl, title in zip(classifiers, titles):
+                    obj = plt.subplot(len(ftup), len(classifiers), plot_index)
                     clf = (clone(mdl)).fit(x, y)
                     scr = clf.score(x, y)
                     print(scr)
@@ -56,7 +57,7 @@ def plotForAll(X, Y, ftup, feats):
                     (obj).set_ylabel(feat[1])
                     (obj).set_xticks(())
                     (obj).set_yticks(())
-                    if (plot_index <= len(cloned_classifiers)):
+                    if (plot_index <= len(classifiers)):
                         (obj).set_title(title)
                     plot_index += 1
     plt.show()
