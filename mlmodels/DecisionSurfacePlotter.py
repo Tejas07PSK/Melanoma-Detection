@@ -26,8 +26,6 @@ def plotForAll(X, Y, ftup, feats):
             x = x[index]
             y = Y[index]
             x = (x - x.mean(axis=0)) / x.std(axis=0)
-            #fig, sub_cor = plt.subplots(len(ftup), len(cloned_classifiers))
-            #sub_cor = (sub_cor).reshape((len(ftup), len(cloned_classifiers)), order='C')
             plt.subplots_adjust(wspace=1.0, hspace=1.0)
             print(x)
             for mdl, title in zip(cloned_classifiers, titles):
@@ -60,5 +58,4 @@ def plotForAll(X, Y, ftup, feats):
                     if (plot_index <= len(cloned_classifiers)):
                         (obj).set_title(title)
                     plot_index += 1
-    #plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
     plt.show()
