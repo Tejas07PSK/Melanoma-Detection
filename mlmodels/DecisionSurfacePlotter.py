@@ -18,6 +18,7 @@ def plotForAll(X, Y, ftup, feats):
     titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
     #plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
     plt.figure('Classifier')
+    plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
     index = np.arange(0, X.shape[0], 1)
     plot_index = 1
     for idx_pair, feat in zip(ftup, feats):
