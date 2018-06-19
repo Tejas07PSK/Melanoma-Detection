@@ -25,7 +25,7 @@ def plotForAll(X, Y, ftup, feats):
             plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
         else:
             titles = ('SVR', 'NuSVR', 'LinSVR', 'MLPR', 'DTR', 'RFR')
-            plt.figure("Decision Surface For Regressors", edgecolors='b')
+            plt.figure("Decision Surface For Regressors", edgecolor='b')
             plt.suptitle("Plot of Regressors on feature subsets of the Melanoma-Dataset")
         index = np.arange(0, X.shape[0], 1)
         plot_index = 1
