@@ -498,7 +498,7 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
-           nfls = [len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')]
+           nfls = [__listFilesInDir("images/" + str(cls)) for cls in ('benign', 'malignant', 'negative')]
            print(nfls)
            """trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
