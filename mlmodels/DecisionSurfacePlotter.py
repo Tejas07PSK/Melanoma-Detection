@@ -31,6 +31,7 @@ def plotForAll(X, Y, ftup, feats):
                 y = Y[index]
                 x = (x - x.mean(axis=0)) / x.std(axis=0)
                 plt.subplots_adjust(wspace=1.0, hspace=1.0)
+                print(" " + feat[0] + " Vs. " + feat[1] + " :- \n")
                 for mdl, title in zip(classifiers, titles):
                         obj = plt.subplot(len(ftup), len(classifiers), plot_index)
                         clf = (clone(mdl)).fit(x, y)
