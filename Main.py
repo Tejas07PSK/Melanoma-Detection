@@ -424,6 +424,7 @@ def main_menu():
     print("\t 4.Predict results from \'testcase.npz\'!! \n")
     print("\t 5.Print feature-descriptors of images strored in numpy files, training or testcase!! \n")
     print("\t 6.Plot Classifier graphs!! \n")
+    print("\t 7.Add the featuresets in \'testcase.npz\' to \'dataset.npz\' to make mlmodels more accurate!! \n")
     print("\t Enter \'e\' to exit!! \n")
     while (True):
        c = str(input("Enter your choice - \n"))
