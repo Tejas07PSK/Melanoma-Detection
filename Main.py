@@ -499,12 +499,11 @@ def main_menu():
            print("DONE!!! \n")
        elif (c == '7'):
            nfls = [len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')]
+           print(nfls)
            """trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
                    __listFilesInDir("images/" + feat[1])"""
-
-
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
