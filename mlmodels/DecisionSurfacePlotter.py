@@ -14,10 +14,12 @@ def plotForAll(X, Y, ftup, feats):
     models = ()
     for nplot in range(0, 2, 1):
         if (nplot == 0):
+            print("_-__-_ IN CASE OF CLASSIFERS _-__-_ \n")
             titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
             plt.figure("Decision Surface For Classifiers", edgecolor='b')
             plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
         else:
+            print("_-__-_ IN CASE OF REGRESSORS _-__-_ \n")
             titles = ('SVR', 'NuSVR', 'LinSVR', 'MLPR', 'DTR', 'RFR')
             plt.figure("Decision Surface For Regressors", edgecolor='b')
             plt.suptitle("Plot of Regressors on feature subsets of the Melanoma-Dataset")
