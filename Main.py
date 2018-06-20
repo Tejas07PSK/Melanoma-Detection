@@ -413,6 +413,9 @@ def __printfeatsfromfile(fl='testcase.npz'):
         print("Image is of type --- %s \n" % (str((dset['result'])[i])).upper())
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
+def __listFilesInDir(loc):
+     return (flnm for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm)))
+
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
     print("\t This is a nascent approch towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY and SciKit in Python Programming Language. \n")
@@ -494,6 +497,14 @@ def main_menu():
                    break
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
+       elif (c == '7'):
+           nfls = [len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')]
+           """trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
+           for feat, index in zip(testset, range(0, testset.size, 1)):
+               if (feat[1] == 'benign'):
+                   __listFilesInDir("images/" + feat[1])"""
+
+
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
