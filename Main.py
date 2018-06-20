@@ -414,7 +414,9 @@ def __printfeatsfromfile(fl='testcase.npz'):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
 def __listFilesInDir(loc):
-     return (flnm for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm)))
+     lst = [str(flnm) for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm))]
+     print(lst)
+     return lst
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
