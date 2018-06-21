@@ -521,6 +521,10 @@ def main_menu():
            print("Now Exiting.")
            break
 
+def __sub_main(ptr):
+    for name in __listFilesInDir("results/testset/" + str(ptr)):
+        print(name)
+        
 main_menu()
 
 
