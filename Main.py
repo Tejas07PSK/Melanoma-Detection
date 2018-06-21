@@ -414,9 +414,7 @@ def __printfeatsfromfile(fl='testcase.npz'):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
 
 def __listFilesInDir(loc):
-     lst = [str(flnm) for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm))]
-     print(lst)
-     return lst
+     return list([str(flnm) for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm))])
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
@@ -500,8 +498,8 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
-           nfls = [__listFilesInDir("images/" + str(cls)) for cls in ('benign', 'malignant', 'negative')]
-           print(nfls)
+           nfls = list([__listFilesInDir("images/" + str(cls)) for cls in ('benign', 'malignant', 'negative')])
+           print(len(nfls))
            """trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
