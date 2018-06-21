@@ -504,15 +504,15 @@ def main_menu():
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
                    #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
-                   __sub_main(index)
+                   __sub_main(index, feat[1], nfls[0])
                    nfls[0] = nfls[0] + 1
                elif (feat[1] == 'malignant'):
                    #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
-                   __sub_main(index)
+                   __sub_main(index, feat[1], nfls[1])
                    nfls[1] = nfls[1] + 1
                elif (feat[1] == 'negative'):
                    #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
-                   __sub_main(index)
+                   __sub_main(index, feat[1], nfls[2])
                    nfls[2] = nfls[2] + 1
                else:
                    pass
@@ -521,9 +521,9 @@ def main_menu():
            print("Now Exiting.")
            break
 
-def __sub_main(ptr):
+def __sub_main(ptr, typ, flnumber):
     for name in __listFilesInDir("results/testset/" + str(ptr)):
-        print(name)
+        copyfile(src="results/testset/"+str(ptr)+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+name)
 
 main_menu()
 
