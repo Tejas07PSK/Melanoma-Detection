@@ -504,12 +504,15 @@ def main_menu():
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
+                   print(__listFilesInDir("results/testset/"+str(index)))
                    nfls[0] = nfls[0] + 1
                elif (feat[1] == 'malignant'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
+                   print(__listFilesInDir("results/testset/" + str(index)))
                    nfls[1] = nfls[1] + 1
                elif (feat[1] == 'negative'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
+                   print(__listFilesInDir("results/testset/" + str(index)))
                    nfls[2] = nfls[2] + 1
        else:
            print("Thanks For Using This Program!!!")
