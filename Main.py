@@ -499,6 +499,10 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
+           print("This option creates a modified \'dataset.npz\' file. \n")
+           print("This file includes the feature-sets and the supervised classification results of the test images. \n")
+           print("All the employed ml-models are automatically re-trained iteratively, on the new modified  training dataset at the end of this step. \n")
+           print("Please bear in mind, that re-training the models on the same test-set again, will result in errors. \n")
            featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
            nfls = list([len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')])
            trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
