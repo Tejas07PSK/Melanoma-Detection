@@ -504,23 +504,24 @@ def main_menu():
            trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
-                   #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
-                   #__sub_main(index, feat[1], nfls[0])
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
+                   __sub_main(index, feat[1], nfls[0])
                    trainset = np.insert(trainset, (nfls[1]+nfls[0]), feat, 0)
                    nfls[0] = nfls[0] + 1
                elif (feat[1] == 'malignant'):
-                   #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
-                   #__sub_main(index, feat[1], nfls[1])
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
+                   __sub_main(index, feat[1], nfls[1])
                    trainset = np.insert(trainset, nfls[1], feat, 0)
                    nfls[1] = nfls[1] + 1
                elif (feat[1] == 'negative'):
-                   #copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
-                   #__sub_main(index, feat[1], nfls[2])
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
+                   __sub_main(index, feat[1], nfls[2])
                    trainset = np.insert(trainset, (nfls[1]+nfls[0]+nfls[2]), feat, 0)
                    nfls[2] = nfls[2] + 1
                else:
                    pass
-           np.savez('try', dset=trainset, featnames=featnames)
+           np.savez('dataset.npz', dset=trainset, featnames=featnames)
+           __createAndTrainMlModels()
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
