@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pathlib
 import os
+from shutil import copyfile
 from preprocessing import Prep as p
 from featext.texture import Haralick as har
 from featext.texture import Tamura as tam
@@ -499,11 +500,12 @@ def main_menu():
            print("DONE!!! \n")
        elif (c == '7'):
            nfls = list([__listFilesInDir("images/" + str(cls)) for cls in ('benign', 'malignant', 'negative')])
-           print(len(nfls))
-           """trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
+           trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
-                   __listFilesInDir("images/" + feat[1])"""
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(len(nfls[0]))+".jpg")
+                   
+
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
