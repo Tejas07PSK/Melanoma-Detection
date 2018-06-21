@@ -523,7 +523,7 @@ def main_menu():
 
 def __sub_main(ptr, typ, flnumber):
     for name in __listFilesInDir("results/testset/" + str(ptr)):
-        copyfile(src="results/testset/"+str(ptr)+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+name)
+        copyfile(src="results/testset/"+str(ptr)+"/"+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+name)
 
 main_menu()
 
