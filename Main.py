@@ -499,13 +499,18 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
-           nfls = list([__listFilesInDir("images/" + str(cls)) for cls in ('benign', 'malignant', 'negative')])
+           nfls = list([len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')])
            trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
-                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(len(nfls[0]))+".jpg")
-                   
-
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
+                   nfls[0] = nfls[0] + 1
+               elif (feat[1] == 'malignant'):
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
+                   nfls[1] = nfls[1] + 1
+               elif (feat[1] == 'negative'):
+                   copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
+                   nfls[2] = nfls[2] + 1
        else:
            print("Thanks For Using This Program!!!")
            print("Now Exiting.")
