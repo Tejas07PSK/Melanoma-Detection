@@ -524,8 +524,9 @@ def main_menu():
 def __sub_main(ptr, typ, flnumber):
     os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
     for name in __listFilesInDir("results/testset/" + str(ptr)):
-        name = __modify_flnm(name, flnumber)
-        copyfile(src="results/testset/"+str(ptr)+"/"+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+name)
+        print(name)
+        __modify_flnm(name, flnumber)
+        #copyfile(src="results/testset/"+str(ptr)+"/"+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+name)
 
 def __modify_flnm(string, number):
     ret_str = ""
