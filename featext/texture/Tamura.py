@@ -26,7 +26,19 @@ class TamFeat(object):
             for y in range(0, (src_img.shape)[1], 1):
                 emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
-                    t_c0 = Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img,lock, Event()))
+                    t_c0 = Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event()))
+                    t_c1 = Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event()))
+                    t_c2 = Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event()))
+                    t_c3 = Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event()))
+                    t_c0.start()
+                    t_c0.join()
+                    t_c1.start()
+                    t_c1.join()
+                    t_c2.start()
+                    t_c2.join()
+                    t_c3.start()
+                    t_c3.join()
+                    self.q
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='mergesort', order='E')
@@ -48,8 +60,7 @@ class TamFeat(object):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
         (self.q).put(avg)
         lck.release()
-        evt
-        return avg
+        evt.set()
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
         if (xl < 0):
