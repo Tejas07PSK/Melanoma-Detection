@@ -1,6 +1,8 @@
 import numpy as np
 from util import Util as u
 import cv2
+from threading import Thread, Lock, Event
+from queue import Queue
 
 class TamFeat(object):
 
@@ -15,21 +17,25 @@ class TamFeat(object):
         (self.__directionality, varDir) = self.__generateDirectionality(self.__delg_img, self.__theta_img)
         self.__regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
         self.__roughness = self.__generateRoughness(self.__coarseness, self.__contrast)
+        self.q = Queue(maxsize=4)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
+        lock = Lock()
         for x in range(0, (src_img.shape)[0], 1):
             for y in range(0, (src_img.shape)[1], 1):
                 emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
-                    emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
-                    emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
+                    t_c0 = Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img,lock, Event()))
+                    #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
+                    #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='mergesort', order='E')
                 sbest[x, y] = np.float_power(2, (emax[emax.size-1])[1])
         varCrs = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(sbest, lvldtype=np.uint32), np.mean(sbest, axis=None, dtype=float))
         return ((float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size))), varCrs)
 
-    def __nebAvg(self, x, y, k, src_img):
+    def __nebAvg(self, x, y, k, src_img, lck, evt):
+        lck.acquire()
         avg = 0.0
         const = np.float_power(2, k-1)
         xh = int(np.round(x + const - 1))
@@ -40,6 +46,9 @@ class TamFeat(object):
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
+        (self.q).put(avg)
+        lck.release()
+        evt
         return avg
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
