@@ -26,11 +26,8 @@ class TamFeat(object):
             for y in range(0, (src_img.shape)[1], 1):
                 emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
-                    t_c0 = Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event()))
-                    t_c1 = Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event()))
-                    t_c2 = Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event()))
-                    t_c3 = Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event()))
-                    t_c0.start()
+                    tds = [Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event(), 0)), Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event(), 1)), Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event(), 2)), Thread(target=self.__nebAvg, name='Cor3', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event(), 3))]
+                    tds[].start()
                     t_c0.join()
                     t_c1.start()
                     t_c1.join()
@@ -46,7 +43,7 @@ class TamFeat(object):
         varCrs = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(sbest, lvldtype=np.uint32), np.mean(sbest, axis=None, dtype=float))
         return ((float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size))), varCrs)
 
-    def __nebAvg(self, x, y, k, src_img, lck, evt):
+    def __nebAvg(self, x, y, k, src_img, lck, evt, pos):
         lck.acquire()
         avg = 0.0
         const = np.float_power(2, k-1)
@@ -61,6 +58,13 @@ class TamFeat(object):
         (self.q).put(avg)
         lck.release()
         evt.set()
+
+    def __tds_opt(self, tds, mode='s'):
+        for t in tds:
+            if (mode == 's'):
+                t.start()
+            else:
+                t.join()
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
         if (xl < 0):
