@@ -28,7 +28,7 @@ class TamFeat(object):
                 for k in range(1, 7, 1):
                     tds = [Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event(), 0)), Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event(), 1)), Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event(), 2)), Thread(target=self.__nebAvg, name='Cor3', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event(), 3))]
                     self.__tds_opt(tds)
-                    self.__tds_opt(tds,'j')
+                    self.__tds_opt(tds, 'j')
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='mergesort', order='E')
