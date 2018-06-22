@@ -6,6 +6,8 @@ from queue import Queue
 
 class TamFeat(object):
 
+    q = Queue(maxsize=4)
+
     def __init__(self, img):
         (self.__coarseness, varCrs) = self.__generateCoarseness(img)
         (self.__contrast, self.__kurtosis, varCon) = self.__generateContrastAndKurtosis(img)
@@ -17,7 +19,6 @@ class TamFeat(object):
         (self.__directionality, varDir) = self.__generateDirectionality(self.__delg_img, self.__theta_img)
         self.__regularity = self.__generateRegularity(np.sqrt(varCrs), np.sqrt(varDir), np.sqrt(varCon), np.sqrt(varLin))
         self.__roughness = self.__generateRoughness(self.__coarseness, self.__contrast)
-        self.q = Queue(maxsize=4)
 
     def __generateCoarseness(self, src_img):
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
@@ -51,7 +52,7 @@ class TamFeat(object):
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
-        (self.q).put((avg, pos))
+        (TamFeat.q).put((avg, pos))
         lck.release()
         evt.set()
 
@@ -64,11 +65,11 @@ class TamFeat(object):
 
     def __getFromQueue(self):
         nbavgs = [0.0, 0.0, 0.0, 0.0]
-        while ((self.q).empty() == False):
-            item = (self.q).get()
+        while ((TamFeat.q).empty() == False):
+            item = (TamFeat.q).get()
             nbavgs[ item[1] ] = item[0]
-            (self.q).task_done()
-        (self.q).join()
+            (TamFeat.q).task_done()
+        (TamFeat.q).join()
         return nbavgs
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
