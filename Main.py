@@ -545,10 +545,10 @@ def __modify_flnm(string, number):
             break
     return (ret_str + str(number) + ".jpg")
 
-#main_menu()
-obj = p.Prep('temp/' + '0.jpg')
+main_menu()
+"""obj = p.Prep('temp/' + '0.jpg')
 feobj2 = tam.TamFeat(obj.getSegGrayImg())
-showTamuraFeatures(feobj2)
+showTamuraFeatures(feobj2)"""
 
 
 
