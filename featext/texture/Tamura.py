@@ -27,14 +27,7 @@ class TamFeat(object):
                 emax = np.empty(0, np.dtype([('E', float), ('K', int)]), 'C')
                 for k in range(1, 7, 1):
                     tds = [Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event(), 0)), Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event(), 1)), Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event(), 2)), Thread(target=self.__nebAvg, name='Cor3', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event(), 3))]
-                    tds[].start()
-                    t_c0.join()
-                    t_c1.start()
-                    t_c1.join()
-                    t_c2.start()
-                    t_c2.join()
-                    t_c3.start()
-                    t_c3.join()
+
                     self.q
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
@@ -55,7 +48,7 @@ class TamFeat(object):
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
-        (self.q).put(avg)
+        (self.q).put((avg, pos))
         lck.release()
         evt.set()
 
