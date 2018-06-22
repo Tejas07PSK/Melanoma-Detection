@@ -29,6 +29,9 @@ class TamFeat(object):
                     tds = [Thread(target=self.__nebAvg, name='Cor0', args=(self, x + np.float_power(2, k-1), y, k, src_img, lock, Event(), 0)), Thread(target=self.__nebAvg, name='Cor1', args=(self, x - np.float_power(2, k-1), y, k, src_img, lock, Event(), 1)), Thread(target=self.__nebAvg, name='Cor2', args=(self, x, y + np.float_power(2, k-1), k, src_img, lock, Event(), 2)), Thread(target=self.__nebAvg, name='Cor3', args=(self, x, y - np.float_power(2, k-1), k, src_img, lock, Event(), 3))]
                     self.__tds_opt(tds)
                     self.__tds_opt(tds, 'j')
+                    nbavgs = self.__getFromQueue()
+                    emax = np.insert(emax, emax.size, (np.abs(nbavgs[0] - nbavgs[1]), k-1), 0)
+                    emax = np.insert(emax, emax.size, (np.abs(nbavgs[2] - nbavgs[3]), k-1), 0)
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x + np.float_power(2, k-1), y, k, src_img) - self.__nebAvg(x - np.float_power(2, k-1), y, k, src_img)), k-1), 0)
                     #emax = np.insert(emax, emax.size, (np.abs(self.__nebAvg(x, y + np.float_power(2, k-1), k, src_img) - self.__nebAvg(x, y - np.float_power(2, k-1), k, src_img)), k-1), 0)
                 emax.sort(axis=0, kind='mergesort', order='E')
@@ -58,6 +61,15 @@ class TamFeat(object):
                 t.start()
             else:
                 t.join()
+
+    def __getFromQueue(self):
+        nbavgs = [0.0, 0.0, 0.0, 0.0]
+        while ((self.q).empty() == False):
+            item = (self.q).get()
+            nbavgs[ item[1] ] = item[0]
+            (self.q).task_done()
+        (self.q).join()
+        return nbavgs
 
     def __checkSigns(self, xl, xh, yl, yh, shape):
         if (xl < 0):
