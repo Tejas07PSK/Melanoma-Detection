@@ -528,28 +528,6 @@ def main_menu():
            np.savez('dataset.npz', dset=trainset, featnames=featnames)
            __createAndTrainMlModels()
        elif (c == '8'):
-           print("\t In this step we'll get the selected feature-sets of the input-image(will be converted to gray-scale) and print them on screen!! \n")
-           print("\t Initially we'll perform some pre-processing on the original gray-scale image and create some variants!! \n")
-           print("\t You get the option of selecting either the pre-processed image variants or the original gray-scale image for getting the feature-sets!! \n")
-           print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required image there!! \n")
-           print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
-           print("\t All features are generated over gray-scale images, hence your original color image will be converted to it's corresponding gray-scale image!! \n")
-           obj = p.Prep('temp/' + str(input("Enter file-name of image! \n")))
-           print("Options for selecting the image-variant are as follows : \n")
-           print("a. Select inverted gray-scale image. \n")
-           print("b. Select segmented binary image. \n")
-           print("c. Select segmented gray-scale image. \n")
-           print("Any other character input, will result in a default case, where the selected image will be the original gray-scale image. \n")
-           chc = str(input("Enter your choice!!"))
-           img = obj.getGrayImg()
-           if (chc == 'a'):
-               img = obj.getInvrtGrayImg()
-           elif (chc == 'b'):
-               img = obj.getBinaryImg()
-           elif (chc == 'c'):
-               img = obj.getSegGrayImg()
-           else:
-               pass
            def __case8_inner(img_gry, img_col):
                 print("Options for selecting the feature-set are as follows : \n")
                 print("a. Print \'Haralick-Texture\' features. \n")
@@ -567,7 +545,29 @@ def main_menu():
                 elif (chc == 'd'):
                     showGaborPhysicalFeatures(g.Gabor(img_gry, img_col))
                 else:
-                    pass
+                    print("Oopsy-Daisy!! Feature-Set not found!! Sorry!! Please enter the correct character!! \n")
+           print("\t In this step we'll get the selected feature-sets of the input-image(will be converted to gray-scale) and print them on screen!! \n")
+           print("\t Initially we'll perform some pre-processing on the original gray-scale image and create some variants!! \n")
+           print("\t You get the option of selecting either the pre-processed image variants or the original gray-scale image for getting the feature-sets!! \n")
+           print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required image there!! \n")
+           print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
+           print("\t All features are generated over gray-scale images, hence your original color image will be converted to it's corresponding gray-scale image!! \n")
+           obj = p.Prep('temp/' + str(input("Enter file-name of image! \n")))
+           print("Options for selecting the image-variant are as follows : \n")
+           print("a. Select inverted gray-scale image. \n")
+           print("b. Select segmented binary image. \n")
+           print("c. Select segmented gray-scale image. \n")
+           print("Any other character input, will result in a default case, where the selected image will be the original gray-scale image. \n")
+           chc = str(input("Enter your choice!!"))
+           if (chc == 'a'):
+               __case8_inner(obj.getInvrtGrayImg(), obj.getActImg())
+           elif (chc == 'b'):
+               __case8_inner(obj.getBinaryImg(), obj.getSegColImg())
+           elif (chc == 'c'):
+               __case8_inner(obj.getSegGrayImg(), obj.getSegColImg())
+           else:
+               __case8_inner(obj.getGrayImg(), obj.getActImg())
+
 
        else:
            print("Thank-You For Using This Program!!!")
