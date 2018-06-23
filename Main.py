@@ -429,6 +429,7 @@ def main_menu():
     print("\t 5.Print feature-descriptors of images strored in numpy files, training or testcase!! \n")
     print("\t 6.Plot Classifier graphs!! \n")
     print("\t 7.Add the featuresets in \'testcase.npz\' to \'dataset.npz\' to make mlmodels more accurate!! \n")
+    print("\t 8. Print only the selected feature-sets of an image!! \n")
     print("\t Enter \'e\' to exit!! \n")
     while (True):
        c = str(input("Enter your choice - \n"))
