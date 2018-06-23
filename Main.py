@@ -384,11 +384,11 @@ def main_menu():
            print("All results are stored in the file \'testset.npz\' \n")
        elif (c == '4'):
            print("This will predict results from \'testcase.npz\' and also calculate the prediction accuracy of the individual models. \n")
+           pred_res = __predictFromSavedTestCase()
            print("Before we start here is the reference legend __ \n")
            print("\'1\' : MALIGNANT. \n")
            print("\'0\' : BENIGN. \n")
            print("\'-1\' : NEGATIVE. \n")
-           pred_res = __predictFromSavedTestCase()
            while (True):
               type = str(input('Select Classifier/Regressor acronym : \n'))
               if (type in pred_res):
