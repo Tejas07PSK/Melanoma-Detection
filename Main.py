@@ -13,6 +13,9 @@ from mlmodels import DecisionSurfacePlotter as DSP
 
 imgcount = 0
 
+def showImages(lstofimgs):
+    for tpls in lstofimgs:
+
 def showColImg(obj, index, loc):
     #cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
     #cv2.imshow('imgcol' + index, obj.getActImg())
@@ -277,6 +280,21 @@ def __getTestImages():
         feobj2 = tam.TamFeat(obj.getSegGrayImg())
         feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
         feobj4 = k.KingFeat(obj.getSegGrayImg())
+
+        var = [(obj.getActImg(), 'imgcol'+str(count), 'results/testset/' + str(count) + '/' + 'imgcol' + str(count) + '.jpg')
+        showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        showInvertedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        showBinImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        showSegmentedColorImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        showSegmentedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        showPrewittHorizontalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
+        showPrewittVerticalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
+        showPrewittCOmbinedImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
+        showGaussBlurredSegImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
+        showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
+        showBoundingRectImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
+        showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')]
+
         showColImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showInvertedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
@@ -583,20 +601,6 @@ def main_menu():
            print("Thank-You For Using This Program!!!")
            print("Now Exiting.")
            break
-
-"""def __sub_main(ptr, typ, flnumber):
-    os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
-    for name in __listFilesInDir("results/testset/" + str(ptr)):
-        copyfile(src="results/testset/"+str(ptr)+"/"+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+__modify_flnm(name, flnumber))
-
-def __modify_flnm(string, number):
-    ret_str = ""
-    for char in string:
-        if (char.isalpha()):
-            ret_str = ret_str + char
-        else:
-            break
-    return (ret_str + str(number) + ".jpg")"""
 
 main_menu()
 
