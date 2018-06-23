@@ -13,7 +13,7 @@ from mlmodels import DecisionSurfacePlotter as DSP
 
 imgcount = 0
 
-def showImages(lstofimgs):
+def __showImages(lstofimgs):
     for tpls in lstofimgs:
         cv2.namedWindow(tpls[1], cv2.WINDOW_NORMAL)
         cv2.imshow(tpls[1], tpls[0])
@@ -288,22 +288,20 @@ def __getTestImages():
         feobj2 = tam.TamFeat(obj.getSegGrayImg())
         feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
         feobj4 = k.KingFeat(obj.getSegGrayImg())
-
-        var = [(obj.getActImg(), 'imgcol' + str(count), 'results/testset/' + str(count) + '/' + 'imgcol' + str(count) + '.jpg'),
-               (obj.getGrayImg(), 'imggray' + str(count), 'results/testset/' + str(count) + '/' + 'imggray' + str(count) + '.jpg'),
-               (obj.getInvrtGrayImg(), 'imggrayinvrt' + str(count), 'results/testset/' + str(count) + '/' + 'imggrayinvrt' + str(count) + '.jpg'),
-               (obj.getBinaryImg(), 'imgbin' + str(count), 'results/testset/' + str(count) + '/' + 'imgbin' + str(count) + '.jpg'),
-               (obj.getSegColImg(), 'segimgcol' + str(count), 'results/testset/' + str(count) + '/' + 'segimgcol' + str(count) + '.jpg'),
-               (obj.getSegGrayImg(), 'segimggray' + str(count), 'results/testset/' + str(count) + '/' + 'segimggray' + str(count) + '.jpg'),
-               (feobj2.getPrewittHorizontalEdgeImg(), 'PrewittX' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittX' + str(count) + '.jpg'),
-               (feobj2.getPrewittVerticalEdgeImg(), 'PrewittY' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittY' + str(count) + '.jpg'),
-               (feobj2.getCombinedPrewittImg(), 'PrewittIMG' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittIMG' + str(count) + '.jpg'),
-               (feobj3.getGaussianBlurredImage(), 'gblurimg' + str(count), 'results/testset/' + str(count) + '/' + 'gblurimg' + str(count) + '.jpg'),
-               (feobj3.getSelectedContourImg(), 'slccntimg' + str(count), 'results/testset/' + str(count) + '/' + 'slccntimg' + str(count) + '.jpg'),
-               (feobj3.getBoundingRectImg(), 'bndrectimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndrectimg' + str(count) + '.jpg'),
-               (feobj3.getBoundedCircImg(), 'bndcircimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndcircimg' + str(count) + '.jpg')]
-
-        showColImg(obj, str(count), 'results/testset/' + str(count) + '/')
+        __showImages([(obj.getActImg(), 'imgcol' + str(count), 'results/testset/' + str(count) + '/' + 'imgcol' + str(count) + '.jpg'),
+                      (obj.getGrayImg(), 'imggray' + str(count), 'results/testset/' + str(count) + '/' + 'imggray' + str(count) + '.jpg'),
+                      (obj.getInvrtGrayImg(), 'imggrayinvrt' + str(count), 'results/testset/' + str(count) + '/' + 'imggrayinvrt' + str(count) + '.jpg'),
+                      (obj.getBinaryImg(), 'imgbin' + str(count), 'results/testset/' + str(count) + '/' + 'imgbin' + str(count) + '.jpg'),
+                      (obj.getSegColImg(), 'segimgcol' + str(count), 'results/testset/' + str(count) + '/' + 'segimgcol' + str(count) + '.jpg'),
+                      (obj.getSegGrayImg(), 'segimggray' + str(count), 'results/testset/' + str(count) + '/' + 'segimggray' + str(count) + '.jpg'),
+                      (feobj2.getPrewittHorizontalEdgeImg(), 'PrewittX' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittX' + str(count) + '.jpg'),
+                      (feobj2.getPrewittVerticalEdgeImg(), 'PrewittY' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittY' + str(count) + '.jpg'),
+                      (feobj2.getCombinedPrewittImg(), 'PrewittIMG' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittIMG' + str(count) + '.jpg'),
+                      (feobj3.getGaussianBlurredImage(), 'gblurimg' + str(count), 'results/testset/' + str(count) + '/' + 'gblurimg' + str(count) + '.jpg'),
+                      (feobj3.getSelectedContourImg(), 'slccntimg' + str(count), 'results/testset/' + str(count) + '/' + 'slccntimg' + str(count) + '.jpg'),
+                      (feobj3.getBoundingRectImg(), 'bndrectimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndrectimg' + str(count) + '.jpg'),
+                      (feobj3.getBoundedCircImg(), 'bndcircimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndcircimg' + str(count) + '.jpg')])
+        """showColImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showInvertedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showBinImg(obj, str(count), 'results/testset/' + str(count) + '/')
@@ -315,7 +313,7 @@ def __getTestImages():
         showGaussBlurredSegImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
         showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
         showBoundingRectImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
+        showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')"""
         __showHaralickFeatures(feobj)
         __showTamuraFeatures(feobj2)
         __showKingsFeatures(feobj4)
