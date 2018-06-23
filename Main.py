@@ -550,22 +550,24 @@ def main_menu():
                img = obj.getSegGrayImg()
            else:
                pass
-           print("Options for selecting the feature-set are as follows : \n")
-           print("a. Print \'Haralick-Texture\' features. \n")
-           print("b. Print \'Tamura-Texture\' features. \n")
-           print("c. Print \'King-Texture\' features. \n")
-           print("d. Print \'Gbor\' physical features. \n")
-           print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
-           chc = str(input("Enter your choice!!"))
-           if (chc == 'a'):
-               showHaralickFeatures(har.HarFeat(img))
-           elif (chc == 'b'):
-               showTamuraFeatures(tam.TamFeat(img))
-           elif (chc == 'c'):
-               showKingsFeatures(k.KingFeat(img))
-           elif (chc == 'd'):
-               showGaborPhysicalFeatures(g.Gabor(img))
-               pass
+           def __case8_inner(img_gry, img_col):
+                print("Options for selecting the feature-set are as follows : \n")
+                print("a. Print \'Haralick-Texture\' features. \n")
+                print("b. Print \'Tamura-Texture\' features. \n")
+                print("c. Print \'King-Texture\' features. \n")
+                print("d. Print \'Gbor\' physical features. \n")
+                print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
+                chc = str(input("Enter your choice!!"))
+                if (chc == 'a'):
+                    showHaralickFeatures(har.HarFeat(img_gry))
+                elif (chc == 'b'):
+                    showTamuraFeatures(tam.TamFeat(img_gry))
+                elif (chc == 'c'):
+                    showKingsFeatures(k.KingFeat(img_gry))
+                elif (chc == 'd'):
+                    showGaborPhysicalFeatures(g.Gabor(img_gry, img_col))
+                else:
+                    pass
 
        else:
            print("Thank-You For Using This Program!!!")
