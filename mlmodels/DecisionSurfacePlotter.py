@@ -50,7 +50,7 @@ def plotForAll(X, Y, ftup, feats):
                             (obj).contourf(xx, yy, (clf.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape), cmap=__col_map)
                         xx_coarser, yy_coarser = np.meshgrid(np.arange(x_min, x_max, ((x_max - x_min) / 50.0)), np.arange(y_min, y_max, ((y_max - y_min) / 50.0)))
                         (obj).scatter(xx_coarser, yy_coarser, s=15, c=clf.predict(np.c_[xx_coarser.ravel(), yy_coarser.ravel()]).reshape(xx_coarser.shape), cmap=__col_map, edgecolors="none")
-                        (obj).scatter(x[:, 0], x[:, 1], c=y, label=y, marker='p', cmap=__col_map, edgecolor='k', s=20)
+                        (obj).scatter(x[:, 0], x[:, 1], c=y, marker='p', cmap=__col_map, edgecolor='k', s=20)
                         (obj).set_xlim(xx.min(), xx.max())
                         (obj).set_ylim(yy.min(), yy.max())
                         (obj).set_xlabel(feat[0])
@@ -61,5 +61,4 @@ def plotForAll(X, Y, ftup, feats):
                             (obj).set_title(title)
                         plot_index += 1
                 print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: \n \n")
-    plt.legend(loc='lower right', borderpad=0, handletextpad=0)
     plt.show()
