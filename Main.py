@@ -298,7 +298,7 @@ def __predictFromSavedTestCase():
     pred_res = clasfobj.predicto(dset['featureset'], __convertTargetTypeToInt(dset['result']))
     return pred_res
 
-def __printPredResWithProperFormatting(predres, type='RFC'):
+def __printPredResWithProperFormatting(predres, type=None):
     if (type == 'SVM'):
         print("FOR SVM - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['SVM'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['SVM'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['SVM'])['Accuracy'] * 100) + "\n")
     elif (type == 'SVR'):
