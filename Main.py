@@ -207,7 +207,20 @@ def __createDataSet(restype, img_num):
          feobj2 = tam.TamFeat(obj.getSegGrayImg())
          feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
          feobj4 = k.KingFeat(obj.getSegGrayImg())
-         showColImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         __showImages([(obj.getActImg(), 'imgcol' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'imgcol' + str(imgcount) + '.jpg'),
+                       (obj.getGrayImg(), 'imggray' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'imggray' + str(imgcount) + '.jpg'),
+                       (obj.getInvrtGrayImg(), 'imggrayinvrt' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'imggrayinvrt' + str(imgcount) + '.jpg'),
+                       (obj.getBinaryImg(), 'imgbin' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'imgbin' + str(imgcount) + '.jpg'),
+                       (obj.getSegColImg(), 'segimgcol' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'segimgcol' + str(imgcount) + '.jpg'),
+                       (obj.getSegGrayImg(), 'segimggray' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'segimggray' + str(imgcount) + '.jpg'),
+                       (feobj2.getPrewittHorizontalEdgeImg(), 'PrewittX' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'PrewittX' + str(imgcount) + '.jpg'),
+                       (feobj2.getPrewittVerticalEdgeImg(), 'PrewittY' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'PrewittY' + str(imgcount) + '.jpg'),
+                       (feobj2.getCombinedPrewittImg(), 'PrewittIMG' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'PrewittIMG' + str(imgcount) + '.jpg'),
+                       (feobj3.getGaussianBlurredImage(), 'gblurimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'gblurimg' + str(imgcount) + '.jpg'),
+                       (feobj3.getSelectedContourImg(), 'slccntimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'slccntimg' + str(imgcount) + '.jpg'),
+                       (feobj3.getBoundingRectImg(), 'bndrectimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'bndrectimg' + str(imgcount) + '.jpg'),
+                       (feobj3.getBoundedCircImg(), 'bndcircimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'bndcircimg' + str(imgcount) + '.jpg')])
+         """showColImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showInvertedGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showBinImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
@@ -219,7 +232,7 @@ def __createDataSet(restype, img_num):
          showGaussBlurredSegImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showSelectedContourImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showBoundingRectImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showBoundingCircImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
+         showBoundingCircImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')"""
          __showHaralickFeatures(feobj)
          __showTamuraFeatures(feobj2)
          __showKingsFeatures(feobj4)
