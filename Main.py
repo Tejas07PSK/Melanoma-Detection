@@ -281,14 +281,14 @@ def __getTestImages():
         feobj3 = g.Gabor(obj.getSegGrayImg(), obj.getSegColImg())
         feobj4 = k.KingFeat(obj.getSegGrayImg())
 
-        var = [(obj.getActImg(), 'imgcol'+str(count), 'results/testset/' + str(count) + '/' + 'imgcol' + str(count) + '.jpg')
-        showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showInvertedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showBinImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showSegmentedColorImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showSegmentedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showPrewittHorizontalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
-        showPrewittVerticalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
+        var = [(obj.getActImg(), 'imgcol' + str(count), 'results/testset/' + str(count) + '/' + 'imgcol' + str(count) + '.jpg'),
+               (obj.getGrayImg(), 'imggray' + str(count), 'results/testset/' + str(count) + '/' + 'imggray' + str(count) + '.jpg'),
+               (obj.getInvrtGrayImg(), 'imggrayinvrt' + str(count), 'results/testset/' + str(count) + '/' + 'imggrayinvrt' + str(count) + '.jpg'),
+               (obj.getBinaryImg(), 'imgbin' + str(count), 'results/testset/' + str(count) + '/' + 'imgbin' + str(count) + '.jpg'),
+               (obj.getSegColImg(), 'segimgcol' + str(count), 'results/testset/' + str(count) + '/' + 'segimgcol' + str(count) + '.jpg'),
+               (obj.getSegGrayImg(), 'segimggray' + str(count), 'results/testset/' + str(count) + '/' + 'segimggray' + str(count) + '.jpg'),
+               (feobj2.getPrewittHorizontalEdgeImg(), 'PrewittX' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittX' + str(count) + '.jpg'),
+               (feobj2.getPrewittVerticalEdgeImg(), 'PrewittY' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittY' + str(count) + '.jpg'),
         showPrewittCOmbinedImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
         showGaussBlurredSegImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
         showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
