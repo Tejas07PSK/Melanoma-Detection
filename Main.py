@@ -527,8 +527,18 @@ def main_menu():
                    pass
            np.savez('dataset.npz', dset=trainset, featnames=featnames)
            __createAndTrainMlModels()
+       elif (c == '8'):
+           print("\t In this step we'll get the selected feature-sets of the input-image. \n")
+           print("\t Initially we'll perform some pre-processing on the original gray-scale image and create some variants!! \n")
+           print("\t You get the option of selecting either the pre-processed image variants or the original gray-scale image for getting the feature-sets!! \n")
+           print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required image there!! \n")
+           print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
+           print("\t All features are generated over gray-scale images, hence your original color-image will be converted to it's corresponding gray-scale image!! \n")
+           obj = p.Prep('temp/' + str(input("Enter file-name of image! \n")))
+           print("Options for selecting the image-variant are as follows : \n")
+           print("a. Select original gray")
        else:
-           print("Thanks For Using This Program!!!")
+           print("Thank-You For Using This Program!!!")
            print("Now Exiting.")
            break
 
