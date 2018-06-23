@@ -586,13 +586,19 @@ def main_menu():
                 print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
                 chc = str(input("Enter your choice!! \n"))
                 if (chc == 'a'):
+                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
                     __showHaralickFeatures(har.HarFeat(img_gry))
                 elif (chc == 'b'):
+                    tobj = tam.TamFeat(img_gry)
+                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None), (tobj.getPrewittHorizontalEdgeImg(), 'PrewittX', None), (tobj.getPrewittVerticalEdgeImg(), 'PrewittY', None), (tobj.getCombinedPrewittImg(), 'PrewittIMG', None)])
                     __showTamuraFeatures(tam.TamFeat(img_gry))
                 elif (chc == 'c'):
+                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
                     __showKingsFeatures(k.KingFeat(img_gry))
                 elif (chc == 'd'):
-                    __showGaborPhysicalFeatures(g.Gabor(img_gry, img_col))
+                    gobj = g.Gabor(img_gry, img_col)
+                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
+                    __showGaborPhysicalFeatures(gobj)
                 else:
                     print("Oopsy-Daisy!! Feature-Set not found!! Sorry!! Please enter the correct character!! \n")
            print("\t In this step we'll get the selected feature-sets of the input-image(will be converted to gray-scale) and print them on screen!! \n")
