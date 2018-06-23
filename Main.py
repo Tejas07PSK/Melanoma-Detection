@@ -567,8 +567,6 @@ def main_menu():
                __case8_inner(obj.getSegGrayImg(), obj.getSegColImg())
            else:
                __case8_inner(obj.getGrayImg(), obj.getActImg())
-
-
        else:
            print("Thank-You For Using This Program!!!")
            print("Now Exiting.")
