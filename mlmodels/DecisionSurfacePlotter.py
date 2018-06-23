@@ -1,11 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from sklearn import clone
 from sklearn.externals import joblib
 from sklearn.ensemble import RandomForestClassifier
 
-(__no_of_clas, __clas_types, __col_map, __rnd_seed) = (3, ('benign', 'malignant', 'negative'), plt.cm.RdYlGn, 13)
+(__col_map, __rnd_seed) = (plt.cm.RdYlGn, 13)
 classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
 regressors = [joblib.load('mlmodels/Mel_SVR.pkl'), joblib.load('mlmodels/Mel_NuSVR.pkl'), joblib.load('mlmodels/Mel_LinSVR.pkl'), joblib.load('mlmodels/Mel_MLPR.pkl'), joblib.load('mlmodels/Mel_DTR.pkl'), joblib.load('mlmodels/Mel_RFR.pkl')]
 
