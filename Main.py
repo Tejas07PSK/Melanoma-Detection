@@ -500,12 +500,6 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
-           def __sub_main(ptr, typ, flnumber):
-               os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
-               for name in __listFilesInDir("results/testset/" + str(ptr)):
-                   copyfile(src="results/testset/" + str(ptr) + "/" + name,
-                            dst="results/dataset/" + typ + "/" + str(flnumber) + "/" + __modify_flnm(name, flnumber))
-
            def __modify_flnm(string, number):
                ret_str = ""
                for char in string:
@@ -514,6 +508,10 @@ def main_menu():
                    else:
                        break
                return (ret_str + str(number) + ".jpg")
+           def __case7_inner(ptr, typ, flnumber):
+               os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
+               for name in __listFilesInDir("results/testset/" + str(ptr)):
+                   copyfile(src="results/testset/" + str(ptr) + "/" + name, dst="results/dataset/" + typ + "/" + str(flnumber) + "/" + __modify_flnm(name, flnumber))
            print("This option creates a modified \'dataset.npz\' file. \n")
            print("This file includes the feature-sets and the supervised classification results of the test images. \n")
            print("All the employed ml-models are automatically re-trained iteratively, on the new modified  training dataset at the end of this step. \n")
@@ -524,17 +522,17 @@ def main_menu():
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
-                   __sub_main(index, feat[1], nfls[0])
+                   __case7_inner(index, feat[1], nfls[0])
                    trainset = np.insert(trainset, (nfls[1]+nfls[0]), feat, 0)
                    nfls[0] = nfls[0] + 1
                elif (feat[1] == 'malignant'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[1])+".jpg")
-                   __sub_main(index, feat[1], nfls[1])
+                   __case7_inner(index, feat[1], nfls[1])
                    trainset = np.insert(trainset, nfls[1], feat, 0)
                    nfls[1] = nfls[1] + 1
                elif (feat[1] == 'negative'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[2])+".jpg")
-                   __sub_main(index, feat[1], nfls[2])
+                   __case7_inner(index, feat[1], nfls[2])
                    trainset = np.insert(trainset, (nfls[1]+nfls[0]+nfls[2]), feat, 0)
                    nfls[2] = nfls[2] + 1
                else:
