@@ -547,7 +547,7 @@ def main_menu():
                 print("c. Print \'King-Texture\' features. \n")
                 print("d. Print \'Gbor\' physical features. \n")
                 print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
-                chc = str(input("Enter your choice!!"))
+                chc = str(input("Enter your choice!! \n"))
                 if (chc == 'a'):
                     __showHaralickFeatures(har.HarFeat(img_gry))
                 elif (chc == 'b'):
@@ -570,7 +570,7 @@ def main_menu():
            print("b. Select segmented binary image. \n")
            print("c. Select segmented gray-scale image. \n")
            print("Any other character input, will result in a default case, where the selected image will be the original gray-scale image. \n")
-           chc = str(input("Enter your choice!!"))
+           chc = str(input("Enter your choice!! \n"))
            if (chc == 'a'):
                __case8_inner(obj.getInvrtGrayImg(), obj.getActImg())
            elif (chc == 'b'):
