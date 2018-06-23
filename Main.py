@@ -251,7 +251,7 @@ def __getTestImages():
         featarr = np.insert(featarr, featarr.size, feobj4.getKingsStrength(), 0)
         dset = np.insert(dset, dset.size, (featarr, str(input('Enter your result : \n'))), 0)
         count = count + 1
-        if(str(input('Do you want to enter more images?? \n')) == 'Y'):
+        if(str(input('Do you want to enter more images?? \n')) == 'y'):
             continue
         else:
             break
