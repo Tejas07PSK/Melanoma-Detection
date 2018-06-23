@@ -325,6 +325,7 @@ def __printPredResWithProperFormatting(predres, type=None):
         print("FOR RFR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['RFR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['RFR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
     else:
         print("Please enter the correct model acronym!! Your imaginary model does not exist in our model dictionary, sorry!! \n")
+        print("Now exiting from prediction mode!!")
 
 def __printfeatsfromfile(fl='testcase.npz'):
     dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
