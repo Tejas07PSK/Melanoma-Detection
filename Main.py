@@ -597,7 +597,7 @@ def main_menu():
                     __showKingsFeatures(k.KingFeat(img_gry))
                 elif (chc == 'd'):
                     gobj = g.Gabor(img_gry, img_col)
-                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
+                    __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None), (gobj.getGaussianBlurredImage(), 'gblurimg', None), (gobj.getSelectedContourImg(), 'slccntimg', None), (gobj.getBoundingRectImg(), 'bndrectimg', None), (gobj.getBoundedCircImg(), 'bndcircimg', None)])
                     __showGaborPhysicalFeatures(gobj)
                 else:
                     print("Oopsy-Daisy!! Feature-Set not found!! Sorry!! Please enter the correct character!! \n")
