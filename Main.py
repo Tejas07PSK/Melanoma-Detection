@@ -500,6 +500,20 @@ def main_menu():
            DSP.plotForAll(dset['featureset'], __convertTargetTypeToInt(dset['result']), flist, fnlist)
            print("DONE!!! \n")
        elif (c == '7'):
+           def __sub_main(ptr, typ, flnumber):
+               os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
+               for name in __listFilesInDir("results/testset/" + str(ptr)):
+                   copyfile(src="results/testset/" + str(ptr) + "/" + name,
+                            dst="results/dataset/" + typ + "/" + str(flnumber) + "/" + __modify_flnm(name, flnumber))
+
+           def __modify_flnm(string, number):
+               ret_str = ""
+               for char in string:
+                   if (char.isalpha()):
+                       ret_str = ret_str + char
+                   else:
+                       break
+               return (ret_str + str(number) + ".jpg")
            print("This option creates a modified \'dataset.npz\' file. \n")
            print("This file includes the feature-sets and the supervised classification results of the test images. \n")
            print("All the employed ml-models are automatically re-trained iteratively, on the new modified  training dataset at the end of this step. \n")
@@ -572,7 +586,7 @@ def main_menu():
            print("Now Exiting.")
            break
 
-def __sub_main(ptr, typ, flnumber):
+"""def __sub_main(ptr, typ, flnumber):
     os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
     for name in __listFilesInDir("results/testset/" + str(ptr)):
         copyfile(src="results/testset/"+str(ptr)+"/"+name, dst="results/dataset/"+typ+"/"+str(flnumber)+"/"+__modify_flnm(name, flnumber))
@@ -584,7 +598,7 @@ def __modify_flnm(string, number):
             ret_str = ret_str + char
         else:
             break
-    return (ret_str + str(number) + ".jpg")
+    return (ret_str + str(number) + ".jpg")"""
 
 main_menu()
 
