@@ -15,6 +15,14 @@ imgcount = 0
 
 def showImages(lstofimgs):
     for tpls in lstofimgs:
+        cv2.namedWindow(tpls[1], cv2.WINDOW_NORMAL)
+        cv2.imshow(tpls[1], tpls[0])
+        if (tpls[2] != None):
+            cv2.imwrite(tpls[2], tpls[0])
+        else:
+            continue
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 def showColImg(obj, index, loc):
     #cv2.namedWindow('imgcol' + index, cv2.WINDOW_NORMAL)
@@ -289,11 +297,11 @@ def __getTestImages():
                (obj.getSegGrayImg(), 'segimggray' + str(count), 'results/testset/' + str(count) + '/' + 'segimggray' + str(count) + '.jpg'),
                (feobj2.getPrewittHorizontalEdgeImg(), 'PrewittX' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittX' + str(count) + '.jpg'),
                (feobj2.getPrewittVerticalEdgeImg(), 'PrewittY' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittY' + str(count) + '.jpg'),
-        showPrewittCOmbinedImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
-        showGaussBlurredSegImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showBoundingRectImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')]
+               (feobj2.getCombinedPrewittImg(), 'PrewittIMG' + str(count), 'results/testset/' + str(count) + '/' + 'PrewittIMG' + str(count) + '.jpg'),
+               (feobj3.getGaussianBlurredImage(), 'gblurimg' + str(count), 'results/testset/' + str(count) + '/' + 'gblurimg' + str(count) + '.jpg'),
+               (feobj3.getSelectedContourImg(), 'slccntimg' + str(count), 'results/testset/' + str(count) + '/' + 'slccntimg' + str(count) + '.jpg'),
+               (feobj3.getBoundingRectImg(), 'bndrectimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndrectimg' + str(count) + '.jpg'),
+               (feobj3.getBoundedCircImg(), 'bndcircimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndcircimg' + str(count) + '.jpg')]
 
         showColImg(obj, str(count), 'results/testset/' + str(count) + '/')
         showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
