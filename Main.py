@@ -104,12 +104,12 @@ def showBoundingCircImg(feobj3, index, loc):
     #cv2.destroyAllWindows()
     cv2.imwrite((loc + 'bndcircimg' + index + '.jpg'), feobj3.getBoundedCircImg())
 
-def showGLCM(feobj):
+def __showGLCM(feobj):
     print(feobj.getGLCM())
 
-def showHaralickFeatures(feobj):
+def __showHaralickFeatures(feobj):
     print("->.->.->.->.->.->.->.->.->.HARALICK TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
-    showGLCM(feobj)
+    __showGLCM(feobj)
     print("\n")
     print("Angular Second Moment-ASM of seg gray img %f \n" % feobj.getAngularSecondMomentASM())
     print("Energy of seg gray img %f \n" % feobj.getEnergy())
@@ -129,7 +129,7 @@ def showHaralickFeatures(feobj):
     print("Differential-Mean of seg gray img %f \n" % feobj.getDmean())
     print("Differential-Entropy of seg gray img %f \n" % feobj.getDentropy())
 
-def showTamuraFeatures(feobj2):
+def __showTamuraFeatures(feobj2):
     print("->.->.->.->.->.->.->.->.->.TAMURA TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("Tamura-Coarseness of seg gray img %f \n" % feobj2.getCoarseness())
     print("Tamura-Contrast of seg gray img %f \n" % feobj2.getContrast())
@@ -139,7 +139,7 @@ def showTamuraFeatures(feobj2):
     print("Tamura-Regularity of seg gray img %f \n" % feobj2.getRegularity())
     print("Tamura-Roughness of seg gray img %f \n" % feobj2.getRoughness())
 
-def showKingsFeatures(feobj4):
+def __showKingsFeatures(feobj4):
     print("->.->.->.->.->.->.->.->.->.KING'S TEXTURE FEATURES.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("\n")
     print(feobj4.getNGTDM())
@@ -150,7 +150,7 @@ def showKingsFeatures(feobj4):
     print("King's-Complexity of seg gray img %f \n" % feobj4.getKingsComplexity())
     print("King's-Strength of seg gray img %f \n" % feobj4.getKingsStrength())
 
-def showGaborPhysicalFeatures(feobj3):
+def __showGaborPhysicalFeatures(feobj3):
     print("->.->.->.->.->.->.->.->.->.GABOR PHYSICAL FEATURES OF LESION.<-.<-.<-.<-.<-.<-.<-.<-.<- \n")
     print("List of Contour-Points ::: \n")
     print(feobj3.getListOfContourPoints())
@@ -178,7 +178,7 @@ def showGaborPhysicalFeatures(feobj3):
     print("Diameter of lesion %f \n" % feobj3.getDiameter())
     print("Color-Variance of lesion %f \n" % feobj3.getColorVariance())
 
-def createDataSet(restype, img_num):
+def __createDataSet(restype, img_num):
     print("------------------+++++++++++++============FOR %s SET==============++++++++++++++---------------------- \n" % restype.upper())
     if (((pathlib.Path('dataset.npz')).exists() == True) & ((pathlib.Path('dataset.npz')).is_file() == True)):
         dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
@@ -209,10 +209,10 @@ def createDataSet(restype, img_num):
          showSelectedContourImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showBoundingRectImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
          showBoundingCircImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showHaralickFeatures(feobj)
-         showTamuraFeatures(feobj2)
-         showKingsFeatures(feobj4)
-         showGaborPhysicalFeatures(feobj3)
+         __showHaralickFeatures(feobj)
+         __showTamuraFeatures(feobj2)
+         __showKingsFeatures(feobj4)
+         __showGaborPhysicalFeatures(feobj3)
          featarr = np.empty(0, dtype=float, order='C')
          featarr = np.insert(featarr, featarr.size, feobj.getAngularSecondMomentASM(), 0)
          featarr = np.insert(featarr, featarr.size, feobj.getEnergy(), 0)
@@ -262,7 +262,7 @@ def __createAndTrainMlModels():
     CLF.Classifiers(featureset=dset['featureset'], target=__convertTargetTypeToInt(dset['result']), mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
-def getTestImages():
+def __getTestImages():
     count = 0
     dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
     featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
@@ -290,10 +290,10 @@ def getTestImages():
         showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
         showBoundingRectImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
         showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showHaralickFeatures(feobj)
-        showTamuraFeatures(feobj2)
-        showKingsFeatures(feobj4)
-        showGaborPhysicalFeatures(feobj3)
+        __showHaralickFeatures(feobj)
+        __showTamuraFeatures(feobj2)
+        __showKingsFeatures(feobj4)
+        __showGaborPhysicalFeatures(feobj3)
         featarr = np.empty(0, dtype=float, order='C')
         featarr = np.insert(featarr, featarr.size, feobj.getAngularSecondMomentASM(), 0)
         featarr = np.insert(featarr, featarr.size, feobj.getEnergy(), 0)
@@ -366,7 +366,7 @@ def __convertTargetTypeToStr(arr):
             pass
     return cvt_arr
 
-def predictFromSavedTestCase():
+def __predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
     dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('testcase.npz'))['featnames']
     print(featnames)
@@ -441,9 +441,9 @@ def main_menu():
            print("Eg. - 0.jpg, 1.jpg, 2.jpg, ..... etc \n")
            print("You must provide images under each category!!! \n")
            input("Just press any key when your are ready : \n")
-           createDataSet("malignant", int(input("Enter the number of images you placed under the \'images/malignant\' directory - \n")))
-           createDataSet("benign", int(input("Enter the number of images you placed under the \'images/benign\' directory - \n")))
-           createDataSet("negative", int(input("Enter the number of images you placed under the \'images/negative\' directory - \n")))
+           __createDataSet("malignant", int(input("Enter the number of images you placed under the \'images/malignant\' directory - \n")))
+           __createDataSet("benign", int(input("Enter the number of images you placed under the \'images/benign\' directory - \n")))
+           __createDataSet("negative", int(input("Enter the number of images you placed under the \'images/negative\' directory - \n")))
            print("Training-dataset successfully generated!! \n")
            print("This dataset consists of the features-array of the corresponding images and their classified types. \n")
            print("All results are stored in the file \'dataset.npz\' \n")
@@ -458,13 +458,13 @@ def main_menu():
            print("Now, before you proceed, just make sure that you have your test-images in the \'temp\' folder. \n")
            print("If you haven't already made the directories, please make them and place the test-images. \n")
            input("Just press any key when your are ready : \n")
-           getTestImages()
+           __getTestImages()
            print("Testing-dataset successfully generated!! \n")
            print("This dataset consists of the features-array of the test images and their supervised-classified types. \n")
            print("All results are stored in the file \'testset.npz\' \n")
        elif (c == '4'):
            print("This will predict results from \'testcase.npz\' and also calculate the prediction accuracy of the individual models. \n")
-           pred_res = predictFromSavedTestCase()
+           pred_res = __predictFromSavedTestCase()
            while (True):
               type = str(input('Select Classifier/Regressor acronym : \n'))
               if (type in pred_res):
@@ -549,13 +549,13 @@ def main_menu():
                 print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
                 chc = str(input("Enter your choice!!"))
                 if (chc == 'a'):
-                    showHaralickFeatures(har.HarFeat(img_gry))
+                    __showHaralickFeatures(har.HarFeat(img_gry))
                 elif (chc == 'b'):
-                    showTamuraFeatures(tam.TamFeat(img_gry))
+                    __showTamuraFeatures(tam.TamFeat(img_gry))
                 elif (chc == 'c'):
-                    showKingsFeatures(k.KingFeat(img_gry))
+                    __showKingsFeatures(k.KingFeat(img_gry))
                 elif (chc == 'd'):
-                    showGaborPhysicalFeatures(g.Gabor(img_gry, img_col))
+                    __showGaborPhysicalFeatures(g.Gabor(img_gry, img_col))
                 else:
                     print("Oopsy-Daisy!! Feature-Set not found!! Sorry!! Please enter the correct character!! \n")
            print("\t In this step we'll get the selected feature-sets of the input-image(will be converted to gray-scale) and print them on screen!! \n")
@@ -564,7 +564,7 @@ def main_menu():
            print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required image there!! \n")
            print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
            print("\t All features are generated over gray-scale images, hence your original color image will be converted to it's corresponding gray-scale image!! \n")
-           obj = p.Prep('temp/' + str(input("Enter file-name of image! \n")))
+           obj = p.Prep('test/' + str(input("Enter file-name of image! \n")))
            print("Options for selecting the image-variant are as follows : \n")
            print("a. Select inverted gray-scale image. \n")
            print("b. Select segmented binary image. \n")
