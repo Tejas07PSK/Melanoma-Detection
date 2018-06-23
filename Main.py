@@ -338,7 +338,7 @@ def __listFilesInDir(loc):
      return list([str(flnm) for flnm in os.listdir(loc) if os.path.isfile(os.path.join(loc, flnm))])
 
 def main_menu():
-    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
     print("\t This is a nascent approch towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY and SciKit in Python Programming Language. \n")
     print("\t This project utilizes some of the core concepts of \'DIGITAL IMAGE PROCESSING\' & \'MACHINE LEARNING\'. \n")
     print("\t This program can either categorize the cancerous-lesion as Malignant, Benign or Negative. \n")
