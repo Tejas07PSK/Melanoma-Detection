@@ -220,19 +220,6 @@ def __createDataSet(restype, img_num):
                        (feobj3.getSelectedContourImg(), 'slccntimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'slccntimg' + str(imgcount) + '.jpg'),
                        (feobj3.getBoundingRectImg(), 'bndrectimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'bndrectimg' + str(imgcount) + '.jpg'),
                        (feobj3.getBoundedCircImg(), 'bndcircimg' + str(imgcount), 'results/dataset/' + restype + '/' + str(imgcount) + '/' + 'bndcircimg' + str(imgcount) + '.jpg')])
-         """showColImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showInvertedGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showBinImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showSegmentedColorImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showSegmentedGrayImg(obj, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showPrewittHorizontalImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showPrewittVerticalImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showPrewittCOmbinedImg(feobj2, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showGaussBlurredSegImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showSelectedContourImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showBoundingRectImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')
-         showBoundingCircImg(feobj3, str(imgcount), 'results/dataset/' + restype + '/' + str(i) + '/')"""
          __showHaralickFeatures(feobj)
          __showTamuraFeatures(feobj2)
          __showKingsFeatures(feobj4)
@@ -314,19 +301,6 @@ def __getTestImages():
                       (feobj3.getSelectedContourImg(), 'slccntimg' + str(count), 'results/testset/' + str(count) + '/' + 'slccntimg' + str(count) + '.jpg'),
                       (feobj3.getBoundingRectImg(), 'bndrectimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndrectimg' + str(count) + '.jpg'),
                       (feobj3.getBoundedCircImg(), 'bndcircimg' + str(count), 'results/testset/' + str(count) + '/' + 'bndcircimg' + str(count) + '.jpg')])
-        """showColImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showInvertedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showBinImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showSegmentedColorImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showSegmentedGrayImg(obj, str(count), 'results/testset/' + str(count) + '/')
-        showPrewittHorizontalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
-        showPrewittVerticalImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
-        showPrewittCOmbinedImg(feobj2, str(count), 'results/testset/' + str(count) + '/')
-        showGaussBlurredSegImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showSelectedContourImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showBoundingRectImg(feobj3, str(count), 'results/testset/' + str(count) + '/')
-        showBoundingCircImg(feobj3, str(count), 'results/testset/' + str(count) + '/')"""
         __showHaralickFeatures(feobj)
         __showTamuraFeatures(feobj2)
         __showKingsFeatures(feobj4)
@@ -582,8 +556,8 @@ def main_menu():
                 print("a. Print \'Haralick-Texture\' features. \n")
                 print("b. Print \'Tamura-Texture\' features. \n")
                 print("c. Print \'King-Texture\' features. \n")
-                print("d. Print \'Gbor\' physical features. \n")
-                print("Any other character input, will result in a default case, displayin \'Feature-Set not found!! Sorry!\' \n")
+                print("d. Print \'Gabor\' physical features. \n")
+                print("Any other character input, will result in a default case, displaying \'Feature-Set not found!! Sorry!\' \n")
                 chc = str(input("Enter your choice!! \n"))
                 if (chc == 'a'):
                     __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
