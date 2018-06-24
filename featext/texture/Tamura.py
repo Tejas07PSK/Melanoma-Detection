@@ -50,7 +50,7 @@ class TamFeat(object):
         varCrs = self.__generateVariance(u.getArrayOfGrayLevelsWithFreq(sbest, lvldtype=np.uint32), np.mean(sbest, axis=None, dtype=float))
         return ((float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size))), varCrs)
 
-    def __nebAvg(self, x, y, k, src_img, lck, evt, pos):
+    def __nebAvg(self, x, y, k, src_img): #, lck, evt, pos):
         #lck.acquire()
         avg = 0.0
         const = np.float_power(2, k-1)
