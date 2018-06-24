@@ -3,6 +3,7 @@ from util import Util as u
 import cv2
 from threading import Thread, Lock, Event
 from queue import Queue
+import time
 
 class TamFeat(object):
 
@@ -21,6 +22,12 @@ class TamFeat(object):
         self.__roughness = self.__generateRoughness(self.__coarseness, self.__contrast)
 
     def __generateCoarseness(self, src_img):
+        def __tds_opt(tds, mode='s'):
+            for t in tds:
+                if (mode == 's'):
+                    t.start()
+                else:
+                    t.join()
         sbest = np.zeros(src_img.shape, np.uint32, 'C')
         lock = Lock()
         for x in range(0, (src_img.shape)[0], 1):
@@ -29,8 +36,8 @@ class TamFeat(object):
                 #print((x,y))
                 for k in range(1, 7, 1):
                     tds = [Thread(target=self.__nebAvg, name='Cor0', args=(x + np.float_power(2, k-1), y, k, src_img, lock, Event(), 0)), Thread(target=self.__nebAvg, name='Cor1', args=(x - np.float_power(2, k-1), y, k, src_img, lock, Event(), 1)), Thread(target=self.__nebAvg, name='Cor2', args=(x, y + np.float_power(2, k-1), k, src_img, lock, Event(), 2)), Thread(target=self.__nebAvg, name='Cor3', args=(x, y - np.float_power(2, k-1), k, src_img, lock, Event(), 3))]
-                    self.__tds_opt(tds)
-                    self.__tds_opt(tds, 'j')
+                    __tds_opt(tds)
+                    __tds_opt(tds, 'j')
                     nbavgs = self.__getFromQueue()
                     emax = np.insert(emax, emax.size, (np.abs(nbavgs[0] - nbavgs[1]), k-1), 0)
                     emax = np.insert(emax, emax.size, (np.abs(nbavgs[2] - nbavgs[3]), k-1), 0)
@@ -56,13 +63,6 @@ class TamFeat(object):
         (TamFeat.q).put((avg, pos))
         lck.release()
         evt.set()
-
-    def __tds_opt(self, tds, mode='s'):
-        for t in tds:
-            if (mode == 's'):
-                t.start()
-            else:
-                t.join()
 
     def __getFromQueue(self):
         nbavgs = [0.0, 0.0, 0.0, 0.0]
