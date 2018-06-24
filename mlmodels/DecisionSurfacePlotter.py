@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as Pchs
 from sklearn import clone
 from sklearn.externals import joblib
 from sklearn.ensemble import RandomForestClassifier
