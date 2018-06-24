@@ -515,7 +515,7 @@ def main_menu():
                __case8_inner(obj.getGrayImg(), obj.getActImg())
        elif (c == '9'):
            print("\t Before you use this option, it is recommended that you go through the project structure once. \n")
-           for fls in __listFilesInDir(str(input("Please Enter A Valid Directory Path. \n"))):
+           for fls in __listFilesInDir(str(input("\t Please Enter A Valid Directory Path. \n"))):
                print(fls + '\n')
            print("\t Successfully Listed All File-Names. \n")
        else:
