@@ -57,6 +57,8 @@ def plotForAll(X, Y, ftup, feats):
                         (obj).set_ylabel(feat[1])
                         (obj).set_xticks(())
                         (obj).set_yticks(())
+                        if (plot_index == (len(ftup) * len(classifiers))):
+                            (obj).legend(handles=[Pchs.Patch(color='red', label='MALIGNANT'), Pchs.Patch(color='yellow', label='BENIGN'), Pchs.Patch(color='green', label='NEGATIVE')])
                         if (plot_index <= len(classifiers)):
                             (obj).set_title(title)
                         plot_index += 1
