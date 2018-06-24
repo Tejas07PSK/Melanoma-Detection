@@ -10,7 +10,9 @@ class TamFeat(object):
     q = Queue(maxsize=4)
 
     def __init__(self, img):
+        t = time.time()
         (self.__coarseness, varCrs) = self.__generateCoarseness(img)
+        print("Coarseness Calc-Time : %f \n" % (time.time() - t))
         (self.__contrast, self.__kurtosis, varCon) = self.__generateContrastAndKurtosis(img)
         self.__img_hor_x = cv2.filter2D(img, -1, np.array([[1,1,1],[0,0,0],[-1,-1,-1]], dtype=np.int16))
         self.__img_vert_y = cv2.filter2D(img, -1, np.array([[-1,0,1],[-1,0,1],[-1,0,1]], dtype=np.int16))
