@@ -6,23 +6,25 @@ from sklearn.externals import joblib
 from sklearn.ensemble import RandomForestClassifier
 
 (__col_map, __rnd_seed) = (plt.cm.RdYlGn, 13)
-classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
-regressors = [joblib.load('mlmodels/Mel_SVR.pkl'), joblib.load('mlmodels/Mel_NuSVR.pkl'), joblib.load('mlmodels/Mel_LinSVR.pkl'), joblib.load('mlmodels/Mel_MLPR.pkl'), joblib.load('mlmodels/Mel_DTR.pkl'), joblib.load('mlmodels/Mel_RFR.pkl')]
 
 def plotForAll(X, Y, ftup, feats):
+    classifiers = [joblib.load('mlmodels/Mel_SVM.pkl'), joblib.load('mlmodels/Mel_NuSVM.pkl'), joblib.load('mlmodels/Mel_LinSVM.pkl'), joblib.load('mlmodels/Mel_MLPC.pkl'), joblib.load('mlmodels/Mel_DTC.pkl'), joblib.load('mlmodels/Mel_RFC.pkl')]
+    regressors = [joblib.load('mlmodels/Mel_SVR.pkl'), joblib.load('mlmodels/Mel_NuSVR.pkl'), joblib.load('mlmodels/Mel_LinSVR.pkl'), joblib.load('mlmodels/Mel_MLPR.pkl'), joblib.load('mlmodels/Mel_DTR.pkl'), joblib.load('mlmodels/Mel_RFR.pkl')]
     titles = ()
-    models = ()
+    models = []
     for nplot in range(0, 2, 1):
         if (nplot == 0):
             print("_-__-_ IN CASE OF CLASSIFERS _-__-_ \n")
             titles = ('SVM', 'NuSVM', 'LinSVM', 'MLPC', 'DTC', 'RFC')
             plt.figure("Decision Surface For Classifiers", edgecolor='b')
             plt.suptitle("Plot of Classifiers on feature subsets of the Melanoma-Dataset")
+            models = classifiers
         else:
             print("_-__-_ IN CASE OF REGRESSORS _-__-_ \n")
             titles = ('SVR', 'NuSVR', 'LinSVR', 'MLPR', 'DTR', 'RFR')
             plt.figure("Decision Surface For Regressors", edgecolor='b')
             plt.suptitle("Plot of Regressors on feature subsets of the Melanoma-Dataset")
+            models = regressors
         index = np.arange(0, X.shape[0], 1)
         plot_index = 1
         for idx_pair, feat in zip(ftup, feats):
@@ -34,8 +36,8 @@ def plotForAll(X, Y, ftup, feats):
                 x = (x - x.mean(axis=0)) / x.std(axis=0)
                 plt.subplots_adjust(wspace=1.0, hspace=1.0)
                 print(" " + feat[0] + " Vs. " + feat[1] + " :- \n")
-                for mdl, title in zip(classifiers, titles):
-                        obj = plt.subplot(len(ftup), len(classifiers), plot_index)
+                for mdl, title in zip(models, titles):
+                        obj = plt.subplot(len(ftup), len(models), plot_index)
                         clf = (clone(mdl)).fit(x, y)
                         scr = clf.score(x, y)
                         print("Feasibility Score For " + title + " Model - " + str(scr * 100))
@@ -57,9 +59,9 @@ def plotForAll(X, Y, ftup, feats):
                         (obj).set_ylabel(feat[1])
                         (obj).set_xticks(())
                         (obj).set_yticks(())
-                        if (plot_index == (len(ftup) * len(classifiers))):
+                        if (plot_index == (len(ftup) * len(models))):
                             plt.legend(handles=[Pchs.Patch(color='red', label='MALIGNANT'), Pchs.Patch(color='yellow', label='BENIGN'), Pchs.Patch(color='green', label='NEGATIVE')], loc='upper right', fontsize='small')
-                        if (plot_index <= len(classifiers)):
+                        if (plot_index <= len(models)):
                             (obj).set_title(title)
                         plot_index += 1
                 print("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: \n \n")
