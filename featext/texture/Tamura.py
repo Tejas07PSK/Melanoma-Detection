@@ -51,7 +51,7 @@ class TamFeat(object):
         return ((float(np.sum(sbest, axis=None, dtype=float) / float(sbest.size))), varCrs)
 
     def __nebAvg(self, x, y, k, src_img, lck, evt, pos):
-        lck.acquire()
+        #lck.acquire()
         avg = 0.0
         const = np.float_power(2, k-1)
         xh = int(np.round(x + const - 1))
@@ -62,9 +62,10 @@ class TamFeat(object):
         for r in range(xl, xh, 1):
             for c in range(yl, yh, 1):
                 avg = avg + (float(src_img[r, c]) / float(np.float_power(2, 2*k)))
-        (TamFeat.q).put((avg, pos))
-        lck.release()
-        evt.set()
+        #(TamFeat.q).put((avg, pos))
+        #lck.release()
+        #evt.set()
+        return avg
 
     def __getFromQueue(self):
         nbavgs = [0.0, 0.0, 0.0, 0.0]
