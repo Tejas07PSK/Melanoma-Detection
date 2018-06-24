@@ -482,7 +482,7 @@ def main_menu():
                 elif (chc == 'b'):
                     tobj = tam.TamFeat(img_gry)
                     __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None), (tobj.getPrewittHorizontalEdgeImg(), 'PrewittX', None), (tobj.getPrewittVerticalEdgeImg(), 'PrewittY', None), (tobj.getCombinedPrewittImg(), 'PrewittIMG', None)])
-                    __showTamuraFeatures(tam.TamFeat(img_gry))
+                    __showTamuraFeatures(tobj)
                 elif (chc == 'c'):
                     __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
                     __showKingsFeatures(k.KingFeat(img_gry))
