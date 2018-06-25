@@ -325,7 +325,7 @@ def __printPredResWithProperFormatting(predres, type=None):
         print("FOR RFR - \n Prediction results (String) : " + str(__convertTargetTypeToStr((predres['RFR'])['Prediction Results'])) + " \n Prediction results (raw) : " + str((predres['RFR'])['Prediction Results']) + " \n Prediction Accuracy : " + str((predres['RFR'])['Accuracy'] * 100) + "\n")
     else:
         print("Please enter the correct model acronym!! Your imaginary model does not exist in our model dictionary, sorry!! \n")
-        print("Now exiting from prediction mode!!")
+        print("Now exiting from prediction mode!! \n")
 
 def __printfeatsfromfile(fl='testcase.npz'):
     dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
@@ -342,56 +342,56 @@ def __listFilesInDir(loc):
 
 def main_menu():
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_______WELCOME TO THE MELANOMA-PREDICTION PROGRAM_______^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ \n")
-    print("\t This is a nascent approch towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY and SciKit in Python Programming Language. \n")
+    print("\t This is a nascent approach towards detecting Melanoma-Skin-Lesion, using OpenCV, NumPY, Matplotlib and SciKit in Python Programming Language. \n")
     print("\t This project utilizes some of the core concepts of \'DIGITAL IMAGE PROCESSING\' & \'MACHINE LEARNING\'. \n")
-    print("\t This program can either categorize the cancerous-lesion as Malignant, Benign or Negative. \n")
+    print("\t This program can categorize the cancerous-lesion as Malignant, Benign or Negative. \n")
     print("\t Try understanding the meaning of each option, before selecting the appropriate one. \n")
     while (True):
        print("\t Available options are given below : \n")
-       print("\t 1.Create training-dataset from the images of known ->MELANOMA<- types!! \n")
-       print("\t 2.Train classifiers and regressors on created training-dataset!! \n")
-       print("\t 3.Create testing-dataset from supervised images in temp folder!! \n")
-       print("\t 4.Predict results from \'testcase.npz\'!! \n")
-       print("\t 5.Print feature-descriptors of images strored in numpy files, training or testcase!! \n")
-       print("\t 6.Plot Classifier graphs!! \n")
-       print("\t 7.Add the featuresets in \'testcase.npz\' to \'dataset.npz\' to make mlmodels more accurate!! \n")
-       print("\t 8.Print only the selected feature-sets of an image!! \n")
-       print("\t 9.List files in valid project-directories!! \n")
+       print("\t 1.Create \'training-dataset\' from the images of known ->MELANOMA<- types!! \n")
+       print("\t 2.Train classifiers and regressors on the created \'training-dataset\'!! \n")
+       print("\t 3.Create \'testing-dataset\' from the supervised images in temp folder!! \n")
+       print("\t 4.Predict results from the \'testcase.npz\' numpy file!! \n")
+       print("\t 5.Print \'feature-descriptors\' of images strored in numpy files, \'dataset.npz\' or \'testcase.npz\'!! \n")
+       print("\t 6.Plot \'Classifier/Regressor\' graphs!! \n")
+       print("\t 7.Add the \'feature-sets\' to \'testcase.npz\' or \'dataset.npz\' numpy files, to make mlmodels more accurate!! \n")
+       print("\t 8.Print only the selected \'feature-sets\' of an image!! \n")
+       print("\t 9.List files present in valid \'project-directories\'!! \n")
        print("\t Enter \'e\' to exit!! \n")
        c = str(input("Enter your choice - \n"))
        if (c == '1'):
-           print("If you see a results folder in the root directory of the project, delete the \'dataset\' folder in it. \n")
-           print("Now, before you proceed, just make sure that you have your corresponding images in the \'images\' folder under the malignanat, benign or negative directories. \n")
-           print("If you haven't already made the directories, please make them and place the corrseponding images. \n")
-           print("The image filenames names must be numeric starting from 0 in sequence under each category folder. \n")
+           print("If you see a \'results\' folder in the root directory of the project, delete the \'dataset\' folder in it. \n")
+           print("Now, before you proceed, just make sure that you have your corresponding images in the \'images\' folder under the \'malignant\', \'benign\' or \'negative\' directories. \n")
+           print("If you haven't already made the directories, please make them and place the corresponding images in them. \n")
+           print("The image file-names must be numeric starting from 0 in sequence under each category folder. \n")
            print("Eg. - 0.jpg, 1.jpg, 2.jpg, ..... etc \n")
            print("You must provide images under each category!!! \n")
            input("Just press any key when your are ready : \n")
            __createDataSet("malignant", int(input("Enter the number of images you placed under the \'images/malignant\' directory - \n")))
            __createDataSet("benign", int(input("Enter the number of images you placed under the \'images/benign\' directory - \n")))
            __createDataSet("negative", int(input("Enter the number of images you placed under the \'images/negative\' directory - \n")))
-           print("Training-dataset successfully generated!! \n")
+           print("\'Training-Dataset\' successfully generated!! \n")
            print("This dataset consists of the features-array of the corresponding images and their classified types. \n")
-           print("All results are stored in the file \'dataset.npz\' \n")
-           print("Total training-image count : %d \n" % imgcount)
+           print("All results are stored in the numpy file \'dataset.npz\'. \n")
+           print("Total training-images count : %d \n" % imgcount)
        elif (c == '2'):
-           print("Now we'll train our various classifiers and regressors on the training data stored in the \'dataset.npz\' numpy file. \n")
-           print("All machine-learning models will be saved in individual .pkl files under the \'mlmodels\' python-package. \n")
+           print("Now we'll train our various classifiers and regressors on the training-data stored in the \'dataset.npz\' numpy file. \n")
+           print("All machine-learning models will be saved as individual \'.pkl\' files in the \'mlmodels\' python-package. \n")
            __createAndTrainMlModels()
            print("Training is now complete!! \n")
        elif (c == '3'):
-           print("If you see a results folder in the root directory of the project, delete the \'testset\' folder in it. \n")
+           print("If you see a \'results\' folder in the root directory of the project, delete the \'testset\' folder in it. \n")
            print("Now, before you proceed, just make sure that you have your test-images in the \'temp\' folder. \n")
-           print("If you haven't already made the directories, please make them and place the test-images. \n")
+           print("If you haven't already made the directories, please make them and place the test-images in them. \n")
            input("Just press any key when your are ready : \n")
            __getTestImages()
-           print("Testing-dataset successfully generated!! \n")
-           print("This dataset consists of the features-array of the test images and their supervised-classified types. \n")
-           print("All results are stored in the file \'testset.npz\' \n")
+           print("\'Testing-Dataset\' successfully generated!! \n")
+           print("This dataset consists of the features-array of the test-images and their supervised-classified types. \n")
+           print("All results are stored in the numpy file \'testset.npz\' \n")
        elif (c == '4'):
            print("This will predict results from \'testcase.npz\' and also calculate the prediction accuracy of the individual models. \n")
            pred_res = __predictFromSavedTestCase()
-           print("Before we start here is the reference legend __ \n")
+           print("Before we start, here is the reference legend __ \n")
            print("\'1\' : MALIGNANT. \n")
            print("\'0\' : BENIGN. \n")
            print("\'-1\' : NEGATIVE. \n")
@@ -402,25 +402,24 @@ def main_menu():
               else:
                   __printPredResWithProperFormatting(pred_res)
                   break
-           print("\n \n")
        elif (c == '5'):
-           print("This option prints the features of the images stored in the testcase.npz file, by default. \n")
-           print("You can also print the values stored in the dataset.npz file, just pass this file-name as an argument in the function below. \n")
-           print("Before you print the feature-contents, make sure that you have previously generated the dataset.npz and testcase.npz files. \n")
+           print("This option prints the features of the images stored in the \'testcase.npz\' numpy file, by default. \n")
+           print("You can also print the values stored in the \'dataset.npz\' file, just enter this file-name below. \n")
+           print("Before you print the feature-contents, make sure that you had previously generated the \'dataset.npz\' and \'testcase.npz\' numpy files. \n")
            __printfeatsfromfile(str(input('Enter the filename : \n')))
            print("PRINTING COMPLETE!!! \n")
        elif (c == '6'):
-           print("\t Before you proceed, make sure that you have previously generated the \'dataset.npz\' and is existing in the root directory of the project!!! \n")
+           print("\t Before you proceed, make sure that you had previously generated the \'dataset.npz\' numpy file which is existing in the root directory of the project!!! \n")
            dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
            print("\t Given below are the set of features, along with their corresponding indexes. \n")
            for count in range(0, featnames.size, 1):
                print(str(count)+". "+str(featnames[count])+" \n")
            print("You have to select a combination of any two features!! \n")
-           print("You can also enter multiple combinations, in such case they will be appended to a list!! \n")
+           print("You can also enter multiple combinations, in such a case they will be appended to a list!! \n")
            flist = []
            fnlist = []
            while(True):
-               feat_corrs = [int(input('Enter index of first feature ... \n')), int(input('Enter index of second feature ... \n'))]
+               feat_corrs = [int(input('Enter the index of first feature ... \n')), int(input('Enter the index of second feature ... \n'))]
                flist.append(feat_corrs)
                fnlist.append([featnames[feat_corrs[0]], featnames[feat_corrs[1]]])
                if (str(input('Do you want to add more feature combinations?? - (y/n) \n')) == 'y'):
@@ -442,9 +441,9 @@ def main_menu():
                os.mkdir("results/dataset/" + typ + "/" + str(flnumber))
                for name in __listFilesInDir("results/testset/" + str(ptr)):
                    copyfile(src="results/testset/" + str(ptr) + "/" + name, dst="results/dataset/" + typ + "/" + str(flnumber) + "/" + __modify_flnm(name, flnumber))
-           print("This option creates a modified \'dataset.npz\' file. \n")
-           print("This file includes the feature-sets and the supervised classification results of the test images. \n")
-           print("All the employed ml-models are automatically re-trained iteratively, on the new modified  training dataset at the end of this step. \n")
+           print("This option creates a modified \'dataset.npz\' numpy file. \n")
+           print("This file includes the feature-sets and the supervised classification results of the test-images. \n")
+           print("All the employed mlmodels are automatically re-trained iteratively, on the new modified training-dataset at the end of this step. \n")
            print("Please bear in mind, that re-training the models on the same test-set again, will result in errors. \n")
            featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
            nfls = list([len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')])
@@ -471,13 +470,13 @@ def main_menu():
            __createAndTrainMlModels()
        elif (c == '8'):
            def __case8_inner(img_gry, img_col):
-                print("Options for selecting the feature-set are as follows : \n")
+                print("Options for selecting the feature-sets are as follows : \n")
                 print("a. Print \'Haralick-Texture\' features. \n")
                 print("b. Print \'Tamura-Texture\' features. \n")
                 print("c. Print \'King-Texture\' features. \n")
                 print("d. Print \'Gabor\' physical features. \n")
                 print("Any other character input, will result in a default case, displaying \'Feature-Set not found!! Sorry!\' \n")
-                chc = str(input("Enter your choice!! \n"))
+                chc = str(input("Enter your choice : \n"))
                 if (chc == 'a'):
                     __showImages([(img_col, 'imgcol', None), (img_gry, 'imggray', None)])
                     __showHaralickFeatures(har.HarFeat(img_gry))
@@ -495,18 +494,18 @@ def main_menu():
                 else:
                     print("Oopsy-Daisy!! Feature-Set not found!! Sorry!! Please enter the correct character!! \n")
            print("\t In this step we'll get the selected feature-sets of the input-image(will be converted to gray-scale) and print them on screen!! \n")
-           print("\t Initially we'll perform some pre-processing on the original gray-scale image and create some variants!! \n")
-           print("\t You get the option of selecting either the pre-processed image variants or the original gray-scale image for getting the feature-sets!! \n")
-           print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required image there!! \n")
+           print("\t Initially we'll perform some pre-processing operations on the original gray-scale image and create some variants!! \n")
+           print("\t You'll get the option of selecting either the pre-processed image variants or the original gray-scale image for getting the selected feature-set!! \n")
+           print("\t Before you proceed, make-sure to create a \'test\' directory inside the project root and place the required images there!! \n")
            print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
            print("\t All features are generated over gray-scale images, hence your original color image will be converted to it's corresponding gray-scale image!! \n")
-           obj = p.Prep('test/' + str(input("Enter file-name of image! \n")))
+           obj = p.Prep('test/' + str(input("Enter file-name of image : \n")))
            print("Options for selecting the image-variant are as follows : \n")
            print("a. Select inverted gray-scale image. \n")
            print("b. Select segmented binary image. \n")
            print("c. Select segmented gray-scale image. \n")
            print("Any other character input, will result in a default case, where the selected image will be the original gray-scale image. \n")
-           chc = str(input("Enter your choice!! \n"))
+           chc = str(input("Enter your choice : \n"))
            if (chc == 'a'):
                __case8_inner(obj.getInvrtGrayImg(), obj.getActImg())
            elif (chc == 'b'):
@@ -516,7 +515,7 @@ def main_menu():
            else:
                __case8_inner(obj.getGrayImg(), obj.getActImg())
        elif (c == '9'):
-           print("\t Before you use this option, it is recommended that you go through the project structure once. \n")
+           print("\t Before you use this option, it is recommended that you go through the project-structure once. \n")
            for fls in __listFilesInDir(str(input("\t Please Enter A Valid Directory Path. \n"))):
                print(fls + '\n')
            print("\t Successfully Listed All File-Names. \n")
