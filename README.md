@@ -8,3 +8,82 @@ melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
 **Read More At :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
+
+### About The Repository - 
+This repo holds the source code for the Melanoma-Detection Application.
+Given below is the _'Project Structure'_ :  
+  
+    .
+    |   Main.py
+    |   dataset.npz
+    |   testcase.npz
+    |   README.md
+    |---featext
+    |     |---physical
+    |     |     |   __init__.py
+    |     |     |   Gabor.py
+    |     |---texture
+    |     |     |   __init__.py
+    |     |     |   Haralick.py
+    |     |     |   King.py
+    |     |     |   Tamura.py
+    |     |   __init__.py
+    |---images
+    |     |---benign
+    |     |     |   'img_number'.jpg
+    |     |---malignant
+    |     |     |   'img_number'.jpg
+    |     |---negative
+    |     |     |   'img_number'.jpg
+    |---mlmodels
+    |     |   Classifiers.py
+    |     |   DecisionSurfacePlotter.py
+    |     |   Mel_DTC.pkl
+    |     |   Mel_DTR.pkl
+    |     |   Mel_LinSVM.pkl
+    |     |   Mel_LinSVR.pkl
+    |     |   Mel_MLPC.pkl
+    |     |   Mel_MLPR.pkl
+    |     |   Mel_NuSVM.pkl
+    |     |   Mel_NuSVR.pkl
+    |     |   Mel_RFC.pkl
+    |     |   Mel_RFR.pkl
+    |     |   Mel_SVM.pkl
+    |     |   Mel_SVR.pkl
+    |     |   __init__.py
+    |---preprocessing
+    |     |   Prep.py
+    |     |   __init__.py
+    |---results
+    |     |---dataset
+    |     |     |---benign
+    |     |     |     |---'numbers'
+    |     |     |     |     |   'images'.jpg
+    |     |     |---malignant
+    |     |     |     |---'numbers'
+    |     |     |     |     |    'images'.jpg
+    |     |     |---negative
+    |     |     |     |---'numbers'
+    |     |     |     |     |    'images'.jpg
+    |     |---testset
+    |     |     |---benign
+    |     |     |     |---'numbers'
+    |     |     |     |     |   'images'.jpg
+    |     |     |---malignant
+    |     |     |     |---'numbers'
+    |     |     |     |     |    'images'.jpg
+    |     |     |---negative
+    |     |     |     |---'numbers'
+    |     |     |     |     |    'images'.jpg
+    |---temp
+    |     |   'img_number'.jpg
+    |---test
+    |     |   'img_number'.jpg
+    |---util
+    |     |   Util.py
+    |     |   __init__.py
+
+
+         
+     
+    
