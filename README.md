@@ -89,8 +89,8 @@ modular console program, written in Python3.Anyone, with some basic
 programming knowledge will be able to run this app easily.  
 Simply, this console app tries to predict the nature of a 'skin-lesion'
 image, served as an input.  
-To keep things simple, we have trained our machine-learning models, to  
-classify the input image as one of the three types :  
+To keep things simple, we have trained our machine-learning models, to
+classify the input image as one of the three types:  
    + **NEGATIVE** - Represents a skin-lesion that is not melanoma._(-1)_
    + **BENIGN** - Represents a skin-lesion that is an early-stage melanoma._(0)_
    + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_ 
