@@ -85,7 +85,7 @@ Given below is the _'Project Structure'_ :
 
 ## About The Application -
 This application does not contain any fancy _UI_, as it is basically a
-modular console program, written in Python3.Anyone, with some basic
+modular console program, written in Python3. Anyone, with some basic
 programming knowledge will be able to run this app easily.  
 Simply, this console app tries to predict the nature of a 'skin-lesion'
 image, served as an input.  
