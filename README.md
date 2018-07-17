@@ -6,5 +6,5 @@ as _melanocytes_. Melanomas typically occur on the skin, but may rarely
 occur in the mouth, intestines, or eye. The primary cause of
 melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
-sources, such as tanning devices. About 25% develop from moles.
+sources, such as tanning devices. About 25% develop from moles.  
 **Read More At :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
