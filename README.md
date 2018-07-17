@@ -80,8 +80,8 @@ Given below is the _'Project Structure'_ :
     |---test
     |     |   'img_number'.jpg
     |---util
-    |     |   Util.py
-    |     |   __init__.py
+          |   Util.py
+          |   __init__.py
 
 
          
