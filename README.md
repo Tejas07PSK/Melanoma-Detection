@@ -9,7 +9,7 @@ skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
 **Read More At :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
 
-### About The Repository - 
+## About The Repository - 
 This repo holds the source code for the Melanoma-Detection Application.
 Given below is the _'Project Structure'_ :  
   
@@ -83,7 +83,7 @@ Given below is the _'Project Structure'_ :
           |   Util.py
           |   __init__.py
 
-
+## About The Application -
          
      
     
