@@ -7,7 +7,7 @@ occur in the mouth, intestines, or eye. The primary cause of
 melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
-**Read More At :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
+**Read more at :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
 
 ## About The Repository - 
 This repo holds the source code for the Melanoma-Detection Application.
