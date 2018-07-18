@@ -131,7 +131,7 @@ This application works according to the following folds :
     a set of quantified-features are extracted from them, which comprises the 'training-set' data.  
 2.  Next, the above generated training data, is then passed on to the various classifier/regressor objects for training/learning.  
 3.  Now, the trained models are persistently saved as python objects or pickle units, in individual '.pkl' files.  
-4.  Now, a set of input_images in need of classification are placed in the _'temp'_ folder.
+4.  Next, a set of input_images in need of classification are placed in the _'temp'_ folder.
 5.  Next, the program takes each input_image pre-processes it and extracts the necessary features from it.  
 6.  The features generated from the pre-processed input_images are then passed on to the various machine-learning models,  
     which in turn predicts the nature of each input_image accordingly.  
