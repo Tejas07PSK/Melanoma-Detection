@@ -93,7 +93,19 @@ To keep things simple, we have trained our machine-learning models, to
 classify the input image as one of the three types:  
    + **NEGATIVE** - Represents a skin-lesion that is not melanoma._(-1)_
    + **BENIGN** - Represents a skin-lesion that is an early-stage melanoma._(0)_
-   + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_ 
-         
-     
+   + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_   
+
+The application consists of four core modules, namely:  
+   1. _Main.py_  (Driver module for the entire application).  
+   2. **featext**  ('quatified-features' extraction module for the input_image).  
+      + **physical**  ('physical-features' extraction sub-module for the input_image).  
+        - _Gabor.py_  (Extracts "Gabor's" physical-features from the input_image).  
+      + **texture**   ('textural-features' extraction module for the input_image).  
+        - _Haralick.py_  (Extracts "Haralick's" texture-features from the input_image).  
+        - _King.py_  (Extracts "King's" texture-features from the input_image).  
+        - _Tamura.py_  (Extracts "Tamura's" texture-features from the input_image).  
+      + **mlmodels**  (input_image classification module).  
+        - _Classifiers.py_ (Trains various "classifier-models" on input-data and predicts the class of the input_image).  
+        
+      
     
