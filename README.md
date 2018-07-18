@@ -119,6 +119,10 @@ The application consists of five core modules, namely:
       + _Mel_RFR.pkl_  (Persistently stores the trained 'Random Forest Regressor' object).  
       + _Mel_SVM.pkl_  (Persistently stores the trained 'Support Vector Machine Classifier' object).  
       + _Mel_SVR.pkl_  (Persistently stores the trained 'Support Vector Machine Regressor' object).  
+   4. **preprocessing**  (input_image preprocessing module).  
+      + _Prep.py_  (Performs generic image pre-processing operations).  
+   5. **util**  (General library utility module).  
+      + _Util.py_  (Performs routine data-structural operations ... insertion, searching, sorting etc).  
         
          
         
