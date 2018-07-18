@@ -123,6 +123,23 @@ The application consists of five core modules, namely:
       + _Prep.py_  (Performs generic image pre-processing operations).  
    5. **util**  (General library utility module).  
       + _Util.py_  (Performs routine data-structural operations ... insertion, searching, sorting etc).  
+
+## How the application works?  
+This application works according to the following folds :  
+1.  Firstly, a 'training-set' data is generated from a collection of various skin-lesion images placed in their respective  
+    class folders i.e., _'images/benign'_, _'images/malignant'_, _'images/negative'_. These images are pre-processed and  
+    a set of quantified-features are extracted from them, which comprises the 'training-set' data.  
+2.  Next, the above generated training data, is then passed on to the various classifier/regressor objects for training/learning.  
+3.  Now, the trained models are persistently saved as python objects or pickle units, in individual '.pkl' files.  
+4.  Now, a set of input_images in need of classification are placed in the _'temp'_ folder.
+5.  Next, the program takes each input_image pre-processes it and extracts the necessary features from it.  
+6.  The features generated from the pre-processed input_images are then passed on to the various machine-learning models,  
+    which in turn predicts the nature of each input_image accordingly.  
+7.  Since, the learning process here is supervised, a 'prediction-accuracy' is generated for each model.  
+8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
+
+
+
         
          
         
