@@ -133,8 +133,8 @@ This application works according to the following folds :
 3.  Now, the trained models are persistently saved as python objects or pickle units, in individual '.pkl' files.  
 4.  Next, a set of input_images in need of classification are placed in the _'temp'_ folder.
 5.  Next, the program takes each input_image pre-processes it and extracts the necessary features from it.  
-6.  The features generated from the pre-processed input_images are then passed on to the various machine-learning models,  
-    which in turn predicts the nature of each input_image accordingly.  
+6.  The features generated from the pre-processed input_images are then passed on to the various  
+    machine-learning models,which in turn predicts the nature of each input_image accordingly.  
 7.  Since, the learning process here is supervised, a 'prediction-accuracy' is generated for each model.  
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
 
