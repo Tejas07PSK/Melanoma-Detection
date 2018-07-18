@@ -95,7 +95,7 @@ classify the input image as one of the three types:
    + **BENIGN** - Represents a skin-lesion that is an early-stage melanoma._(0)_
    + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_   
 
-The application consists of four core modules, namely:  
+The application consists of five core modules, namely:  
    1. _Main.py_  (Driver module for the entire application).  
    2. **featext**  ('quatified-features' extraction module for the input_image).  
       + **physical**  ('physical-features' extraction sub-module for the input_image).  
@@ -104,8 +104,23 @@ The application consists of four core modules, namely:
         - _Haralick.py_  (Extracts "Haralick's" texture-features from the input_image).  
         - _King.py_  (Extracts "King's" texture-features from the input_image).  
         - _Tamura.py_  (Extracts "Tamura's" texture-features from the input_image).  
-      + **mlmodels**  (input_image classification module).  
-        - _Classifiers.py_ (Trains various "classifier-models" on input-data and predicts the class of the input_image).  
+   3. **mlmodels**  (input_image classification/regression module).  
+      + _Classifiers.py_  (Predicts the class of the input_image).  
+      + _DecisionSurfacePlotter.py_  (Plots the decision surfaces of the various classifiers/regressors, based on the selected features).  
+      + _Mel_DTC.pkl_  (Persistently stores the trained 'Decision Tree Classifier' object).  
+      + _Mel_DTR.pkl_  (Persistently stores the trained 'Decision Tree Regressor' object).  
+      + _Mel_LinSVM.pkl_  (Persistently stores the trained 'Linear-Support Vector Machine Classifier' object).  
+      + _Mel_LinSVR.pkl_  (Persistently stores the trained 'Linear-Support Vector Machine Regressor' object).  
+      + _Mel_MLPC.pkl_  (Persistently stores the trained 'Multi-Layer Perceptron Classifier' object).  
+      + _Mel_MLPR.pkl_  (Persistently stores the trained 'Multi-Layer Perceptron Regressor' object).  
+      + _Mel_NuSVM.pkl_  (Persistently stores the trained 'Nu-Support Vector Machine Classifier' object).  
+      + _Mel_NuSVR.pkl_  (Persistently stores the trained 'Nu-Support Vector Machine Regressor' object).   
+      + _Mel_RFC.pkl_  (Persistently stores the trained 'Random Forest Classifier' object).  
+      + _Mel_RFR.pkl_  (Persistently stores the trained 'Random Forest Regressor' object).  
+      + _Mel_SVM.pkl_  (Persistently stores the trained 'Support Vector Machine Classifier' object).  
+      + _Mel_SVR.pkl_  (Persistently stores the trained 'Support Vector Machine Regressor' object).  
+        
+         
         
       
     
