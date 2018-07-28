@@ -172,7 +172,7 @@ This application works according to the following folds :
         (**Note.-** For installing _MatPlotLib_ through pip, type `python -m pip --user install matplotlib`.)  
     + **'SciPy'**.  
         []  _About 'scipy'_ :point_right: [wikipedia.org/scipy](https://en.wikipedia.org/wiki/SciPy).  
-        []  _Official 'scipy' documentations :point_right: [scipy.org/docs](https://www.scipy.org/docs.html).  
+        []  _Official 'scipy' documentations_ :point_right: [scipy.org/docs](https://www.scipy.org/docs.html).  
         (**Note.-** For installing _SciPy_ through pip, type `python -m pip --user install scipy`.)  
         
          
