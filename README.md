@@ -145,6 +145,12 @@ This application works according to the following folds :
        []  How to install 'Python3'? :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
        []  Official 'Python3' documentation :point_right: [docs.python.org/Python3](https://docs.python.org/3/).  
        []  GET 'Python3' :point_right: [python.org/downloads](https://www.python.org/downloads/).
+
+2. **Python Package Manager** ;  
+       [] **pip** :point_right: comes along with the executable 'python-installation' package.  
+       + About 'pip' >>> [wikipedia.org/pip_packagemanager](https://en.wikipedia.org/wiki/Pip_(package_manager)).  
+       
+                   
         
  
 
