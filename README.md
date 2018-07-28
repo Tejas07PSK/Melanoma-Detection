@@ -7,7 +7,7 @@ occur in the mouth, intestines, or eye. The primary cause of
 melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
-**Read more at :->[wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
+**Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
 
 ## About The Repository - 
 This repo holds the source code for the Melanoma-Detection Application.
@@ -138,7 +138,15 @@ This application works according to the following folds :
 7.  Since, the learning process here is supervised, a 'prediction-accuracy' is generated for each model.  
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
 
-
+## Usage guide -  
+###_Pre-requisites_ :  
+1. **Python3** ;  
+       []  About 'Python3' :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
+       []  How to install 'Python3'? :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
+       []  Official 'Python3' documentation :point_right: [docs.python.org/Python3](https://docs.python.org/3/).  
+       []  GET 'Python3' :point_right: [python.org/downloads](https://www.python.org/downloads/).
+        
+ 
 
         
          
