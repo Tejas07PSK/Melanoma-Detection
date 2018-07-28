@@ -168,7 +168,7 @@ This application works according to the following folds :
         (**Note.-** For installing _NumPy_ through pip, type `python -m pip --user install numpy`.)  
     + **'MatPlotLib'**.  
         []  _About 'matplotlib'_ :point_right: [wikipedia.org/matplotlib](https://en.wikipedia.org/wiki/Matplotlib).  
-        []  _Official 'matplotlib' docs :point_right: [matplotlib.org/docs](https://matplotlib.org/contents.html).  
+        []  _Official 'matplotlib' docs_ :point_right: [matplotlib.org/docs](https://matplotlib.org/contents.html).  
         (**Note.-** For installing _MatPlotLib_ through pip, type `python -m pip --user install matplotlib`.)  
     + **'SciPy'**.  
         []  _About 'scipy'_ :point_right: [wikipedia.org/scipy](https://en.wikipedia.org/wiki/SciPy).  
