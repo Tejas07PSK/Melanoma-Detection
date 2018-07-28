@@ -161,7 +161,18 @@ This application works according to the following folds :
         []  _About 'Pycharm'_ >>> [wikipedia.org/Pycharm](https://en.wikipedia.org/wiki/PyCharm).  
         []  _How to use 'Pycharm'?_ >>> [jetbrains.com/PycharmGuide](https://www.jetbrains.com/pycharm/documentation/).  
 
-
+4. **Python Library Dependencies** ;
+    + **'NumPy'**.  
+        []  _About 'numpy'_ :point_right: [wikipedia.org/numpy](https://en.wikipedia.org/wiki/NumPy).  
+        []  _Official 'numpy' manuals_ :point_right: [docs.scipy.org/numpyManuals](https://docs.scipy.org/doc/numpy/).  
+        (**Note.-** For installing _NumPy_ through pip, type `python -m pip --user install numpy`.)  
+    + **'MatPlotLib'**.  
+        []  _About 'matplotlib'_ :point_right: [wikipedia.org/matplotlib](https://en.wikipedia.org/wiki/Matplotlib).  
+        []  _Official 'matplotlib' docs :point_right: [matplotlib.org/docs](https://matplotlib.org/contents.html).  
+        (**Note.-** For installing _MatPlotLib_ through pip, type `python -m pip --user install matplotlib`.)  
+    + **'SciPy'**.  
+        []  _About 'scipy'_ :point_right: [wikipedia.org/scipy](https://en.wikipedia.org/wiki/SciPy).  
+        []  _Official 'scipy' documentations :point_right: [scipy.org/docs](https://www.scipy.org/docs.html).  
         
          
         
