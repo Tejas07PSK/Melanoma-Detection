@@ -139,7 +139,7 @@ This application works according to the following folds :
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
 
 ## Usage guide -  
-###_Pre-requisites_ :  
+### _Pre-requisites_ :  
 1. **Python3** ;  
        []  About 'Python3' :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
        []  How to install 'Python3'? :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
