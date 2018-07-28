@@ -147,8 +147,8 @@ This application works according to the following folds :
        []  GET 'Python3' :point_right: [python.org/downloads](https://www.python.org/downloads/).
 
 2. **Python Package Manager** ;  
-       [] **pip** :point_right: comes along with the executable 'python-installation' package.  
-       + About 'pip' >>> [wikipedia.org/pip_packagemanager](https://en.wikipedia.org/wiki/Pip_(package_manager)).  
+    + **pip** :point_right: comes along with the executable 'python-installation' package.  
+        [] About 'pip' >>> [wikipedia.org/pip_packagemanager](https://en.wikipedia.org/wiki/Pip_(package_manager)).  
        
                    
         
