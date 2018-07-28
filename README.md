@@ -154,7 +154,14 @@ This application works according to the following folds :
         []  _About 'anaconda'_ >>> [wikipedia.org/conda](https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)).  
         []  _How to install 'anaconda'?_ >>> [docs.anaconda.com/installingconda](https://enterprise-docs.anaconda.com/en/latest/install/index.html).  
         []  _How to install 'python-packages' with 'conda'?_ >>> [docs.anaconda.com/packages](https://enterprise-docs.anaconda.com/en/latest/data-science-workflows/packages/index.html)  
+        []  _Official 'anaconda' documentation?_ >>> [docs.anaconda.com/official](https://enterprise-docs.anaconda.com/en/latest/).  
         
+3. **IDE** (optional) ;  
+    + **Pycharm** :point_right: [jetbrains.com/getPycharm](https://www.jetbrains.com/pycharm/).  
+        []  _About 'Pycharm'_ >>> [wikipedia.org/Pycharm](https://en.wikipedia.org/wiki/PyCharm).  
+        []  _How to use 'Pycharm'?_ >>> [jetbrains.com/PycharmGuide](https://www.jetbrains.com/pycharm/documentation/).  
+
+
         
          
         
