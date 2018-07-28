@@ -141,19 +141,20 @@ This application works according to the following folds :
 ## Usage guide -  
 ### _Pre-requisites_ :  
 1. **Python3** ;  
-       []  About 'Python3' :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
-       []  How to install 'Python3'? :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
-       []  Official 'Python3' documentation :point_right: [docs.python.org/Python3](https://docs.python.org/3/).  
-       []  GET 'Python3' :point_right: [python.org/downloads](https://www.python.org/downloads/).
+       []  _About 'Python3'_ :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
+       []  _How to install 'Python3'?_ :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
+       []  _Official 'Python3' documentation_ :point_right: [docs.python.org/Python3](https://docs.python.org/3/).  
+       []  _GET 'Python3'_ :point_right: [python.org/downloads](https://www.python.org/downloads/).
 
-2. **Python Package Manager** ;  
+2. **Python Package Manager** (any one of the below applications will suffice) ;  
     + **pip** :point_right: comes along with the executable 'python-installation' package.  
-        [] About 'pip' >>> [wikipedia.org/pip_packagemanager](https://en.wikipedia.org/wiki/Pip_(package_manager)).  
-       
-                   
+        []  _About 'pip'_ >>> [wikipedia.org/pip_packagemanager](https://en.wikipedia.org/wiki/Pip_(package_manager)).  
+        []  _How install packages using 'pip'?_ >>> [docs.python.org/inastallingPythonPackagesUsingPip](https://docs.python.org/3/installing/index.html).  
+    + **anaconda** :point_right: [**anaconda.com/downloads**](https://www.anaconda.com/download/).  
+        []  _About 'anaconda'_ >>> [wikipedia.org/conda](https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)).  
+        []  _How to install 'anaconda'?_ >>> [docs.anaconda.com/installingconda](https://enterprise-docs.anaconda.com/en/latest/install/index.html).  
+        []  _How to install 'python-packages' with 'conda'?_ >>> [docs.anaconda.com/packages](https://enterprise-docs.anaconda.com/en/latest/data-science-workflows/packages/index.html)  
         
- 
-
         
          
         
