@@ -139,6 +139,7 @@ This application works according to the following folds :
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
 
 ## Usage guide -  
+
 ### _Pre-requisites_ :  
 1. **Python3** ;  
        []  _About 'Python3'_ :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
@@ -183,4 +184,13 @@ This application works according to the following folds :
         []  _About 'scikit-learn'_ :point_right: [wikipedia.org/Scikit-Learn](https://en.wikipedia.org/wiki/Scikit-learn).  
         []  _Official 'scikit-learn' documentation_ :point_right: [scikit-learn.org/docs](http://scikit-learn.org/stable/documentation.html).  
         (**Note.-** For installing _Scikit-Learn_ through pip, type `python -m pip --user install sklearn`.)  
-
+        
+### _Running the Application_ :
+* Before you download this application, make sure you have installed 'Python3' along with the dependency modules.  
+* If you are using any integrated development environment like 'PyCharm', you can simply clone this repository to your  
+  project directory, using the git-commandline tools, just type `git clone https://github.com/Tejas07PSK/Melanoma-Detection.git`.  
+* As this a 'console/commandline/terminal' application you can simply download this repository as `Melanoma-Detection.zip`
+  compressed file and then extract it accordingly. Now, navigate to the extracted folder in terminal  
+  and then run this program by typing `python Main.py`.  
+* As you run this application, you will be greeted with the following text as shown in the screen-shot,  
+  ![Screenshot-1](https://drive.google.com/file/d/1I_vZuqOEgXFptGvCfHnGDFPZPhpFkEUI/view?usp=sharing).  
