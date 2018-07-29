@@ -193,4 +193,4 @@ This application works according to the following folds :
   compressed file and then extract it accordingly. Now, navigate to the extracted folder in terminal  
   and then run this program by typing `python Main.py`.  
 * As you run this application, you will be greeted with the following text as shown in the screen-shot,  
-  ![Screenshot-1](https://drive.google.com/file/d/1I_vZuqOEgXFptGvCfHnGDFPZPhpFkEUI/view?usp=sharing).  
+  ![Screenshot-1](https://drive.google.com/uc?export=view&id=1I_vZuqOEgXFptGvCfHnGDFPZPhpFkEUI).  
