@@ -174,8 +174,13 @@ This application works according to the following folds :
         []  _About 'scipy'_ :point_right: [wikipedia.org/scipy](https://en.wikipedia.org/wiki/SciPy).  
         []  _Official 'scipy' documentations_ :point_right: [scipy.org/docs](https://www.scipy.org/docs.html).  
         (**Note.-** For installing _SciPy_ through pip, type `python -m pip --user install scipy`.)  
-        
-         
-        
-      
-    
+    + **'OpenCV'**.  
+        []  _About 'opencv'_ :point_right: [wikipedia.org/opencv](https://en.wikipedia.org/wiki/OpenCV).  
+        []  _Official 'opencv-python' online tutorial_ :point_right: [opencv-python.org/tutorials](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html).  
+        []  _Official 'opencv-python' documentation_ :point_right: [docs.opencv.org/python](https://docs.opencv.org/3.0-beta/index.html).  
+        (**Note.-** For installing _OpenCV_ through pip, type `python -m pip --user install opencv-python`.)  
+    + **'Scikit-Learn'**.  
+        []  _About 'scikit-learn'_ :point_right: [wikipedia.org/Scikit-Learn](https://en.wikipedia.org/wiki/Scikit-learn).  
+        []  _Official 'scikit-learn' documentation_ :point_right: [scikit-learn.org/docs](http://scikit-learn.org/stable/documentation.html).  
+        (**Note.-** For installing _Scikit-Learn_ through pip, type `python -m pip --user install sklearn`.)  
+
