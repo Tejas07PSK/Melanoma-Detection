@@ -192,5 +192,5 @@ This application works according to the following folds :
 * As this a 'console/commandline/terminal' application you can simply download this repository as `Melanoma-Detection.zip`
   compressed file and then extract it accordingly. Now, navigate to the extracted folder in terminal  
   and then run this program by typing `python Main.py`.  
-* As you run this application, you will be greeted with the following text as shown in the screen-shot,  
-  ![Screenshot-1](https://user-images.githubusercontent.com/29245625/43370268-8dd88c00-9399-11e8-9819-803ecfe350ce.png).  
+* As you run this application, you will be greeted with the following text as shown in the screen-shot.  
+  ![Screenshot-1](https://user-images.githubusercontent.com/29245625/43370268-8dd88c00-9399-11e8-9819-803ecfe350ce.png)  
