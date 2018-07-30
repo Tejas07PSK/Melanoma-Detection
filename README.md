@@ -227,3 +227,11 @@ This application works according to the following folds :
   ![Screenshot-23](https://user-images.githubusercontent.com/29245625/43425571-a94d18d4-9470-11e8-8e1d-a2724f23897c.png)  
   ![Screenshot-24](https://user-images.githubusercontent.com/29245625/43425636-d8a888f2-9470-11e8-8ed8-5dcb9c25e6a9.png)  
   ![Screenshot-25](https://user-images.githubusercontent.com/29245625/43425662-f2a74950-9470-11e8-89ae-5bbe57575d1c.png)  
+* Option **_'4'_** is used for classifying the types of the input-images. For explanation we have considered the following  
+  input images,  
+  ![Inp_Img-0](temp/0.jpg) ![Inp_Img-1](temp/1.jpg) ![Inp_Img-2](temp/2.jpg) ![Inp_Img-3](temp/3.jpg) ![Inp_Img-4](temp/4.jpg) ![Inp_Img-5](temp/5.jpg)  
+  ![Inp_Img-6](temp/6.jpg) ![Inp_Img-7](temp/7.jpg) ![Inp_Img-8](temp/8.jpg) ![Inp_Img-9](temp/9.jpg) ![Inp_Img-10](temp/10.jpg) ![Inp_Img-11](temp/11.jpg),  
+  now look at the screenshots.  
+  ![Screenshot-26](https://user-images.githubusercontent.com/29245625/43426733-5f4872ca-9474-11e8-96b9-281e24b50089.png)  
+  ![Screenshot-27](https://user-images.githubusercontent.com/29245625/43426807-ab9017aa-9474-11e8-8a9b-8a1008e27f78.png)  
+
