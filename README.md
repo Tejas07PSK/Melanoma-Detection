@@ -192,5 +192,38 @@ This application works according to the following folds :
 * As this a 'console/commandline/terminal' application you can simply download this repository as `Melanoma-Detection.zip`
   compressed file and then extract it accordingly. Now, navigate to the extracted folder in terminal  
   and then run this program by typing `python Main.py`.  
-* As you run this application, you will be greeted with the following text as shown in the screen-shot.  
+* As you run this application, you will be greeted with the following text as shown in the screenshot.  
   ![Screenshot-1](https://user-images.githubusercontent.com/29245625/43370268-8dd88c00-9399-11e8-9819-803ecfe350ce.png)  
+* Now, if you select option **_'1'_**, you will go through the following phases as shown in the screenshots.  
+  ![Screenshot-2](https://user-images.githubusercontent.com/29245625/43410171-9edabb4a-9443-11e8-8fa9-d03b129d8b70.png)  
+  ![Screenshot-3](https://user-images.githubusercontent.com/29245625/43410312-19338d36-9444-11e8-9acc-d9802badbc8e.png)  
+  ![Screenshot-4](https://user-images.githubusercontent.com/29245625/43415670-d6bec4b0-9453-11e8-845e-e2b76d368d7d.png)  
+  ![Screenshot-5](https://user-images.githubusercontent.com/29245625/43416632-7c6ea3c4-9456-11e8-8f16-012a83780e21.png)  
+  ![Screenshot-6](https://user-images.githubusercontent.com/29245625/43417829-b8a87a10-9459-11e8-8bb1-ede7aa7efb6f.png)  
+  ![Screenshot-7](https://user-images.githubusercontent.com/29245625/43418479-a267ae54-945b-11e8-9f6f-833ebf3b4422.png)  
+  ![Screenshot-8](https://user-images.githubusercontent.com/29245625/43418558-e209842e-945b-11e8-952f-bfd21c9d9b3f.png)  
+* Next, if you select option **_'2'_**, you will get the following output as shown in the screenshot.  
+  ![Screenshot-9](https://user-images.githubusercontent.com/29245625/43418835-d82d5ccc-945c-11e8-9654-5236dd32e7b2.png)  
+* Next, if you select option **_'3'_**, the operation phase will be very similar to option **_'1'**, as shown in the following screenshots.  
+  ![Screenshot-10](https://user-images.githubusercontent.com/29245625/43420229-caf2edd4-9460-11e8-9529-d555f554e60e.png)  
+  ![Screenshot-11](https://user-images.githubusercontent.com/29245625/43420753-643ee6ea-9462-11e8-986e-5327a462db2c.png)  
+  ![Screenshot-12](https://user-images.githubusercontent.com/29245625/43421789-63163c66-9465-11e8-8542-57a60765b055.png)  
+* Next, if you select option **_'7'_**, the existing ml-models will be iteratively trained with the new test-images  
+  placed in the _'/temp'_ folder, look at this screenshot.  
+  ![Screenshot-13](https://user-images.githubusercontent.com/29245625/43423442-1552a118-946a-11e8-9de1-8f3565544a48.png)  
+* Now, if you select option **_'5'_**, you will get the following output, as shown in the screenshots.  
+  ![Screenshot-14](https://user-images.githubusercontent.com/29245625/43424125-fd8b8782-946b-11e8-99d3-71e5c2c5531e.png)  
+  ![Screenshot-15](https://user-images.githubusercontent.com/29245625/43424211-357f7126-946c-11e8-8d49-d9761016c063.png)  
+* If you select option **_'8'_**, you'll get the following output as shown in the screenshots.  
+  ![Screenshot-16](https://user-images.githubusercontent.com/29245625/43424458-2638c41e-946d-11e8-9557-f693a9a1c355.png)  
+  ![Screenshot-17](https://user-images.githubusercontent.com/29245625/43424749-02550886-946e-11e8-9901-a996376f569c.png)  
+  ![Screenshot-18](https://user-images.githubusercontent.com/29245625/43424807-26170bb6-946e-11e8-92d8-477912d0b5c3.png)  
+* Option **_'9'_** is used for getting a list of files present in any valid project directory, look at the screenshot.  
+  ![Screenshot-19](https://user-images.githubusercontent.com/29245625/43424995-d9a94a18-946e-11e8-8906-5fcfb9dba059.png)  
+* Option **_'6'_** is used for plotting the decision-surfaces of the various classifiers/regressors as shown below in the screeenshots.  
+  ![Screenshot-20](https://user-images.githubusercontent.com/29245625/43425489-62e3dd7e-9470-11e8-8dde-563a697cefd4.png)  
+  ![Screenshot-21](https://user-images.githubusercontent.com/29245625/43425542-88789eda-9470-11e8-87b9-70877ec195e7.png)  
+  ![Screenshot-22](https://user-images.githubusercontent.com/29245625/43425571-a94d18d4-9470-11e8-8e1d-a2724f23897c.png)  
+  ![Screenshot-23](https://user-images.githubusercontent.com/29245625/43425571-a94d18d4-9470-11e8-8e1d-a2724f23897c.png)  
+  ![Screenshot-24](https://user-images.githubusercontent.com/29245625/43425636-d8a888f2-9470-11e8-8ed8-5dcb9c25e6a9.png)  
+  ![Screenshot-25](https://user-images.githubusercontent.com/29245625/43425662-f2a74950-9470-11e8-89ae-5bbe57575d1c.png)  
