@@ -233,4 +233,7 @@ This application works according to the following folds :
   now look at the screenshots.  
   ![Screenshot-26](https://user-images.githubusercontent.com/29245625/43426733-5f4872ca-9474-11e8-96b9-281e24b50089.png)  
   ![Screenshot-27](https://user-images.githubusercontent.com/29245625/43426807-ab9017aa-9474-11e8-8a9b-8a1008e27f78.png)  
-
+* Option **_'10'_** is used for displaying the 'R-G-B' color-plates of a selected color-image, as shown in the screenshots.  
+  ![Screenshot-28](https://user-images.githubusercontent.com/29245625/43484781-f28ba292-952c-11e8-9c23-03c01e04db3e.png)  
+  ![Screenshot-29](https://user-images.githubusercontent.com/29245625/43484807-06133186-952d-11e8-9d07-36ed71b0d557.png)  
+  
