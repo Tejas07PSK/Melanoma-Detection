@@ -524,7 +524,7 @@ def main_menu():
            print("\t This option displays the 3 individual color-plates(R-G-B) of the test image placed in the \'/test\' directory. \n")
            print("\t Before you proceed make sure that you have created the \'test\' directory and placed the corresponding images there. \n")
            obj = p.Prep('test/' + str(input("Enter file-name of image : \n")))
-           __showImages([(obj.getColorPlates(obj.getActImg(), 'R'), 'act_img_red', None), (obj.getColorPlates(obj.getActImg(), 'G'), 'act_img_green', None), (obj.getColorPlates(obj.getActImg(), 'B'), 'act_img_blue', None), (obj.getColorPlates(obj.getSegColImg(), 'R'), 'seg_img_red', None), (obj.getColorPlates(obj.getSegColImg(), 'G'), 'seg_img_green', None), (obj.getColorPlates(obj.getSegColImg(), 'B'), 'seg_img_blue', None)])
+           __showImages([(obj.getActImg(), 'act_img', None), (obj.getSegColImg(), 'act_seg_img', None), (obj.getColorPlates(obj.getActImg(), 'R'), 'act_img_red', None), (obj.getColorPlates(obj.getActImg(), 'G'), 'act_img_green', None), (obj.getColorPlates(obj.getActImg(), 'B'), 'act_img_blue', None), (obj.getColorPlates(obj.getSegColImg(), 'R'), 'seg_img_red', None), (obj.getColorPlates(obj.getSegColImg(), 'G'), 'seg_img_green', None), (obj.getColorPlates(obj.getSegColImg(), 'B'), 'seg_img_blue', None)])
            print("\t DONE !!! \n")
        else:
            print("Thank-You For Using This Program!!!")
