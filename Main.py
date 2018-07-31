@@ -357,6 +357,7 @@ def main_menu():
        print("\t 7.Add the \'feature-sets\' to \'testcase.npz\' or \'dataset.npz\' numpy files, to make mlmodels more accurate!! \n")
        print("\t 8.Print only the selected \'feature-sets\' of an image!! \n")
        print("\t 9.List files present in valid \'project-directories\'!! \n")
+       print("\t 10.Get color plates of an image!! \n")
        print("\t Enter \'e\' to exit!! \n")
        c = str(input("Enter your choice - \n"))
        if (c == '1'):
@@ -519,6 +520,12 @@ def main_menu():
            for fls in __listFilesInDir(str(input("\t Please Enter A Valid Directory Path. \n"))):
                print(fls + '\n')
            print("\t Successfully Listed All File-Names. \n")
+       elif (c == '10'):
+           print("\t This option displays the 3 individual color-plates(R-G-B) of the test image placed in the \'/test\' directory. \n")
+           print("\t Before you proceed make sure that you have created the \'test\' directory and placed the corresponding images there. \n")
+           obj = p.Prep('test/' + str(input("Enter file-name of image : \n")))
+           __showImages([(obj.getColorPlates(obj.getActImg(), 'R'), 'act_img_red', None), (obj.getColorPlates(obj.getActImg(), 'G'), 'act_img_green', None), (obj.getColorPlates(obj.getActImg(), 'B'), 'act_img_blue', None), (obj.getColorPlates(obj.getSegColImg(), 'R'), 'seg_img_red', None), (obj.getColorPlates(obj.getSegColImg(), 'G'), 'seg_img_green', None), (obj.getColorPlates(obj.getSegColImg(), 'B'), 'seg_img_blue', None)])
+           print("\t DONE !!! \n")
        else:
            print("Thank-You For Using This Program!!!")
            print("Now Exiting.")

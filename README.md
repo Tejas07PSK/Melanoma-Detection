@@ -1,5 +1,5 @@
-# MELANOMA-DETECTION
-###### What is Melanoma?
+# MELANOMA-DETECTION  
+###### What is Melanoma?  
 **_'Melanoma'_**, also known as **_'Malignant_Melanoma'_**, is a type
 of cancer that develops from the pigment-containing cells known
 as _melanocytes_. Melanomas typically occur on the skin, but may rarely
@@ -7,9 +7,9 @@ occur in the mouth, intestines, or eye. The primary cause of
 melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
-**Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**
+**Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**  
 
-## About The Repository - 
+## About the repository -  
 This repo holds the source code for the Melanoma-Detection Application.
 Given below is the _'Project Structure'_ :  
   
@@ -83,7 +83,7 @@ Given below is the _'Project Structure'_ :
           |   Util.py
           |   __init__.py
 
-## About The Application -
+## About The Application -  
 This application does not contain any fancy _UI_, as it is basically a
 modular console program, written in Python3. Anyone, with some basic
 programming knowledge will be able to run this app easily.  
@@ -91,10 +91,10 @@ Simply, this console app tries to predict the nature of a 'skin-lesion'
 image, served as an input.  
 To keep things simple, we have trained our machine-learning models, to
 classify the input image as one of the three types:  
-   + **NEGATIVE** - Represents a skin-lesion that is not melanoma._(-1)_
-   + **BENIGN** - Represents a skin-lesion that is an early-stage melanoma._(0)_
-   + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_   
-
+   + **NEGATIVE** - Represents a skin-lesion that is not melanoma._(-1)_  
+   + **BENIGN** - Represents a skin-lesion that is an early-stage melanoma._(0)_  
+   + **MALIGNANT** - Represents a skin-lesion that is highly cancerous._(1)_  
+   
 The application consists of five core modules, namely:  
    1. _Main.py_  (Driver module for the entire application).  
    2. **featext**  ('quatified-features' extraction module for the input_image).  
@@ -131,7 +131,7 @@ This application works according to the following folds :
     a set of quantified-features are extracted from them, which comprises the 'training-set' data.  
 2.  Next, the above generated training data, is then passed on to the various classifier/regressor objects for training/learning.  
 3.  Now, the trained models are persistently saved as python objects or pickle units, in individual '.pkl' files.  
-4.  Next, a set of input_images in need of classification are placed in the _'temp'_ folder.
+4.  Next, a set of input_images in need of classification are placed in the _'temp'_ folder.  
 5.  Next, the program takes each input_image pre-processes it and extracts the necessary features from it.  
 6.  The features generated from the pre-processed input_images are then passed on to the various  
     machine-learning models,which in turn predicts the nature of each input_image accordingly.  
@@ -139,13 +139,12 @@ This application works according to the following folds :
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
 
 ## Usage guide -  
-
 ### _Pre-requisites_ :  
 1. **Python3** ;  
        []  _About 'Python3'_ :point_right: [wikipedia.org/PythonProgrammingLanguage](https://en.wikipedia.org/wiki/Python_(programming_language)).  
        []  _How to install 'Python3'?_ :point_right: [python.org/BeginnersGuide](https://wiki.python.org/moin/BeginnersGuide/Download).  
        []  _Official 'Python3' documentation_ :point_right: [docs.python.org/Python3](https://docs.python.org/3/).  
-       []  _GET 'Python3'_ :point_right: [python.org/downloads](https://www.python.org/downloads/).
+       []  _GET 'Python3'_ :point_right: [python.org/downloads](https://www.python.org/downloads/).  
 
 2. **Python Package Manager** (any one of the below applications will suffice) ;  
     + **pip** :point_right: comes along with the executable 'python-installation' package.  
@@ -184,12 +183,12 @@ This application works according to the following folds :
         []  _About 'scikit-learn'_ :point_right: [wikipedia.org/Scikit-Learn](https://en.wikipedia.org/wiki/Scikit-learn).  
         []  _Official 'scikit-learn' documentation_ :point_right: [scikit-learn.org/docs](http://scikit-learn.org/stable/documentation.html).  
         (**Note.-** For installing _Scikit-Learn_ through pip, type `python -m pip --user install sklearn`.)  
-        
-### _Running the Application_ :
+
+### _Running the Application_ :  
 * Before you download this application, make sure you have installed 'Python3' along with the dependency modules.  
 * If you are using any integrated development environment like 'PyCharm', you can simply clone this repository to your  
   project directory, using the git-commandline tools, just type `git clone https://github.com/Tejas07PSK/Melanoma-Detection.git`.  
-* As this a 'console/commandline/terminal' application you can simply download this repository as `Melanoma-Detection.zip`
+* As this a 'console/commandline/terminal' application you can simply download this repository as `Melanoma-Detection.zip`  
   compressed file and then extract it accordingly. Now, navigate to the extracted folder in terminal  
   and then run this program by typing `python Main.py`.  
 * As you run this application, you will be greeted with the following text as shown in the screenshot.  
