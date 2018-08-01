@@ -501,6 +501,7 @@ def main_menu():
            print("\t No-worries if you had created the \'test\' directory before, just place your images of choice in there!! \n")
            print("\t All features are generated over gray-scale images, hence your original color image will be converted to it's corresponding gray-scale image!! \n")
            obj = p.Prep('test/' + str(input("Enter file-name of image : \n")))
+           print("Otsu's threshold-level for the input-image is %d \n" % obj.getOtsuThresholdLevel())
            print("Options for selecting the image-variant are as follows : \n")
            print("a. Select inverted gray-scale image. \n")
            print("b. Select segmented binary image. \n")
