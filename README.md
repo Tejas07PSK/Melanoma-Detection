@@ -9,6 +9,7 @@ skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
 **Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**  
 
+
 ## About the repository -  
 This repo holds the source code for the Melanoma-Detection Application.
 Given below is the _'Project Structure'_ :  
@@ -83,6 +84,7 @@ Given below is the _'Project Structure'_ :
           |   Util.py
           |   __init__.py
 
+
 ## About The Application -  
 This application does not contain any fancy _UI_, as it is basically a
 modular console program, written in Python3. Anyone, with some basic
@@ -124,6 +126,7 @@ The application consists of five core modules, namely:
    5. **util**  (General library utility module).  
       + _Util.py_  (Performs routine data-structural operations ... insertion, searching, sorting etc).  
 
+
 ## How the application works?  
 This application works according to the following folds :  
 1.  Firstly, a 'training-set' data is generated from a collection of various skin-lesion images placed in their respective  
@@ -137,6 +140,7 @@ This application works according to the following folds :
     machine-learning models,which in turn predicts the nature of each input_image accordingly.  
 7.  Since, the learning process here is supervised, a 'prediction-accuracy' is generated for each model.  
 8.  Finally, the results from the model with the highest 'prediction-accuracy' are selected.  
+
 
 ## Usage guide -  
 ### _Pre-requisites_ :  
@@ -237,3 +241,23 @@ This application works according to the following folds :
   ![Screenshot-28](https://user-images.githubusercontent.com/29245625/43484781-f28ba292-952c-11e8-9c23-03c01e04db3e.png)  
   ![Screenshot-29](https://user-images.githubusercontent.com/29245625/43484807-06133186-952d-11e8-9d07-36ed71b0d557.png)  
   
+  
+## About the core functionalities -  
+### Pre-processing :  
+During the pre-processing phase, the input-image is first converted to 'gray-scale' and then this gray-image is inverted.
+Next an 'automatic-thresholding' operation is performed on the 'inverted-gray-scale-image' using 'Otsu's Method'.
+A 'threshold-level' is generated, which is then used to binarize the 'inverted-gray-scale-image',i.e., segmentation of the
+input-image occurs. Now, some morphological-operations are performed on the binarized-image, to remove holes and contrast inconsistencies.
+Finally, a set variations of the original input-image are produced at the end of this phase.  
+For example if we consider the following image as the input  
+![inp_img](/images/malignant/8.jpg),  
+then the pre-processing phase will produce the following resulting images.  
+![inp_img_grayscale](/results/dataset/malignant/8/imggray8.jpg) ![inp_img_inverted_grayscale](/results/dataset/malignant/8/imggrayinvrt8.jpg) ![inp_img_binary](/results/dataset/malignant/8/imgbin8.jpg)  ![inp_img_seg_grayscale](/results/dataset/malignant/8/segimggray8.jpg) ![inp_img_seg_color](/results/dataset/malignant/8/imgcol8.jpg)  
+The 'Otsu' threshold-level for the 'input-image' above, is **132**.  
+**Read more about _Otsu's Thresholding Method_ here** :point_right: [wikipedia.org/Otsu's_Method](https://en.wikipedia.org/wiki/Otsu%27s_method) **and at** :point_right: [labbookpages.co.uk/OtsuThresholding](http://www.labbookpages.co.uk/software/imgProc/otsuThreshold.html).  
+**Read more about _Image Segmentation_ here** :point_right: [wikipedia.org/Image_Segmentation](https://en.wikipedia.org/wiki/Image_segmentation).  
+**Read more about _Gray-Scale Images_ here** :point_right: [wikipedia.org/grayscaleimages](https://en.wikipedia.org/wiki/Grayscale).  
+**Read more about _RGB Color Images_ here** :point_right: [wikipedia.org/rgb_colorimages](https://en.wikipedia.org/wiki/RGB_color_model).  
+**Read more about _Binary Images_ here** :point_right: [wikipedia.org/binaryimages](https://en.wikipedia.org/wiki/Binary_image).  
+**Read more about _Morphological Operations_ here** :point_right: [wikipedia.org/morphological_operations](https://en.wikipedia.org/wiki/Mathematical_morphology).  
+**Read more about _Image Thresholding_ here** :point_right: [wikipedia.org/image_thresholding](https://en.wikipedia.org/wiki/Thresholding_(image_processing)).  
