@@ -252,7 +252,7 @@ Finally, a set variations of the original input-image are produced at the end of
 For example if we consider the following image as the input  
 ![inp_img](/images/malignant/8.jpg),  
 then the pre-processing phase will produce the following resulting images.  
-![inp_img_grayscale](/results/dataset/malignant/8/imggray8.jpg) ![inp_img_inverted_grayscale](/results/dataset/malignant/8/imggrayinvrt8.jpg) ![inp_img_binary](/results/dataset/malignant/8/imgbin8.jpg)  ![inp_img_seg_grayscale](/results/dataset/malignant/8/segimggray8.jpg) ![inp_img_seg_color](/results/dataset/malignant/8/imgcol8.jpg)  
+![inp_img_grayscale](/results/dataset/malignant/8/imggray8.jpg) ![inp_img_inverted_grayscale](/results/dataset/malignant/8/imggrayinvrt8.jpg) ![inp_img_binary](/results/dataset/malignant/8/imgbin8.jpg)  ![inp_img_seg_grayscale](/results/dataset/malignant/8/segimggray8.jpg) ![inp_img_seg_color](/results/dataset/malignant/8/segimgcol8.jpg)  
 The 'Otsu' threshold-level for the 'input-image' above, is **132**.  
 **Read more about _Otsu's Thresholding Method_ here** :point_right: [wikipedia.org/Otsu's_Method](https://en.wikipedia.org/wiki/Otsu%27s_method) **and at** :point_right: [labbookpages.co.uk/OtsuThresholding](http://www.labbookpages.co.uk/software/imgProc/otsuThreshold.html).  
 **Read more about _Image Segmentation_ here** :point_right: [wikipedia.org/Image_Segmentation](https://en.wikipedia.org/wiki/Image_segmentation).  
@@ -261,3 +261,39 @@ The 'Otsu' threshold-level for the 'input-image' above, is **132**.
 **Read more about _Binary Images_ here** :point_right: [wikipedia.org/binaryimages](https://en.wikipedia.org/wiki/Binary_image).  
 **Read more about _Morphological Operations_ here** :point_right: [wikipedia.org/morphological_operations](https://en.wikipedia.org/wiki/Mathematical_morphology).  
 **Read more about _Image Thresholding_ here** :point_right: [wikipedia.org/image_thresholding](https://en.wikipedia.org/wiki/Thresholding_(image_processing)).  
+
+### Feature extraction :
+For prediction purposes, this application extracts a total of 34 quatified features from the input-image,
+each having their own computational methods.  
+1. **_Haralick's texture features_**;  
+   Haralick introduced Gray Level Cooccurrence Matrix (GLCM), using which various statisctical and differential textural-features
+   of an image are extracted. These features, are primarily based on the human-perception of visual textures.
+   GLCM shows how often each gray level occurs at a pixel located at a fixed geometric position relative to 
+   another pixel, as a function of the gray level.  
+   Listed below are the set of Haralick's texture features,  
+   || **Angular Second Moment(ASM)**.  
+   || **Energy**.  
+   || **Entropy**.  
+   || **Contrast**.  
+   || **Homogeneity**.  
+   || **Directional-Moment(DM)**.  
+   || **Correlation**.  
+   || **Haralick-Correlation**.  
+   || **Cluster-Shade**.  
+   || **Cluster-Prominence**.  
+   || **Moment-1**.  
+   || **Moment-2**.  
+   || **Moment-3**.  
+   || **Moment-4**.  
+   || **Differential-ASM(DASM)**.  
+   || **Differential-Mean(DMEAN)**.  
+   || **Differential-Entropy(DENTROPY)**.  
+   (More articles regarding GLCM and Haralick's features, can be found here,  
+   :point_right: [hindawi.com/haralick_biolung](https://www.hindawi.com/journals/ijbi/2015/267807/).  
+   :point_right: [wikipedia.org/coocurmat](https://en.wikipedia.org/wiki/Co-occurrence_matrix).  
+   :point_right: [ucsd.edu/glcm.pdf](http://www.code.ucsd.edu/pcosman/glcm.pdf).  
+   :point_right: [uio.no/statistics_glcm](https://www.uio.no/studier/emner/matnat/ifi/INF4300/h08/undervisningsmateriale/glcm.pdf).  
+   :point_right: [github.com/cerr/Cerr/har_feat_fromulas](https://github.com/cerr/CERR/wiki/Haralick-texture-features).  
+   :point_right: [shodhganga.ac.in/texture_features](http://shodhganga.inflibnet.ac.in/bitstream/10603/20682/14/14_chapter%205.pdf).  
+2. **_Tamura texture features_**;  
+   
