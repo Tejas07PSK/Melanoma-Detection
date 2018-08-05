@@ -308,4 +308,28 @@ each having their own computational methods.
    || **Tamura-Regularity**.  
    || **Tamura-Roughness**.  
    (You can read more about Tamura's-Features here :point_right: [dirve.google.com/melanoma_tamura_feats]().)  
-3. 
+3. **_King's texture features_**;  
+   King's texture features are also based on the human visual perception of images. It is computationally more optimal 
+   as well as extracts more features. King's method introduces the notion of _NGTDM (Neighborhood Gray-Tone Difference Matrix)_.  
+   Listed below are the set of King's texture features,  
+   || **King's-Coarseness**.  
+   || **King's-Contrast**.  
+   || **King's-Busyness**.  
+   || **King's-Complexity**.  
+   || **King's-Strength**.  
+   (You can read more about Kings's-Features here :point_right: [dirve.google.com/melanoma_kings_feats]().)  
+4. **_Gabor's physical features_**;  
+   The Gabor filter is a linear filter, which is used to analyze the existence of a frequency content in a specific 
+   direction, in the given digitized image. Basically, it tries to quantify the physical features of a digital image, 
+   namely shape, color, edges etc.  
+   Listed below are the set of Gabor physical features,  
+   || **Mean-Edge of covering rectangle**.  
+   || **Bounded-Circle radius**.  
+   || **Asymmetry-Index of lesion**.  
+   || **Fractal-Dimension of lesion**.  
+   || **Diameter of lesion**.  
+   || **Color-Variance of lesion**.  
+   (More articles regarding Gabor physical features, can be found here,  
+   :point_right: [dirve.google.com/melanoma_gabor_feats]().  
+   :point_right: [wikipedia.org/gabor_filter](https://en.wikipedia.org/wiki/Gabor_filter).)  
+   
