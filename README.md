@@ -266,9 +266,9 @@ The 'Otsu' threshold-level for the 'input-image' above, is **132**.
 For prediction purposes, this application extracts a total of 34 quatified features from the input-image,
 each having their own computational methods.  
 1. **_Haralick's texture features_**;  
-   Haralick introduced Gray Level Cooccurrence Matrix (GLCM), using which various statisctical and differential textural-features
-   of an image are extracted. These features, are primarily based on the human-perception of visual textures.
-   GLCM shows how often each gray level occurs at a pixel located at a fixed geometric position relative to 
+   Haralick introduced _Gray Level Co-occurrence Matrix (GLCM)_, using which various statisctical and differential textural-features
+   of an image are extracted. These features, are primarily based on the 'thermodynamical' aspects of a textured image.
+   _GLCM_ shows how often each gray level occurs at a pixel located at a fixed geometric position relative to 
    another pixel, as a function of the gray level.  
    Listed below are the set of Haralick's texture features,  
    || **Angular Second Moment(ASM)**.  
@@ -294,6 +294,18 @@ each having their own computational methods.
    :point_right: [ucsd.edu/glcm.pdf](http://www.code.ucsd.edu/pcosman/glcm.pdf).  
    :point_right: [uio.no/statistics_glcm](https://www.uio.no/studier/emner/matnat/ifi/INF4300/h08/undervisningsmateriale/glcm.pdf).  
    :point_right: [github.com/cerr/Cerr/har_feat_fromulas](https://github.com/cerr/CERR/wiki/Haralick-texture-features).  
-   :point_right: [shodhganga.ac.in/texture_features](http://shodhganga.inflibnet.ac.in/bitstream/10603/20682/14/14_chapter%205.pdf).  
+   :point_right: [shodhganga.ac.in/texture_features](http://shodhganga.inflibnet.ac.in/bitstream/10603/20682/14/14_chapter%205.pdf).)  
 2. **_Tamura texture features_**;  
-   
+   Tamura's texture features, are based on the human visual perception of images. It uses various probabilistic methods 
+   on the discrete gray-level intensities to extract more mathematical quatities, as texture-features from the digitized image. 
+   It improves on Haralick's features, but is computationally more expensive.  
+   Listed below are the set of Haralick's texture features,  
+   || **Tamura-Coarseness**.  
+   || **Tamura-Contrast**.  
+   || **Tamura-Kurtosis**.  
+   || **Tamura-Linelikeness**.  
+   || **Tamura-Directionality**.  
+   || **Tamura-Regularity**.  
+   || **Tamura-Roughness**.  
+   (You can read more about Tamura's-Features here :point_right: [dirve.google.com/melanoma_tamura_feats]().)  
+3. 
