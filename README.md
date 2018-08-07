@@ -335,15 +335,49 @@ each having their own computational methods.
 
 ### Classifiers and Regressors :  
 #### What are 'Classifiers' ?  
-In machine learning and statistics, classification is the problem of identifying to which of a set of categories  
-a new observation belongs, on the basis of a training set of data containing observations (or instances) whose  
+In machine learning and statistics, classification is the problem of identifying to which of a set of categories 
+a new observation belongs, on the basis of a training set of data containing observations (or instances) whose 
 category membership is known.  
 _Read more here_ :point_right: **_[wikipedia.org/statistical_classification](https://en.wikipedia.org/wiki/Statistical_classification)_**.  
 
 #### What are 'Regressors' ?  
-In statistical-modeling and machine-learning, regression analysis is a set of statistical processes for estimating  
-the relationship between a dependent variable and one or more independent variables. More specifically, regression analysis helps one  
-understand how the typical value of the dependent variable (or 'criterion variable') changes when any one of the independent variables  
+In statistical-modeling and machine-learning, regression analysis is a set of statistical processes for estimating 
+the relationship between a dependent variable and one or more independent variables. More specifically, regression analysis helps one 
+understand how the typical value of the dependent variable (or 'criterion variable') changes when any one of the independent variables 
 is varied, while the other independent variables are held fixed.  
 _Read more here_ :point_right: **_[wikipedia.org/regresson_analysis](https://en.wikipedia.org/wiki/Regression_analysis)_**.  
 
+#### Classifiers(C)/Regressors(R) used by this application,  
++ **_Support Vector Machine(SVM) classifier/regressor_** ;  
+In machine learning, support vector machines (SVMs, also support vector networks) are supervised learning models 
+with associated learning algorithms that analyze data used for classification and regression analysis.  
+(More articles regarding SVMs can be found here,  
+:point_right: [wikipedia.org/SVM](https://en.wikipedia.org/wiki/Support_vector_machine).  
+:point_right: [scikit-learn.org/SVM](http://scikit-learn.org/stable/modules/svm.html).)  
++ **_Multi Layer Perceptron(MLP or Neural-Network) classifier/regressor_** ;  
+A multilayer perceptron (MLP) is a class of feedforward artificial neural network. An MLP consists of at 
+least three layers of nodes. Except for the input nodes, each node is a neuron that uses a 
+nonlinear activation function.  
+(More articles regarding MLPs and Neural-Networks can be found here,  
+:point_right: [wikipedia.org/MLP](https://en.wikipedia.org/wiki/Multilayer_perceptron).  
+:point_right: [wikipedia.org/ANN](https://en.wikipedia.org/wiki/Artificial_neural_network).  
+:point_right: [scikit-learn.org/MLP](http://scikit-learn.org/stable/modules/neural_networks_supervised.html).)  
++ **_Decision Tree(DT) classifier/regressor_** ;  
+Decision tree learning uses a decision tree (as a predictive model) to go from observations about 
+an item (represented in the branches) to conclusions about the item's target value (represented in the leaves). 
+It is one of the predictive modelling approaches used in statistics, data mining and machine learning.  
+(More articles regarding DTs can be found here,  
+:point_right: [wikipedia.org/DT](https://en.wikipedia.org/wiki/Decision_tree_learning).  
+:point_right: [scikit-learn.org/DT](http://scikit-learn.org/stable/modules/tree.html).)  
++ **_Random Forest(RF) classifier/regressor_** ;  
+Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks, 
+that operate by constructing a multitude of decision trees at training time and outputting the class that is the 
+mode of the classes (classification) or mean prediction (regression) of the individual trees. Random decision forests 
+correct for decision trees' habit of overfitting to their training set.  
+(More articles regarding RFs can be found here,  
+:point_right: [wikipedia.org/RF](https://en.wikipedia.org/wiki/Random_forest).  
+:point_right: [scikit-learn.org/RF](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).)  
+
+By default, this application outputs the result of the learning model having the highest prediction accuracy. In our experimental 
+case of 30 training-images and 12 prediction-images, the **_'Random Forest Classifier(RFC)'_** gave the best results with an accuracy 
+of **91.66%**.  
