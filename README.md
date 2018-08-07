@@ -333,7 +333,7 @@ each having their own computational methods.
    :point_right: [dirve.google.com/melanoma_gabor_feats](https://drive.google.com/file/d/1gw-u6GqfDhdUUDDRUR7ifo3WLycKaeaT/view?usp=sharing).  
    :point_right: [wikipedia.org/gabor_filter](https://en.wikipedia.org/wiki/Gabor_filter).)  
 
-### Classifiers and Regressors :  
+### Classification and Regression :  
 #### What are 'Classifiers' ?  
 In machine learning and statistics, classification is the problem of identifying to which of a set of categories 
 a new observation belongs, on the basis of a training set of data containing observations (or instances) whose 
