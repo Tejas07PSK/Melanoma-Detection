@@ -7,7 +7,7 @@ occur in the mouth, intestines, or eye. The primary cause of
 melanoma is ultraviolet light (UV) exposure in those with low levels of
 skin pigment. The UV light may be from either the sun or from other
 sources, such as tanning devices. About 25% develop from moles.  
-**Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**  
+**Read more at :-> [wikipedia.org/melanoma](https://en.wikipedia.org/wiki/Melanoma)**.  
 
 
 ## About the repository -  
@@ -332,4 +332,18 @@ each having their own computational methods.
    (More articles regarding Gabor physical features, can be found here,  
    :point_right: [dirve.google.com/melanoma_gabor_feats](https://drive.google.com/file/d/1gw-u6GqfDhdUUDDRUR7ifo3WLycKaeaT/view?usp=sharing).  
    :point_right: [wikipedia.org/gabor_filter](https://en.wikipedia.org/wiki/Gabor_filter).)  
-   
+
+### Classifiers and Regressors :  
+#### What are 'Classifiers' ?  
+In machine learning and statistics, classification is the problem of identifying to which of a set of categories  
+a new observation belongs, on the basis of a training set of data containing observations (or instances) whose  
+category membership is known.  
+_Read more here_ :point_right: **_[wikipedia.org/statistical_classification](https://en.wikipedia.org/wiki/Statistical_classification)_**.  
+
+#### What are 'Regressors' ?  
+In statistical-modeling and machine-learning, regression analysis is a set of statistical processes for estimating  
+the relationship between a dependent variable and one or more independent variables. More specifically, regression analysis helps one  
+understand how the typical value of the dependent variable (or 'criterion variable') changes when any one of the independent variables  
+is varied, while the other independent variables are held fixed.  
+_Read more here_ :point_right: **_[wikipedia.org/regresson_analysis](https://en.wikipedia.org/wiki/Regression_analysis)_**.  
+
