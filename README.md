@@ -430,7 +430,7 @@ of **91.66%**.
 2. ```class featext.texture.Haralick. HarFeat(img, offset)``` :-  
   * **_Constructor Parameters_ :**  
      * **img** - 2-dimensional numpy array representing a gray-scale image.  
-     * **offset** - a python tuple of two numbers, representing the x any y offsets respectively.  
+     * **offset** - a python tuple of two numbers, representing the x any y offsets respectively(default offset = (0, 1)).  
        (Here, offset = (x, y) where [0 <= x <= width_img] & [0 <= y <= height_img].)  
   * **_Methods_ :**  
      * ```getGLCM()```,  
@@ -551,3 +551,31 @@ of **91.66%**.
         + **_Returns_ :**  
           + **(self.__delg_img).astype(np.uint8)** - 2-dimensional numpy array representing a gray-scale image.  
       
+4. ```class featext.texture.King. KingFeat(img)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **img** - 2-dimensional numpy array representing a gray-scale image.  
+  * **_Methods_ :**  
+     * ```getNGTDM()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__ngtdm** - 2-dimensional numpy array representing the 'Neighbourhood Gray Tone Difference Matrix'.  
+     * ```getKingsCoarseness()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__coarseness** - python primitive number type representing 'King's-Coarseness'.  
+     * ```getKingsContrast()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__contrast** - python primitive number type representing 'King's-Contrast'.  
+     * ```getKingsBusyness()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__busyness** - python primitive number type representing 'King's-Busyness'.  
+     * ```getKingsComplexity()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__complexity** - python primitive number type representing 'King's-Complexity'.  
+     * ```getKingsStrength()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__strength** - python primitive number type representing 'King's-Strength'.  
