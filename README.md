@@ -381,3 +381,50 @@ correct for decision trees' habit of overfitting to their training set.
 By default, this application outputs the result of the learning model having the highest prediction accuracy. In our experimental 
 case of 30 training-images and 12 prediction-images, the **_'Random Forest Classifier(RFC)'_** gave the best results with an accuracy 
 of **91.66%**.  
+
+
+## API Guide -  
+1. ```class preprocessing.Prep. Prep(path)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **path** -  string text indicating the location of the source color-image.  
+  * **_Methods_ :**  
+     * ```getColorPlates(src_clrimg, plate)```,  
+        + **_Arguments_ :**  
+          + **src_clrimg** - 3-dimentional numpy array representing a color-image.  
+          + **plate** - required color plate code as a char.  
+            (Possible values are,  
+             **'R'** for red.  
+             **'G'** for green.  
+             **'B'** for blue.)  
+        + **_Returns_ :**  
+          + **temp_img** - resultant image consisting of the required color-plate, as a 3-dimentional numpy array.  
+     * ```getActImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__img** - 3-dimentional numpy array representing a color-image.  
+     * ```getGrayImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__imgray** - 2-dimentional numpy array representing a gray-scale image.  
+     * ```getInvrtGrayImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__invimgray** - 2-dimentional numpy array representing an inverted gray-scale image.  
+     * ```getBinaryImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__binimg** - 2-dimentional numpy array representing a binarized gray-scale image.  
+     * ```getOtsuThresholdLevel()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__ottlvl** - python primitive number type representing the 'Otsu' threshold-level for binarization.  
+     * ```getSegColImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__seg_col** - 3-dimentional numpy array representing a color-image.  
+     * ```getSegGrayImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__seg_gray** - 2-dimentional numpy array representing an segmented gray-scale image.
+
+2.
