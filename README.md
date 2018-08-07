@@ -386,11 +386,11 @@ of **91.66%**.
 ## API Guide -  
 1. ```class preprocessing.Prep. Prep(path)``` :-  
   * **_Constructor Parameters_ :**  
-     * **path** -  string text indicating the location of the source color-image.  
+     * **path** - string text indicating the location of the source color-image.  
   * **_Methods_ :**  
      * ```getColorPlates(src_clrimg, plate)```,  
         + **_Arguments_ :**  
-          + **src_clrimg** - 3-dimentional numpy array representing a color-image.  
+          + **src_clrimg** - 3-dimensional numpy array representing a color-image.  
           + **plate** - required color plate code as a char.  
             (Possible values are,  
              **'R'** for red.  
@@ -401,19 +401,19 @@ of **91.66%**.
      * ```getActImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__img** - 3-dimentional numpy array representing a color-image.  
+          + **self.__img** - 3-dimensional numpy array representing a color-image.  
      * ```getGrayImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__imgray** - 2-dimentional numpy array representing a gray-scale image.  
+          + **self.__imgray** - 2-dimensional numpy array representing a gray-scale image.  
      * ```getInvrtGrayImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__invimgray** - 2-dimentional numpy array representing an inverted gray-scale image.  
+          + **self.__invimgray** - 2-dimensional numpy array representing an inverted gray-scale image.  
      * ```getBinaryImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__binimg** - 2-dimentional numpy array representing a binarized gray-scale image.  
+          + **self.__binimg** - 2-dimensional numpy array representing a binarized gray-scale image.  
      * ```getOtsuThresholdLevel()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
@@ -421,10 +421,87 @@ of **91.66%**.
      * ```getSegColImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__seg_col** - 3-dimentional numpy array representing a color-image.  
+          + **self.__seg_col** - 3-dimensional numpy array representing a color-image.  
      * ```getSegGrayImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__seg_gray** - 2-dimentional numpy array representing an segmented gray-scale image.
+          + **self.__seg_gray** - 2-dimensional numpy array representing an segmented gray-scale image.  
 
-2.
+2. ```class featext.texture.Haralick. HarFeat(img, offset)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **img** - 2-dimensional numpy array representing a gray-scale image.  
+     * **offset** - a python tuple of two numbers, representing the x any y offsets respectively.  
+       (Here, offset = (x, y) where [0 <= x <= width_img] & [0 <= y <= height_img].)  
+  * **_Methods_ :**  
+     * ```getGLCM()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__glcm** - 2-dimensional numpy array representing the 'Gray-Level Co-occurrence Matrix(GLCM)'.  
+     * ```getAngularSecondMomentASM()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__asm** - python primitive number type representing 'ASM'.  
+     * ```getEnergy()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__energy** - python primitive number type representing 'Energy'.  
+     * ```getEntropy()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__entropy** - python primitive number type representing 'Entropy'.  
+     * ```getContrast()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__contrast** - python primitive number type representing 'Contrast'.  
+     * ```getHomogeneity()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__idm_homogeneity** - python primitive number type representing 'Homogeneity'.  
+     * ```getDm()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__dm** - python primitive number type representing 'DM'.  
+     * ```getCorrelation()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__correlation** - python primitive number type representing 'Correlation'.  
+     * ```getHarCorrelation()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__har_correlation** - python primitive number type representing 'Haralick-Correlation'.  
+     * ```getClusterShade()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__cluster_shade** - python primitive number type representing 'Cluster-Shade'.  
+     * ```getClusterProminence()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__cluster_prominence** - python primitive number type representing 'Cluster-Prominence'.  
+     * ```getMoment1()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__moment1** - python primitive number type representing '1st Moment'.  
+     * ```getMoment2()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__moment2** - python primitive number type representing '2nd Moment'.  
+     * ```getMoment3()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__moment3** - python primitive number type representing '3rd Moment'.  
+     * ```getMoment4()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__moment4** - python primitive number type representing '4th Moment'.  
+     * ```getDasm()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__dasm** - python primitive number type representing 'D-ASM'.  
+     * ```getDmean()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__dmean** - python primitive number type representing 'D-Mean'.  
+     * ```getDentropy()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__dentropy** - python primitive number type representing 'D-Entropy'.  
