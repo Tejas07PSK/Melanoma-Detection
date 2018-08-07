@@ -425,7 +425,7 @@ of **91.66%**.
      * ```getSegGrayImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__seg_gray** - 2-dimensional numpy array representing an segmented gray-scale image.  
+          + **self.__seg_gray** - 2-dimensional numpy array representing a segmented gray-scale image.  
 
 2. ```class featext.texture.Haralick. HarFeat(img, offset)``` :-  
   * **_Constructor Parameters_ :**  
@@ -505,3 +505,49 @@ of **91.66%**.
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
           + **self.__dentropy** - python primitive number type representing 'D-Entropy'.  
+          
+3. ```class featext.texture.Tamura. TamFeat(img)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **img** - 2-dimensional numpy array representing a gray-scale image.  
+  * **_Methods_ :**  
+     * ```getCoarseness()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__coarseness** - python primitive number type representing 'Tamura-Coarseness'.  
+     * ```getContrast()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__contrast** - python primitive number type representing 'Tamura-Contrast'.  
+     * ```getKurtosis()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__kurtosis** - python primitive number type representing 'Tamura-Kurtosis'.  
+     * ```getLineLikeness()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__linelikeness** - python primitive number type representing 'Tamura-LineLikeness'.  
+     * ```getDirectionality()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__directionality** - python primitive number type representing 'Tamura-Directionality'.  
+     * ```getRegularity()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__regularity** - python primitive number type representing 'Tamura-Regularity'.  
+     * ```getRoughness()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__roughness** - python primitive number type representing 'Tamura-Roughness'.  
+     * ```getPrewittHorizontalEdgeImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__img_hor_x** - 2-dimensional numpy array representing a gray-scale image.  
+     * ```getPrewittVerticalEdgeImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__img_vert_y** - 2-dimensional numpy array representing a gray-scale image.  
+     * ```getCombinedPrewittImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **(self.__delg_img).astype(np.uint8)** - 2-dimensional numpy array representing a gray-scale image.  
+      
