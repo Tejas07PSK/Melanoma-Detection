@@ -373,7 +373,7 @@ It is one of the predictive modelling approaches used in statistics, data mining
 Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks, 
 that operate by constructing a multitude of decision trees at training time and outputting the class that is the 
 mode of the classes (classification) or mean prediction (regression) of the individual trees. Random decision forests 
-correct for decision trees' habit of overfitting to their training set.  
+correct for decision trees' habit of over-fitting to their training set.  
 (More articles regarding RFs can be found here,  
 :point_right: [wikipedia.org/RF](https://en.wikipedia.org/wiki/Random_forest).  
 :point_right: [scikit-learn.org/RF](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).)  
@@ -697,7 +697,7 @@ of **91.66%**.
         + **_Arguments_ :**  
           + **gray_img** - 2-dimensional numpy array, representing a gray-scale image.  
         + **_Returns_ :**  
-          + **aryoflst** - numpy array of python tuples, representing the various gray-levels present in the image, along with their corresponding frequency of occurence in the image.  
+          + **aryoflst** - numpy array of python tuples, representing the various gray-levels present in the image, along with their corresponding frequency of occurrence in the image.  
 
 8. ``` module Main.``` :-  
    * **_Methods_ :**  
@@ -706,3 +706,9 @@ of **91.66%**.
          + **_Returns_ : <'None'>**  
 
 
+## Conclusion -  
+This application is still experimental and is moderately accurate in predicting the type of skin-lesion, given the image. However, on increasing 
+the quantity of training-set images, the prediction accuray of the various machine-learning models used in this application, will significanty increase. 
+Now, most importantly before you start using this application use _option-'2'_ first, if you want to test the default experimental data or else the 
+'.pkl' files might generate some error based on your system architecture. Lastly, it is recommended that for testing purposes, you use images with smaller 
+dimensions, preferably _'120x120'_ pixels. Good-Luck!!! :wink:  
