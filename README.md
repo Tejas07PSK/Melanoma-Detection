@@ -397,7 +397,7 @@ of **91.66%**.
              **'G'** for green.  
              **'B'** for blue.)  
         + **_Returns_ :**  
-          + **temp_img** - resultant image consisting of the required color-plate, as a 3-dimentional numpy array.  
+          + **temp_img** - resultant image consisting of the required color-plate, as a 3-dimensional numpy array.  
      * ```getActImg()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
@@ -558,7 +558,7 @@ of **91.66%**.
      * ```getNGTDM()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
-          + **self.__ngtdm** - 2-dimensional numpy array representing the 'Neighbourhood Gray Tone Difference Matrix'.  
+          + **self.__ngtdm** - 2-dimensional numpy array representing the 'Neighbourhood Gray Tone Difference Matrix(NGTDM)'.  
      * ```getKingsCoarseness()```,  
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
@@ -579,3 +579,77 @@ of **91.66%**.
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
           + **self.__strength** - python primitive number type representing 'King's-Strength'.  
+          
+5. ```class featext.physical.GAbor. Gabor(img, corr_colimg)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **img** - 2-dimensional numpy array representing a gray-scale image.  
+     * **corr_colimg** - 3-dimensional numpy array representing a color-image.  
+  * **_Methods_ :**  
+     * ```getGaussianBlurredImage()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__gblurimg** - 2-dimensional numpy array representing a 'gaussian-blurred' gray-scale image.  
+     * ```getListOfContourPoints()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__contours** - python list type, containing numpy arrays which represent the corresponding contours detected in the image. Each array contains a list of [[x, y]] co-ordinates representing the specific contour.  
+     * ```getHierarchyOfContours()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__hierarchy** - multi-dimensional numpy array representing hierarchical relationships between different contours detected in the image.  
+     * ```getListOfMomentsForCorrespondingContours()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__momLstForConts** - python list of dictionaries, wherein each dictionary contains the various moments corresponding to various contours detected in the image.  
+     * ```getListOfCentroidsForCorrespondingContours()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.____centroidLstForConts** - python list of tuples denoting the (x, y) co-ordinates of the centroids, of the detected contours in the image.  
+     * ```getListOfAreasForCorrespondingContours()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__arLstForConts** - python list of numbers denoting the areas of various contours in the image.  
+     * ```getListOfPerimetersForCorrespondingContours()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__periLstForConts** - python list of numbers denoting the perimeters of the various contours in the image.  
+     * ```getSelectedContourImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__selecCntImg** - 3-dimensional numpy array, representing a color-image.  
+     * ```getBoundingRectImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__imgcovrect** - 3-dimensional numpy array, representing a color-image.  
+     * ```getMeanEdgeOfCoveringRect()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__meanEdge** - python primitive number type, representing the edge-length of a rectangle.  
+     * ```getBoundedCircImg()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__imgcovcirc** - 3-dimensional numpy array, representing a color-image.  
+     * ```getBoundedCircRadius()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__rad** - python primitive number type, representing the radius of a circle.  
+     * ```getAsymmetryIndex()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__asyidxofles** - python primitive number type, representing 'Asymmetry-Index'.  
+     * ```getCompactIndex()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__cmptidx** - python primitive number type, representing 'Compact-Index'.  
+     * ```getFractalDimension()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__fracdimen** - python primitive number type, representing 'Fractal-Dimension'.  
+     * ```getDiameter()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__diameter** - python primitive number type, representing the diameter of a circular-region in the image.  
+     * ```getColorVariance()```,  
+        + **_Arguments_ : <'None'>**  
+        + **_Returns_ :**  
+          + **self.__colorvar** - python primitive number type, representing 'Color-Variance'.  
