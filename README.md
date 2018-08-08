@@ -715,3 +715,12 @@ This application is still experimental and is moderately accurate in predicting 
  might generate some error based on your system architecture. Lastly, it is recommended that for  
  testing purposes, you use images with smaller dimensions, preferably _'120x120'_ pixels.  
  **Good-Luck!!!** :wink:  
+ 
+# []()  
+###### ____----Made with----____  
+![Python3](https://user-images.githubusercontent.com/29245625/43864317-0358aeb6-9b7d-11e8-9616-121cbaa17f5a.jpg) 
+![OpenCV](https://user-images.githubusercontent.com/29245625/43864995-dc7ba652-9b7e-11e8-8402-e8416e8421ed.jpg) 
+&nbsp; &nbsp; &nbsp; &nbsp; ![Scikit-Learn](https://user-images.githubusercontent.com/29245625/43865285-c87695c6-9b7f-11e8-8ea0-da7de21cb0fa.jpg) 
+&nbsp; &nbsp; &nbsp; &nbsp; ![NumPy](https://user-images.githubusercontent.com/29245625/43865961-c28d6494-9b81-11e8-862d-8ace3a859083.jpg)  
+![Matplotlib](https://user-images.githubusercontent.com/29245625/43866246-ae75adb2-9b82-11e8-84af-e5b619c1a4d0.jpg) 
+&nbsp; &nbsp; &nbsp; &nbsp; ![SciPy](https://user-images.githubusercontent.com/29245625/43866450-638cc8ca-9b83-11e8-92f7-44f5300a3c03.jpg)  
