@@ -667,3 +667,13 @@ of **91.66%**.
         + **_Returns_ :**  
           python dictionary type, representing the results of prediction, for each classifier and regressor.  
 
+6. ```module mlmodels.DecisionSurfacePlotter.``` :-  
+  * **_Methods_ :**  
+     * ```plotForAll(X, Y, ftup, feats)```,  
+        + **_Arguments_ :**  
+          + **X** - 2-dimensional numpy array representing features extracted for each input image.  
+          + **Y** - numpy array representing the supervised classes of the input images.  
+          + **ftup** - python list of indexes, for the features to be plotted.  
+          + **feats** - python list of string names, for the features to be plotted.  
+        + **_Returns_ : <'None'>**  
+
