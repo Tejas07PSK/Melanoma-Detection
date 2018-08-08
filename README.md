@@ -677,3 +677,32 @@ of **91.66%**.
           + **feats** - python list of string names, for the features to be plotted.  
         + **_Returns_ : <'None'>**  
 
+7. ```module util.Util.``` :-  
+  * **_Methods_ :**  
+     * ```search(arr, ins_val, low, high)```,  
+        + **_Arguments_ :**  
+          + **arr** - numpy array, to be searched.  
+          + **ins_val** - python primitive number type representing the key to be searched in the numpy array.  
+          + **low** - python primitive number type representing the lower index of the numpy array.  
+          + **high** - python primitive number type representing the upper index of the numpy array.  
+        + **_Returns_ :**  
+          + **fnd_idx*** - python primitive number type representing the index at which the key is found in the numpy array.  
+     * ```quickSort(arr, low, high)```,  
+        + **_Arguments_ :**  
+          + **arr** - numpy array, to be sorted.  
+          + **low** - python primitive number type representing the lower index of the numpy array.  
+          + **high** - python primitive number type representing the upper index of the numpy array.  
+        + **_Returns_ : <'None'>**  
+     * ```getArrayOfGrayLevelsWithFreq(gray_img)```,  
+        + **_Arguments_ :**  
+          + **gray_img** - 2-dimensional numpy array, representing a gray-scale image.  
+        + **_Returns_ :**  
+          + **aryoflst** - numpy array of python tuples, representing the various gray-levels present in the image, along with their corresponding frequency of occurence in the image.  
+
+8. ``` module Main.``` :-  
+   * **_Methods_ :**  
+      * ```main_menu()```,  
+         + **_Arguments_ : <'None'>**  
+         + **_Returns_ : <'None'>**  
+
+
