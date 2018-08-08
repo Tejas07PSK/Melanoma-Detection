@@ -653,3 +653,17 @@ of **91.66%**.
         + **_Arguments_ : <'None'>**  
         + **_Returns_ :**  
           + **self.__colorvar** - python primitive number type, representing 'Color-Variance'.  
+
+5. ```class mlmodels.Classifiers. Classifiers(featureset, target, mode)``` :-  
+  * **_Constructor Parameters_ :**  
+     * **featureset** - 2-dimensional numpy array representing the list of features extracted for each training image.  
+     * **target** - numpy array representing the class of training images, due to supervision.  
+     * **mode** - python string type, representing the mode of operation,i.e, either mode = "**train**" or mode = "**predict**". Default mode is "**predict**" and for that you don't need 'featureset' and 'target' parameters and by default they are set to '**None**'.  
+  * **_Methods_ :**  
+     * ```predicto(extfeatarr, supresults)```,  
+        + **_Arguments_ :**  
+          + **extfeatarr** - 2-dimensional numpy array representing the list of features extracted for each input image.  
+          + **supresults** - numpy array representing the class of input images, due to supervision.  
+        + **_Returns_ :**  
+          python dictionary type, representing the results of prediction, for each classifier and regressor.  
+
