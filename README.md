@@ -128,7 +128,7 @@ The application consists of five core modules, namely:
 
 
 ## How the application works?  
-This application works according to the following folds :  
+This application works in the following folds :  
 1.  Firstly, a 'training-set' data is generated from a collection of various skin-lesion images placed in their respective  
     class folders i.e., _'images/benign'_, _'images/malignant'_, _'images/negative'_. These images are pre-processed and  
     a set of quantified-features are extracted from them, which comprises the 'training-set' data.  
@@ -708,8 +708,8 @@ of **91.66%**.
 
 ## Conclusion -  
 This application is still experimental and is moderately accurate in predicting the type of 
-skin-lesion, given the image. However, on increasing the quantity of training-set images, the 
- prediction accuray of the various machine-learning models used in this application, will 
+skin-lesion, found in the image. However, on increasing the quantity of training-set images, the 
+ prediction accuracy of the various machine-learning models used in this application, will 
  significantly increase. Now, most importantly before you start using this application use 
  _option-'2'_ first, if you want to test the default experimental data or else the '.pkl' files 
  might generate some error based on your system architecture. Lastly, it is recommended that for 
