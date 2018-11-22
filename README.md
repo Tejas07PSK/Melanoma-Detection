@@ -708,7 +708,7 @@ of **91.66%**.
 
 ## Conclusion -  
 This application is still experimental and is moderately accurate in predicting the type of 
-skin-lesion, found in the image. However, on increasing the quantity of training-set images, the 
+skin-lesion, present in the image. However, on increasing the quantity of training-set images, the 
  prediction accuracy of the various machine-learning models used in this application, will 
  significantly increase. Now, most importantly before you start using this application use 
  _option-'2'_ first, if you want to test the default experimental data or else the '.pkl' files 
