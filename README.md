@@ -686,7 +686,7 @@ of **91.66%**.
           + **low** - python primitive number type representing the lower index of the numpy array.  
           + **high** - python primitive number type representing the upper index of the numpy array.  
         + **_Returns_ :**  
-          + **fnd_idx*** - python primitive number type representing the index at which the key is found in the numpy array.  
+          + **fnd_idx** - python primitive number type representing the index at which the key is found in the numpy array.  
      * ```quickSort(arr, low, high)```,  
         + **_Arguments_ :**  
           + **arr** - numpy array, to be sorted.  
