@@ -101,7 +101,7 @@ def __showGaborPhysicalFeatures(feobj3):
 def __createDataSet(restype, img_num):
     print("------------------+++++++++++++============FOR %s SET==============++++++++++++++---------------------- \n" % restype.upper())
     if (((pathlib.Path('dataset.npz')).exists() == True) & ((pathlib.Path('dataset.npz')).is_file() == True)):
-        dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+        dset, featnames = (np.load('dataset.npz', allow_pickle=True))['dset'], (np.load('dataset.npz', allow_pickle=True))['featnames']
     else:
         dset = np.empty(0, dtype=np.dtype([('featureset', float, (34,)), ('result', object)]), order='C')
         featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
@@ -178,7 +178,7 @@ def __createDataSet(restype, img_num):
     np.savez('dataset', dset=dset, featnames=featnames)
 
 def __createAndTrainMlModels():
-    dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+    dset, featnames = (np.load('dataset.npz', allow_pickle=True))['dset'], (np.load('dataset.npz', allow_pickle=True))['featnames']
     CLF.Classifiers(featureset=dset['featureset'], target=__convertTargetTypeToInt(dset['result']), mode='train', path='mlmodels/')
     print("Training successfully completed!!! \n")
 
@@ -288,7 +288,7 @@ def __convertTargetTypeToStr(arr):
 
 def __predictFromSavedTestCase():
     clasfobj = CLF.Classifiers(path='mlmodels/')
-    dset, featnames = (np.load('testcase.npz'))['dset'], (np.load('testcase.npz'))['featnames']
+    dset, featnames = (np.load('testcase.npz', allow_pickle=True))['dset'], (np.load('testcase.npz', allow_pickle=True))['featnames']
     print(featnames)
     print(dset)
     print(dset['featureset'])
@@ -328,7 +328,7 @@ def __printPredResWithProperFormatting(predres, type=None):
         print("Now exiting from prediction mode!! \n")
 
 def __printfeatsfromfile(fl='testcase.npz'):
-    dset, featnames = (np.load(fl))['dset'], (np.load(fl))['featnames']
+    dset, featnames = (np.load(fl, allow_pickle=True))['dset'], (np.load(fl, allow_pickle=True))['featnames']
     for i in range(0, ((dset['featureset']).shape)[0], 1):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n")
         print("Printing features for stored image - %d \n" % i)
@@ -411,7 +411,7 @@ def main_menu():
            print("PRINTING COMPLETE!!! \n")
        elif (c == '6'):
            print("\t Before you proceed, make sure that you had previously generated the \'dataset.npz\' numpy file which is existing in the root directory of the project!!! \n")
-           dset, featnames = (np.load('dataset.npz'))['dset'], (np.load('dataset.npz'))['featnames']
+           dset, featnames = (np.load('dataset.npz', allow_pickle=True))['dset'], (np.load('dataset.npz', allow_pickle=True))['featnames']
            print("\t Given below are the set of features, along with their corresponding indexes. \n")
            for count in range(0, featnames.size, 1):
                print(str(count)+". "+str(featnames[count])+" \n")
@@ -448,7 +448,7 @@ def main_menu():
            print("Please bear in mind, that re-training the models on the same test-set again, will result in errors. \n")
            featnames = np.array(['ASM', 'ENERGY', 'ENTROPY', 'CONTRAST', 'HOMOGENEITY', 'DM', 'CORRELATION', 'HAR-CORRELATION', 'CLUSTER-SHADE', 'CLUSTER-PROMINENCE', 'MOMENT-1', 'MOMENT-2', 'MOMENT-3', 'MOMENT-4', 'DASM', 'DMEAN', 'DENTROPY', 'TAM-COARSENESS', 'TAM-CONTRAST', 'TAM-KURTOSIS', 'TAM-LINELIKENESS', 'TAM-DIRECTIONALITY', 'TAM-REGULARITY', 'TAM-ROUGHNESS', 'ASYMMETRY-INDEX', 'COMPACT-INDEX', 'FRACTAL-DIMENSION', 'DIAMETER', 'COLOR-VARIANCE', 'KINGS-COARSENESS', 'KINGS-CONTRAST', 'KINGS-BUSYNESS', 'KINGS-COMPLEXITY', 'KINGS-STRENGTH'], dtype=object, order='C')
            nfls = list([len(__listFilesInDir("images/" + str(cls))) for cls in ('benign', 'malignant', 'negative')])
-           trainset, testset = (np.load('dataset.npz'))['dset'], (np.load('testcase.npz'))['dset']
+           trainset, testset = (np.load('dataset.npz', allow_pickle=True))['dset'], (np.load('testcase.npz', allow_pickle=True))['dset']
            for feat, index in zip(testset, range(0, testset.size, 1)):
                if (feat[1] == 'benign'):
                    copyfile(src="temp/"+str(index)+".jpg", dst="images/"+str(feat[1])+"/"+str(nfls[0])+".jpg")
