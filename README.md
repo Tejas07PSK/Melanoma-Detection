@@ -726,4 +726,5 @@ skin-lesion, present in the image. However, on increasing the quantity of traini
 &nbsp; &nbsp; &nbsp; &nbsp; ![Scikit-Learn](https://user-images.githubusercontent.com/29245625/43865285-c87695c6-9b7f-11e8-8ea0-da7de21cb0fa.jpg) 
 &nbsp; &nbsp; &nbsp; &nbsp; ![NumPy](https://user-images.githubusercontent.com/29245625/43865961-c28d6494-9b81-11e8-862d-8ace3a859083.jpg)  
 ![Matplotlib](https://user-images.githubusercontent.com/29245625/43866246-ae75adb2-9b82-11e8-84af-e5b619c1a4d0.jpg) 
-&nbsp; &nbsp; &nbsp; &nbsp; ![SciPy](https://user-images.githubusercontent.com/29245625/43866450-638cc8ca-9b83-11e8-92f7-44f5300a3c03.jpg)  
+&nbsp; &nbsp; &nbsp; &nbsp; ![SciPy](https://user-images.githubusercontent.com/29245625/43866450-638cc8ca-9b83-11e8-92f7-44f5300a3c03.jpg) 
+&nbsp; &nbsp; &nbsp; &nbsp; ![Joblib](https://user-images.githubusercontent.com/29245625/228064921-c6cf2aaa-6625-4556-83a6-01b1f65dac7c.png) 
