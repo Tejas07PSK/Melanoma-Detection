@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as Pchs
 from sklearn import clone
-from sklearn.externals import joblib
+import joblib
 from sklearn.ensemble import RandomForestClassifier
 
 (__col_map, __rnd_seed) = (plt.cm.RdYlGn, 13)
