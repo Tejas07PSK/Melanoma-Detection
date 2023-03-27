@@ -187,6 +187,9 @@ This application works in the following folds :
         []  _About 'scikit-learn'_ :point_right: [wikipedia.org/Scikit-Learn](https://en.wikipedia.org/wiki/Scikit-learn).  
         []  _Official 'scikit-learn' documentation_ :point_right: [scikit-learn.org/docs](http://scikit-learn.org/stable/documentation.html).  
         (**Note.-** For installing _Scikit-Learn_ through pip, type `python -m pip --user install sklearn`.)  
+    + **'Joblib'**.  
+        []  _Official 'Joblib' documentation_ :point_right: [joblib.io/docs](https://joblib.readthedocs.io/en/latest/index.html).  
+        (**Note.-** For installing _Joblib_ through pip, type `python -m pip --user install joblib`.)  
 
 ### _Running the Application_ :  
 * Before you download this application, make sure you have installed 'Python3' along with the dependency modules.  
