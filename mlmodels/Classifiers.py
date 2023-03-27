@@ -1,4 +1,4 @@
-from sklearn.externals import joblib
+import joblib
 from sklearn.svm import SVC, SVR
 from sklearn.svm import NuSVC, NuSVR
 from sklearn.svm import LinearSVC, LinearSVR
